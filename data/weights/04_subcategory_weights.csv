@@ -1,0 +1,991 @@
+School Level,Scoring Focus Area,Space Type,Category,Subcategory,Weight
+ES,Arrival Experience and Campus Organization,Entry Experience,Infrastructure,Utilities & Technology,6
+ES,Arrival Experience and Campus Organization,Entry Experience,Function,Adjacency & Access,6
+ES,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Aesthetics,6
+ES,Arrival Experience and Campus Organization,Entry Experience,Function,Aesthetics,6
+ES,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Safety & Supervision,6
+ES,Arrival Experience and Campus Organization,Campus,Occupant Experience,Safety & Supervision,6
+ES,Arrival Experience and Campus Organization,Campus,Function,Adjacency & Access,6
+ES,Arrival Experience and Campus Organization,Campus,Observational,Observational,0
+ES,Arrival Experience and Campus Organization,Campus,Occupant Experience,Aesthetics,6
+ES,Arrival Experience and Campus Organization,Campus,Function,Layout & Flexibility,6
+ES,Arrival Experience and Campus Organization,Campus,Function,Availability,6
+ES,Arrival Experience and Campus Organization,Campus,Occupant Experience,Circulation & Egress,6
+ES,Arrival Experience and Campus Organization,Campus,Amenities,Display & Presentation,6
+ES,Administration,Main Admin Suite,Function,Availability,6
+ES,Administration,Main Admin Suite,Function,Layout & Flexibility,6
+ES,Administration,Main Admin Suite,Function,Adjacency & Access,6
+ES,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,6
+ES,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,6
+ES,Administration,Main Admin Suite,Occupant Experience,Aesthetics,6
+ES,Administration,Main Admin Suite,Occupant Experience,Occupant Comfort,6
+ES,Administration,Main Admin Suite,Occupant Experience,Safety & Supervision,6
+ES,Administration,Main Admin Suite,Occupant Experience,Circulation & Egress,6
+ES,Administration,Main Admin Suite,Amenities,Display & Presentation,6
+ES,Administration,Main Admin Suite,Amenities,Storage,6
+ES,Administration,Main Admin Suite,Amenities,Furniture & Equipment,6
+ES,Administration,Admin Offices,Function,Layout & Flexibility,6
+ES,Administration,Admin Offices,Function,Adjacency & Access,6
+ES,Administration,Admin Offices,Infrastructure,Utilities & Technology,6
+ES,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,6
+ES,Administration,Admin Offices,Occupant Experience,Aesthetics,6
+ES,Administration,Admin Offices,Occupant Experience,Occupant Comfort,6
+ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,6
+ES,Administration,Admin Offices,Amenities,Furniture & Equipment,6
+ES,Administration,Community Partners Suite,Function,Availability,6
+ES,Administration,Community Partners Suite,Function,Adjacency & Access,6
+ES,Administration,Community Partners Suite,Infrastructure,Utilities & Technology,6
+ES,Administration,Community Partners Suite,Infrastructure,Flooring & Surface Finishes,6
+ES,Administration,Community Partners Suite,Occupant Experience,Occupant Comfort,6
+ES,Administration,Community Partners Suite,Occupant Experience,Safety & Supervision,6
+ES,Administration,Community Partners Suite,Amenities,Furniture & Equipment,6
+ES,Administration,Mental Wellness and Counseling Suite,Function,Availability,6
+ES,Administration,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,6
+ES,Administration,Mental Wellness and Counseling Suite,Function,Adjacency & Access,6
+ES,Administration,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,6
+ES,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,6
+ES,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,6
+ES,Administration,Mental Wellness and Counseling Suite,Amenities,Display & Presentation,6
+ES,Administration,Mental Wellness and Counseling Suite,Amenities,Storage,6
+ES,Administration,Mental Wellness and Counseling Suite,Amenities,Furniture & Equipment,6
+ES,Administration,Mental Wellness and Counseling Suite,Observational,Observational,0
+ES,Administration,Professional Learning Center,Function,Layout & Flexibility,6
+ES,Administration,Professional Learning Center,Function,Adjacency & Access,6
+ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,6
+ES,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,6
+ES,Administration,Professional Learning Center,Occupant Experience,Aesthetics,6
+ES,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,6
+ES,Administration,Professional Learning Center,Occupant Experience,Safety & Supervision,6
+ES,Administration,Professional Learning Center,Amenities,Display & Presentation,6
+ES,Administration,Professional Learning Center,Amenities,Storage,6
+ES,Administration,Professional Learning Center,Amenities,Furniture & Equipment,6
+ES,Administration,Professional Learning Center,Observational,Observational,0
+ES,Studios,Early childhood studio,Function,Availability,6
+ES,Studios,Early childhood studio,Function,Layout & Flexibility,6
+ES,Studios,Early childhood studio,Function,Adjacency & Access,6
+ES,Studios,Early childhood studio,Infrastructure,Utilities & Technology,6
+ES,Studios,Early childhood studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Studios,Early childhood studio,Occupant Experience,Aesthetics,6
+ES,Studios,Early childhood studio,Occupant Experience,Occupant Comfort,6
+ES,Studios,Early childhood studio,Occupant Experience,Safety & Supervision,6
+ES,Studios,Early childhood studio,Amenities,Display & Presentation,6
+ES,Studios,Early childhood studio,Amenities,Storage,6
+ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,6
+ES,Studios,Early childhood studio,Observational,Observational,0
+ES,Special Education,Early childhood special education studio,Function,Availability,6
+ES,Special Education,Early childhood special education studio,Function,Layout & Flexibility,6
+ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,6
+ES,Special Education,Early childhood special education studio,Infrastructure,Utilities & Technology,6
+ES,Special Education,Early childhood special education studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Special Education,Early childhood special education studio,Occupant Experience,Aesthetics,6
+ES,Special Education,Early childhood special education studio,Occupant Experience,Occupant Comfort,6
+ES,Special Education,Early childhood special education studio,Occupant Experience,Safety & Supervision,6
+ES,Special Education,Early childhood special education studio,Occupant Experience,Circulation & Egress,6
+ES,Special Education,Early childhood special education studio,Amenities,Display & Presentation,6
+ES,Special Education,Early childhood special education studio,Amenities,Storage,6
+ES,Special Education,Early childhood special education studio,Amenities,Furniture & Equipment,6
+ES,Special Education,Early childhood special education studio,Observational,Observational,0
+ES,Studios,Traditional Studio,Function,Availability,6
+ES,Studios,Traditional Studio,Function,Layout & Flexibility,6
+ES,Studios,Traditional Studio,Function,Adjacency & Access,6
+ES,Studios,Traditional Studio,Infrastructure,Utilities & Technology,6
+ES,Studios,Traditional Studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Studios,Traditional Studio,Occupant Experience,Aesthetics,6
+ES,Studios,Traditional Studio,Occupant Experience,Occupant Comfort,6
+ES,Studios,Traditional Studio,Occupant Experience,Safety & Supervision,6
+ES,Studios,Traditional Studio,Amenities,Display & Presentation,6
+ES,Studios,Traditional Studio,Amenities,Storage,6
+ES,Studios,Traditional Studio,Amenities,Furniture & Equipment,6
+ES,Studios,Traditional Studio,Observational,Observational,0
+ES,Special Education,SPED Flex Studio,Function,Availability,6
+ES,Special Education,SPED Flex Studio,Function,Layout & Flexibility,6
+ES,Special Education,SPED Flex Studio,Function,Adjacency & Access,6
+ES,Special Education,SPED Flex Studio,Infrastructure,Utilities & Technology,6
+ES,Special Education,SPED Flex Studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Special Education,SPED Flex Studio,Occupant Experience,Aesthetics,6
+ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,6
+ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,6
+ES,Special Education,SPED Flex Studio,Amenities,Display & Presentation,6
+ES,Special Education,SPED Flex Studio,Amenities,Storage,6
+ES,Special Education,SPED Flex Studio,Amenities,Furniture & Equipment,6
+ES,Special Education,SPED Flex Studio,Observational,Observational,0
+ES,Special Education,Special Education Suite,Function,Availability,6
+ES,Special Education,Special Education Suite,Function,Adjacency & Access,6
+ES,Special Education,Special Education Suite,Occupant Experience,Safety & Supervision,6
+ES,Special Education,Special Education Suite,Occupant Experience,Circulation & Egress,6
+ES,Special Education,Special Education Suite,Amenities,Storage,6
+ES,Special Education,Sensory Motor Lab,Function,Layout & Flexibility,6
+ES,Special Education,Sensory Motor Lab,Infrastructure,Utilities & Technology,6
+ES,Special Education,Sensory Motor Lab,Infrastructure,Flooring & Surface Finishes,6
+ES,Special Education,Sensory Motor Lab,Occupant Experience,Aesthetics,6
+ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,6
+ES,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,6
+ES,Special Education,Sensory Motor Lab,Amenities,Storage,6
+ES,Special Education,Sensory Motor Lab,Amenities,Furniture & Equipment,6
+ES,Special Education,Sensory Motor Lab,Observational,Observational,0
+ES,Special Education,Life Skills Studio,Function,Layout & Flexibility,6
+ES,Special Education,Life Skills Studio,Infrastructure,Utilities & Technology,6
+ES,Special Education,Life Skills Studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Special Education,Life Skills Studio,Occupant Experience,Aesthetics,6
+ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,6
+ES,Special Education,Life Skills Studio,Occupant Experience,Safety & Supervision,6
+ES,Special Education,Life Skills Studio,Amenities,Display & Presentation,6
+ES,Special Education,Life Skills Studio,Amenities,Storage,6
+ES,Special Education,Life Skills Studio,Amenities,Furniture & Equipment,6
+ES,Studios,Art Studio,Function,Availability,6
+ES,Studios,Art Studio,Function,Layout & Flexibility,6
+ES,Studios,Art Studio,Function,Adjacency & Access,6
+ES,Studios,Art Studio,Infrastructure,Utilities & Technology,6
+ES,Studios,Art Studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Studios,Art Studio,Occupant Experience,Aesthetics,6
+ES,Studios,Art Studio,Occupant Experience,Occupant Comfort,6
+ES,Studios,Art Studio,Occupant Experience,Safety & Supervision,6
+ES,Studios,Art Studio,Amenities,Display & Presentation,6
+ES,Studios,Art Studio,Amenities,Storage,6
+ES,Studios,Art Studio,Amenities,Furniture & Equipment,6
+ES,Studios,Art Studio,Observational,Observational,0
+ES,Studios,Music Studio,Function,Availability,6
+ES,Studios,Music Studio,Function,Layout & Flexibility,6
+ES,Studios,Music Studio,Infrastructure,Utilities & Technology,6
+ES,Studios,Music Studio,Infrastructure,Flooring & Surface Finishes,6
+ES,Studios,Music Studio,Occupant Experience,Aesthetics,6
+ES,Studios,Music Studio,Occupant Experience,Occupant Comfort,6
+ES,Studios,Music Studio,Occupant Experience,Safety & Supervision,6
+ES,Studios,Music Studio,Amenities,Display & Presentation,6
+ES,Studios,Music Studio,Amenities,Storage,6
+ES,Studios,Music Studio,Amenities,Furniture & Equipment,6
+ES,Studios,Music Studio,Observational,Observational,0
+ES,Studios,Maker Space,Function,Availability,6
+ES,Studios,Maker Space,Function,Layout & Flexibility,6
+ES,Studios,Maker Space,Function,Adjacency & Access,6
+ES,Studios,Maker Space,Infrastructure,Utilities & Technology,6
+ES,Studios,Maker Space,Infrastructure,Flooring & Surface Finishes,6
+ES,Studios,Maker Space,Occupant Experience,Aesthetics,6
+ES,Studios,Maker Space,Occupant Experience,Occupant Comfort,6
+ES,Studios,Maker Space,Occupant Experience,Safety & Supervision,6
+ES,Studios,Maker Space,Amenities,Display & Presentation,6
+ES,Studios,Maker Space,Amenities,Storage,6
+ES,Studios,Maker Space,Amenities,Furniture & Equipment,6
+ES,Studios,Maker Space,Observational,Observational,0
+ES,Neighborhoods,Open Collaboration,Function,Availability,6
+ES,Neighborhoods,Open Collaboration,Function,Adjacency & Access,6
+ES,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,6
+ES,Neighborhoods,Open Collaboration,Infrastructure,Flooring & Surface Finishes,6
+ES,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,6
+ES,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
+ES,Neighborhoods,Open Collaboration,Amenities,Furniture & Equipment,6
+ES,Neighborhoods,Open Collaboration,Observational,Observational,0
+ES,Neighborhoods,Group Room,Function,Availability,6
+ES,Neighborhoods,Group Room,Infrastructure,Utilities & Technology,6
+ES,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,6
+ES,Neighborhoods,Group Room,Amenities,Display & Presentation,6
+ES,Neighborhoods,Group Room,Amenities,Furniture & Equipment,6
+ES,Neighborhoods,Group Room,Observational,Observational,0
+ES,Neighborhoods,Neighborhood,Function,Availability,6
+ES,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
+ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
+ES,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
+ES,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,6
+ES,Neighborhoods,Neighborhood,Observational,Observational,0
+ES,Neighborhoods,Early Childhood Neighborhood,Function,Availability,6
+ES,Neighborhoods,Early Childhood Neighborhood,Function,Layout & Flexibility,6
+ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,6
+ES,Neighborhoods,Early Childhood Neighborhood,Infrastructure,Layout & Flexibility,6
+ES,Neighborhoods,Early Childhood Neighborhood,Occupant Experience,Safety & Supervision,6
+ES,Shared Spaces,ES Gymnasium,Function,Availability,6
+ES,Shared Spaces,ES Gymnasium,Function,Adjacency & Access,6
+ES,Shared Spaces,ES Gymnasium,Infrastructure,Utilities & Technology,6
+ES,Shared Spaces,ES Gymnasium,Occupant Experience,Circulation & Egress,6
+ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,6
+ES,Shared Spaces,ES Gymnasium,Amenities,Storage,6
+ES,Shared Spaces,ES Gymnasium,Amenities,Furniture & Equipment,6
+ES,Shared Spaces,Library Media Center,Function,Availability,6
+ES,Shared Spaces,Library Media Center,Function,Adjacency & Access,6
+ES,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,6
+ES,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,6
+ES,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
+ES,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,6
+ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,6
+ES,Shared Spaces,Library Media Center,Amenities,Display & Presentation,6
+ES,Shared Spaces,Library Media Center,Amenities,Storage,6
+ES,Shared Spaces,Library Media Center,Amenities,Furniture & Equipment,6
+ES,Shared Spaces,Library Media Center,Observational,Observational,0
+ES,Shared Spaces,Dining Commons,Function,Availability,6
+ES,Shared Spaces,Dining Commons,Function,Adjacency & Access,6
+ES,Shared Spaces,Dining Commons,Infrastructure,Utilities & Technology,6
+ES,Shared Spaces,Dining Commons,Infrastructure,Flooring & Surface Finishes,6
+ES,Shared Spaces,Dining Commons,Occupant Experience,Aesthetics,6
+ES,Shared Spaces,Dining Commons,Occupant Experience,Occupant Comfort,6
+ES,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,6
+ES,Shared Spaces,Dining Commons,Amenities,Display & Presentation,6
+ES,Shared Spaces,Dining Commons,Amenities,Storage,6
+ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,6
+ES,Shared Spaces,Dining Commons,Observational,Observational,0
+ES,Shared Spaces,Kitchen,Function,Availability,6
+ES,Shared Spaces,Kitchen,Function,Adjacency & Access,6
+ES,Shared Spaces,Kitchen,Function,Circulation & Egress,6
+ES,Shared Spaces,Kitchen,Infrastructure,Utilities & Technology,6
+ES,Outdoor,Outdoor Spaces,Function,Availability,6
+ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,6
+ES,Outdoor,Outdoor Spaces,Amenities,Storage,6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
+ES,Outdoor,Outdoor Spaces,Observational,Observational,0
+MS,Arrival Experience and Campus Organization,Entry Experience,Infrastructure,Utilities & Technology,6
+MS,Arrival Experience and Campus Organization,Entry Experience,Function,Adjacency & Access,6
+MS,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Aesthetics,6
+MS,Arrival Experience and Campus Organization,Entry Experience,Function,Aesthetics,6
+MS,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Safety & Supervision,6
+MS,Arrival Experience and Campus Organization,Campus,Function,Adjacency & Access,6
+MS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Safety & Supervision,6
+MS,Arrival Experience and Campus Organization,Campus,Observational,Observational,0
+MS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Aesthetics,6
+MS,Arrival Experience and Campus Organization,Campus,Function,Layout & Flexibility,6
+MS,Arrival Experience and Campus Organization,Campus,Function,Availability,6
+MS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Circulation & Egress,6
+MS,Arrival Experience and Campus Organization,Campus,Amenities,Display & Presentation,6
+MS,Administration,Main Admin Suite,Function,Availability,6
+MS,Administration,Main Admin Suite,Function,Layout & Flexibility,6
+MS,Administration,Main Admin Suite,Function,Adjacency & Access,6
+MS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,6
+MS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,6
+MS,Administration,Main Admin Suite,Occupant Experience,Aesthetics,6
+MS,Administration,Main Admin Suite,Occupant Experience,Occupant Comfort,6
+MS,Administration,Main Admin Suite,Occupant Experience,Safety & Supervision,6
+MS,Administration,Main Admin Suite,Occupant Experience,Circulation & Egress,6
+MS,Administration,Main Admin Suite,Amenities,Display & Presentation,6
+MS,Administration,Main Admin Suite,Amenities,Storage,6
+MS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,6
+MS,Administration,Admin Offices,Function,Layout & Flexibility,6
+MS,Administration,Admin Offices,Function,Adjacency & Access,6
+MS,Administration,Admin Offices,Infrastructure,Utilities & Technology,6
+MS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,6
+MS,Administration,Admin Offices,Occupant Experience,Aesthetics,6
+MS,Administration,Admin Offices,Occupant Experience,Occupant Comfort,6
+MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,6
+MS,Administration,Admin Offices,Amenities,Furniture & Equipment,6
+MS,Administration,Community Partners Suite,Function,Availability,6
+MS,Administration,Community Partners Suite,Function,Adjacency & Access,6
+MS,Administration,Community Partners Suite,Infrastructure,Utilities & Technology,6
+MS,Administration,Community Partners Suite,Infrastructure,Flooring & Surface Finishes,6
+MS,Administration,Community Partners Suite,Occupant Experience,Occupant Comfort,6
+MS,Administration,Community Partners Suite,Occupant Experience,Safety & Supervision,6
+MS,Administration,Community Partners Suite,Amenities,Furniture & Equipment,6
+MS,Administration,Mental Wellness and Counseling Suite,Function,Availability,6
+MS,Administration,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,6
+MS,Administration,Mental Wellness and Counseling Suite,Function,Adjacency & Access,6
+MS,Administration,Mental Wellness and Counseling Suite,Function,Circulation & Egress,6
+MS,Administration,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,6
+MS,Administration,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,6
+MS,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,6
+MS,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,6
+MS,Administration,Mental Wellness and Counseling Suite,Amenities,Display & Presentation,6
+MS,Administration,Mental Wellness and Counseling Suite,Amenities,Storage,6
+MS,Administration,Mental Wellness and Counseling Suite,Amenities,Furniture & Equipment,6
+MS,Administration,Mental Wellness and Counseling Suite,Observational,Observational,0
+MS,Administration,Professional Learning Center,Function,Layout & Flexibility,6
+MS,Administration,Professional Learning Center,Function,Adjacency & Access,6
+MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,6
+MS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,6
+MS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,6
+MS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,6
+MS,Administration,Professional Learning Center,Occupant Experience,Safety & Supervision,6
+MS,Administration,Professional Learning Center,Amenities,Display & Presentation,6
+MS,Administration,Professional Learning Center,Amenities,Storage,6
+MS,Administration,Professional Learning Center,Amenities,Furniture & Equipment,6
+MS,Administration,Professional Learning Center,Observational,Observational,0
+MS,Studios,Traditional Studio,Function,Availability,6
+MS,Studios,Traditional Studio,Function,Layout & Flexibility,6
+MS,Studios,Traditional Studio,Function,Adjacency & Access,6
+MS,Studios,Traditional Studio,Infrastructure,Utilities & Technology,6
+MS,Studios,Traditional Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Studios,Traditional Studio,Occupant Experience,Aesthetics,6
+MS,Studios,Traditional Studio,Occupant Experience,Occupant Comfort,6
+MS,Studios,Traditional Studio,Occupant Experience,Safety & Supervision,6
+MS,Studios,Traditional Studio,Amenities,Display & Presentation,6
+MS,Studios,Traditional Studio,Amenities,Storage,6
+MS,Studios,Traditional Studio,Amenities,Furniture & Equipment,6
+MS,Studios,Traditional Studio,Observational,Observational,0
+MS,Special Education,SPED Flex Studio,Function,Availability,6
+MS,Special Education,SPED Flex Studio,Function,Layout & Flexibility,6
+MS,Special Education,SPED Flex Studio,Function,Adjacency & Access,6
+MS,Special Education,SPED Flex Studio,Infrastructure,Utilities & Technology,6
+MS,Special Education,SPED Flex Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Special Education,SPED Flex Studio,Occupant Experience,Aesthetics,6
+MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,6
+MS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,6
+MS,Special Education,SPED Flex Studio,Amenities,Display & Presentation,6
+MS,Special Education,SPED Flex Studio,Amenities,Storage,6
+MS,Special Education,SPED Flex Studio,Amenities,Furniture & Equipment,6
+MS,Special Education,SPED Flex Studio,Observational,Observational,0
+MS,Special Education,Special Education Suite,Function,Availability,6
+MS,Special Education,Special Education Suite,Function,Adjacency & Access,6
+MS,Special Education,Special Education Suite,Occupant Experience,Safety & Supervision,6
+MS,Special Education,Special Education Suite,Occupant Experience,Circulation & Egress,6
+MS,Special Education,Special Education Suite,Amenities,Storage,6
+MS,Special Education,Sensory Motor Lab,Function,Layout & Flexibility,6
+MS,Special Education,Sensory Motor Lab,Infrastructure,Utilities & Technology,6
+MS,Special Education,Sensory Motor Lab,Infrastructure,Flooring & Surface Finishes,6
+MS,Special Education,Sensory Motor Lab,Occupant Experience,Aesthetics,6
+MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,6
+MS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,6
+MS,Special Education,Sensory Motor Lab,Amenities,Storage,6
+MS,Special Education,Sensory Motor Lab,Amenities,Furniture & Equipment,6
+MS,Special Education,Sensory Motor Lab,Observational,Observational,0
+MS,Special Education,Vocational Lab,Function,Layout & Flexibility,6
+MS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,6
+MS,Special Education,Vocational Lab,Infrastructure,Flooring & Surface Finishes,6
+MS,Special Education,Vocational Lab,Occupant Experience,Aesthetics,6
+MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,6
+MS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,6
+MS,Special Education,Vocational Lab,Amenities,Display & Presentation,6
+MS,Special Education,Vocational Lab,Amenities,Storage,6
+MS,Special Education,Vocational Lab,Amenities,Furniture & Equipment,6
+MS,Special Education,Vocational Lab,Observational,Observational,0
+MS,Studios,Science,Function,Availability,6
+MS,Studios,Science,Function,Layout & Flexibility,6
+MS,Studios,Science,Function,Adjacency & Access,6
+MS,Studios,Science,Function,Circulation & Egress,6
+MS,Studios,Science,Infrastructure,Utilities & Technology,6
+MS,Studios,Science,Infrastructure,Flooring & Surface Finishes,6
+MS,Studios,Science,Occupant Experience,Aesthetics,6
+MS,Studios,Science,Occupant Experience,Occupant Comfort,6
+MS,Studios,Science,Occupant Experience,Safety & Supervision,6
+MS,Studios,Science,Amenities,Display & Presentation,6
+MS,Studios,Science,Amenities,Storage,6
+MS,Studios,Science,Amenities,Furniture & Equipment,6
+MS,Studios,Science,Observational,Observational,0
+MS,Studios,Science Prep Room,Function,Adjacency & Access,6
+MS,Studios,Science Prep Room,Function,Circulation & Egress,6
+MS,Studios,Science Prep Room,Infrastructure,Utilities & Technology,6
+MS,Studios,Science Prep Room,Occupant Experience,Safety & Supervision,6
+MS,Studios,Science Prep Room,Amenities,Storage,6
+MS,Visual Arts,2D Art Studio,Function,Availability,6
+MS,Visual Arts,2D Art Studio,Function,Layout & Flexibility,6
+MS,Visual Arts,2D Art Studio,Function,Adjacency & Access,6
+MS,Visual Arts,2D Art Studio,Infrastructure,Utilities & Technology,6
+MS,Visual Arts,2D Art Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Visual Arts,2D Art Studio,Occupant Experience,Aesthetics,6
+MS,Visual Arts,2D Art Studio,Occupant Experience,Occupant Comfort,6
+MS,Visual Arts,2D Art Studio,Occupant Experience,Safety & Supervision,6
+MS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,6
+MS,Visual Arts,2D Art Studio,Amenities,Storage,6
+MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,6
+MS,Visual Arts,2D Art Studio,Observational,Observational,0
+MS,Visual Arts,3D Art Studio,Function,Availability,6
+MS,Visual Arts,3D Art Studio,Function,Layout & Flexibility,6
+MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,6
+MS,Visual Arts,3D Art Studio,Infrastructure,Utilities & Technology,6
+MS,Visual Arts,3D Art Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Visual Arts,3D Art Studio,Occupant Experience,Aesthetics,6
+MS,Visual Arts,3D Art Studio,Occupant Experience,Occupant Comfort,6
+MS,Visual Arts,3D Art Studio,Occupant Experience,Safety & Supervision,6
+MS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,6
+MS,Visual Arts,3D Art Studio,Amenities,Storage,6
+MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,6
+MS,Visual Arts,3D Art Studio,Observational,Observational,0
+MS,Visual Arts,Digital Art Studio,Function,Availability,6
+MS,Visual Arts,Digital Art Studio,Function,Layout & Flexibility,6
+MS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,6
+MS,Visual Arts,Digital Art Studio,Infrastructure,Utilities & Technology,6
+MS,Visual Arts,Digital Art Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Visual Arts,Digital Art Studio,Occupant Experience,Aesthetics,6
+MS,Visual Arts,Digital Art Studio,Occupant Experience,Occupant Comfort,6
+MS,Visual Arts,Digital Art Studio,Occupant Experience,Safety & Supervision,6
+MS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,6
+MS,Visual Arts,Digital Art Studio,Amenities,Storage,6
+MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,6
+MS,Studios,Maker Space,Function,Availability,6
+MS,Studios,Maker Space,Function,Layout & Flexibility,6
+MS,Studios,Maker Space,Function,Adjacency & Access,6
+MS,Studios,Maker Space,Infrastructure,Utilities & Technology,6
+MS,Studios,Maker Space,Infrastructure,Flooring & Surface Finishes,6
+MS,Studios,Maker Space,Occupant Experience,Aesthetics,6
+MS,Studios,Maker Space,Occupant Experience,Occupant Comfort,6
+MS,Studios,Maker Space,Occupant Experience,Safety & Supervision,6
+MS,Studios,Maker Space,Amenities,Display & Presentation,6
+MS,Studios,Maker Space,Amenities,Storage,6
+MS,Studios,Maker Space,Amenities,Furniture & Equipment,6
+MS,Studios,Maker Space,Observational,Observational,0
+MS,CTE,CTE Studio,Function,Availability,6
+MS,CTE,CTE Studio,Function,Layout & Flexibility,6
+MS,CTE,CTE Studio,Function,Adjacency & Access,6
+MS,CTE,CTE Studio,Infrastructure,Utilities & Technology,6
+MS,CTE,CTE Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,CTE,CTE Studio,Occupant Experience,Aesthetics,6
+MS,CTE,CTE Studio,Occupant Experience,Occupant Comfort,6
+MS,CTE,CTE Studio,Occupant Experience,Safety & Supervision,6
+MS,CTE,CTE Studio,Amenities,Display & Presentation,6
+MS,CTE,CTE Studio,Amenities,Storage,6
+MS,CTE,CTE Studio,Amenities,Furniture & Equipment,6
+MS,CTE,CTE Studio,Observational,Observational,0
+MS,CTE,Low Intensity Lab,Function,Availability,6
+MS,CTE,Low Intensity Lab,Function,Layout & Flexibility,6
+MS,CTE,Low Intensity Lab,Function,Adjacency & Access,6
+MS,CTE,Low Intensity Lab,Function,Utilities & Technology,6
+MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,6
+MS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
+MS,CTE,Low Intensity Lab,Occupant Experience,Aesthetics,6
+MS,CTE,Low Intensity Lab,Occupant Experience,Occupant Comfort,6
+MS,CTE,Low Intensity Lab,Occupant Experience,Safety & Supervision,6
+MS,CTE,Low Intensity Lab,Occupant Experience,Circulation & Egress,6
+MS,CTE,Low Intensity Lab,Amenities,Display & Presentation,6
+MS,CTE,Low Intensity Lab,Amenities,Storage,6
+MS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,6
+MS,CTE,Low Intensity Lab,Observational,Observational,0
+MS,CTE,Medium Intensity Lab,Function,Availability,6
+MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,6
+MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,6
+MS,CTE,Medium Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
+MS,CTE,Medium Intensity Lab,Occupant Experience,Aesthetics,6
+MS,CTE,Medium Intensity Lab,Occupant Experience,Occupant Comfort,6
+MS,CTE,Medium Intensity Lab,Occupant Experience,Safety & Supervision,6
+MS,CTE,Medium Intensity Lab,Occupant Experience,Circulation & Egress,6
+MS,CTE,Medium Intensity Lab,Amenities,Display & Presentation,6
+MS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,6
+MS,CTE,Medium Intensity Lab,Observational,Observational,0
+MS,Performing Arts,Theater Arts Studio,Function,Availability,6
+MS,Performing Arts,Theater Arts Studio,Function,Adjacency & Access,6
+MS,Performing Arts,Theater Arts Studio,Infrastructure,Utilities & Technology,6
+MS,Performing Arts,Theater Arts Studio,Infrastructure,Flooring & Surface Finishes,6
+MS,Performing Arts,Theater Arts Studio,Occupant Experience,Aesthetics,6
+MS,Performing Arts,Theater Arts Studio,Occupant Experience,Occupant Comfort,6
+MS,Performing Arts,Theater Arts Studio,Occupant Experience,Safety & Supervision,6
+MS,Performing Arts,Theater Arts Studio,Amenities,Display & Presentation,6
+MS,Performing Arts,Theater Arts Studio,Amenities,Storage,6
+MS,Performing Arts,Theater Arts Studio,Observational,Observational,0
+MS,Performing Arts,Rehearsal Hall,Function,Layout & Flexibility,6
+MS,Performing Arts,Rehearsal Hall,Infrastructure,Utilities & Technology,6
+MS,Performing Arts,Rehearsal Hall,Infrastructure,Flooring & Surface Finishes,6
+MS,Performing Arts,Rehearsal Hall,Occupant Experience,Occupant Comfort,6
+MS,Performing Arts,Rehearsal Hall,Occupant Experience,Safety & Supervision,6
+MS,Performing Arts,Rehearsal Hall,Occupant Experience,Circulation & Egress,6
+MS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,6
+MS,Performing Arts,Rehearsal Hall,Amenities,Storage,6
+MS,Performing Arts,Rehearsal Hall,Amenities,Furniture & Equipment,6
+MS,Performing Arts,Rehearsal Hall,Observational,Observational,0
+MS,Performing Arts,Music Suite,Function,Availability,6
+MS,Performing Arts,Music Suite,Function,Layout & Flexibility,6
+MS,Performing Arts,Music Suite,Function,Adjacency & Access,6
+MS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,6
+MS,Performing Arts,Music Suite,Occupant Experience,Circulation & Egress,6
+MS,Performing Arts,Music Suite,Amenities,Display & Presentation,6
+MS,Performing Arts,Music Suite,Amenities,Storage,6
+MS,Performing Arts,Music Suite,Observational,Observational,0
+MS,Performing Arts,Auditorium,Observational,Observational,0
+MS,Performing Arts,Dance,Function,Availability,6
+MS,Performing Arts,Dance,Function,Layout & Flexibility,6
+MS,Performing Arts,Dance,Function,Adjacency & Access,6
+MS,Performing Arts,Dance,Infrastructure,Utilities & Technology,6
+MS,Performing Arts,Dance,Infrastructure,Flooring & Surface Finishes,6
+MS,Performing Arts,Dance,Occupant Experience,Occupant Comfort,6
+MS,Performing Arts,Dance,Occupant Experience,Safety & Supervision,6
+MS,Performing Arts,Dance,Amenities,Display & Presentation,6
+MS,Performing Arts,Dance,Amenities,Storage,6
+MS,Performing Arts,Dance,Amenities,Furniture & Equipment,6
+MS,Performing Arts,Dance,Observational,Observational,0
+MS,Neighborhoods,Open Collaboration,Function,Availability,6
+MS,Neighborhoods,Open Collaboration,Function,Adjacency & Access,6
+MS,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,6
+MS,Neighborhoods,Open Collaboration,Infrastructure,Flooring & Surface Finishes,6
+MS,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,6
+MS,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
+MS,Neighborhoods,Open Collaboration,Amenities,Furniture & Equipment,6
+MS,Neighborhoods,Open Collaboration,Observational,Observational,0
+MS,Neighborhoods,Group Room,Function,Availability,6
+MS,Neighborhoods,Group Room,Infrastructure,Utilities & Technology,6
+MS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,6
+MS,Neighborhoods,Group Room,Amenities,Display & Presentation,6
+MS,Neighborhoods,Group Room,Amenities,Furniture & Equipment,6
+MS,Neighborhoods,Group Room,Observational,Observational,0
+MS,Neighborhoods,Neighborhood,Function,Availability,6
+MS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
+MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
+MS,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
+MS,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,6
+MS,Neighborhoods,Neighborhood,Observational,Observational,0
+MS,Athletics and Wellness,Multi-Purpose Gym,Function,Availability,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Function,Layout & Flexibility,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,Utilities & Technology,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,Flooring & Surface Finishes,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Occupant Experience,Circulation & Egress,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Display & Presentation,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Storage,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Furniture & Equipment,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Observational,Observational,0
+MS,Athletics and Wellness,Practice Gym,Function,Availability,6
+MS,Athletics and Wellness,Practice Gym,Function,Layout & Flexibility,6
+MS,Athletics and Wellness,Practice Gym,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Practice Gym,Infrastructure,Utilities & Technology,6
+MS,Athletics and Wellness,Practice Gym,Infrastructure,Flooring & Surface Finishes,6
+MS,Athletics and Wellness,Practice Gym,Occupant Experience,Circulation & Egress,6
+MS,Athletics and Wellness,Practice Gym,Amenities,Display & Presentation,6
+MS,Athletics and Wellness,Practice Gym,Amenities,Storage,6
+MS,Athletics and Wellness,Locker Room,Function,Availability,6
+MS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Locker Room,Infrastructure,Utilities & Technology,6
+MS,Athletics and Wellness,Locker Room,Occupant Experience,Safety & Supervision,6
+MS,Athletics and Wellness,Weight Room,Function,Availability,6
+MS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,6
+MS,Athletics and Wellness,Weight Room,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,6
+MS,Athletics and Wellness,Weight Room,Occupant Experience,Circulation & Egress,6
+MS,Athletics and Wellness,Weight Room,Amenities,Furniture & Equipment,6
+MS,Athletics and Wellness,Athletics Wing,Function,Availability,6
+MS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,6
+MS,Athletics and Wellness,Athletics Wing,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Athletics Wing,Amenities,Storage,6
+MS,Shared Spaces,Library Media Center,Function,Availability,6
+MS,Shared Spaces,Library Media Center,Function,Adjacency & Access,6
+MS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,6
+MS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,6
+MS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
+MS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,6
+MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,6
+MS,Shared Spaces,Library Media Center,Amenities,Display & Presentation,6
+MS,Shared Spaces,Library Media Center,Amenities,Storage,6
+MS,Shared Spaces,Library Media Center,Amenities,Furniture & Equipment,6
+MS,Shared Spaces,Library Media Center,Observational,Observational,0
+MS,Shared Spaces,Dining Commons,Function,Availability,6
+MS,Shared Spaces,Dining Commons,Function,Adjacency & Access,6
+MS,Shared Spaces,Dining Commons,Infrastructure,Utilities & Technology,6
+MS,Shared Spaces,Dining Commons,Infrastructure,Flooring & Surface Finishes,6
+MS,Shared Spaces,Dining Commons,Occupant Experience,Aesthetics,6
+MS,Shared Spaces,Dining Commons,Occupant Experience,Occupant Comfort,6
+MS,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,6
+MS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,6
+MS,Shared Spaces,Dining Commons,Amenities,Storage,6
+MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,6
+MS,Shared Spaces,Dining Commons,Observational,Observational,0
+MS,Shared Spaces,Kitchen,Function,Availability,6
+MS,Shared Spaces,Kitchen,Function,Adjacency & Access,6
+MS,Shared Spaces,Kitchen,Function,Circulation & Egress,6
+MS,Shared Spaces,Kitchen,Infrastructure,Utilities & Technology,6
+MS,Shared Spaces,Empower Center,Function,Availability,6
+MS,Shared Spaces,Empower Center,Function,Layout & Flexibility,6
+MS,Shared Spaces,Empower Center,Function,Adjacency & Access,6
+MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,6
+MS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,6
+MS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,6
+MS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,6
+MS,Shared Spaces,Empower Center,Occupant Experience,Safety & Supervision,6
+MS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,6
+MS,Shared Spaces,Empower Center,Amenities,Display & Presentation,6
+MS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,6
+MS,Outdoor,Outdoor Spaces,Function,Availability,6
+MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,6
+MS,Outdoor,Outdoor Spaces,Amenities,Storage,6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
+MS,Outdoor,Outdoor Spaces,Observational,Observational,0
+MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,6
+MS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,6
+MS,Athletics and Wellness,Outdoor Athletics,Function,Adjacency & Access,6
+MS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,6
+MS,Athletics and Wellness,Outdoor Athletics,Amenities,Storage,6
+MS,Athletics and Wellness,Outdoor Athletics,Amenities,Furniture & Equipment,6
+HS,Arrival Experience and Campus Organization,Entry Experience,Infrastructure,Utilities & Technology,6
+HS,Arrival Experience and Campus Organization,Entry Experience,Function,Adjacency & Access,6
+HS,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Aesthetics,6
+HS,Arrival Experience and Campus Organization,Entry Experience,Function,Aesthetics,6
+HS,Arrival Experience and Campus Organization,Entry Experience,Occupant Experience,Safety & Supervision,6
+HS,Arrival Experience and Campus Organization,Campus,Function,Adjacency & Access,6
+HS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Safety & Supervision,6
+HS,Arrival Experience and Campus Organization,Campus,Observational,Observational,0
+HS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Aesthetics,6
+HS,Arrival Experience and Campus Organization,Campus,Function,Layout & Flexibility,6
+HS,Arrival Experience and Campus Organization,Campus,Function,Availability,6
+HS,Arrival Experience and Campus Organization,Campus,Occupant Experience,Circulation & Egress,6
+HS,Arrival Experience and Campus Organization,Campus,Amenities,Display & Presentation,6
+HS,Administration,Main Admin Suite,Function,Availability,6
+HS,Administration,Main Admin Suite,Function,Layout & Flexibility,6
+HS,Administration,Main Admin Suite,Function,Adjacency & Access,6
+HS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,6
+HS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,6
+HS,Administration,Main Admin Suite,Occupant Experience,Aesthetics,6
+HS,Administration,Main Admin Suite,Occupant Experience,Occupant Comfort,6
+HS,Administration,Main Admin Suite,Occupant Experience,Safety & Supervision,6
+HS,Administration,Main Admin Suite,Occupant Experience,Circulation & Egress,6
+HS,Administration,Main Admin Suite,Amenities,Display & Presentation,6
+HS,Administration,Main Admin Suite,Amenities,Storage,6
+HS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,6
+HS,Administration,Admin Offices,Function,Layout & Flexibility,6
+HS,Administration,Admin Offices,Function,Adjacency & Access,6
+HS,Administration,Admin Offices,Infrastructure,Utilities & Technology,6
+HS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,6
+HS,Administration,Admin Offices,Occupant Experience,Aesthetics,6
+HS,Administration,Admin Offices,Occupant Experience,Occupant Comfort,6
+HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,6
+HS,Administration,Admin Offices,Amenities,Furniture & Equipment,6
+HS,Administration,Community Partners Suite,Function,Availability,6
+HS,Administration,Community Partners Suite,Function,Adjacency & Access,6
+HS,Administration,Community Partners Suite,Infrastructure,Utilities & Technology,6
+HS,Administration,Community Partners Suite,Infrastructure,Flooring & Surface Finishes,6
+HS,Administration,Community Partners Suite,Occupant Experience,Occupant Comfort,6
+HS,Administration,Community Partners Suite,Occupant Experience,Safety & Supervision,6
+HS,Administration,Community Partners Suite,Amenities,Furniture & Equipment,6
+HS,Administration,Mental Wellness and Counseling Suite,Function,Availability,6
+HS,Administration,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,6
+HS,Administration,Mental Wellness and Counseling Suite,Function,Adjacency & Access,6
+HS,Administration,Mental Wellness and Counseling Suite,Function,Circulation & Egress,6
+HS,Administration,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,6
+HS,Administration,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,6
+HS,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,6
+HS,Administration,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,6
+HS,Administration,Mental Wellness and Counseling Suite,Amenities,Display & Presentation,6
+HS,Administration,Mental Wellness and Counseling Suite,Amenities,Storage,6
+HS,Administration,Mental Wellness and Counseling Suite,Amenities,Furniture & Equipment,6
+HS,Administration,Mental Wellness and Counseling Suite,Observational,Observational,0
+HS,Administration,Professional Learning Center,Function,Layout & Flexibility,6
+HS,Administration,Professional Learning Center,Function,Adjacency & Access,6
+HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,6
+HS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,6
+HS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,6
+HS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,6
+HS,Administration,Professional Learning Center,Occupant Experience,Safety & Supervision,6
+HS,Administration,Professional Learning Center,Amenities,Display & Presentation,6
+HS,Administration,Professional Learning Center,Amenities,Storage,6
+HS,Administration,Professional Learning Center,Amenities,Furniture & Equipment,6
+HS,Administration,Professional Learning Center,Observational,Observational,0
+HS,Studios,Traditional Studio,Function,Availability,6
+HS,Studios,Traditional Studio,Function,Layout & Flexibility,6
+HS,Studios,Traditional Studio,Function,Adjacency & Access,6
+HS,Studios,Traditional Studio,Infrastructure,Utilities & Technology,6
+HS,Studios,Traditional Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Studios,Traditional Studio,Occupant Experience,Aesthetics,6
+HS,Studios,Traditional Studio,Occupant Experience,Occupant Comfort,6
+HS,Studios,Traditional Studio,Occupant Experience,Safety & Supervision,6
+HS,Studios,Traditional Studio,Amenities,Display & Presentation,6
+HS,Studios,Traditional Studio,Amenities,Storage,6
+HS,Studios,Traditional Studio,Amenities,Furniture & Equipment,6
+HS,Studios,Traditional Studio,Observational,Observational,0
+HS,Special Education,SPED Flex Studio,Function,Availability,6
+HS,Special Education,SPED Flex Studio,Function,Layout & Flexibility,6
+HS,Special Education,SPED Flex Studio,Function,Adjacency & Access,6
+HS,Special Education,SPED Flex Studio,Infrastructure,Utilities & Technology,6
+HS,Special Education,SPED Flex Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Special Education,SPED Flex Studio,Occupant Experience,Aesthetics,6
+HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,6
+HS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,6
+HS,Special Education,SPED Flex Studio,Amenities,Display & Presentation,6
+HS,Special Education,SPED Flex Studio,Amenities,Storage,6
+HS,Special Education,SPED Flex Studio,Amenities,Furniture & Equipment,6
+HS,Special Education,SPED Flex Studio,Observational,Observational,0
+HS,Special Education,Special Education Suite,Function,Availability,6
+HS,Special Education,Special Education Suite,Function,Adjacency & Access,6
+HS,Special Education,Special Education Suite,Occupant Experience,Safety & Supervision,6
+HS,Special Education,Special Education Suite,Occupant Experience,Circulation & Egress,6
+HS,Special Education,Special Education Suite,Amenities,Storage,6
+HS,Special Education,Sensory Motor Lab,Function,Layout & Flexibility,6
+HS,Special Education,Sensory Motor Lab,Infrastructure,Utilities & Technology,6
+HS,Special Education,Sensory Motor Lab,Infrastructure,Flooring & Surface Finishes,6
+HS,Special Education,Sensory Motor Lab,Occupant Experience,Aesthetics,6
+HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,6
+HS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,6
+HS,Special Education,Sensory Motor Lab,Amenities,Storage,6
+HS,Special Education,Sensory Motor Lab,Amenities,Furniture & Equipment,6
+HS,Special Education,Sensory Motor Lab,Observational,Observational,0
+HS,Special Education,Vocational Lab,Function,Layout & Flexibility,6
+HS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,6
+HS,Special Education,Vocational Lab,Infrastructure,Flooring & Surface Finishes,6
+HS,Special Education,Vocational Lab,Occupant Experience,Aesthetics,6
+HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,6
+HS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,6
+HS,Special Education,Vocational Lab,Amenities,Display & Presentation,6
+HS,Special Education,Vocational Lab,Amenities,Storage,6
+HS,Special Education,Vocational Lab,Amenities,Furniture & Equipment,6
+HS,Special Education,Vocational Lab,Observational,Observational,0
+HS,Studios,Science,Function,Availability,6
+HS,Studios,Science,Function,Layout & Flexibility,6
+HS,Studios,Science,Function,Adjacency & Access,6
+HS,Studios,Science,Function,Circulation & Egress,6
+HS,Studios,Science,Infrastructure,Utilities & Technology,6
+HS,Studios,Science,Infrastructure,Flooring & Surface Finishes,6
+HS,Studios,Science,Occupant Experience,Aesthetics,6
+HS,Studios,Science,Occupant Experience,Occupant Comfort,6
+HS,Studios,Science,Occupant Experience,Safety & Supervision,6
+HS,Studios,Science,Amenities,Display & Presentation,6
+HS,Studios,Science,Amenities,Storage,6
+HS,Studios,Science,Amenities,Furniture & Equipment,6
+HS,Studios,Science,Observational,Observational,0
+HS,Studios,Science Prep Room,Function,Adjacency & Access,6
+HS,Studios,Science Prep Room,Function,Circulation & Egress,6
+HS,Studios,Science Prep Room,Infrastructure,Utilities & Technology,6
+HS,Studios,Science Prep Room,Occupant Experience,Safety & Supervision,6
+HS,Studios,Science Prep Room,Amenities,Storage,6
+HS,Studios,Maker Space,Function,Availability,6
+HS,Studios,Maker Space,Function,Layout & Flexibility,6
+HS,Studios,Maker Space,Function,Adjacency & Access,6
+HS,Studios,Maker Space,Infrastructure,Utilities & Technology,6
+HS,Studios,Maker Space,Infrastructure,Flooring & Surface Finishes,6
+HS,Studios,Maker Space,Occupant Experience,Aesthetics,6
+HS,Studios,Maker Space,Occupant Experience,Occupant Comfort,6
+HS,Studios,Maker Space,Occupant Experience,Safety & Supervision,6
+HS,Studios,Maker Space,Amenities,Display & Presentation,6
+HS,Studios,Maker Space,Amenities,Storage,6
+HS,Studios,Maker Space,Amenities,Furniture & Equipment,6
+HS,Studios,Maker Space,Observational,Observational,0
+HS,Visual Arts,2D Art Studio,Function,Availability,6
+HS,Visual Arts,2D Art Studio,Function,Layout & Flexibility,6
+HS,Visual Arts,2D Art Studio,Function,Adjacency & Access,6
+HS,Visual Arts,2D Art Studio,Infrastructure,Utilities & Technology,6
+HS,Visual Arts,2D Art Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Visual Arts,2D Art Studio,Occupant Experience,Aesthetics,6
+HS,Visual Arts,2D Art Studio,Occupant Experience,Occupant Comfort,6
+HS,Visual Arts,2D Art Studio,Occupant Experience,Safety & Supervision,6
+HS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,6
+HS,Visual Arts,2D Art Studio,Amenities,Storage,6
+HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,6
+HS,Visual Arts,2D Art Studio,Observational,Observational,0
+HS,Visual Arts,3D Art Studio,Function,Availability,6
+HS,Visual Arts,3D Art Studio,Function,Layout & Flexibility,6
+HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,6
+HS,Visual Arts,3D Art Studio,Infrastructure,Utilities & Technology,6
+HS,Visual Arts,3D Art Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Visual Arts,3D Art Studio,Occupant Experience,Aesthetics,6
+HS,Visual Arts,3D Art Studio,Occupant Experience,Occupant Comfort,6
+HS,Visual Arts,3D Art Studio,Occupant Experience,Safety & Supervision,6
+HS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,6
+HS,Visual Arts,3D Art Studio,Amenities,Storage,6
+HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,6
+HS,Visual Arts,3D Art Studio,Observational,Observational,0
+HS,Visual Arts,Digital Art Studio,Function,Availability,6
+HS,Visual Arts,Digital Art Studio,Function,Layout & Flexibility,6
+HS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,6
+HS,Visual Arts,Digital Art Studio,Infrastructure,Utilities & Technology,6
+HS,Visual Arts,Digital Art Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Visual Arts,Digital Art Studio,Occupant Experience,Aesthetics,6
+HS,Visual Arts,Digital Art Studio,Occupant Experience,Occupant Comfort,6
+HS,Visual Arts,Digital Art Studio,Occupant Experience,Safety & Supervision,6
+HS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,6
+HS,Visual Arts,Digital Art Studio,Amenities,Storage,6
+HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,6
+HS,CTE,CTE Studio,Function,Availability,6
+HS,CTE,CTE Studio,Function,Layout & Flexibility,6
+HS,CTE,CTE Studio,Function,Adjacency & Access,6
+HS,CTE,CTE Studio,Infrastructure,Utilities & Technology,6
+HS,CTE,CTE Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,CTE,CTE Studio,Occupant Experience,Aesthetics,6
+HS,CTE,CTE Studio,Occupant Experience,Occupant Comfort,6
+HS,CTE,CTE Studio,Occupant Experience,Safety & Supervision,6
+HS,CTE,CTE Studio,Amenities,Display & Presentation,6
+HS,CTE,CTE Studio,Amenities,Storage,6
+HS,CTE,CTE Studio,Amenities,Furniture & Equipment,6
+HS,CTE,CTE Studio,Observational,Observational,0
+HS,CTE,Low Intensity Lab,Function,Availability,6
+HS,CTE,Low Intensity Lab,Function,Layout & Flexibility,6
+HS,CTE,Low Intensity Lab,Function,Adjacency & Access,6
+HS,CTE,Low Intensity Lab,Function,Utilities & Technology,6
+HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,6
+HS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
+HS,CTE,Low Intensity Lab,Occupant Experience,Aesthetics,6
+HS,CTE,Low Intensity Lab,Occupant Experience,Occupant Comfort,6
+HS,CTE,Low Intensity Lab,Occupant Experience,Safety & Supervision,6
+HS,CTE,Low Intensity Lab,Occupant Experience,Circulation & Egress,6
+HS,CTE,Low Intensity Lab,Amenities,Display & Presentation,6
+HS,CTE,Low Intensity Lab,Amenities,Storage,6
+HS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,6
+HS,CTE,Low Intensity Lab,Observational,Observational,0
+HS,CTE,Medium Intensity Lab,Function,Availability,6
+HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,6
+HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,6
+HS,CTE,Medium Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
+HS,CTE,Medium Intensity Lab,Occupant Experience,Aesthetics,6
+HS,CTE,Medium Intensity Lab,Occupant Experience,Occupant Comfort,6
+HS,CTE,Medium Intensity Lab,Occupant Experience,Safety & Supervision,6
+HS,CTE,Medium Intensity Lab,Occupant Experience,Circulation & Egress,6
+HS,CTE,Medium Intensity Lab,Amenities,Display & Presentation,6
+HS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,6
+HS,CTE,Medium Intensity Lab,Observational,Observational,0
+HS,CTE,High Intensity Lab,Function,Availability,6
+HS,CTE,High Intensity Lab,Function,Adjacency & Access,6
+HS,CTE,High Intensity Lab,Infrastructure,Utilities & Technology,6
+HS,CTE,High Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
+HS,CTE,High Intensity Lab,Occupant Experience,Aesthetics,6
+HS,CTE,High Intensity Lab,Occupant Experience,Occupant Comfort,6
+HS,CTE,High Intensity Lab,Occupant Experience,Safety & Supervision,6
+HS,CTE,High Intensity Lab,Occupant Experience,Circulation & Egress,6
+HS,CTE,High Intensity Lab,Amenities,Display & Presentation,6
+HS,CTE,High Intensity Lab,Amenities,Furniture & Equipment,6
+HS,CTE,High Intensity Lab,Observational,Observational,0
+HS,Performing Arts,Rehearsal Hall,Function,Layout & Flexibility,6
+HS,Performing Arts,Rehearsal Hall,Infrastructure,Utilities & Technology,6
+HS,Performing Arts,Rehearsal Hall,Infrastructure,Flooring & Surface Finishes,6
+HS,Performing Arts,Rehearsal Hall,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Rehearsal Hall,Occupant Experience,Safety & Supervision,6
+HS,Performing Arts,Rehearsal Hall,Occupant Experience,Circulation & Egress,6
+HS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,6
+HS,Performing Arts,Rehearsal Hall,Amenities,Storage,6
+HS,Performing Arts,Rehearsal Hall,Amenities,Furniture & Equipment,6
+HS,Performing Arts,Rehearsal Hall,Observational,Observational,0
+HS,Performing Arts,Music Suite,Function,Availability,6
+HS,Performing Arts,Music Suite,Function,Layout & Flexibility,6
+HS,Performing Arts,Music Suite,Function,Adjacency & Access,6
+HS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Music Suite,Occupant Experience,Circulation & Egress,6
+HS,Performing Arts,Music Suite,Amenities,Display & Presentation,6
+HS,Performing Arts,Music Suite,Amenities,Storage,6
+HS,Performing Arts,Music Suite,Observational,Observational,0
+HS,Performing Arts,Theater Arts Studio,Function,Availability,6
+HS,Performing Arts,Theater Arts Studio,Function,Adjacency & Access,6
+HS,Performing Arts,Theater Arts Studio,Infrastructure,Utilities & Technology,6
+HS,Performing Arts,Theater Arts Studio,Infrastructure,Flooring & Surface Finishes,6
+HS,Performing Arts,Theater Arts Studio,Occupant Experience,Aesthetics,6
+HS,Performing Arts,Theater Arts Studio,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Theater Arts Studio,Occupant Experience,Safety & Supervision,6
+HS,Performing Arts,Theater Arts Studio,Amenities,Display & Presentation,6
+HS,Performing Arts,Theater Arts Studio,Amenities,Storage,6
+HS,Performing Arts,Theater Arts Studio,Observational,Observational,0
+HS,Performing Arts,Black Box,Function,Availability,6
+HS,Performing Arts,Black Box,Function,Adjacency & Access,6
+HS,Performing Arts,Black Box,Infrastructure,Utilities & Technology,6
+HS,Performing Arts,Black Box,Infrastructure,Flooring & Surface Finishes,6
+HS,Performing Arts,Black Box,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Black Box,Amenities,Display & Presentation,6
+HS,Performing Arts,Black Box,Amenities,Storage,6
+HS,Performing Arts,Black Box,Observational,Observational,0
+HS,Performing Arts,Auditorium,Function,Availability,6
+HS,Performing Arts,Auditorium,Function,Layout & Flexibility,6
+HS,Performing Arts,Auditorium,Function,Adjacency & Access,6
+HS,Performing Arts,Auditorium,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Auditorium,Occupant Experience,Circulation & Egress,6
+HS,Performing Arts,Auditorium,Amenities,Display & Presentation,6
+HS,Performing Arts,Auditorium,Amenities,Storage,6
+HS,Performing Arts,Auditorium,Amenities,Furniture & Equipment,6
+HS,Performing Arts,Auditorium,Observational,Observational,0
+HS,Performing Arts,Dance,Function,Availability,6
+HS,Performing Arts,Dance,Function,Layout & Flexibility,6
+HS,Performing Arts,Dance,Function,Adjacency & Access,6
+HS,Performing Arts,Dance,Infrastructure,Utilities & Technology,6
+HS,Performing Arts,Dance,Infrastructure,Flooring & Surface Finishes,6
+HS,Performing Arts,Dance,Occupant Experience,Occupant Comfort,6
+HS,Performing Arts,Dance,Occupant Experience,Safety & Supervision,6
+HS,Performing Arts,Dance,Amenities,Display & Presentation,6
+HS,Performing Arts,Dance,Amenities,Storage,6
+HS,Performing Arts,Dance,Amenities,Furniture & Equipment,6
+HS,Performing Arts,Dance,Observational,Observational,0
+HS,Performing Arts,Theater Arts Suite,Function,Availability,6
+HS,Performing Arts,Theater Arts Suite,Function,Layout & Flexibility,6
+HS,Performing Arts,Theater Arts Suite,Function,Adjacency & Access,6
+HS,Neighborhoods,Open Collaboration,Function,Availability,6
+HS,Neighborhoods,Open Collaboration,Function,Adjacency & Access,6
+HS,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,6
+HS,Neighborhoods,Open Collaboration,Infrastructure,Flooring & Surface Finishes,6
+HS,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,6
+HS,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
+HS,Neighborhoods,Open Collaboration,Amenities,Furniture & Equipment,6
+HS,Neighborhoods,Open Collaboration,Observational,Observational,0
+HS,Neighborhoods,Group Room,Function,Availability,6
+HS,Neighborhoods,Group Room,Infrastructure,Utilities & Technology,6
+HS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,6
+HS,Neighborhoods,Group Room,Amenities,Display & Presentation,6
+HS,Neighborhoods,Group Room,Amenities,Furniture & Equipment,6
+HS,Neighborhoods,Group Room,Observational,Observational,0
+HS,Neighborhoods,Neighborhood,Function,Availability,6
+HS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
+HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
+HS,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
+HS,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,6
+HS,Neighborhoods,Neighborhood,Observational,Observational,0
+HS,Athletics and Wellness,Multi-Purpose Gym,Function,Availability,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,Flooring & Surface Finishes,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Occupant Experience,Circulation & Egress,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Display & Presentation,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Storage,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Furniture & Equipment,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Observational,Observational,0
+HS,Athletics and Wellness,Competition Gym,Function,Availability,6
+HS,Athletics and Wellness,Competition Gym,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Competition Gym,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Competition Gym,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Competition Gym,Infrastructure,Flooring & Surface Finishes,6
+HS,Athletics and Wellness,Competition Gym,Occupant Experience,Circulation & Egress,6
+HS,Athletics and Wellness,Competition Gym,Amenities,Display & Presentation,6
+HS,Athletics and Wellness,Competition Gym,Amenities,Storage,6
+HS,Athletics and Wellness,Competition Gym,Amenities,Furniture & Equipment,6
+HS,Athletics and Wellness,Competition Gym,Observational,Observational,0
+HS,Athletics and Wellness,Locker Room,Function,Availability,6
+HS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Locker Room,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Locker Room,Occupant Experience,Safety & Supervision,6
+HS,Athletics and Wellness,Weight Room,Function,Availability,6
+HS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Weight Room,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Weight Room,Occupant Experience,Circulation & Egress,6
+HS,Athletics and Wellness,Weight Room,Amenities,Furniture & Equipment,6
+HS,Athletics and Wellness,Wrestling,Function,Availability,6
+HS,Athletics and Wellness,Wrestling,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Wrestling,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Wrestling,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Wrestling,Occupant Experience,Circulation & Egress,6
+HS,Athletics and Wellness,Wrestling,Amenities,Display & Presentation,6
+HS,Athletics and Wellness,Wrestling,Amenities,Furniture & Equipment,6
+HS,Athletics and Wellness,PE Fitness Room,Function,Availability,6
+HS,Athletics and Wellness,PE Fitness Room,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,PE Fitness Room,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,PE Fitness Room,Amenities,Display & Presentation,6
+HS,Athletics and Wellness,PE Fitness Room,Amenities,Furniture & Equipment,6
+HS,Athletics and Wellness,Athletics Wing,Function,Availability,6
+HS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Athletics Wing,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Athletics Wing,Amenities,Storage,6
+HS,Shared Spaces,Library Media Center,Function,Availability,6
+HS,Shared Spaces,Library Media Center,Function,Adjacency & Access,6
+HS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,6
+HS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,6
+HS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
+HS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,6
+HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,6
+HS,Shared Spaces,Library Media Center,Amenities,Display & Presentation,6
+HS,Shared Spaces,Library Media Center,Amenities,Storage,6
+HS,Shared Spaces,Library Media Center,Amenities,Furniture & Equipment,6
+HS,Shared Spaces,Library Media Center,Observational,Observational,0
+HS,Shared Spaces,Dining Commons,Function,Availability,6
+HS,Shared Spaces,Dining Commons,Function,Adjacency & Access,6
+HS,Shared Spaces,Dining Commons,Infrastructure,Utilities & Technology,6
+HS,Shared Spaces,Dining Commons,Infrastructure,Flooring & Surface Finishes,6
+HS,Shared Spaces,Dining Commons,Occupant Experience,Aesthetics,6
+HS,Shared Spaces,Dining Commons,Occupant Experience,Occupant Comfort,6
+HS,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,6
+HS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,6
+HS,Shared Spaces,Dining Commons,Amenities,Storage,6
+HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,6
+HS,Shared Spaces,Dining Commons,Observational,Observational,0
+HS,Shared Spaces,Kitchen,Function,Availability,6
+HS,Shared Spaces,Kitchen,Function,Adjacency & Access,6
+HS,Shared Spaces,Kitchen,Function,Circulation & Egress,6
+HS,Shared Spaces,Kitchen,Infrastructure,Utilities & Technology,6
+HS,Shared Spaces,Empower Center,Function,Availability,6
+HS,Shared Spaces,Empower Center,Function,Layout & Flexibility,6
+HS,Shared Spaces,Empower Center,Function,Adjacency & Access,6
+HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,6
+HS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,6
+HS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,6
+HS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,6
+HS,Shared Spaces,Empower Center,Occupant Experience,Safety & Supervision,6
+HS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,6
+HS,Shared Spaces,Empower Center,Amenities,Display & Presentation,6
+HS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,6
+HS,Outdoor,Outdoor Spaces,Function,Availability,6
+HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+HS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,6
+HS,Outdoor,Outdoor Spaces,Amenities,Storage,6
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
+HS,Outdoor,Outdoor Spaces,Observational,Observational,0
+HS,Athletics and Wellness,Outdoor Athletics,Function,Availability,6
+HS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,6
+HS,Athletics and Wellness,Outdoor Athletics,Function,Adjacency & Access,6
+HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,6
+HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Flooring & Surface Finishes,6
+HS,Athletics and Wellness,Outdoor Athletics,Amenities,Storage,6
+HS,Athletics and Wellness,Outdoor Athletics,Amenities,Furniture & Equipment,6
