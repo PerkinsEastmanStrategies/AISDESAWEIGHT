@@ -1,13 +1,56 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, ChevronRight } from "lucide-react"
+import { CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react"
 import { DeltaChip, ScoreBadge, ScoreBar, WeightLabel } from "@/components/score-badge"
 import { scoreTone, formatScore } from "@/lib/format"
 import type { ScoreNode } from "@/lib/types"
 
 function siblingTotal(nodes: ScoreNode[]): number {
   return nodes.reduce((sum, node) => sum + (node.weight > 0 ? node.weight : 0), 0)
+}
+
+function isSelectAllOption(node: ScoreNode): boolean {
+  return !!node.itemLabel
+}
+
+function isOptionSelected(node: ScoreNode): boolean {
+  if (node.itemLabel && node.answer) {
+    const selected = node.answer.split(/\s*,\s*/).map((part) => part.trim())
+    if (selected.includes(node.itemLabel)) return true
+  }
+  return (node.score ?? 0) > 0
+}
+
+function groupQuestionRows(questions: ScoreNode[]): ScoreNode[][] {
+  const groups: ScoreNode[][] = []
+  for (const question of questions) {
+    const last = groups[groups.length - 1]
+    if (
+      last &&
+      last[0]?.questionId &&
+      last[0].questionId === question.questionId &&
+      (isSelectAllOption(last[0]) || isSelectAllOption(question))
+    ) {
+      last.push(question)
+    } else {
+      groups.push([question])
+    }
+  }
+  return groups
+}
+
+function ChoiceStatus({ selected }: { selected: boolean }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 text-[11px] font-semibold ${
+        selected ? "text-emerald-700" : "text-slate-400"
+      }`}
+    >
+      {selected ? <CheckCircle2 className="h-3.5 w-3.5" /> : <Circle className="h-3.5 w-3.5" />}
+      {selected ? "Selected" : "Not selected"}
+    </span>
+  )
 }
 
 function QuestionRow({ node, weightTotal }: { node: ScoreNode; weightTotal: number }) {
@@ -20,7 +63,6 @@ function QuestionRow({ node, weightTotal }: { node: ScoreNode; weightTotal: numb
             <WeightLabel weight={node.weight} weightTotal={weightTotal} />
           </p>
           <p className="mt-0.5 text-xs leading-snug text-slate-800">{node.label}</p>
-          {node.itemLabel && <p className="mt-0.5 text-[11px] text-slate-500">{node.itemLabel}</p>}
           {node.answer && (
             <p className="mt-1 text-[11px] text-slate-600">
               <span className="text-slate-400">Answer: </span>
@@ -36,6 +78,90 @@ function QuestionRow({ node, weightTotal }: { node: ScoreNode; weightTotal: numb
         </div>
       </div>
     </li>
+  )
+}
+
+function SelectAllQuestion({
+  nodes,
+  weightTotal,
+}: {
+  nodes: ScoreNode[]
+  weightTotal: number
+}) {
+  const first = nodes[0]
+  const groupWeight = nodes.reduce((sum, node) => sum + node.weight, 0)
+  const scored = nodes.filter((node) => node.score != null && node.weight > 0)
+  const totalScore =
+    scored.length === 0
+      ? null
+      : scored.reduce((sum, node) => sum + (node.score as number) * node.weight, 0) /
+        scored.reduce((sum, node) => sum + node.weight, 0)
+  const selectedCount = nodes.filter((node) => isOptionSelected(node)).length
+
+  return (
+    <li className="border-b border-slate-100/80 py-2.5 pl-5 last:border-0">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="font-mono text-[10px] text-slate-400">
+            {first.questionId}
+            <WeightLabel weight={groupWeight} weightTotal={weightTotal} />
+          </p>
+          <p className="mt-0.5 text-xs leading-snug text-slate-800">{first.label}</p>
+          <p className="mt-1 text-[11px] text-slate-500">
+            {selectedCount} of {nodes.length} selected
+          </p>
+        </div>
+        <span className={`shrink-0 text-xs font-bold tabular-nums ${scoreTone(totalScore)}`}>
+          {formatScore(totalScore)}
+        </span>
+      </div>
+      <ul className="mt-2 space-y-1.5">
+        {nodes.map((node) => {
+          const selected = isOptionSelected(node)
+          return (
+            <li
+              key={node.id}
+              className="flex items-start justify-between gap-3 rounded-lg bg-white px-2 py-1.5 ring-1 ring-slate-100"
+            >
+              <div className="min-w-0">
+                <p className={`text-[12px] leading-snug ${selected ? "text-slate-800" : "text-slate-500"}`}>
+                  {node.itemLabel ?? node.label}
+                </p>
+                <div className="mt-0.5">
+                  <ChoiceStatus selected={selected} />
+                </div>
+              </div>
+              <span className={`shrink-0 text-xs font-bold tabular-nums ${scoreTone(node.score)}`}>
+                {formatScore(node.score)}
+              </span>
+            </li>
+          )
+        })}
+      </ul>
+    </li>
+  )
+}
+
+function QuestionList({
+  questions,
+  weightTotal,
+  className,
+}: {
+  questions: ScoreNode[]
+  weightTotal: number
+  className?: string
+}) {
+  if (!questions.length) return null
+  return (
+    <ul className={className}>
+      {groupQuestionRows(questions).map((group) =>
+        group.length > 1 || isSelectAllOption(group[0]) ? (
+          <SelectAllQuestion key={group[0].id} nodes={group} weightTotal={weightTotal} />
+        ) : (
+          <QuestionRow key={group[0].id} node={group[0]} weightTotal={weightTotal} />
+        ),
+      )}
+    </ul>
   )
 }
 
@@ -121,13 +247,11 @@ function GroupRow({
               ))}
             </div>
           )}
-          {questions.length > 0 && (
-            <ul className={nested.length ? "mt-1 border-t border-slate-100/80 pt-1" : ""}>
-              {questions.map((child) => (
-                <QuestionRow key={child.id} node={child} weightTotal={childTotal} />
-              ))}
-            </ul>
-          )}
+          <QuestionList
+            questions={questions}
+            weightTotal={childTotal}
+            className={nested.length ? "mt-1 border-t border-slate-100/80 pt-1" : ""}
+          />
         </div>
       )}
     </div>
@@ -162,4 +286,3 @@ export function ScoreTree({
     </div>
   )
 }
-
