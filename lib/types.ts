@@ -1,3 +1,5 @@
+export type CategorySchemeId = "original" | "revised"
+
 export type SchoolLevel = "ES" | "MS" | "HS"
 
 export interface ScoredUnit {
@@ -112,9 +114,29 @@ export interface ScoreNode {
   answer?: string | null
 }
 
+export interface SchoolIndexEntry {
+  schoolId: string
+  schoolName: string
+  campusId: string
+  schoolClass?: string
+  schoolLevel: SchoolLevel
+  roomCount: number
+  scoredUnitCount: number
+  exportedAt: string
+}
+
+export interface ScoredRoomSummary {
+  roomId: string
+  roomName: string
+  spaceType: string
+  neighborhood?: string
+  score: number | null
+}
+
 export interface SchoolScorecard {
   schoolId: string
   schoolName: string
+  campusId: string
   overall: number | null
   overallBaseline: number | null
   existingOnly: number | null
@@ -123,4 +145,5 @@ export interface SchoolScorecard {
   absentCount: number
   categories: ScoreNode[]
   focusAreas: ScoreNode[]
+  rooms: ScoredRoomSummary[]
 }

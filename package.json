@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3003",
-    "export:pilot-scores": "echo Run from C:\\dev\\AISD-ESA: npx tsx C:\\Users\\p.davis\\dev\\live-weighting-tool\\scripts\\export-pilot-scores.ts",
+    "export:pilot-scores": "echo Copy to AISD-ESA and run: npx tsx scripts/_export_weighting_snapshot.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

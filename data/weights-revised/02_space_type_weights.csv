@@ -1,0 +1,117 @@
+School Level,Scoring Focus Area,Space Type,Weight
+ES,Arrival Experience and Campus Support,Entry Experience,6
+ES,Arrival Experience and Campus Support,Campus,6
+ES,Arrival Experience and Campus Support,Kitchen,6
+ES,Administration,Admin Offices,6
+ES,Administration,Main Admin Suite,6
+ES,Administration,Professional Learning Center,6
+ES,Wrap Around Services,Community Partners Suite,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,6
+ES,Studios,Early childhood studio,6
+ES,Studios,Traditional Studio,6
+ES,Shared Studios,Art Studio,6
+ES,Shared Studios,Maker Space,6
+ES,Shared Studios,Music Studio,6
+ES,Shared Studios,Science,6
+ES,Special Education,Early childhood special education studio,6
+ES,Special Education,Life Skills Studio,6
+ES,Special Education,Sensory Motor Lab,6
+ES,Special Education,Special Education Suite,6
+ES,Special Education,SPED Flex Studio,6
+ES,Neighborhoods,Early Childhood Neighborhood,6
+ES,Neighborhoods,Group Room,6
+ES,Neighborhoods,Neighborhood,6
+ES,Neighborhoods,Open Collaboration,6
+ES,Shared Spaces,Dining Commons,6
+ES,Shared Spaces,ES Gymnasium,6
+ES,Shared Spaces,Library Media Center,6
+ES,Outdoor,Outdoor Spaces,6
+MS,Arrival Experience and Campus Support,Entry Experience,6
+MS,Arrival Experience and Campus Support,Campus,6
+MS,Arrival Experience and Campus Support,Kitchen,6
+MS,Administration,Admin Offices,6
+MS,Administration,Main Admin Suite,6
+MS,Administration,Professional Learning Center,6
+MS,Wrap Around Services,Community Partners Suite,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,6
+MS,Studios,Maker Space,6
+MS,Studios,Science,6
+MS,Studios,Science Prep Room,6
+MS,Studios,Traditional Studio,6
+MS,Special Education,Sensory Motor Lab,6
+MS,Special Education,Special Education Suite,6
+MS,Special Education,SPED Flex Studio,6
+MS,Special Education,Vocational Lab,6
+MS,Visual Arts,2D Art Studio,6
+MS,Visual Arts,3D Art Studio,6
+MS,Visual Arts,Digital Art Studio,6
+MS,CTE,CTE Studio,6
+MS,CTE,Low Intensity Lab,6
+MS,CTE,Medium Intensity Lab,6
+MS,Performing Arts,Auditorium,6
+MS,Performing Arts,Black Box,6
+MS,Performing Arts,Dance,6
+MS,Performing Arts,Music Studio,6
+MS,Performing Arts,Music Suite,6
+MS,Performing Arts,Rehearsal Hall,6
+MS,Performing Arts,Theater Arts Studio,6
+MS,Neighborhoods,Group Room,6
+MS,Neighborhoods,Neighborhood,6
+MS,Neighborhoods,Open Collaboration,6
+MS,Athletics and Wellness,Athletics Wing,6
+MS,Athletics and Wellness,Locker Room,6
+MS,Athletics and Wellness,Multi-Purpose Gym,6
+MS,Athletics and Wellness,Outdoor Athletics,6
+MS,Athletics and Wellness,PE Fitness Room,6
+MS,Athletics and Wellness,Practice Gym,6
+MS,Athletics and Wellness,Weight Room,6
+MS,Athletics and Wellness,Wrestling,6
+MS,Shared Spaces,Dining Commons,6
+MS,Shared Spaces,Empower Center,6
+MS,Shared Spaces,Library Media Center,6
+MS,Outdoor,Outdoor Spaces,6
+HS,Arrival Experience and Campus Support,Entry Experience,6
+HS,Arrival Experience and Campus Support,Campus,6
+HS,Arrival Experience and Campus Support,Kitchen,6
+HS,Administration,Admin Offices,6
+HS,Administration,Main Admin Suite,6
+HS,Administration,Professional Learning Center,6
+HS,Wrap Around Services,Community Partners Suite,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,6
+HS,Studios,Maker Space,6
+HS,Studios,Science,6
+HS,Studios,Science Prep Room,6
+HS,Studios,Traditional Studio,6
+HS,Special Education,Sensory Motor Lab,6
+HS,Special Education,Special Education Suite,6
+HS,Special Education,SPED Flex Studio,6
+HS,Special Education,Vocational Lab,6
+HS,Visual Arts,2D Art Studio,6
+HS,Visual Arts,3D Art Studio,6
+HS,Visual Arts,Digital Art Studio,6
+HS,CTE,CTE Studio,6
+HS,CTE,High Intensity Lab,6
+HS,CTE,Low Intensity Lab,6
+HS,CTE,Medium Intensity Lab,6
+HS,Performing Arts,Auditorium,6
+HS,Performing Arts,Black Box,6
+HS,Performing Arts,Dance,6
+HS,Performing Arts,Music Suite,6
+HS,Performing Arts,Rehearsal Hall,6
+HS,Performing Arts,Theater Arts Studio,6
+HS,Performing Arts,Theater Arts Suite,6
+HS,Neighborhoods,Group Room,6
+HS,Neighborhoods,Neighborhood,6
+HS,Neighborhoods,Open Collaboration,6
+HS,Athletics and Wellness,Athletics Wing,6
+HS,Athletics and Wellness,Competition Gym,6
+HS,Athletics and Wellness,Locker Room,6
+HS,Athletics and Wellness,Multi-Purpose Gym,6
+HS,Athletics and Wellness,Outdoor Athletics,6
+HS,Athletics and Wellness,PE Fitness Room,6
+HS,Athletics and Wellness,Weight Room,6
+HS,Athletics and Wellness,Wrestling,6
+HS,Shared Spaces,Dining Commons,6
+HS,Shared Spaces,Empower Center,6
+HS,Shared Spaces,Library Media Center,6
+HS,Outdoor,Outdoor Spaces,6

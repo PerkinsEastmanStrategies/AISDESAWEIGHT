@@ -9,6 +9,7 @@ import {
 import { isNonScoringQuestion } from "@/lib/non-scoring"
 import type {
   SchoolLevel,
+  SchoolSnapshot,
   WeightFile,
   WeightOverrides,
   WeightRowFocus,
@@ -26,6 +27,16 @@ export const EMPTY_OVERRIDES: WeightOverrides = {
   question: {},
 }
 
+export function emptyOverrides(): WeightOverrides {
+  return {
+    focus: {},
+    space: {},
+    category: {},
+    subcategory: {},
+    question: {},
+  }
+}
+
 export function filterWeightsForLevel(file: WeightFile, level: SchoolLevel): WeightFile {
   return {
     ...file,
@@ -35,6 +46,22 @@ export function filterWeightsForLevel(file: WeightFile, level: SchoolLevel): Wei
     categories: file.categories.filter((row) => row.schoolLevel === level),
     subcategories: file.subcategories.filter((row) => row.schoolLevel === level),
     questions: file.questions.filter((row) => row.schoolLevel === level),
+  }
+}
+
+/** Re-home snapshot rooms under the focus areas used by this weight scheme. */
+export function alignSnapshotToWeights(snapshot: SchoolSnapshot, weights: WeightFile): SchoolSnapshot {
+  const focusBySpace = new Map<string, string>()
+  for (const row of weights.spaceTypes) {
+    focusBySpace.set(canonicalName(row.spaceType), row.focusArea)
+  }
+  return {
+    ...snapshot,
+    rooms: snapshot.rooms.map((room) => {
+      const mapped = focusBySpace.get(canonicalName(room.spaceType))
+      if (!mapped || mapped === room.focusAreaLabel) return room
+      return { ...room, focusAreaLabel: mapped }
+    }),
   }
 }
 

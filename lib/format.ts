@@ -49,3 +49,38 @@ export function formatWeightShare(weight: number, total: number): string | null 
   const rounded = Math.round(pct * 10) / 10
   return Number.isInteger(rounded) ? `${rounded}%` : `${rounded.toFixed(1)}%`
 }
+
+const SCORE_FILL_RGB = {
+  good: [5, 150, 105],
+  fair: [245, 158, 11],
+  poor: [225, 29, 72],
+} as const
+
+function scoreBand(score: number | null | undefined): "good" | "fair" | "poor" | "none" {
+  if (score == null) return "none"
+  if (score >= 70) return "good"
+  if (score >= 45) return "fair"
+  return "poor"
+}
+
+export function scoreFillRgba(score: number | null | undefined, alpha = 0.45): string {
+  const band = scoreBand(score)
+  if (band === "none") return `rgba(148, 163, 184, ${Math.min(alpha, 0.18)})`
+  const [r, g, b] = SCORE_FILL_RGB[band]
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
+export function scoreStrokeRgba(score: number | null | undefined, alpha = 0.85): string {
+  const band = scoreBand(score)
+  if (band === "none") return `rgba(148, 163, 184, ${alpha * 0.35})`
+  const [r, g, b] = SCORE_FILL_RGB[band]
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
+export function scoreBandLabel(score: number | null | undefined): string | null {
+  const band = scoreBand(score)
+  if (band === "good") return "Good"
+  if (band === "fair") return "Fair"
+  if (band === "poor") return "Needs attention"
+  return null
+}

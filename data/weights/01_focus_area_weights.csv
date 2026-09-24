@@ -1,30 +1,30 @@
 School Level,Scoring Focus Area,Weight
-ES,Arrival Experience and Campus Organization,6
+ES,Arrival Experience and Campus Organization,3
 ES,Administration,6
-ES,Studios,6
-ES,Special Education,6
-ES,Neighborhoods,6
-ES,Shared Spaces,6
+ES,Studios,12
+ES,Special Education,12
+ES,Neighborhoods,9
+ES,Shared Spaces,9
 ES,Outdoor,6
-MS,Arrival Experience and Campus Organization,6
+MS,Arrival Experience and Campus Organization,3
 MS,Administration,6
-MS,Studios,6
-MS,Special Education,6
+MS,Studios,12
+MS,Special Education,12
 MS,Visual Arts,6
 MS,CTE,6
 MS,Performing Arts,6
-MS,Neighborhoods,6
+MS,Neighborhoods,9
 MS,Athletics and Wellness,6
-MS,Shared Spaces,6
+MS,Shared Spaces,9
 MS,Outdoor,6
-HS,Arrival Experience and Campus Organization,6
+HS,Arrival Experience and Campus Organization,3
 HS,Administration,6
-HS,Studios,6
-HS,Special Education,6
+HS,Studios,12
+HS,Special Education,12
 HS,Visual Arts,6
 HS,CTE,6
 HS,Performing Arts,6
-HS,Neighborhoods,6
+HS,Neighborhoods,9
 HS,Athletics and Wellness,6
-HS,Shared Spaces,6
+HS,Shared Spaces,9
 HS,Outdoor,6

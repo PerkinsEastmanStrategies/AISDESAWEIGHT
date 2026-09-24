@@ -1,6 +1,6 @@
 /**
- * Pull Casis / Ortega Pilot #2 answers from AISD-ESA Supabase and write
- * question-level scores into this project.
+ * Pull recent ES / MS / HS walk answers from AISD-ESA Supabase and write
+ * question-level scores into this project. Test / merge campuses are skipped.
  *
  * Run from the AISD-ESA repo so path aliases resolve:
  *   cd C:\dev\AISD-ESA
@@ -28,23 +28,25 @@ import {
 } from "@aisd/shared"
 import { isSkippedDependentQuestion } from "@/lib/question-dependencies"
 
-const OUT_DIR = "C:\\Users\\p.davis\\dev\\live-weighting-tool\\data"
-const SCHOOLS = [
-  {
-    schoolId: "casis-pilot-2",
-    schoolName: "Casis Elementary (Pilot #2)",
-    campusId: "112-PILOT-2",
-    schoolClass: "ELEM",
-    schoolLevel: "ES" as const,
-  },
-  {
-    schoolId: "ortega-pilot-2",
-    schoolName: "Ortega Elementary (Pilot #2)",
-    campusId: "126-PILOT-2",
-    schoolClass: "ELEM",
-    schoolLevel: "ES" as const,
-  },
-]
+const ROOT = "C:\\Users\\p.davis\\dev\\live-weighting-tool"
+const OUT_DIR = path.join(ROOT, "data")
+const SCHOOLS_DIR = path.join(ROOT, "public", "schools")
+const WALKED_SINCE = "2026-09-17T00:00:00.000Z"
+const MIN_RESPONSES = 100
+
+const CLASS_TO_LEVEL: Record<string, "ES" | "MS" | "HS"> = {
+  ELEM: "ES",
+  MID: "MS",
+  HIGH: "HS",
+}
+
+interface ExportSchool {
+  schoolId: string
+  schoolName: string
+  campusId: string
+  schoolClass: string
+  schoolLevel: "ES" | "MS" | "HS"
+}
 
 const env = Object.fromEntries(
   fs
@@ -351,7 +353,80 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
   }
 }
 
-async function exportSchool(school: (typeof SCHOOLS)[number]) {
+function isTestOrSandboxSchool(input: {
+  schoolId: string
+  campusId: string
+  name: string
+}): boolean {
+  const haystack = `${input.schoolId} ${input.campusId} ${input.name}`.toLowerCase()
+  if (haystack.includes("test")) return true
+  if (haystack.includes("merge")) return true
+  return false
+}
+
+async function discoverWalkedSchools(): Promise<ExportSchool[]> {
+  const schools = await restSelectAll<{
+    school_id: string
+    campus_id: string
+    name: string
+    display_name: string | null
+    school_class: string | null
+  }>("esa_schools", "select=school_id,campus_id,name,display_name,school_class")
+  const sessions = await restSelectAll<{
+    id: string
+    school_id: string
+    campus_id: string
+    school_name: string
+    updated_at: string
+  }>("esa_survey_sessions", "select=id,school_id,campus_id,school_name,updated_at")
+  const responses = await restSelectAll<{ survey_session_id: string }>(
+    "esa_question_responses",
+    "select=survey_session_id",
+  )
+  const schoolById = new Map(schools.map((school) => [school.school_id, school]))
+  const responseCount = new Map<string, number>()
+  for (const row of responses) {
+    responseCount.set(row.survey_session_id, (responseCount.get(row.survey_session_id) ?? 0) + 1)
+  }
+
+  const bySchool = new Map<string, { responses: number; latest: string }>()
+  for (const session of sessions) {
+    if (session.updated_at < WALKED_SINCE) continue
+    const school = schoolById.get(session.school_id)
+    const schoolClass = school?.school_class ?? ""
+    if (!CLASS_TO_LEVEL[schoolClass]) continue
+    if (
+      isTestOrSandboxSchool({
+        schoolId: session.school_id,
+        campusId: school?.campus_id ?? session.campus_id,
+        name: school?.name ?? session.school_name,
+      })
+    ) {
+      continue
+    }
+    const current = bySchool.get(session.school_id) ?? { responses: 0, latest: session.updated_at }
+    current.responses += responseCount.get(session.id) ?? 0
+    if (session.updated_at > current.latest) current.latest = session.updated_at
+    bySchool.set(session.school_id, current)
+  }
+
+  return [...bySchool.entries()]
+    .filter(([, info]) => info.responses >= MIN_RESPONSES)
+    .sort((a, b) => a[1].latest.localeCompare(b[1].latest) || a[0].localeCompare(b[0]))
+    .map(([schoolId]) => {
+      const school = schoolById.get(schoolId)
+      const schoolClass = school?.school_class || "ELEM"
+      return {
+        schoolId,
+        schoolName: school?.display_name?.trim() || school?.name || schoolId,
+        campusId: school?.campus_id ?? "",
+        schoolClass,
+        schoolLevel: CLASS_TO_LEVEL[schoolClass] ?? "ES",
+      }
+    })
+}
+
+async function exportSchool(school: ExportSchool) {
   const sessions = await restSelectAll<SessionRow>(
     "esa_survey_sessions",
     `school_id=eq.${encodeURIComponent(school.schoolId)}&select=id,school_id,survey_type,school_name`,
@@ -479,21 +554,73 @@ function buildWeightsJson() {
 }
 
 async function main() {
-  fs.mkdirSync(path.join(OUT_DIR, "schools"), { recursive: true })
+  fs.mkdirSync(SCHOOLS_DIR, { recursive: true })
   const weights = buildWeightsJson()
   fs.writeFileSync(path.join(OUT_DIR, "weights.json"), JSON.stringify(weights, null, 2))
   console.log(
     `Wrote weights.json (${weights.focusAreas.length} focus, ${weights.spaceTypes.length} space, ${weights.questions.length} questions)`,
   )
 
-  for (const school of SCHOOLS) {
+  const schools = await discoverWalkedSchools()
+  const byLevel = { ES: 0, MS: 0, HS: 0 }
+  for (const school of schools) byLevel[school.schoolLevel] += 1
+  console.log(
+    `Found ${schools.length} walked schools since ${WALKED_SINCE.slice(0, 10)} (ES ${byLevel.ES}, MS ${byLevel.MS}, HS ${byLevel.HS})`,
+  )
+
+  const keep = new Set(schools.map((school) => `${school.schoolId}.json`))
+  for (const file of fs.readdirSync(SCHOOLS_DIR)) {
+    if (file.endsWith(".json") && file !== "index.json" && !keep.has(file)) {
+      fs.unlinkSync(path.join(SCHOOLS_DIR, file))
+    }
+  }
+  const legacyDir = path.join(OUT_DIR, "schools")
+  if (fs.existsSync(legacyDir)) {
+    for (const file of fs.readdirSync(legacyDir)) {
+      fs.unlinkSync(path.join(legacyDir, file))
+    }
+    fs.rmdirSync(legacyDir)
+  }
+
+  const index: Array<{
+    schoolId: string
+    schoolName: string
+    campusId: string
+    schoolClass: string
+    schoolLevel: "ES" | "MS" | "HS"
+    roomCount: number
+    scoredUnitCount: number
+    exportedAt: string
+  }> = []
+
+  for (const school of schools) {
     const snapshot = await exportSchool(school)
-    const file = path.join(OUT_DIR, "schools", `${school.schoolId}.json`)
+    const file = path.join(SCHOOLS_DIR, `${school.schoolId}.json`)
     fs.writeFileSync(file, JSON.stringify(snapshot))
+    index.push({
+      schoolId: snapshot.schoolId,
+      schoolName: snapshot.schoolName,
+      campusId: snapshot.campusId,
+      schoolClass: snapshot.schoolClass,
+      schoolLevel: snapshot.schoolLevel,
+      roomCount: snapshot.roomCount,
+      scoredUnitCount: snapshot.scoredUnitCount,
+      exportedAt: snapshot.exportedAt,
+    })
     console.log(
       `${school.schoolName}: ${snapshot.roomCount} rooms, ${snapshot.scoredUnitCount} scored units -> ${file}`,
     )
   }
+
+  const levelOrder = { ES: 0, MS: 1, HS: 2 }
+  index.sort(
+    (a, b) =>
+      levelOrder[a.schoolLevel] - levelOrder[b.schoolLevel] ||
+      a.schoolName.localeCompare(b.schoolName, undefined, { sensitivity: "base" }),
+  )
+  fs.writeFileSync(path.join(OUT_DIR, "school-index.json"), JSON.stringify(index, null, 2))
+  fs.writeFileSync(path.join(SCHOOLS_DIR, "index.json"), JSON.stringify(index, null, 2))
+  console.log(`Wrote school index (${index.length} schools)`)
 }
 
 main().catch((error) => {

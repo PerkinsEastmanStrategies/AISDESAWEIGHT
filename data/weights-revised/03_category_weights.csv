@@ -1,0 +1,479 @@
+School Level,Scoring Focus Area,Space Type,Category,Weight
+ES,Arrival Experience and Campus Support,Entry Experience,Function,6
+ES,Arrival Experience and Campus Support,Entry Experience,Infrastructure,6
+ES,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,6
+ES,Arrival Experience and Campus Support,Campus,Amenities,6
+ES,Arrival Experience and Campus Support,Campus,Function,6
+ES,Arrival Experience and Campus Support,Campus,Observational,0
+ES,Arrival Experience and Campus Support,Campus,Occupant Experience,6
+ES,Arrival Experience and Campus Support,Kitchen,Function,6
+ES,Arrival Experience and Campus Support,Kitchen,Infrastructure,6
+ES,Administration,Admin Offices,Amenities,6
+ES,Administration,Admin Offices,Function,6
+ES,Administration,Admin Offices,Infrastructure,6
+ES,Administration,Admin Offices,Occupant Experience,6
+ES,Administration,Main Admin Suite,Amenities,6
+ES,Administration,Main Admin Suite,Function,6
+ES,Administration,Main Admin Suite,Infrastructure,6
+ES,Administration,Main Admin Suite,Occupant Experience,6
+ES,Administration,Professional Learning Center,Amenities,6
+ES,Administration,Professional Learning Center,Function,6
+ES,Administration,Professional Learning Center,Infrastructure,6
+ES,Administration,Professional Learning Center,Observational,0
+ES,Administration,Professional Learning Center,Occupant Experience,6
+ES,Wrap Around Services,Community Partners Suite,Amenities,6
+ES,Wrap Around Services,Community Partners Suite,Function,6
+ES,Wrap Around Services,Community Partners Suite,Infrastructure,6
+ES,Wrap Around Services,Community Partners Suite,Occupant Experience,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Observational,0
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,6
+ES,Studios,Early childhood studio,Amenities,6
+ES,Studios,Early childhood studio,Function,6
+ES,Studios,Early childhood studio,Infrastructure,6
+ES,Studios,Early childhood studio,Observational,0
+ES,Studios,Early childhood studio,Occupant Experience,6
+ES,Studios,Traditional Studio,Amenities,6
+ES,Studios,Traditional Studio,Function,6
+ES,Studios,Traditional Studio,Infrastructure,6
+ES,Studios,Traditional Studio,Observational,0
+ES,Studios,Traditional Studio,Occupant Experience,6
+ES,Shared Studios,Art Studio,Amenities,6
+ES,Shared Studios,Art Studio,Function,6
+ES,Shared Studios,Art Studio,Infrastructure,6
+ES,Shared Studios,Art Studio,Observational,0
+ES,Shared Studios,Art Studio,Occupant Experience,6
+ES,Shared Studios,Maker Space,Amenities,6
+ES,Shared Studios,Maker Space,Function,6
+ES,Shared Studios,Maker Space,Infrastructure,6
+ES,Shared Studios,Maker Space,Observational,0
+ES,Shared Studios,Maker Space,Occupant Experience,6
+ES,Shared Studios,Music Studio,Amenities,6
+ES,Shared Studios,Music Studio,Function,6
+ES,Shared Studios,Music Studio,Infrastructure,6
+ES,Shared Studios,Music Studio,Observational,0
+ES,Shared Studios,Music Studio,Occupant Experience,6
+ES,Special Education,Early childhood special education studio,Amenities,6
+ES,Special Education,Early childhood special education studio,Function,6
+ES,Special Education,Early childhood special education studio,Infrastructure,6
+ES,Special Education,Early childhood special education studio,Observational,0
+ES,Special Education,Early childhood special education studio,Occupant Experience,6
+ES,Special Education,Life Skills Studio,Amenities,6
+ES,Special Education,Life Skills Studio,Function,6
+ES,Special Education,Life Skills Studio,Infrastructure,6
+ES,Special Education,Life Skills Studio,Occupant Experience,6
+ES,Special Education,Sensory Motor Lab,Amenities,6
+ES,Special Education,Sensory Motor Lab,Function,6
+ES,Special Education,Sensory Motor Lab,Infrastructure,6
+ES,Special Education,Sensory Motor Lab,Observational,0
+ES,Special Education,Sensory Motor Lab,Occupant Experience,6
+ES,Special Education,Special Education Suite,Amenities,6
+ES,Special Education,Special Education Suite,Function,6
+ES,Special Education,Special Education Suite,Occupant Experience,6
+ES,Special Education,SPED Flex Studio,Amenities,6
+ES,Special Education,SPED Flex Studio,Function,6
+ES,Special Education,SPED Flex Studio,Infrastructure,6
+ES,Special Education,SPED Flex Studio,Observational,0
+ES,Special Education,SPED Flex Studio,Occupant Experience,6
+ES,Neighborhoods,Early Childhood Neighborhood,Function,6
+ES,Neighborhoods,Early Childhood Neighborhood,Infrastructure,6
+ES,Neighborhoods,Early Childhood Neighborhood,Occupant Experience,6
+ES,Neighborhoods,Group Room,Amenities,6
+ES,Neighborhoods,Group Room,Function,6
+ES,Neighborhoods,Group Room,Infrastructure,6
+ES,Neighborhoods,Group Room,Observational,0
+ES,Neighborhoods,Group Room,Occupant Experience,6
+ES,Neighborhoods,Neighborhood,Function,6
+ES,Neighborhoods,Neighborhood,Infrastructure,6
+ES,Neighborhoods,Neighborhood,Observational,0
+ES,Neighborhoods,Neighborhood,Occupant Experience,6
+ES,Neighborhoods,Open Collaboration,Amenities,6
+ES,Neighborhoods,Open Collaboration,Function,6
+ES,Neighborhoods,Open Collaboration,Infrastructure,6
+ES,Neighborhoods,Open Collaboration,Observational,0
+ES,Neighborhoods,Open Collaboration,Occupant Experience,6
+ES,Shared Spaces,Dining Commons,Amenities,6
+ES,Shared Spaces,Dining Commons,Function,6
+ES,Shared Spaces,Dining Commons,Infrastructure,6
+ES,Shared Spaces,Dining Commons,Observational,0
+ES,Shared Spaces,Dining Commons,Occupant Experience,6
+ES,Shared Spaces,ES Gymnasium,Amenities,6
+ES,Shared Spaces,ES Gymnasium,Function,6
+ES,Shared Spaces,ES Gymnasium,Infrastructure,6
+ES,Shared Spaces,ES Gymnasium,Occupant Experience,6
+ES,Shared Spaces,Library Media Center,Amenities,6
+ES,Shared Spaces,Library Media Center,Function,6
+ES,Shared Spaces,Library Media Center,Infrastructure,6
+ES,Shared Spaces,Library Media Center,Observational,0
+ES,Shared Spaces,Library Media Center,Occupant Experience,6
+ES,Outdoor,Outdoor Spaces,Amenities,6
+ES,Outdoor,Outdoor Spaces,Function,6
+ES,Outdoor,Outdoor Spaces,Infrastructure,6
+ES,Outdoor,Outdoor Spaces,Observational,0
+ES,Outdoor,Outdoor Spaces,Occupant Experience,6
+MS,Arrival Experience and Campus Support,Entry Experience,Function,6
+MS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,6
+MS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,6
+MS,Arrival Experience and Campus Support,Campus,Amenities,6
+MS,Arrival Experience and Campus Support,Campus,Function,6
+MS,Arrival Experience and Campus Support,Campus,Observational,0
+MS,Arrival Experience and Campus Support,Campus,Occupant Experience,6
+MS,Arrival Experience and Campus Support,Kitchen,Function,6
+MS,Arrival Experience and Campus Support,Kitchen,Infrastructure,6
+MS,Administration,Admin Offices,Amenities,6
+MS,Administration,Admin Offices,Function,6
+MS,Administration,Admin Offices,Infrastructure,6
+MS,Administration,Admin Offices,Occupant Experience,6
+MS,Administration,Main Admin Suite,Amenities,6
+MS,Administration,Main Admin Suite,Function,6
+MS,Administration,Main Admin Suite,Infrastructure,6
+MS,Administration,Main Admin Suite,Occupant Experience,6
+MS,Administration,Professional Learning Center,Amenities,6
+MS,Administration,Professional Learning Center,Function,6
+MS,Administration,Professional Learning Center,Infrastructure,6
+MS,Administration,Professional Learning Center,Observational,0
+MS,Administration,Professional Learning Center,Occupant Experience,6
+MS,Wrap Around Services,Community Partners Suite,Amenities,6
+MS,Wrap Around Services,Community Partners Suite,Function,6
+MS,Wrap Around Services,Community Partners Suite,Infrastructure,6
+MS,Wrap Around Services,Community Partners Suite,Occupant Experience,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Observational,0
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,6
+MS,Studios,Maker Space,Amenities,6
+MS,Studios,Maker Space,Function,6
+MS,Studios,Maker Space,Infrastructure,6
+MS,Studios,Maker Space,Observational,0
+MS,Studios,Maker Space,Occupant Experience,6
+MS,Studios,Science,Amenities,6
+MS,Studios,Science,Function,6
+MS,Studios,Science,Infrastructure,6
+MS,Studios,Science,Observational,0
+MS,Studios,Science,Occupant Experience,6
+MS,Studios,Science Prep Room,Amenities,6
+MS,Studios,Science Prep Room,Function,6
+MS,Studios,Science Prep Room,Infrastructure,6
+MS,Studios,Science Prep Room,Occupant Experience,6
+MS,Studios,Traditional Studio,Amenities,6
+MS,Studios,Traditional Studio,Function,6
+MS,Studios,Traditional Studio,Infrastructure,6
+MS,Studios,Traditional Studio,Observational,0
+MS,Studios,Traditional Studio,Occupant Experience,6
+MS,Special Education,Sensory Motor Lab,Amenities,6
+MS,Special Education,Sensory Motor Lab,Function,6
+MS,Special Education,Sensory Motor Lab,Infrastructure,6
+MS,Special Education,Sensory Motor Lab,Observational,0
+MS,Special Education,Sensory Motor Lab,Occupant Experience,6
+MS,Special Education,Special Education Suite,Amenities,6
+MS,Special Education,Special Education Suite,Function,6
+MS,Special Education,Special Education Suite,Occupant Experience,6
+MS,Special Education,SPED Flex Studio,Amenities,6
+MS,Special Education,SPED Flex Studio,Function,6
+MS,Special Education,SPED Flex Studio,Infrastructure,6
+MS,Special Education,SPED Flex Studio,Observational,0
+MS,Special Education,SPED Flex Studio,Occupant Experience,6
+MS,Special Education,Vocational Lab,Amenities,6
+MS,Special Education,Vocational Lab,Function,6
+MS,Special Education,Vocational Lab,Infrastructure,6
+MS,Special Education,Vocational Lab,Observational,0
+MS,Special Education,Vocational Lab,Occupant Experience,6
+MS,Visual Arts,2D Art Studio,Amenities,6
+MS,Visual Arts,2D Art Studio,Function,6
+MS,Visual Arts,2D Art Studio,Infrastructure,6
+MS,Visual Arts,2D Art Studio,Observational,0
+MS,Visual Arts,2D Art Studio,Occupant Experience,6
+MS,Visual Arts,3D Art Studio,Amenities,6
+MS,Visual Arts,3D Art Studio,Function,6
+MS,Visual Arts,3D Art Studio,Infrastructure,6
+MS,Visual Arts,3D Art Studio,Observational,0
+MS,Visual Arts,3D Art Studio,Occupant Experience,6
+MS,Visual Arts,Digital Art Studio,Amenities,6
+MS,Visual Arts,Digital Art Studio,Function,6
+MS,Visual Arts,Digital Art Studio,Infrastructure,6
+MS,Visual Arts,Digital Art Studio,Occupant Experience,6
+MS,CTE,CTE Studio,Amenities,6
+MS,CTE,CTE Studio,Function,6
+MS,CTE,CTE Studio,Infrastructure,6
+MS,CTE,CTE Studio,Observational,0
+MS,CTE,CTE Studio,Occupant Experience,6
+MS,CTE,Low Intensity Lab,Amenities,6
+MS,CTE,Low Intensity Lab,Function,6
+MS,CTE,Low Intensity Lab,Infrastructure,6
+MS,CTE,Low Intensity Lab,Observational,0
+MS,CTE,Low Intensity Lab,Occupant Experience,6
+MS,CTE,Medium Intensity Lab,Amenities,6
+MS,CTE,Medium Intensity Lab,Function,6
+MS,CTE,Medium Intensity Lab,Infrastructure,6
+MS,CTE,Medium Intensity Lab,Observational,0
+MS,CTE,Medium Intensity Lab,Occupant Experience,6
+MS,Performing Arts,Auditorium,Observational,0
+MS,Performing Arts,Dance,Amenities,6
+MS,Performing Arts,Dance,Function,6
+MS,Performing Arts,Dance,Infrastructure,6
+MS,Performing Arts,Dance,Observational,0
+MS,Performing Arts,Dance,Occupant Experience,6
+MS,Performing Arts,Music Suite,Amenities,6
+MS,Performing Arts,Music Suite,Function,6
+MS,Performing Arts,Music Suite,Observational,0
+MS,Performing Arts,Music Suite,Occupant Experience,6
+MS,Performing Arts,Rehearsal Hall,Amenities,6
+MS,Performing Arts,Rehearsal Hall,Function,6
+MS,Performing Arts,Rehearsal Hall,Infrastructure,6
+MS,Performing Arts,Rehearsal Hall,Observational,0
+MS,Performing Arts,Rehearsal Hall,Occupant Experience,6
+MS,Performing Arts,Theater Arts Studio,Amenities,6
+MS,Performing Arts,Theater Arts Studio,Function,6
+MS,Performing Arts,Theater Arts Studio,Infrastructure,6
+MS,Performing Arts,Theater Arts Studio,Observational,0
+MS,Performing Arts,Theater Arts Studio,Occupant Experience,6
+MS,Neighborhoods,Group Room,Amenities,6
+MS,Neighborhoods,Group Room,Function,6
+MS,Neighborhoods,Group Room,Infrastructure,6
+MS,Neighborhoods,Group Room,Observational,0
+MS,Neighborhoods,Group Room,Occupant Experience,6
+MS,Neighborhoods,Neighborhood,Function,6
+MS,Neighborhoods,Neighborhood,Infrastructure,6
+MS,Neighborhoods,Neighborhood,Observational,0
+MS,Neighborhoods,Neighborhood,Occupant Experience,6
+MS,Neighborhoods,Open Collaboration,Amenities,6
+MS,Neighborhoods,Open Collaboration,Function,6
+MS,Neighborhoods,Open Collaboration,Infrastructure,6
+MS,Neighborhoods,Open Collaboration,Observational,0
+MS,Neighborhoods,Open Collaboration,Occupant Experience,6
+MS,Athletics and Wellness,Athletics Wing,Amenities,6
+MS,Athletics and Wellness,Athletics Wing,Function,6
+MS,Athletics and Wellness,Locker Room,Function,6
+MS,Athletics and Wellness,Locker Room,Infrastructure,6
+MS,Athletics and Wellness,Locker Room,Occupant Experience,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Amenities,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Function,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,6
+MS,Athletics and Wellness,Multi-Purpose Gym,Observational,0
+MS,Athletics and Wellness,Multi-Purpose Gym,Occupant Experience,6
+MS,Athletics and Wellness,Outdoor Athletics,Amenities,6
+MS,Athletics and Wellness,Outdoor Athletics,Function,6
+MS,Athletics and Wellness,Outdoor Athletics,Infrastructure,6
+MS,Athletics and Wellness,Practice Gym,Amenities,6
+MS,Athletics and Wellness,Practice Gym,Function,6
+MS,Athletics and Wellness,Practice Gym,Infrastructure,6
+MS,Athletics and Wellness,Practice Gym,Occupant Experience,6
+MS,Athletics and Wellness,Weight Room,Amenities,6
+MS,Athletics and Wellness,Weight Room,Function,6
+MS,Athletics and Wellness,Weight Room,Infrastructure,6
+MS,Athletics and Wellness,Weight Room,Occupant Experience,6
+MS,Shared Spaces,Dining Commons,Amenities,6
+MS,Shared Spaces,Dining Commons,Function,6
+MS,Shared Spaces,Dining Commons,Infrastructure,6
+MS,Shared Spaces,Dining Commons,Observational,0
+MS,Shared Spaces,Dining Commons,Occupant Experience,6
+MS,Shared Spaces,Empower Center,Amenities,6
+MS,Shared Spaces,Empower Center,Function,6
+MS,Shared Spaces,Empower Center,Infrastructure,6
+MS,Shared Spaces,Empower Center,Occupant Experience,6
+MS,Shared Spaces,Library Media Center,Amenities,6
+MS,Shared Spaces,Library Media Center,Function,6
+MS,Shared Spaces,Library Media Center,Infrastructure,6
+MS,Shared Spaces,Library Media Center,Observational,0
+MS,Shared Spaces,Library Media Center,Occupant Experience,6
+MS,Outdoor,Outdoor Spaces,Amenities,6
+MS,Outdoor,Outdoor Spaces,Function,6
+MS,Outdoor,Outdoor Spaces,Infrastructure,6
+MS,Outdoor,Outdoor Spaces,Observational,0
+MS,Outdoor,Outdoor Spaces,Occupant Experience,6
+HS,Arrival Experience and Campus Support,Entry Experience,Function,6
+HS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,6
+HS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,6
+HS,Arrival Experience and Campus Support,Campus,Amenities,6
+HS,Arrival Experience and Campus Support,Campus,Function,6
+HS,Arrival Experience and Campus Support,Campus,Observational,0
+HS,Arrival Experience and Campus Support,Campus,Occupant Experience,6
+HS,Arrival Experience and Campus Support,Kitchen,Function,6
+HS,Arrival Experience and Campus Support,Kitchen,Infrastructure,6
+HS,Administration,Admin Offices,Amenities,6
+HS,Administration,Admin Offices,Function,6
+HS,Administration,Admin Offices,Infrastructure,6
+HS,Administration,Admin Offices,Occupant Experience,6
+HS,Administration,Main Admin Suite,Amenities,6
+HS,Administration,Main Admin Suite,Function,6
+HS,Administration,Main Admin Suite,Infrastructure,6
+HS,Administration,Main Admin Suite,Occupant Experience,6
+HS,Administration,Professional Learning Center,Amenities,6
+HS,Administration,Professional Learning Center,Function,6
+HS,Administration,Professional Learning Center,Infrastructure,6
+HS,Administration,Professional Learning Center,Observational,0
+HS,Administration,Professional Learning Center,Occupant Experience,6
+HS,Wrap Around Services,Community Partners Suite,Amenities,6
+HS,Wrap Around Services,Community Partners Suite,Function,6
+HS,Wrap Around Services,Community Partners Suite,Infrastructure,6
+HS,Wrap Around Services,Community Partners Suite,Occupant Experience,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Observational,0
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,6
+HS,Studios,Maker Space,Amenities,6
+HS,Studios,Maker Space,Function,6
+HS,Studios,Maker Space,Infrastructure,6
+HS,Studios,Maker Space,Observational,0
+HS,Studios,Maker Space,Occupant Experience,6
+HS,Studios,Science,Amenities,6
+HS,Studios,Science,Function,6
+HS,Studios,Science,Infrastructure,6
+HS,Studios,Science,Observational,0
+HS,Studios,Science,Occupant Experience,6
+HS,Studios,Science Prep Room,Amenities,6
+HS,Studios,Science Prep Room,Function,6
+HS,Studios,Science Prep Room,Infrastructure,6
+HS,Studios,Science Prep Room,Occupant Experience,6
+HS,Studios,Traditional Studio,Amenities,6
+HS,Studios,Traditional Studio,Function,6
+HS,Studios,Traditional Studio,Infrastructure,6
+HS,Studios,Traditional Studio,Observational,0
+HS,Studios,Traditional Studio,Occupant Experience,6
+HS,Special Education,Sensory Motor Lab,Amenities,6
+HS,Special Education,Sensory Motor Lab,Function,6
+HS,Special Education,Sensory Motor Lab,Infrastructure,6
+HS,Special Education,Sensory Motor Lab,Observational,0
+HS,Special Education,Sensory Motor Lab,Occupant Experience,6
+HS,Special Education,Special Education Suite,Amenities,6
+HS,Special Education,Special Education Suite,Function,6
+HS,Special Education,Special Education Suite,Occupant Experience,6
+HS,Special Education,SPED Flex Studio,Amenities,6
+HS,Special Education,SPED Flex Studio,Function,6
+HS,Special Education,SPED Flex Studio,Infrastructure,6
+HS,Special Education,SPED Flex Studio,Observational,0
+HS,Special Education,SPED Flex Studio,Occupant Experience,6
+HS,Special Education,Vocational Lab,Amenities,6
+HS,Special Education,Vocational Lab,Function,6
+HS,Special Education,Vocational Lab,Infrastructure,6
+HS,Special Education,Vocational Lab,Observational,0
+HS,Special Education,Vocational Lab,Occupant Experience,6
+HS,Visual Arts,2D Art Studio,Amenities,6
+HS,Visual Arts,2D Art Studio,Function,6
+HS,Visual Arts,2D Art Studio,Infrastructure,6
+HS,Visual Arts,2D Art Studio,Observational,0
+HS,Visual Arts,2D Art Studio,Occupant Experience,6
+HS,Visual Arts,3D Art Studio,Amenities,6
+HS,Visual Arts,3D Art Studio,Function,6
+HS,Visual Arts,3D Art Studio,Infrastructure,6
+HS,Visual Arts,3D Art Studio,Observational,0
+HS,Visual Arts,3D Art Studio,Occupant Experience,6
+HS,Visual Arts,Digital Art Studio,Amenities,6
+HS,Visual Arts,Digital Art Studio,Function,6
+HS,Visual Arts,Digital Art Studio,Infrastructure,6
+HS,Visual Arts,Digital Art Studio,Occupant Experience,6
+HS,CTE,CTE Studio,Amenities,6
+HS,CTE,CTE Studio,Function,6
+HS,CTE,CTE Studio,Infrastructure,6
+HS,CTE,CTE Studio,Observational,0
+HS,CTE,CTE Studio,Occupant Experience,6
+HS,CTE,High Intensity Lab,Amenities,6
+HS,CTE,High Intensity Lab,Function,6
+HS,CTE,High Intensity Lab,Infrastructure,6
+HS,CTE,High Intensity Lab,Observational,0
+HS,CTE,High Intensity Lab,Occupant Experience,6
+HS,CTE,Low Intensity Lab,Amenities,6
+HS,CTE,Low Intensity Lab,Function,6
+HS,CTE,Low Intensity Lab,Infrastructure,6
+HS,CTE,Low Intensity Lab,Observational,0
+HS,CTE,Low Intensity Lab,Occupant Experience,6
+HS,CTE,Medium Intensity Lab,Amenities,6
+HS,CTE,Medium Intensity Lab,Function,6
+HS,CTE,Medium Intensity Lab,Infrastructure,6
+HS,CTE,Medium Intensity Lab,Observational,0
+HS,CTE,Medium Intensity Lab,Occupant Experience,6
+HS,Performing Arts,Auditorium,Amenities,6
+HS,Performing Arts,Auditorium,Function,6
+HS,Performing Arts,Auditorium,Observational,0
+HS,Performing Arts,Auditorium,Occupant Experience,6
+HS,Performing Arts,Black Box,Amenities,6
+HS,Performing Arts,Black Box,Function,6
+HS,Performing Arts,Black Box,Infrastructure,6
+HS,Performing Arts,Black Box,Observational,0
+HS,Performing Arts,Black Box,Occupant Experience,6
+HS,Performing Arts,Dance,Amenities,6
+HS,Performing Arts,Dance,Function,6
+HS,Performing Arts,Dance,Infrastructure,6
+HS,Performing Arts,Dance,Observational,0
+HS,Performing Arts,Dance,Occupant Experience,6
+HS,Performing Arts,Music Suite,Amenities,6
+HS,Performing Arts,Music Suite,Function,6
+HS,Performing Arts,Music Suite,Observational,0
+HS,Performing Arts,Music Suite,Occupant Experience,6
+HS,Performing Arts,Rehearsal Hall,Amenities,6
+HS,Performing Arts,Rehearsal Hall,Function,6
+HS,Performing Arts,Rehearsal Hall,Infrastructure,6
+HS,Performing Arts,Rehearsal Hall,Observational,0
+HS,Performing Arts,Rehearsal Hall,Occupant Experience,6
+HS,Performing Arts,Theater Arts Studio,Amenities,6
+HS,Performing Arts,Theater Arts Studio,Function,6
+HS,Performing Arts,Theater Arts Studio,Infrastructure,6
+HS,Performing Arts,Theater Arts Studio,Observational,0
+HS,Performing Arts,Theater Arts Studio,Occupant Experience,6
+HS,Performing Arts,Theater Arts Suite,Function,6
+HS,Neighborhoods,Group Room,Amenities,6
+HS,Neighborhoods,Group Room,Function,6
+HS,Neighborhoods,Group Room,Infrastructure,6
+HS,Neighborhoods,Group Room,Observational,0
+HS,Neighborhoods,Group Room,Occupant Experience,6
+HS,Neighborhoods,Neighborhood,Function,6
+HS,Neighborhoods,Neighborhood,Infrastructure,6
+HS,Neighborhoods,Neighborhood,Observational,0
+HS,Neighborhoods,Neighborhood,Occupant Experience,6
+HS,Neighborhoods,Open Collaboration,Amenities,6
+HS,Neighborhoods,Open Collaboration,Function,6
+HS,Neighborhoods,Open Collaboration,Infrastructure,6
+HS,Neighborhoods,Open Collaboration,Observational,0
+HS,Neighborhoods,Open Collaboration,Occupant Experience,6
+HS,Athletics and Wellness,Athletics Wing,Amenities,6
+HS,Athletics and Wellness,Athletics Wing,Function,6
+HS,Athletics and Wellness,Competition Gym,Amenities,6
+HS,Athletics and Wellness,Competition Gym,Function,6
+HS,Athletics and Wellness,Competition Gym,Infrastructure,6
+HS,Athletics and Wellness,Competition Gym,Observational,0
+HS,Athletics and Wellness,Competition Gym,Occupant Experience,6
+HS,Athletics and Wellness,Locker Room,Function,6
+HS,Athletics and Wellness,Locker Room,Infrastructure,6
+HS,Athletics and Wellness,Locker Room,Occupant Experience,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Amenities,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Function,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Infrastructure,6
+HS,Athletics and Wellness,Multi-Purpose Gym,Observational,0
+HS,Athletics and Wellness,Multi-Purpose Gym,Occupant Experience,6
+HS,Athletics and Wellness,Outdoor Athletics,Amenities,6
+HS,Athletics and Wellness,Outdoor Athletics,Function,6
+HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,6
+HS,Athletics and Wellness,PE Fitness Room,Amenities,6
+HS,Athletics and Wellness,PE Fitness Room,Function,6
+HS,Athletics and Wellness,PE Fitness Room,Infrastructure,6
+HS,Athletics and Wellness,Weight Room,Amenities,6
+HS,Athletics and Wellness,Weight Room,Function,6
+HS,Athletics and Wellness,Weight Room,Infrastructure,6
+HS,Athletics and Wellness,Weight Room,Occupant Experience,6
+HS,Athletics and Wellness,Wrestling,Amenities,6
+HS,Athletics and Wellness,Wrestling,Function,6
+HS,Athletics and Wellness,Wrestling,Infrastructure,6
+HS,Athletics and Wellness,Wrestling,Occupant Experience,6
+HS,Shared Spaces,Dining Commons,Amenities,6
+HS,Shared Spaces,Dining Commons,Function,6
+HS,Shared Spaces,Dining Commons,Infrastructure,6
+HS,Shared Spaces,Dining Commons,Observational,0
+HS,Shared Spaces,Dining Commons,Occupant Experience,6
+HS,Shared Spaces,Empower Center,Amenities,6
+HS,Shared Spaces,Empower Center,Function,6
+HS,Shared Spaces,Empower Center,Infrastructure,6
+HS,Shared Spaces,Empower Center,Occupant Experience,6
+HS,Shared Spaces,Library Media Center,Amenities,6
+HS,Shared Spaces,Library Media Center,Function,6
+HS,Shared Spaces,Library Media Center,Infrastructure,6
+HS,Shared Spaces,Library Media Center,Observational,0
+HS,Shared Spaces,Library Media Center,Occupant Experience,6
+HS,Outdoor,Outdoor Spaces,Amenities,6
+HS,Outdoor,Outdoor Spaces,Function,6
+HS,Outdoor,Outdoor Spaces,Infrastructure,6
+HS,Outdoor,Outdoor Spaces,Observational,0
+HS,Outdoor,Outdoor Spaces,Occupant Experience,6

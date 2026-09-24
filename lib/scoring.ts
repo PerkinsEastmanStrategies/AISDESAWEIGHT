@@ -400,6 +400,7 @@ export function scoreSchool(
   return {
     schoolId: snapshot.schoolId,
     schoolName: snapshot.schoolName,
+    campusId: snapshot.campusId,
     overall: tree.overall,
     overallBaseline: baselineTree?.overall ?? null,
     existingOnly: tree.existingOnly,
@@ -408,5 +409,14 @@ export function scoreSchool(
     absentCount: snapshotRooms.filter((room) => room.markedAbsent).length,
     categories: tree.categories.map((node) => withDelta(node, baselineTree?.categories)),
     focusAreas: tree.focusAreas.map((node) => withDelta(node, baselineTree?.focusAreas)),
+    rooms: rooms
+      .filter((room) => !room.room.markedAbsent)
+      .map((room) => ({
+        roomId: room.room.roomId,
+        roomName: room.room.roomName,
+        spaceType: room.room.spaceType,
+        neighborhood: room.room.neighborhood,
+        score: room.overall,
+      })),
   }
 }

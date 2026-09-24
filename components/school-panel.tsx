@@ -1,5 +1,6 @@
 "use client"
 
+import { FloorPlanPanel } from "@/components/floor-plan-panel"
 import { BigScore } from "@/components/score-badge"
 import { ScoreTree } from "@/components/score-tree"
 import type { SchoolScorecard } from "@/lib/types"
@@ -22,6 +23,8 @@ export function SchoolPanel({ card }: { card: SchoolScorecard }) {
           baseline={card.existingOnlyBaseline}
         />
       </div>
+
+      <FloorPlanPanel campusId={card.campusId} schoolName={card.schoolName} rooms={card.rooms} />
 
       <div>
         <ScoreTree

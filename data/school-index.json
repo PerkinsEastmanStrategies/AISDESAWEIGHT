@@ -1,0 +1,192 @@
+[
+  {
+    "schoolId": "jordan",
+    "schoolName": "Barbara Jordan ES",
+    "campusId": "178",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 33,
+    "scoredUnitCount": 863,
+    "exportedAt": "2026-09-23T18:15:43.296Z"
+  },
+  {
+    "schoolId": "barton-hills",
+    "schoolName": "Barton Hills ES",
+    "campusId": "103",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 12,
+    "scoredUnitCount": 400,
+    "exportedAt": "2026-09-23T18:15:40.454Z"
+  },
+  {
+    "schoolId": "campbell",
+    "schoolName": "Campbell ES",
+    "campusId": "111",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 33,
+    "scoredUnitCount": 809,
+    "exportedAt": "2026-09-23T18:15:43.529Z"
+  },
+  {
+    "schoolId": "casey",
+    "schoolName": "Casey ES",
+    "campusId": "173",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 19,
+    "scoredUnitCount": 593,
+    "exportedAt": "2026-09-23T18:15:45.560Z"
+  },
+  {
+    "schoolId": "casis-pilot-2",
+    "schoolName": "Casis Elementary (Pilot #2)",
+    "campusId": "112-PILOT-2",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 41,
+    "scoredUnitCount": 1078,
+    "exportedAt": "2026-09-23T18:15:42.478Z"
+  },
+  {
+    "schoolId": "casis",
+    "schoolName": "Casis ES",
+    "campusId": "112",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 60,
+    "scoredUnitCount": 502,
+    "exportedAt": "2026-09-23T18:15:40.768Z"
+  },
+  {
+    "schoolId": "maplewood",
+    "schoolName": "Maplewood ES",
+    "campusId": "122",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 29,
+    "scoredUnitCount": 685,
+    "exportedAt": "2026-09-23T18:15:44.673Z"
+  },
+  {
+    "schoolId": "odom",
+    "schoolName": "Odom ES",
+    "campusId": "156",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 29,
+    "scoredUnitCount": 882,
+    "exportedAt": "2026-09-23T18:15:43.808Z"
+  },
+  {
+    "schoolId": "ortega-pilot-2",
+    "schoolName": "Ortega Elementary (Pilot #2)",
+    "campusId": "126-PILOT-2",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 35,
+    "scoredUnitCount": 948,
+    "exportedAt": "2026-09-23T18:15:40.253Z"
+  },
+  {
+    "schoolId": "ortega",
+    "schoolName": "Ortega ES",
+    "campusId": "126",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 39,
+    "scoredUnitCount": 381,
+    "exportedAt": "2026-09-23T18:15:39.835Z"
+  },
+  {
+    "schoolId": "overton",
+    "schoolName": "Overton ES",
+    "campusId": "189",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 32,
+    "scoredUnitCount": 788,
+    "exportedAt": "2026-09-23T18:15:42.092Z"
+  },
+  {
+    "schoolId": "palm",
+    "schoolName": "Palm ES",
+    "campusId": "171",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 40,
+    "scoredUnitCount": 1026,
+    "exportedAt": "2026-09-23T18:15:41.844Z"
+  },
+  {
+    "schoolId": "perez",
+    "schoolName": "Perez ES",
+    "campusId": "190",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 33,
+    "scoredUnitCount": 880,
+    "exportedAt": "2026-09-23T18:15:44.065Z"
+  },
+  {
+    "schoolId": "marshall",
+    "schoolName": "General Marshall MS",
+    "campusId": "0",
+    "schoolClass": "MID",
+    "schoolLevel": "MS",
+    "roomCount": 67,
+    "scoredUnitCount": 1405,
+    "exportedAt": "2026-09-23T18:15:45.951Z"
+  },
+  {
+    "schoolId": "richards-sywl",
+    "schoolName": "Ann Richards SYWL",
+    "campusId": "028",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 92,
+    "scoredUnitCount": 1866,
+    "exportedAt": "2026-09-23T18:15:45.286Z"
+  },
+  {
+    "schoolId": "eastside-echs",
+    "schoolName": "Eastside ECHS",
+    "campusId": "142",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 72,
+    "scoredUnitCount": 712,
+    "exportedAt": "2026-09-23T18:15:41.083Z"
+  },
+  {
+    "schoolId": "eastside-echs-pilot-2",
+    "schoolName": "Eastside ECHS (Pilot #2)",
+    "campusId": "142-PILOT-2",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 71,
+    "scoredUnitCount": 1461,
+    "exportedAt": "2026-09-23T18:15:41.557Z"
+  },
+  {
+    "schoolId": "lbj",
+    "schoolName": "LBJ ECHS",
+    "campusId": "014",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 97,
+    "scoredUnitCount": 623,
+    "exportedAt": "2026-09-23T18:15:44.398Z"
+  },
+  {
+    "schoolId": "lbj-pilot-2",
+    "schoolName": "LBJ ECHS (Pilot #2)",
+    "campusId": "014-PILOT-2",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 83,
+    "scoredUnitCount": 1498,
+    "exportedAt": "2026-09-23T18:15:42.996Z"
+  }
+]

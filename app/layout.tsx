@@ -3,7 +3,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "AISD ESA Live Weighting Lab",
-  description: "Live ESA weight explorer for Casis and Ortega Pilot #2",
+  description: "Live ESA weight explorer for recently walked elementary, middle, and high schools",
 }
 
 export default function RootLayout({
