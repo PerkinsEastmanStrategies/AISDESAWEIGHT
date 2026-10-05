@@ -110,8 +110,18 @@ export interface ScoreNode {
   totalCount?: number
   countLabel?: string
   questionId?: string
+  roomId?: string
   itemLabel?: string | null
   answer?: string | null
+}
+
+export interface ScoredRoomSummary {
+  roomId: string
+  roomName: string
+  spaceType: string
+  focusAreaLabel?: string
+  neighborhood?: string
+  score: number | null
 }
 
 export interface SchoolIndexEntry {
@@ -128,6 +138,7 @@ export interface SchoolIndexEntry {
 export interface SchoolScorecard {
   schoolId: string
   schoolName: string
+  campusId: string
   overall: number | null
   overallBaseline: number | null
   existingOnly: number | null
@@ -136,4 +147,5 @@ export interface SchoolScorecard {
   absentCount: number
   categories: ScoreNode[]
   focusAreas: ScoreNode[]
+  rooms: ScoredRoomSummary[]
 }

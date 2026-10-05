@@ -1,5 +1,15 @@
 [
   {
+    "schoolId": "baranoff",
+    "schoolName": "Baranoff ES",
+    "campusId": "182",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 31,
+    "scoredUnitCount": 647,
+    "exportedAt": "2026-10-02T14:03:20.178Z"
+  },
+  {
     "schoolId": "jordan",
     "schoolName": "Barbara Jordan ES",
     "campusId": "178",
@@ -7,17 +17,37 @@
     "schoolLevel": "ES",
     "roomCount": 33,
     "scoredUnitCount": 863,
-    "exportedAt": "2026-09-23T18:15:43.296Z"
+    "exportedAt": "2026-10-02T14:03:10.307Z"
   },
   {
-    "schoolId": "barton-hills",
-    "schoolName": "Barton Hills ES",
-    "campusId": "103",
+    "schoolId": "blanton",
+    "schoolName": "Blanton ES",
+    "campusId": "106",
     "schoolClass": "ELEM",
     "schoolLevel": "ES",
-    "roomCount": 12,
-    "scoredUnitCount": 400,
-    "exportedAt": "2026-09-23T18:15:40.454Z"
+    "roomCount": 37,
+    "scoredUnitCount": 819,
+    "exportedAt": "2026-10-02T14:03:21.694Z"
+  },
+  {
+    "schoolId": "boone",
+    "schoolName": "Boone ES",
+    "campusId": "170",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 38,
+    "scoredUnitCount": 938,
+    "exportedAt": "2026-10-02T14:03:17.099Z"
+  },
+  {
+    "schoolId": "bryker-woods",
+    "schoolName": "Bryker Woods ES",
+    "campusId": "110",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 28,
+    "scoredUnitCount": 664,
+    "exportedAt": "2026-10-02T14:03:14.806Z"
   },
   {
     "schoolId": "campbell",
@@ -25,9 +55,9 @@
     "campusId": "111",
     "schoolClass": "ELEM",
     "schoolLevel": "ES",
-    "roomCount": 33,
+    "roomCount": 34,
     "scoredUnitCount": 809,
-    "exportedAt": "2026-09-23T18:15:43.529Z"
+    "exportedAt": "2026-10-02T14:03:12.293Z"
   },
   {
     "schoolId": "casey",
@@ -35,9 +65,9 @@
     "campusId": "173",
     "schoolClass": "ELEM",
     "schoolLevel": "ES",
-    "roomCount": 19,
-    "scoredUnitCount": 593,
-    "exportedAt": "2026-09-23T18:15:45.560Z"
+    "roomCount": 38,
+    "scoredUnitCount": 985,
+    "exportedAt": "2026-10-02T14:03:13.702Z"
   },
   {
     "schoolId": "casis-pilot-2",
@@ -47,17 +77,47 @@
     "schoolLevel": "ES",
     "roomCount": 41,
     "scoredUnitCount": 1078,
-    "exportedAt": "2026-09-23T18:15:42.478Z"
+    "exportedAt": "2026-10-02T14:03:17.456Z"
   },
   {
-    "schoolId": "casis",
-    "schoolName": "Casis ES",
-    "campusId": "112",
+    "schoolId": "cook",
+    "schoolName": "Cook ES",
+    "campusId": "161",
     "schoolClass": "ELEM",
     "schoolLevel": "ES",
-    "roomCount": 60,
-    "scoredUnitCount": 502,
-    "exportedAt": "2026-09-23T18:15:40.768Z"
+    "roomCount": 35,
+    "scoredUnitCount": 820,
+    "exportedAt": "2026-10-02T14:03:14.522Z"
+  },
+  {
+    "schoolId": "galindo",
+    "schoolName": "Galindo ES",
+    "campusId": "176",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 24,
+    "scoredUnitCount": 530,
+    "exportedAt": "2026-10-02T14:03:15.385Z"
+  },
+  {
+    "schoolId": "guerrero-thompson",
+    "schoolName": "Guerrero Thompson ES",
+    "campusId": "186",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 41,
+    "scoredUnitCount": 1081,
+    "exportedAt": "2026-10-02T14:03:19.127Z"
+  },
+  {
+    "schoolId": "harris",
+    "schoolName": "Harris ES",
+    "campusId": "118",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 41,
+    "scoredUnitCount": 1126,
+    "exportedAt": "2026-10-02T14:03:19.954Z"
   },
   {
     "schoolId": "maplewood",
@@ -67,7 +127,47 @@
     "schoolLevel": "ES",
     "roomCount": 29,
     "scoredUnitCount": 685,
-    "exportedAt": "2026-09-23T18:15:44.673Z"
+    "exportedAt": "2026-10-02T14:03:11.098Z"
+  },
+  {
+    "schoolId": "menchaca",
+    "schoolName": "Menchaca ES",
+    "campusId": "147",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 46,
+    "scoredUnitCount": 1226,
+    "exportedAt": "2026-10-02T14:03:12.940Z"
+  },
+  {
+    "schoolId": "mills",
+    "schoolName": "Mills ES",
+    "campusId": "181",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 41,
+    "scoredUnitCount": 1105,
+    "exportedAt": "2026-10-02T14:03:19.413Z"
+  },
+  {
+    "schoolId": "norman-sims",
+    "schoolName": "Norman-Sims ES",
+    "campusId": "150",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 36,
+    "scoredUnitCount": 959,
+    "exportedAt": "2026-10-02T14:03:12.547Z"
+  },
+  {
+    "schoolId": "oak-hill",
+    "schoolName": "Oak Hill ES",
+    "campusId": "148",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 40,
+    "scoredUnitCount": 1013,
+    "exportedAt": "2026-10-02T14:03:15.646Z"
   },
   {
     "schoolId": "odom",
@@ -77,7 +177,7 @@
     "schoolLevel": "ES",
     "roomCount": 29,
     "scoredUnitCount": 882,
-    "exportedAt": "2026-09-23T18:15:43.808Z"
+    "exportedAt": "2026-10-02T14:03:10.563Z"
   },
   {
     "schoolId": "ortega-pilot-2",
@@ -87,17 +187,7 @@
     "schoolLevel": "ES",
     "roomCount": 35,
     "scoredUnitCount": 948,
-    "exportedAt": "2026-09-23T18:15:40.253Z"
-  },
-  {
-    "schoolId": "ortega",
-    "schoolName": "Ortega ES",
-    "campusId": "126",
-    "schoolClass": "ELEM",
-    "schoolLevel": "ES",
-    "roomCount": 39,
-    "scoredUnitCount": 381,
-    "exportedAt": "2026-09-23T18:15:39.835Z"
+    "exportedAt": "2026-10-02T14:03:09.324Z"
   },
   {
     "schoolId": "overton",
@@ -107,7 +197,7 @@
     "schoolLevel": "ES",
     "roomCount": 32,
     "scoredUnitCount": 788,
-    "exportedAt": "2026-09-23T18:15:42.092Z"
+    "exportedAt": "2026-10-02T14:03:10.018Z"
   },
   {
     "schoolId": "palm",
@@ -117,7 +207,17 @@
     "schoolLevel": "ES",
     "roomCount": 40,
     "scoredUnitCount": 1026,
-    "exportedAt": "2026-09-23T18:15:41.844Z"
+    "exportedAt": "2026-10-02T14:03:15.918Z"
+  },
+  {
+    "schoolId": "patton",
+    "schoolName": "Patton ES",
+    "campusId": "143",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 41,
+    "scoredUnitCount": 1075,
+    "exportedAt": "2026-10-02T14:03:19.681Z"
   },
   {
     "schoolId": "perez",
@@ -127,7 +227,67 @@
     "schoolLevel": "ES",
     "roomCount": 33,
     "scoredUnitCount": 880,
-    "exportedAt": "2026-09-23T18:15:44.065Z"
+    "exportedAt": "2026-10-02T14:03:10.848Z"
+  },
+  {
+    "schoolId": "pickle",
+    "schoolName": "Pickle ES",
+    "campusId": "164",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 40,
+    "scoredUnitCount": 942,
+    "exportedAt": "2026-10-02T14:03:13.214Z"
+  },
+  {
+    "schoolId": "rodriguez",
+    "schoolName": "Rodriguez ES",
+    "campusId": "174",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 34,
+    "scoredUnitCount": 900,
+    "exportedAt": "2026-10-02T14:03:14.233Z"
+  },
+  {
+    "schoolId": "st-elmo",
+    "schoolName": "St. Elmo ES",
+    "campusId": "136",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 34,
+    "scoredUnitCount": 770,
+    "exportedAt": "2026-10-02T14:03:13.942Z"
+  },
+  {
+    "schoolId": "uphaus",
+    "schoolName": "Uphaus ECC",
+    "campusId": "177",
+    "schoolClass": "ELEM",
+    "schoolLevel": "ES",
+    "roomCount": 34,
+    "scoredUnitCount": 700,
+    "exportedAt": "2026-10-02T14:03:13.423Z"
+  },
+  {
+    "schoolId": "burnet",
+    "schoolName": "Burnet MS",
+    "campusId": "046",
+    "schoolClass": "MID",
+    "schoolLevel": "MS",
+    "roomCount": 36,
+    "scoredUnitCount": 641,
+    "exportedAt": "2026-10-02T14:03:18.468Z"
+  },
+  {
+    "schoolId": "covington",
+    "schoolName": "Covington MS",
+    "campusId": "057",
+    "schoolClass": "MID",
+    "schoolLevel": "MS",
+    "roomCount": 65,
+    "scoredUnitCount": 1263,
+    "exportedAt": "2026-10-02T14:03:20.577Z"
   },
   {
     "schoolId": "marshall",
@@ -136,8 +296,28 @@
     "schoolClass": "MID",
     "schoolLevel": "MS",
     "roomCount": 67,
-    "scoredUnitCount": 1405,
-    "exportedAt": "2026-09-23T18:15:45.951Z"
+    "scoredUnitCount": 1406,
+    "exportedAt": "2026-10-02T14:03:12.017Z"
+  },
+  {
+    "schoolId": "kealing",
+    "schoolName": "Kealing MS",
+    "campusId": "044",
+    "schoolClass": "MID",
+    "schoolLevel": "MS",
+    "roomCount": 68,
+    "scoredUnitCount": 1233,
+    "exportedAt": "2026-10-02T14:03:15.160Z"
+  },
+  {
+    "schoolId": "lively",
+    "schoolName": "Lively MS",
+    "campusId": "043",
+    "schoolClass": "MID",
+    "schoolLevel": "MS",
+    "roomCount": 75,
+    "scoredUnitCount": 1302,
+    "exportedAt": "2026-10-02T14:03:18.245Z"
   },
   {
     "schoolId": "richards-sywl",
@@ -147,7 +327,27 @@
     "schoolLevel": "HS",
     "roomCount": 92,
     "scoredUnitCount": 1866,
-    "exportedAt": "2026-09-23T18:15:45.286Z"
+    "exportedAt": "2026-10-02T14:03:11.652Z"
+  },
+  {
+    "schoolId": "bowie",
+    "schoolName": "Bowie HS",
+    "campusId": "013",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 92,
+    "scoredUnitCount": 2183,
+    "exportedAt": "2026-10-02T14:03:20.999Z"
+  },
+  {
+    "schoolId": "crockett",
+    "schoolName": "Crockett ECHS",
+    "campusId": "008",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 92,
+    "scoredUnitCount": 2097,
+    "exportedAt": "2026-10-02T14:03:18.918Z"
   },
   {
     "schoolId": "eastside-echs",
@@ -157,7 +357,7 @@
     "schoolLevel": "HS",
     "roomCount": 72,
     "scoredUnitCount": 712,
-    "exportedAt": "2026-09-23T18:15:41.083Z"
+    "exportedAt": "2026-10-02T14:03:09.711Z"
   },
   {
     "schoolId": "eastside-echs-pilot-2",
@@ -165,9 +365,19 @@
     "campusId": "142-PILOT-2",
     "schoolClass": "HIGH",
     "schoolLevel": "HS",
-    "roomCount": 71,
-    "scoredUnitCount": 1461,
-    "exportedAt": "2026-09-23T18:15:41.557Z"
+    "roomCount": 70,
+    "scoredUnitCount": 1114,
+    "exportedAt": "2026-10-02T14:03:16.823Z"
+  },
+  {
+    "schoolId": "lasa",
+    "schoolName": "LASA HS",
+    "campusId": "019",
+    "schoolClass": "HIGH",
+    "schoolLevel": "HS",
+    "roomCount": 83,
+    "scoredUnitCount": 1873,
+    "exportedAt": "2026-10-02T14:03:16.406Z"
   },
   {
     "schoolId": "lbj",
@@ -175,9 +385,9 @@
     "campusId": "014",
     "schoolClass": "HIGH",
     "schoolLevel": "HS",
-    "roomCount": 97,
-    "scoredUnitCount": 623,
-    "exportedAt": "2026-09-23T18:15:44.398Z"
+    "roomCount": 98,
+    "scoredUnitCount": 601,
+    "exportedAt": "2026-10-02T14:03:17.879Z"
   },
   {
     "schoolId": "lbj-pilot-2",
@@ -187,6 +397,6 @@
     "schoolLevel": "HS",
     "roomCount": 83,
     "scoredUnitCount": 1498,
-    "exportedAt": "2026-09-23T18:15:42.996Z"
+    "exportedAt": "2026-10-02T14:03:21.424Z"
   }
 ]

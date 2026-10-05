@@ -361,6 +361,7 @@ function isTestOrSandboxSchool(input: {
   const haystack = `${input.schoolId} ${input.campusId} ${input.name}`.toLowerCase()
   if (haystack.includes("test")) return true
   if (haystack.includes("merge")) return true
+  if (input.schoolId === "barton-hills" || input.schoolId === "casis" || input.schoolId === "ortega") return true
   return false
 }
 
@@ -553,10 +554,35 @@ function buildWeightsJson() {
   return { schoolLevelDefault: "ES", focusAreas, spaceTypes, categories, subcategories, questions }
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function writeFileRetry(file: string, contents: string) {
+  let lastError: unknown
+  for (let attempt = 1; attempt <= 10; attempt++) {
+    try {
+      const tmp = `${file}.${process.pid}.tmp`
+      fs.writeFileSync(tmp, contents)
+      try {
+        fs.unlinkSync(file)
+      } catch {
+        /* dest may not exist yet */
+      }
+      fs.renameSync(tmp, file)
+      return
+    } catch (error) {
+      lastError = error
+      await sleep(300 * attempt)
+    }
+  }
+  throw lastError
+}
+
 async function main() {
   fs.mkdirSync(SCHOOLS_DIR, { recursive: true })
   const weights = buildWeightsJson()
-  fs.writeFileSync(path.join(OUT_DIR, "weights.json"), JSON.stringify(weights, null, 2))
+  await writeFileRetry(path.join(OUT_DIR, "weights.json"), JSON.stringify(weights, null, 2))
   console.log(
     `Wrote weights.json (${weights.focusAreas.length} focus, ${weights.spaceTypes.length} space, ${weights.questions.length} questions)`,
   )
@@ -571,7 +597,11 @@ async function main() {
   const keep = new Set(schools.map((school) => `${school.schoolId}.json`))
   for (const file of fs.readdirSync(SCHOOLS_DIR)) {
     if (file.endsWith(".json") && file !== "index.json" && !keep.has(file)) {
-      fs.unlinkSync(path.join(SCHOOLS_DIR, file))
+      try {
+        fs.unlinkSync(path.join(SCHOOLS_DIR, file))
+      } catch {
+        /* file may be locked by the dev server */
+      }
     }
   }
   const legacyDir = path.join(OUT_DIR, "schools")
@@ -596,7 +626,7 @@ async function main() {
   for (const school of schools) {
     const snapshot = await exportSchool(school)
     const file = path.join(SCHOOLS_DIR, `${school.schoolId}.json`)
-    fs.writeFileSync(file, JSON.stringify(snapshot))
+    await writeFileRetry(file, JSON.stringify(snapshot))
     index.push({
       schoolId: snapshot.schoolId,
       schoolName: snapshot.schoolName,
@@ -618,8 +648,9 @@ async function main() {
       levelOrder[a.schoolLevel] - levelOrder[b.schoolLevel] ||
       a.schoolName.localeCompare(b.schoolName, undefined, { sensitivity: "base" }),
   )
-  fs.writeFileSync(path.join(OUT_DIR, "school-index.json"), JSON.stringify(index, null, 2))
-  fs.writeFileSync(path.join(SCHOOLS_DIR, "index.json"), JSON.stringify(index, null, 2))
+  const indexJson = JSON.stringify(index, null, 2)
+  await writeFileRetry(path.join(OUT_DIR, "school-index.json"), indexJson)
+  await writeFileRetry(path.join(SCHOOLS_DIR, "index.json"), indexJson)
   console.log(`Wrote school index (${index.length} schools)`)
 }
 

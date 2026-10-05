@@ -29,3 +29,61 @@ body {
 input[type="range"] {
   accent-color: #2563eb;
 }
+
+@media print {
+  @page {
+    size: 11in 8.5in;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .app-banner,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .report-print-root {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .report-page {
+    break-after: page;
+    break-inside: avoid;
+    page-break-after: always;
+    page-break-inside: avoid;
+    width: 11in !important;
+    height: 8.5in !important;
+    max-width: none !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .report-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

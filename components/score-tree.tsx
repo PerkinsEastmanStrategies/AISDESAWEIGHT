@@ -169,10 +169,14 @@ function GroupRow({
   node,
   depth,
   weightTotal,
+  selectedRoomId,
+  onSelectRoom,
 }: {
   node: ScoreNode
   depth: number
   weightTotal: number
+  selectedRoomId?: string | null
+  onSelectRoom?: (roomId: string) => void
 }) {
   const [open, setOpen] = useState(false)
   const children = node.children ?? []
@@ -181,6 +185,7 @@ function GroupRow({
   const questions = children.filter((child) => child.kind === "question")
   const nested = children.filter((child) => child.kind !== "question")
   const isRoom = node.kind === "room"
+  const selected = Boolean(isRoom && node.roomId && selectedRoomId === node.roomId)
   const chevronClass = depth === 0 ? "mt-0.5 h-4 w-4 shrink-0 text-slate-400" : "mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400"
 
   return (
@@ -189,7 +194,9 @@ function GroupRow({
         depth === 0
           ? "overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04)]"
           : isRoom
-            ? "mb-1 last:mb-0 rounded-lg border border-slate-100 bg-white"
+            ? `mb-1 last:mb-0 rounded-lg border bg-white ${
+                selected ? "border-blue-400 ring-2 ring-blue-200" : "border-slate-100"
+              }`
             : depth === 3
               ? "rounded-xl border border-slate-200/80 bg-white"
               : "rounded-lg border border-slate-100 bg-slate-50/80"
@@ -197,7 +204,10 @@ function GroupRow({
     >
       <button
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          setOpen((value) => !value)
+          if (node.roomId) onSelectRoom?.(node.roomId)
+        }}
         aria-expanded={open}
         className={`flex w-full gap-2 px-3 py-2.5 text-left transition-colors hover:bg-slate-50 ${
           isRoom ? "items-center" : "items-start"
@@ -243,7 +253,14 @@ function GroupRow({
           {nested.length > 0 && (
             <div className="space-y-1">
               {nested.map((child) => (
-                <GroupRow key={child.id} node={child} depth={depth + 1} weightTotal={childTotal} />
+                <GroupRow
+                  key={child.id}
+                  node={child}
+                  depth={depth + 1}
+                  weightTotal={childTotal}
+                  selectedRoomId={selectedRoomId}
+                  onSelectRoom={onSelectRoom}
+                />
               ))}
             </div>
           )}
@@ -262,10 +279,14 @@ export function ScoreTree({
   nodes,
   empty,
   hint,
+  selectedRoomId,
+  onSelectRoom,
 }: {
   nodes: ScoreNode[]
   empty: string
   hint?: string
+  selectedRoomId?: string | null
+  onSelectRoom?: (roomId: string) => void
 }) {
   if (!nodes.length) {
     return <p className="px-2 py-6 text-sm text-slate-500">{empty}</p>
@@ -280,7 +301,14 @@ export function ScoreTree({
             <QuestionRow node={node} weightTotal={total} />
           </div>
         ) : (
-          <GroupRow key={node.id} node={node} depth={0} weightTotal={total} />
+          <GroupRow
+            key={node.id}
+            node={node}
+            depth={0}
+            weightTotal={total}
+            selectedRoomId={selectedRoomId}
+            onSelectRoom={onSelectRoom}
+          />
         ),
       )}
     </div>
