@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vendored ESA shared package: generated TS rubrics are enough at runtime
+/vendor/aisd-shared/src/data/**/*.csv
+/vendor/aisd-shared/src/data/**/*.txt

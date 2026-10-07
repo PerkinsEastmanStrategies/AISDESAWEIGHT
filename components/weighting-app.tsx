@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, RotateCcw } from "lucide-react"
+import { Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, RefreshCw, RotateCcw } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
 import { CampusReport } from "@/components/campus-report"
 import { CategorySpider } from "@/components/category-spider"
@@ -19,6 +19,7 @@ import {
 } from "@/lib/qa-discard"
 import { handoffForSchool, type QaHandoff } from "@/lib/qa-handoff"
 import { fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
+import { fetchSchoolCatalog, fetchSchoolSnapshot, refreshWalkedSchools } from "@/lib/school-catalog"
 import { scoreSchool } from "@/lib/scoring"
 import {
   alignSnapshotToWeights,
@@ -71,7 +72,7 @@ function emptyOverrideMap(): Record<CategorySchemeId, Record<SchoolLevel, Weight
   }
 }
 
-function useSchoolSnapshots(requestKey: string) {
+function useSchoolSnapshots(requestKey: string, epoch: number) {
   "use no memo"
   const [snapshots, setSnapshots] = useState<Record<string, SchoolSnapshot>>({})
   const [loadError, setLoadError] = useState<string | null>(null)
@@ -79,7 +80,13 @@ function useSchoolSnapshots(requestKey: string) {
   snapshotsRef.current = snapshots
 
   useEffect(() => {
-    const ids = requestKey ? requestKey.split("|") : []
+    if (epoch === 0) return
+    setSnapshots({})
+    snapshotsRef.current = {}
+  }, [epoch])
+
+  useEffect(() => {
+    const ids = requestKey ? requestKey.split("|").filter(Boolean) : []
     let cancelled = false
     async function load() {
       const missing = ids.filter((id) => !snapshotsRef.current[id])
@@ -87,16 +94,13 @@ function useSchoolSnapshots(requestKey: string) {
       setLoadError(null)
       try {
         const loaded = await Promise.all(
-          missing.map(async (id) => {
-            const response = await fetch(`/schools/${id}.json`)
-            if (!response.ok) throw new Error(`Could not load ${id}`)
-            return [id, (await response.json()) as SchoolSnapshot] as const
-          }),
+          missing.map(async (id) => [id, await fetchSchoolSnapshot(id)] as const),
         )
         if (cancelled) return
         setSnapshots((current) => {
           const next = { ...current }
           for (const [id, snapshot] of loaded) next[id] = snapshot
+          snapshotsRef.current = next
           return next
         })
       } catch (error) {
@@ -107,7 +111,7 @@ function useSchoolSnapshots(requestKey: string) {
     return () => {
       cancelled = true
     }
-  }, [requestKey])
+  }, [requestKey, epoch])
 
   return { snapshots, loadError, setLoadError }
 }
@@ -143,6 +147,10 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const [reportSchoolId, setReportSchoolId] = useState("")
   const [handoffs, setHandoffs] = useState<QaHandoff[]>([])
   const [handoffError, setHandoffError] = useState<string | null>(null)
+  const [catalog, setCatalog] = useState(schoolOptions)
+  const [snapshotEpoch, setSnapshotEpoch] = useState(0)
+  const [refreshing, setRefreshing] = useState(false)
+  const [refreshNote, setRefreshNote] = useState<string | null>(null)
   const [discardedRooms, setDiscardedRooms] = useState<DiscardedRoom[]>([])
   const [weightFiles, setWeightFiles] = useState<Partial<Record<CategorySchemeId, WeightFile>>>({})
   const [overridesByScheme, setOverridesByScheme] = useState(emptyOverrideMap)
@@ -164,6 +172,11 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
       .catch((error) => {
         setHandoffError(error instanceof Error ? error.message : "Could not load AISD QA handoffs")
       })
+    fetchSchoolCatalog()
+      .then(setCatalog)
+      .catch(() => {
+        /* keep the bundled school list if live catalog is unavailable */
+      })
   }, [])
 
   const activeWeights = weightFiles[schemeId] ?? null
@@ -181,8 +194,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   )
   const changed = overrideCount(overrides)
   const levelOptions = useMemo(
-    () => schoolOptions.filter((school) => optionLevel(school) === schoolLevel),
-    [schoolOptions, schoolLevel],
+    () => catalog.filter((school) => optionLevel(school) === schoolLevel),
+    [catalog, schoolLevel],
   )
   const aisdOptions = useMemo(
     () => levelOptions.filter((school) => handoffForSchool(handoffs, school.schoolId)),
@@ -198,7 +211,30 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     : showingQaCampus
       ? activeQaSchoolId
       : [leftId, rightId].filter(Boolean).join("|")
-  const { snapshots, loadError, setLoadError } = useSchoolSnapshots(snapshotKey)
+  const { snapshots, loadError, setLoadError } = useSchoolSnapshots(snapshotKey, snapshotEpoch)
+
+  async function refreshSchools() {
+    setRefreshing(true)
+    setRefreshNote(null)
+    setLoadError(null)
+    try {
+      const result = await refreshWalkedSchools()
+      setCatalog(result.schools)
+      setSnapshotEpoch((value) => value + 1)
+      if (result.added.length || result.updated.length) {
+        const bits = []
+        if (result.added.length) bits.push(`added ${result.added.join(", ")}`)
+        if (result.updated.length) bits.push(`updated ${result.updated.join(", ")}`)
+        setRefreshNote(`Refreshed from ESA: ${bits.join("; ")}.`)
+      } else {
+        setRefreshNote("No new or updated walked schools since the last refresh.")
+      }
+    } catch (error) {
+      setLoadError(error instanceof Error ? error.message : "Could not refresh walked schools")
+    } finally {
+      setRefreshing(false)
+    }
+  }
 
   function prepareSnapshot(snapshot: SchoolSnapshot) {
     const kept = omitDiscardedRooms(snapshot, discardedRooms)
@@ -381,6 +417,17 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   </div>
                 ))
               : null}
+            {view === "internal" || view === "aisd" ? (
+              <button
+                type="button"
+                onClick={() => void refreshSchools()}
+                disabled={refreshing}
+                className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 disabled:cursor-not-allowed disabled:text-slate-400"
+              >
+                <RefreshCw size={14} className={refreshing ? "animate-spin" : undefined} />
+                {refreshing ? "Refreshing…" : "Refresh walked schools"}
+              </button>
+            ) : null}
             <button
               type="button"
               onClick={() => setOverrides(emptyOverrides())}
@@ -432,7 +479,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
             label="School level"
             value={schoolLevel}
             options={LEVELS.map((level) => {
-              const inLevel = schoolOptions.filter((school) => optionLevel(school) === level.id)
+              const inLevel = catalog.filter((school) => optionLevel(school) === level.id)
               const count =
                 view === "aisd"
                   ? inLevel.filter((school) => handoffForSchool(handoffs, school.schoolId)).length
@@ -498,6 +545,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
         <div className="min-w-0 space-y-4">
           {showingQaAll ? (
             <>
+              {refreshNote ? <p className="text-sm text-slate-600">{refreshNote}</p> : null}
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
               {view === "aisd" && aisdOptions.length === 0 ? (
                 <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-200">
@@ -550,6 +598,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   </p>
                 ) : null}
               </div>
+              {refreshNote ? <p className="text-sm text-slate-600">{refreshNote}</p> : null}
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
               {handoffError ? <p className="text-sm text-red-600">{handoffError}</p> : null}
               {activeQaSchoolId && !qaCard ? <p className="text-sm text-slate-500">Loading campus…</p> : null}

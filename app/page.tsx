@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
 import { WeightingApp } from "@/components/weighting-app"
 import schoolIndex from "@/data/school-index.json"
+import { HIDDEN_SCHOOL_IDS } from "@/lib/school-catalog"
 import type { SchoolIndexEntry } from "@/lib/types"
-
-const HIDDEN_SCHOOL_IDS = new Set(["barton-hills", "casis", "ortega"])
 
 export const metadata: Metadata = {
   title: "AISD ESA QA Portal",

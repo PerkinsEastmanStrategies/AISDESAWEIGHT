@@ -1,0 +1,488 @@
+/** Generated from AISD_ESA_Categories.csv — do not edit by hand. */
+import type { SurveyType } from "../types/survey"
+
+export type TableSchoolLevel = "ES" | "MS" | "HS"
+
+export type ScoringFocusAreaId =
+  | "arrival_experience"
+  | "administration"
+  | "studios"
+  | "special_education"
+  | "visual_arts"
+  | "neighborhoods"
+  | "athletics_wellness"
+  | "shared_spaces"
+  | "outdoor_elements"
+  | "cte"
+  | "performing_arts"
+
+export interface TableOfSurveyEntry {
+  surveyFocus: string
+  surveyType: SurveyType
+  spaceType: string
+  spaceTypeRaw: string
+  schoolLevel: TableSchoolLevel
+  required: boolean
+  /** Site-wide completed room surveys required by AISD_Matrix_RoomsRequired. 0 = not scored. */
+  minimumSurveyCount: number
+  scoringFocusLabel: string
+  scoringFocusAreaId: ScoringFocusAreaId
+  spaceTypeWeight: number
+  focusAreaWeight: number
+  scoreCode: string
+}
+
+export interface ScoringFocusAreaDef {
+  id: ScoringFocusAreaId
+  label: string
+  focusAreaWeight: number
+}
+
+export const TABLE_OF_SURVEY_ENTRIES: TableOfSurveyEntry[] = [
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Entry Experience", spaceTypeRaw: "Entry Experience", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "ME" },
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Campus", spaceTypeRaw: "Campus", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CA" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Admin Office", spaceTypeRaw: "Admin Offices", schoolLevel: "ES", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "AD" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Community Partner Suite", spaceTypeRaw: "Community Partners Suite", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 6, focusAreaWeight: 6, scoreCode: "CP" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Counseling Suite", spaceTypeRaw: "Mental Wellness and Counseling Suite", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CO" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Professional Learning Center", spaceTypeRaw: "Professional Learning Center", schoolLevel: "ES", required: true, minimumSurveyCount: 3, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "PL" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Early childhood studio", spaceTypeRaw: "Early childhood studio", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "PK" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Early childhood special education studio", spaceTypeRaw: "Early childhood special education studio", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "PS" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Traditional studio", spaceTypeRaw: "Tranditional Studio", schoolLevel: "ES", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "ST" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "SPED Flex Studio", spaceTypeRaw: "SPED Flex Studio", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SP" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Special Education Suite", spaceTypeRaw: "Special Education Suite", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SU" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Sensory Motor Lab", spaceTypeRaw: "Sensory Motor Lab", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special education", scoringFocusAreaId: "special_education", spaceTypeWeight: 9, focusAreaWeight: 12, scoreCode: "SN" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Life Skills Studio", spaceTypeRaw: "Life Skills Studio", schoolLevel: "ES", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Special education", scoringFocusAreaId: "special_education", spaceTypeWeight: 3, focusAreaWeight: 12, scoreCode: "LS" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Art", spaceTypeRaw: "Art", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "AR" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Music Studio", spaceTypeRaw: "Music Studio", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "MU" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Maker space", spaceTypeRaw: "Maker Space", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 9, focusAreaWeight: 12, scoreCode: "MS" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Science", spaceTypeRaw: "Science", schoolLevel: "ES", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 3, focusAreaWeight: 12, scoreCode: "SC" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Open Collaboration Space", spaceTypeRaw: "Open Collaboration", schoolLevel: "ES", required: true, minimumSurveyCount: 3, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OC" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Group Room", spaceTypeRaw: "Group Room", schoolLevel: "ES", required: true, minimumSurveyCount: 3, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "SG" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Neighborhood", spaceTypeRaw: "Neighborhood", schoolLevel: "ES", required: true, minimumSurveyCount: 3, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "NE" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Early Childhood Neighborhood", spaceTypeRaw: "Early Childhood Neighborhood", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "EN" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "ES Gymnasium", spaceTypeRaw: "ES Gymnasium", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "GY" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Library Media Center", spaceTypeRaw: "Library Media Center", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "MC" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Dining Commons", spaceTypeRaw: "Dining Commons", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "FS" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Kitchen", spaceTypeRaw: "Kitchen", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "KI" },
+  { surveyFocus: "Outdoor", surveyType: "outdoor", spaceType: "Outdoor Spaces", spaceTypeRaw: "Outdoor Spaces", schoolLevel: "ES", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Outdoor", scoringFocusAreaId: "outdoor_elements", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OS" },
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Entry Experience", spaceTypeRaw: "Entry Experience", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "ME" },
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Campus", spaceTypeRaw: "Campus", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CA" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Main Admin Suite", spaceTypeRaw: "Main Admin Suite", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "MA" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Admin Office", spaceTypeRaw: "Admin Offices", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "AD" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Community Partner Suite", spaceTypeRaw: "Community Partners Suite", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 6, focusAreaWeight: 6, scoreCode: "CP" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Counseling Suite", spaceTypeRaw: "Mental Wellness and Counseling Suite", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CO" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Professional Learning Center", spaceTypeRaw: "Professional Learning Center", schoolLevel: "MS", required: true, minimumSurveyCount: 6, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "PL" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Traditional studio", spaceTypeRaw: "Tranditional Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 12, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "ST" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "SPED Flex Studio", spaceTypeRaw: "SPED Flex Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SP" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Special Education Suite", spaceTypeRaw: "Special Education Suite", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SU" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Sensory Motor Lab", spaceTypeRaw: "Sensory Motor Lab", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 9, focusAreaWeight: 12, scoreCode: "SN" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Vocational Lab", spaceTypeRaw: "Vocational Lab", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "VO" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Science", spaceTypeRaw: "Science", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SC" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Science Prep Room", spaceTypeRaw: "Science Prep Room", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 6, focusAreaWeight: 12, scoreCode: "PR" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "2D Art Studio", spaceTypeRaw: "2D Art Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "A2" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "3D Art Studio", spaceTypeRaw: "3D Art Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "A3" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "Digital Art Studio", spaceTypeRaw: "Digital Art Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "DI" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Music Studio", spaceTypeRaw: "Music Studio", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 6, focusAreaWeight: 12, scoreCode: "MU" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Maker space", spaceTypeRaw: "Maker Space", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "MS" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "CTE Studio", spaceTypeRaw: "CTE Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "CT" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "Low Intensity Lab", spaceTypeRaw: "Low Intensity Lab", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CL" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "Medium Intensity Lab", spaceTypeRaw: "Medium Intensity Lab", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CM" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Theater Arts Studio", spaceTypeRaw: "Theater Arts Studio", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "TA" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Rehearsal Hall", spaceTypeRaw: "Rehersal Hall", schoolLevel: "MS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "RH" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Music Suite", spaceTypeRaw: "Music Suite", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "MT" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Black Box", spaceTypeRaw: "Black Box", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "BB" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Auditorium", spaceTypeRaw: "Auditorium", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "AU" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Dance", spaceTypeRaw: "Dance", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "DA" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Open Collaboration Space", spaceTypeRaw: "Open Collaboration", schoolLevel: "MS", required: true, minimumSurveyCount: 6, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OC" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Group Room", spaceTypeRaw: "Group Room", schoolLevel: "MS", required: true, minimumSurveyCount: 6, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "SG" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Neighborhood", spaceTypeRaw: "Neighborhood", schoolLevel: "MS", required: true, minimumSurveyCount: 6, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "NE" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Multi-Purpose Gym", spaceTypeRaw: "Multi-Purpose Gym", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "MG" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Practice Gym", spaceTypeRaw: "Practice Gym", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "PG" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Locker Room", spaceTypeRaw: "Locker Room", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "LR" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Weight Room", spaceTypeRaw: "Weight Room", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "WE" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Wrestling", spaceTypeRaw: "Wrestling", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "WR" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "PE Fitness Room", spaceTypeRaw: "PE Fitness Room", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 4, focusAreaWeight: 9, scoreCode: "PF" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Athletics Wing", spaceTypeRaw: "Athletics Wing", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "AT" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Library Media Center", spaceTypeRaw: "Library Media Center", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "MC" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Dining Commons", spaceTypeRaw: "Dining Commons", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "FS" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Kitchen", spaceTypeRaw: "Kitchen", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "KI" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Empower Center", spaceTypeRaw: "Empower Center", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "EC" },
+  { surveyFocus: "Outdoor", surveyType: "outdoor", spaceType: "Outdoor Spaces", spaceTypeRaw: "Outdoor Spaces", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Outdoor", scoringFocusAreaId: "outdoor_elements", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OS" },
+  { surveyFocus: "Outdoor", surveyType: "outdoor", spaceType: "Outdoor Athletics", spaceTypeRaw: "Outdoor Athletics", schoolLevel: "MS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OA" },
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Entry Experience", spaceTypeRaw: "Entry Experience", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "ME" },
+  { surveyFocus: "Arrival Experience and Campus Organization", surveyType: "arrival", spaceType: "Campus", spaceTypeRaw: "Campus", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Arrival Experience and Campus Organization", scoringFocusAreaId: "arrival_experience", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CA" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Main Admin Suite", spaceTypeRaw: "Main Admin Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "MA" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Admin Office", spaceTypeRaw: "Admin Offices", schoolLevel: "HS", required: true, minimumSurveyCount: 4, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "AD" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Community Partner Suite", spaceTypeRaw: "Community Partners Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 6, focusAreaWeight: 6, scoreCode: "CP" },
+  { surveyFocus: "Administration", surveyType: "administration", spaceType: "Counseling Suite", spaceTypeRaw: "Mental Wellness and Counseling Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 12, focusAreaWeight: 6, scoreCode: "CO" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Professional Learning Center", spaceTypeRaw: "Professional Learning Center", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Administration", scoringFocusAreaId: "administration", spaceTypeWeight: 9, focusAreaWeight: 6, scoreCode: "PL" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Traditional studio", spaceTypeRaw: "Tranditional Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 16, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "ST" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "SPED Flex Studio", spaceTypeRaw: "SPED Flex Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SP" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Special Education Suite", spaceTypeRaw: "Special Education Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SU" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Sensory Motor Lab", spaceTypeRaw: "Sensory Motor Lab", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special Education", scoringFocusAreaId: "special_education", spaceTypeWeight: 9, focusAreaWeight: 12, scoreCode: "SN" },
+  { surveyFocus: "Special Education", surveyType: "studios", spaceType: "Vocational Lab", spaceTypeRaw: "Vocational Lab", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Special education", scoringFocusAreaId: "special_education", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "VO" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Science", spaceTypeRaw: "Science", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "SC" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Science Prep Room", spaceTypeRaw: "Science Prep Room", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 6, focusAreaWeight: 12, scoreCode: "PR" },
+  { surveyFocus: "Studios", surveyType: "studios", spaceType: "Maker space", spaceTypeRaw: "Maker Space", schoolLevel: "HS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Studios", scoringFocusAreaId: "studios", spaceTypeWeight: 12, focusAreaWeight: 12, scoreCode: "MS" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "2D Art Studio", spaceTypeRaw: "2D Art Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "A2" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "3D Art Studio", spaceTypeRaw: "3D Art Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "A3" },
+  { surveyFocus: "Visual Arts", surveyType: "studios", spaceType: "Digital Art Studio", spaceTypeRaw: "Digital Art Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Visual Arts", scoringFocusAreaId: "visual_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "DI" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "CTE Studio", spaceTypeRaw: "CTE Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 4, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "CT" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "Low Intensity Lab", spaceTypeRaw: "Low Intensity Lab", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CL" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "Medium Intensity Lab", spaceTypeRaw: "Medium Intensity Lab", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CM" },
+  { surveyFocus: "CTE", surveyType: "cte", spaceType: "High Intensity Lab", spaceTypeRaw: "High Intensity Lab", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "CTE", scoringFocusAreaId: "cte", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CH" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Rehearsal Hall", spaceTypeRaw: "Rehersal Hall", schoolLevel: "HS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "RH" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Music Suite", spaceTypeRaw: "Music Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "MT" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Theater Arts Studio", spaceTypeRaw: "Theater Arts Studio", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "TA" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Black Box", spaceTypeRaw: "Black Box", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "BB" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Auditorium", spaceTypeRaw: "Auditorium", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "AU" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Dance", spaceTypeRaw: "Dance", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "DA" },
+  { surveyFocus: "Performing Arts", surveyType: "performing_arts", spaceType: "Theater Arts Suite", spaceTypeRaw: "Theater Arts Suite", schoolLevel: "HS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Performing Arts", scoringFocusAreaId: "performing_arts", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "TS" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Open Collaboration Space", spaceTypeRaw: "Open Collaboration", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OC" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Group Room", spaceTypeRaw: "Group Room", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "SG" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Neighborhood", spaceTypeRaw: "Neighborhood", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "NE" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Multi-Purpose Gym", spaceTypeRaw: "Multi-Purpose Gym", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "MG" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Competition Gym", spaceTypeRaw: "Competition Gym", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "CG" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Locker Room", spaceTypeRaw: "Locker Room", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "LR" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Weight Room", spaceTypeRaw: "Weight Room", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "WE" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Wrestling", spaceTypeRaw: "Wrestling", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "WR" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "PE Fitness Room", spaceTypeRaw: "PE Fitness Room", schoolLevel: "HS", required: true, minimumSurveyCount: 2, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 7, focusAreaWeight: 9, scoreCode: "PF" },
+  { surveyFocus: "Athletics and Wellness", surveyType: "athletics", spaceType: "Athletics Wing", spaceTypeRaw: "Athletics Wing", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "AT" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Library Media Center", spaceTypeRaw: "Library Media Center", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "MC" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Dining Commons", spaceTypeRaw: "Dining Commons", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "FS" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Kitchen", spaceTypeRaw: "Kitchen", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 6, focusAreaWeight: 9, scoreCode: "KI" },
+  { surveyFocus: "Shared Spaces", surveyType: "shared_spaces", spaceType: "Empower Center", spaceTypeRaw: "Empower Center", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Shared Spaces", scoringFocusAreaId: "shared_spaces", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "EC" },
+  { surveyFocus: "Outdoor", surveyType: "outdoor", spaceType: "Outdoor Spaces", spaceTypeRaw: "Outdoor Spaces", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Outdoor", scoringFocusAreaId: "outdoor_elements", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OS" },
+  { surveyFocus: "Outdoor", surveyType: "outdoor", spaceType: "Outdoor Athletics", spaceTypeRaw: "Outdoor Athletics", schoolLevel: "HS", required: true, minimumSurveyCount: 1, scoringFocusLabel: "Athletics and Wellness", scoringFocusAreaId: "athletics_wellness", spaceTypeWeight: 12, focusAreaWeight: 9, scoreCode: "OA" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Large Group Room", spaceTypeRaw: "Large Group Room", schoolLevel: "MS", required: false, minimumSurveyCount: 0, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 3, focusAreaWeight: 9, scoreCode: "LG" },
+  { surveyFocus: "Neighborhoods", surveyType: "neighborhoods", spaceType: "Large Group Room", spaceTypeRaw: "Large Group Room", schoolLevel: "HS", required: true, minimumSurveyCount: 8, scoringFocusLabel: "Neighborhoods", scoringFocusAreaId: "neighborhoods", spaceTypeWeight: 9, focusAreaWeight: 9, scoreCode: "LG" },
+]
+
+export const SCORING_FOCUS_AREAS_FROM_TABLE: ScoringFocusAreaDef[] = [
+  { id: "arrival_experience", label: "Arrival Experience and Campus Organization", focusAreaWeight: 6 },
+  { id: "administration", label: "Administration", focusAreaWeight: 6 },
+  { id: "studios", label: "Studios", focusAreaWeight: 12 },
+  { id: "special_education", label: "Special Education", focusAreaWeight: 12 },
+  { id: "visual_arts", label: "Visual Arts", focusAreaWeight: 9 },
+  { id: "neighborhoods", label: "Neighborhoods", focusAreaWeight: 9 },
+  { id: "athletics_wellness", label: "Athletics and Wellness", focusAreaWeight: 9 },
+  { id: "shared_spaces", label: "Shared Spaces", focusAreaWeight: 9 },
+  { id: "outdoor_elements", label: "Outdoor", focusAreaWeight: 9 },
+  { id: "cte", label: "CTE", focusAreaWeight: 9 },
+  { id: "performing_arts", label: "Performing Arts", focusAreaWeight: 9 },
+]
+
+export const SURVEY_MODULE_ORDER: SurveyType[] = [
+  "arrival",
+  "administration",
+  "studios",
+  "neighborhoods",
+  "shared_spaces",
+  "athletics",
+  "outdoor",
+  "performing_arts",
+  "cte",
+  "closeout",
+]
+
+export function schoolLevelFromSchoolClass(
+  schoolClass: string | null | undefined,
+): TableSchoolLevel | null {
+  switch (schoolClass) {
+    case "ELEM":
+      return "ES"
+    case "MID":
+      return "MS"
+    case "HIGH":
+      return "HS"
+    default:
+      return null
+  }
+}
+
+export function tableEntriesForSchool(
+  schoolClass: string | null | undefined,
+): TableOfSurveyEntry[] {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  if (!level) return TABLE_OF_SURVEY_ENTRIES
+  return TABLE_OF_SURVEY_ENTRIES.filter((entry) => entry.schoolLevel === level)
+}
+
+export function surveyTypesForSchool(
+  schoolClass: string | null | undefined,
+): SurveyType[] {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const seen = new Set<SurveyType>()
+  const types: SurveyType[] = []
+  for (const entry of TABLE_OF_SURVEY_ENTRIES) {
+    if (level && entry.schoolLevel !== level) continue
+    if (entry.surveyType === "closeout" || seen.has(entry.surveyType)) continue
+    seen.add(entry.surveyType)
+    types.push(entry.surveyType)
+  }
+  return types.sort(
+    (a, b) => SURVEY_MODULE_ORDER.indexOf(a) - SURVEY_MODULE_ORDER.indexOf(b),
+  )
+}
+
+export function surveyTypeAvailableForSchoolFromTable(
+  type: SurveyType,
+  schoolClass: string | null | undefined,
+): boolean {
+  if (type === "closeout") return true
+  return surveyTypesForSchool(schoolClass).includes(type)
+}
+
+export function spaceTypesForSurveyModule(
+  surveyType: SurveyType,
+  schoolClass: string | null | undefined,
+): TableOfSurveyEntry[] {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const rows = TABLE_OF_SURVEY_ENTRIES.filter((entry) => {
+    if (entry.surveyType !== surveyType) return false
+    if (level && entry.schoolLevel !== level) return false
+    return true
+  })
+  const seen = new Set<string>()
+  return rows.filter((entry) => {
+    if (seen.has(entry.spaceType)) return false
+    seen.add(entry.spaceType)
+    return true
+  })
+}
+
+const SPACE_TYPE_ALIASES: Record<string, string> = {
+  Gym: "ES Gymnasium",
+  "Main Office": "Entry Experience",
+  "Main Entry/Reception": "Entry Experience",
+  "Sped flex studio": "SPED Flex Studio",
+  "SPED Flex Room": "SPED Flex Studio",
+  "Sped Flex Room": "SPED Flex Studio",
+  "Sensory Lab": "Sensory Motor Lab",
+  "Life Skills Room": "Life Skills Studio",
+  Music: "Music Studio",
+  "Small Group Room": "Group Room",
+  "Digital Arts Studio": "Digital Art Studio",
+  "Open Collaboration": "Open Collaboration Space",
+  "Early Childhood Special Education studio": "Early childhood special education studio",
+  "Early Childhood Special Education Studio": "Early childhood special education studio",
+  "Early Childhood Sped Flex Room": "Early childhood special education studio",
+  "Early Childhood SPED Flex Room": "Early childhood special education studio",
+  "Early Childhood Sped Flex Studio": "Early childhood special education studio",
+  "Early Childhood SPED Flex Studio": "Early childhood special education studio",
+}
+
+function spaceTypeLookupCandidates(spaceType: string): string[] {
+  const trimmed = spaceType.trim()
+  if (!trimmed) return []
+  const candidates = [trimmed]
+  const lower = trimmed.toLowerCase()
+  const exactAlias = SPACE_TYPE_ALIASES[trimmed]
+  if (exactAlias) candidates.push(exactAlias)
+  for (const [from, to] of Object.entries(SPACE_TYPE_ALIASES)) {
+    if (from.toLowerCase() === lower && !candidates.includes(to)) candidates.push(to)
+  }
+  const tableMatch = TABLE_OF_SURVEY_ENTRIES.find((entry) => entry.spaceType.toLowerCase() === lower)
+  if (tableMatch && !candidates.includes(tableMatch.spaceType)) candidates.push(tableMatch.spaceType)
+  if (
+    lower.includes("early childhood") &&
+    (lower.includes("sped") || lower.includes("special education"))
+  ) {
+    if (!candidates.includes("Early childhood special education studio")) {
+      candidates.push("Early childhood special education studio")
+    }
+  }
+  return candidates
+}
+
+export function lookupTableEntry(
+  surveyType: SurveyType,
+  spaceType: string | null | undefined,
+  schoolClass: string | null | undefined,
+): TableOfSurveyEntry | null {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const normalized = spaceType?.trim()
+  if (!normalized) return null
+
+  const candidates = spaceTypeLookupCandidates(normalized)
+
+  for (const candidate of candidates) {
+    const match = TABLE_OF_SURVEY_ENTRIES.find(
+      (entry) =>
+        entry.surveyType === surveyType &&
+        entry.spaceType === candidate &&
+        (!level || entry.schoolLevel === level),
+    )
+    if (match) return match
+  }
+
+  return null
+}
+
+export function scoringFocusAreaForRoomFromTable(
+  surveyType: SurveyType,
+  spaceType: string | null | undefined,
+  schoolClass: string | null | undefined,
+): ScoringFocusAreaId | null {
+  return lookupTableEntry(surveyType, spaceType, schoolClass)?.scoringFocusAreaId ?? null
+}
+
+export function scoringFocusAreaLabel(id: ScoringFocusAreaId): string {
+  return SCORING_FOCUS_AREAS_FROM_TABLE.find((area) => area.id === id)?.label ?? id
+}
+
+export function focusAreaWeightForSchool(
+  focusAreaId: ScoringFocusAreaId,
+  schoolClass: string | null | undefined,
+): number {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const match = TABLE_OF_SURVEY_ENTRIES.find(
+    (entry) =>
+      entry.scoringFocusAreaId === focusAreaId && (!level || entry.schoolLevel === level),
+  )
+  return match?.focusAreaWeight ?? 0
+}
+
+export function requiredSurveyTypesForSchool(
+  schoolClass: string | null | undefined,
+): SurveyType[] {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const required = new Set<SurveyType>()
+  for (const entry of TABLE_OF_SURVEY_ENTRIES) {
+    if (level && entry.schoolLevel !== level) continue
+    if (entry.required) required.add(entry.surveyType)
+  }
+  return [...required].sort(
+    (a, b) => SURVEY_MODULE_ORDER.indexOf(a) - SURVEY_MODULE_ORDER.indexOf(b),
+  )
+}
+
+export function isSpaceTypeRequiredForSchool(
+  surveyType: SurveyType,
+  spaceType: string,
+  schoolClass: string | null | undefined,
+): boolean {
+  return lookupTableEntry(surveyType, spaceType, schoolClass)?.required ?? false
+}
+
+/** Required completed room surveys for this space type at the school level. 0 = optional / not scored. */
+export function minimumSurveyCountForSpaceType(
+  surveyType: SurveyType,
+  spaceType: string,
+  schoolClass: string | null | undefined,
+): number {
+  const entry = lookupTableEntry(surveyType, spaceType, schoolClass)
+  if (!entry) return 1
+  if (!entry.required) return 0
+  return Math.max(1, entry.minimumSurveyCount)
+}
+
+/** Optional (not-required) space types do not enter campus scoring. */
+export function spaceTypeCountsTowardCampusScore(
+  surveyType: SurveyType,
+  spaceType: string,
+  schoolClass: string | null | undefined,
+): boolean {
+  const entry = lookupTableEntry(surveyType, spaceType, schoolClass)
+  if (!entry) return true
+  return entry.required
+}
+
+export function scoreCodeForSpaceType(
+  surveyType: SurveyType,
+  spaceType: string,
+  schoolClass: string | null | undefined,
+): string | null {
+  return lookupTableEntry(surveyType, spaceType, schoolClass)?.scoreCode ?? null
+}
+
+export function surveyFocusForSurveyType(
+  surveyType: SurveyType,
+  schoolClass: string | null | undefined,
+): string | null {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const entry = TABLE_OF_SURVEY_ENTRIES.find(
+    (row) => row.surveyType === surveyType && (!level || row.schoolLevel === level),
+  )
+  return entry?.surveyFocus ?? null
+}
+
+/** Internal survey modules that share one sidebar entry (CSV survey focus area). */
+export function surveyTypesInSameNavGroup(
+  surveyType: SurveyType,
+  schoolClass: string | null | undefined,
+): SurveyType[] {
+  const focus = surveyFocusForSurveyType(surveyType, schoolClass)?.trim()
+  if (!focus) return [surveyType]
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const types = new Set<SurveyType>()
+  for (const entry of TABLE_OF_SURVEY_ENTRIES) {
+    if (entry.surveyFocus.trim() !== focus) continue
+    if (level && entry.schoolLevel !== level) continue
+    types.add(entry.surveyType)
+  }
+  const ordered = SURVEY_MODULE_ORDER.filter((type) => types.has(type))
+  return ordered.length ? ordered : [surveyType]
+}
+
+/** One sidebar item per CSV survey focus area. */
+export function surveyNavTypesForSchool(
+  schoolClass: string | null | undefined,
+): SurveyType[] {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const primaryTypeByFocus = new Map<string, SurveyType>()
+
+  for (const type of SURVEY_MODULE_ORDER) {
+    const hasEntry = TABLE_OF_SURVEY_ENTRIES.some(
+      (entry) => entry.surveyType === type && (!level || entry.schoolLevel === level),
+    )
+    if (!hasEntry) continue
+
+    const focus = surveyFocusForSurveyType(type, schoolClass)?.trim()
+    if (!focus) {
+      primaryTypeByFocus.set(`__${type}`, type)
+      continue
+    }
+
+    if (!primaryTypeByFocus.has(focus)) {
+      primaryTypeByFocus.set(focus, type)
+    }
+  }
+
+  const navTypes: SurveyType[] = []
+  for (const type of SURVEY_MODULE_ORDER) {
+    const focus = surveyFocusForSurveyType(type, schoolClass)?.trim()
+    if (!focus) {
+      if (primaryTypeByFocus.get(`__${type}`) === type) navTypes.push(type)
+      continue
+    }
+    if (primaryTypeByFocus.get(focus) === type) navTypes.push(type)
+  }
+
+  if (!navTypes.includes("closeout")) {
+    navTypes.push("closeout")
+  }
+
+  return navTypes
+}
+
+export function lookupTableEntryBySpaceType(
+  spaceType: string | null | undefined,
+  schoolClass: string | null | undefined,
+): TableOfSurveyEntry | null {
+  const level = schoolLevelFromSchoolClass(schoolClass)
+  const normalized = spaceType?.trim()
+  if (!normalized) return null
+
+  const candidates = spaceTypeLookupCandidates(normalized)
+
+  for (const candidate of candidates) {
+    const match = TABLE_OF_SURVEY_ENTRIES.find(
+      (entry) =>
+        entry.spaceType === candidate && (!level || entry.schoolLevel === level),
+    )
+    if (match) return match
+  }
+
+  return null
+}

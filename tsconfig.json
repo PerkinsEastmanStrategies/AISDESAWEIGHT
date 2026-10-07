@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@aisd/shared": ["./vendor/aisd-shared/src/index.ts"]
     }
   },
   "include": [
@@ -30,5 +31,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "scripts/**"]
+  "exclude": ["node_modules", "scripts/**", "vendor/aisd-shared/**/*DCA*"]
 }

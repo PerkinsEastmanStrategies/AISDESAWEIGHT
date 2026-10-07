@@ -10,6 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@aisd/shared": "file:./vendor/aisd-shared",
     "lucide-react": "^1.47.0",
     "next": "16.2.6",
     "react": "19.2.4",

@@ -44,4 +44,21 @@ create table if not exists esa_qa_scoring_notes (
 
 alter table esa_qa_scoring_notes enable row level security;
 
+-- Live walked-school snapshots. The QA portal refresh button writes here so new
+-- campuses can appear without a code deploy. Run this if the earlier tables exist.
+create table if not exists esa_qa_school_snapshots (
+  school_id          text primary key,
+  school_name        text not null,
+  campus_id          text not null default '',
+  school_class       text not null default 'ELEM',
+  school_level       text not null default 'ES',
+  room_count         integer not null default 0,
+  scored_unit_count  integer not null default 0,
+  exported_at        timestamptz not null default now(),
+  snapshot           jsonb not null,
+  updated_at         timestamptz not null default now()
+);
+
+alter table esa_qa_school_snapshots enable row level security;
+
 -- Service role (used by this app's API) bypasses RLS. No anon policies on purpose.
