@@ -18,8 +18,13 @@ function supabaseKey(): string {
   return key
 }
 
-function sourceSchoolId(schoolId: string): string {
-  return schoolId.replace(/-pilot-\d+$/i, "")
+function schoolIdLookups(schoolId: string): string[] {
+  const ids = [schoolId]
+  const withoutTest = schoolId.replace(/-test$/i, "")
+  if (withoutTest !== schoolId) ids.push(withoutTest)
+  const withoutPilot = withoutTest.replace(/-pilot-\d+$/i, "")
+  if (withoutPilot !== withoutTest) ids.push(withoutPilot)
+  return [...new Set(ids.filter(Boolean))]
 }
 
 function roomAliases(roomId: string, roomName: string): string[] {
@@ -115,7 +120,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "schoolId and roomId are required" }, { status: 400 })
     }
 
-    const schoolIds = [...new Set([schoolId, sourceSchoolId(schoolId)].filter(Boolean))]
+    const schoolIds = schoolIdLookups(schoolId)
     let sessions: SessionRow[] = []
     for (const id of schoolIds) {
       sessions = await restSelectAll<SessionRow>(

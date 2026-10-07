@@ -1,10 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react"
 import { DeltaChip, ScoreBadge, ScoreBar, WeightLabel } from "@/components/score-badge"
 import { scoreTone, formatScore } from "@/lib/format"
 import type { ScoreNode } from "@/lib/types"
+
+function containsRoom(node: ScoreNode, roomId: string | null | undefined): boolean {
+  if (!roomId) return false
+  if (node.roomId === roomId) return true
+  return (node.children ?? []).some((child) => containsRoom(child, roomId))
+}
 
 function siblingTotal(nodes: ScoreNode[]): number {
   return nodes.reduce((sum, node) => sum + (node.weight > 0 ? node.weight : 0), 0)
@@ -178,8 +184,16 @@ function GroupRow({
   selectedRoomId?: string | null
   onSelectRoom?: (roomId: string) => void
 }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(() => containsRoom(node, selectedRoomId))
+  const prevSelected = useRef(selectedRoomId)
   const children = node.children ?? []
+
+  useEffect(() => {
+    if (selectedRoomId && selectedRoomId !== prevSelected.current && containsRoom(node, selectedRoomId)) {
+      setOpen(true)
+    }
+    prevSelected.current = selectedRoomId
+  }, [node, selectedRoomId])
   const childTotal = siblingTotal(children)
   const compact = depth === 1 || depth >= 4
   const questions = children.filter((child) => child.kind === "question")

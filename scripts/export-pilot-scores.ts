@@ -33,6 +33,56 @@ const OUT_DIR = path.join(ROOT, "data")
 const SCHOOLS_DIR = path.join(ROOT, "public", "schools")
 const WALKED_SINCE = "2026-09-17T00:00:00.000Z"
 const MIN_RESPONSES = 100
+const TIME_ZONE = "America/Chicago"
+
+function tzOffsetMs(timeZone: string, date: Date): number {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hourCycle: "h23",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })
+      .formatToParts(date)
+      .map((part) => [part.type, part.value]),
+  )
+  const asUtc = Date.UTC(
+    Number(parts.year),
+    Number(parts.month) - 1,
+    Number(parts.day),
+    Number(parts.hour),
+    Number(parts.minute),
+    Number(parts.second),
+  )
+  return asUtc - date.getTime()
+}
+
+function startOfDayInTimeZone(timeZone: string, year: number, month: number, day: number): Date {
+  const utc = new Date(Date.UTC(year, month - 1, day, 12, 0, 0))
+  const offset = tzOffsetMs(timeZone, utc)
+  return new Date(Date.UTC(year, month - 1, day, 0, 0, 0) - offset)
+}
+
+function startOfTodayInTimeZone(timeZone: string, now = new Date()): Date {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-CA", {
+      timeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+      .formatToParts(now)
+      .map((part) => [part.type, part.value]),
+  )
+  return startOfDayInTimeZone(timeZone, Number(parts.year), Number(parts.month), Number(parts.day))
+}
+
+const WALKED_UNTIL = startOfTodayInTimeZone(TIME_ZONE).toISOString()
+const SNAPSHOT_AS_OF = new Date(Date.parse(WALKED_UNTIL) - 1).toISOString()
 
 const CLASS_TO_LEVEL: Record<string, "ES" | "MS" | "HS"> = {
   ELEM: "ES",
@@ -168,6 +218,17 @@ interface ResponseRow {
   room_id: string
   question_id: string
   value: unknown
+  created_at?: string | null
+  updated_at?: string | null
+  client_updated_at?: string | null
+}
+
+function responseAsOf(row: { created_at?: string | null; updated_at?: string | null; client_updated_at?: string | null }): string {
+  return row.client_updated_at || row.updated_at || row.created_at || ""
+}
+
+function isBeforeCutoff(stamp: string | null | undefined): boolean {
+  return Boolean(stamp) && stamp < WALKED_UNTIL
 }
 
 function asResponseValue(value: unknown): string | string[] {
@@ -380,19 +441,23 @@ async function discoverWalkedSchools(): Promise<ExportSchool[]> {
     school_name: string
     updated_at: string
   }>("esa_survey_sessions", "select=id,school_id,campus_id,school_name,updated_at")
-  const responses = await restSelectAll<{ survey_session_id: string }>(
-    "esa_question_responses",
-    "select=survey_session_id",
-  )
+  const responses = await restSelectAll<{
+    survey_session_id: string
+    created_at: string | null
+    updated_at: string | null
+    client_updated_at: string | null
+  }>("esa_question_responses", "select=survey_session_id,created_at,updated_at,client_updated_at")
   const schoolById = new Map(schools.map((school) => [school.school_id, school]))
   const responseCount = new Map<string, number>()
   for (const row of responses) {
+    if (!isBeforeCutoff(responseAsOf(row))) continue
     responseCount.set(row.survey_session_id, (responseCount.get(row.survey_session_id) ?? 0) + 1)
   }
 
   const bySchool = new Map<string, { responses: number; latest: string }>()
   for (const session of sessions) {
     if (session.updated_at < WALKED_SINCE) continue
+    if (!isBeforeCutoff(session.updated_at) && (responseCount.get(session.id) ?? 0) === 0) continue
     const school = schoolById.get(session.school_id)
     const schoolClass = school?.school_class ?? ""
     if (!CLASS_TO_LEVEL[schoolClass]) continue
@@ -436,7 +501,7 @@ async function exportSchool(school: ExportSchool) {
     console.warn(`No sessions for ${school.schoolId}`)
     return {
       ...school,
-      exportedAt: new Date().toISOString(),
+      exportedAt: SNAPSHOT_AS_OF,
       roomCount: 0,
       scoredUnitCount: 0,
       rooms: [],
@@ -444,16 +509,17 @@ async function exportSchool(school: ExportSchool) {
   }
 
   const sessionIds = sessions.map((s) => s.id)
-  const [rooms, responses] = await Promise.all([
+  const [rooms, allResponses] = await Promise.all([
     restSelectAll<RoomRow>(
       "esa_survey_rooms",
       `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,room_number,school_room_number,room_type,grade_type,neighborhood,area_sqft,deferred_to_closeout,source_survey_type`,
     ),
     restSelectAll<ResponseRow>(
       "esa_question_responses",
-      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,question_id,value`,
+      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,question_id,value,created_at,updated_at,client_updated_at`,
     ),
   ])
+  const responses = allResponses.filter((row) => isBeforeCutoff(responseAsOf(row)))
 
   const sessionType = new Map(sessions.map((s) => [s.id, s.survey_type]))
   const responsesByRoom = new Map<string, ResponseRow[]>()
@@ -507,7 +573,7 @@ async function exportSchool(school: ExportSchool) {
 
   return {
     ...school,
-    exportedAt: new Date().toISOString(),
+    exportedAt: SNAPSHOT_AS_OF,
     roomCount: kept.length,
     scoredUnitCount: kept.reduce((sum, room) => sum + room.units.length, 0),
     rooms: kept,
@@ -591,17 +657,18 @@ async function main() {
   const byLevel = { ES: 0, MS: 0, HS: 0 }
   for (const school of schools) byLevel[school.schoolLevel] += 1
   console.log(
-    `Found ${schools.length} walked schools since ${WALKED_SINCE.slice(0, 10)} (ES ${byLevel.ES}, MS ${byLevel.MS}, HS ${byLevel.HS})`,
+    `Found ${schools.length} walked schools ${WALKED_SINCE.slice(0, 10)} through end of ${new Date(Date.parse(WALKED_UNTIL) - 1).toLocaleDateString("en-CA", { timeZone: TIME_ZONE })} ${TIME_ZONE} (ES ${byLevel.ES}, MS ${byLevel.MS}, HS ${byLevel.HS})`,
   )
 
   const keep = new Set(schools.map((school) => `${school.schoolId}.json`))
   for (const file of fs.readdirSync(SCHOOLS_DIR)) {
-    if (file.endsWith(".json") && file !== "index.json" && !keep.has(file)) {
-      try {
-        fs.unlinkSync(path.join(SCHOOLS_DIR, file))
-      } catch {
-        /* file may be locked by the dev server */
-      }
+    if (!file.endsWith(".json") || file === "index.json" || file.endsWith("-test.json") || keep.has(file)) {
+      continue
+    }
+    try {
+      fs.unlinkSync(path.join(SCHOOLS_DIR, file))
+    } catch {
+      /* file may be locked by the dev server */
     }
   }
   const legacyDir = path.join(OUT_DIR, "schools")
@@ -640,6 +707,31 @@ async function main() {
     console.log(
       `${school.schoolName}: ${snapshot.roomCount} rooms, ${snapshot.scoredUnitCount} scored units -> ${file}`,
     )
+  }
+
+  for (const file of fs.readdirSync(SCHOOLS_DIR)) {
+    if (!file.endsWith("-test.json")) continue
+    const snapshot = JSON.parse(fs.readFileSync(path.join(SCHOOLS_DIR, file), "utf8")) as {
+      schoolId: string
+      schoolName: string
+      campusId: string
+      schoolClass: string
+      schoolLevel: "ES" | "MS" | "HS"
+      roomCount: number
+      scoredUnitCount: number
+      exportedAt: string
+    }
+    if (index.some((entry) => entry.schoolId === snapshot.schoolId)) continue
+    index.push({
+      schoolId: snapshot.schoolId,
+      schoolName: snapshot.schoolName,
+      campusId: snapshot.campusId,
+      schoolClass: snapshot.schoolClass,
+      schoolLevel: snapshot.schoolLevel,
+      roomCount: snapshot.roomCount,
+      scoredUnitCount: snapshot.scoredUnitCount,
+      exportedAt: snapshot.exportedAt,
+    })
   }
 
   const levelOrder = { ES: 0, MS: 1, HS: 2 }

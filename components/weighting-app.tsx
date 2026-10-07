@@ -11,19 +11,14 @@ import { SchoolQaPanel } from "@/components/school-qa-panel"
 import { OVERALL_SLICE, SchoolScoreBubbles } from "@/components/school-score-bubbles"
 import { ScoreBadge, DeltaChip } from "@/components/score-badge"
 import { WeightEditor } from "@/components/weight-editor"
-import { isObservational } from "@/lib/normalize"
 import {
   discardQaRoom,
   loadDiscardedRooms,
   omitDiscardedRooms,
   type DiscardedRoom,
 } from "@/lib/qa-discard"
-import {
-  handoffForSchool,
-  loadQaHandoffs,
-  upsertQaHandoff,
-  type QaHandoff,
-} from "@/lib/qa-handoff"
+import { handoffForSchool, type QaHandoff } from "@/lib/qa-handoff"
+import { fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
 import { scoreSchool } from "@/lib/scoring"
 import {
   alignSnapshotToWeights,
@@ -147,6 +142,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const [qaRoomId, setQaRoomId] = useState<string | null>(null)
   const [reportSchoolId, setReportSchoolId] = useState("")
   const [handoffs, setHandoffs] = useState<QaHandoff[]>([])
+  const [handoffError, setHandoffError] = useState<string | null>(null)
   const [discardedRooms, setDiscardedRooms] = useState<DiscardedRoom[]>([])
   const [weightFiles, setWeightFiles] = useState<Partial<Record<CategorySchemeId, WeightFile>>>({})
   const [overridesByScheme, setOverridesByScheme] = useState(emptyOverrideMap)
@@ -159,8 +155,15 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   }
 
   useEffect(() => {
-    setHandoffs(loadQaHandoffs())
     setDiscardedRooms(loadDiscardedRooms())
+    fetchQaHandoffs()
+      .then((rows) => {
+        setHandoffs(rows)
+        setHandoffError(null)
+      })
+      .catch((error) => {
+        setHandoffError(error instanceof Error ? error.message : "Could not load AISD QA handoffs")
+      })
   }, [])
 
   const activeWeights = weightFiles[schemeId] ?? null
@@ -255,16 +258,6 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
       .filter((school): school is SchoolSnapshot => Boolean(school))
       .map((school) => scoreSchool(prepareSnapshot(school), resolver))
   }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms])
-  const scoringCategories = useMemo(() => {
-    const seen = new Map<string, string>()
-    for (const card of fleetCards) {
-      for (const category of card.categories) {
-        if (isObservational(category.label)) continue
-        seen.set(category.label, category.label)
-      }
-    }
-    return [...seen.values()].sort((a, b) => a.localeCompare(b))
-  }, [fleetCards])
   const qaAligned = useMemo(() => {
     if (!showingQaCampus || !levelWeights) return null
     const snapshot = snapshots[activeQaSchoolId]
@@ -311,17 +304,16 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     setQaPane("campus")
   }
 
-  function moveToAisdQa(movedBy: string) {
+  async function moveToAisdQa(movedBy: string) {
     const school = levelOptions.find((item) => item.schoolId === qaSchoolId)
     if (!school) return
-    setHandoffs(
-      upsertQaHandoff({
-        schoolId: school.schoolId,
-        schoolName: school.schoolName,
-        movedBy,
-        movedAt: new Date().toISOString(),
-      }),
-    )
+    const saved = await saveQaHandoffLive({
+      schoolId: school.schoolId,
+      schoolName: school.schoolName,
+      movedBy,
+      movedAt: new Date().toISOString(),
+    })
+    setHandoffs((current) => [...current.filter((item) => item.schoolId !== saved.schoolId), saved])
   }
 
   function discardActiveRoom(roomId: string) {
@@ -517,9 +509,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               ) : (
                 <SchoolScoreBubbles
                   cards={fleetCards}
-                  sliceId={sliceId}
+                  sliceId={sliceId.startsWith("category:") ? OVERALL_SLICE : sliceId}
                   focusAreas={focusAreaOrder}
-                  scoringCategories={scoringCategories}
                   onSliceChange={setSliceId}
                   onOpenSchool={openQaCampus}
                   loading={fleetPending}
@@ -560,6 +551,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                 ) : null}
               </div>
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
+              {handoffError ? <p className="text-sm text-red-600">{handoffError}</p> : null}
               {activeQaSchoolId && !qaCard ? <p className="text-sm text-slate-500">Loading campus…</p> : null}
               {view === "aisd" && qaCard && activeHandoff ? <AisdHandoffBanner handoff={activeHandoff} /> : null}
               {qaCard && qaAligned ? (
@@ -570,6 +562,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   onSelectRoom={setQaRoomId}
                   allowDiscard={view === "internal"}
                   onDiscardRoom={view === "internal" ? discardActiveRoom : undefined}
+                  allowScoringNotes={view === "aisd"}
                 />
               ) : null}
               {view === "internal" && qaCard ? (

@@ -15,16 +15,18 @@ export function QaHandoffPanel({
 }: {
   schoolName: string
   existing?: QaHandoff
-  onSubmit: (movedBy: string) => void
+  onSubmit: (movedBy: string) => void | Promise<void>
 }) {
   const [movedBy, setMovedBy] = useState("")
   const [approved, setApproved] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [saving, setSaving] = useState(false)
 
   useEffect(() => {
     setMovedBy(existing?.movedBy || loadSavedEditorName())
     setApproved(false)
     setError(null)
+    setSaving(false)
   }, [existing?.movedBy, schoolName])
 
   if (existing) {
@@ -45,7 +47,7 @@ export function QaHandoffPanel({
     )
   }
 
-  function submit() {
+  async function submit() {
     const name = movedBy.trim()
     if (!approved) {
       setError("Confirm that you have reviewed and approve this campus before moving it.")
@@ -56,7 +58,14 @@ export function QaHandoffPanel({
       return
     }
     saveEditorName(name)
-    onSubmit(name)
+    setSaving(true)
+    setError(null)
+    try {
+      await onSubmit(name)
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not move this campus to AISD QA.")
+      setSaving(false)
+    }
   }
 
   return (
@@ -99,10 +108,11 @@ export function QaHandoffPanel({
       {error ? <p className="mt-2 text-sm text-red-600">{error}</p> : null}
       <button
         type="button"
-        onClick={submit}
-        className="mt-4 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+        onClick={() => void submit()}
+        disabled={saving}
+        className="mt-4 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 disabled:bg-slate-400"
       >
-        Move to AISD QA
+        {saving ? "Saving…" : "Move to AISD QA"}
       </button>
     </div>
   )

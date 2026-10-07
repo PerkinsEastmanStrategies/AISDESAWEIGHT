@@ -1,6 +1,6 @@
 "use client"
 
-import { useLayoutEffect, useRef, type ReactNode } from "react"
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
 import { Printer } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
 import { SCORE_FAIR, SCORE_GOOD, barTone, scoreTone } from "@/lib/format"
@@ -17,6 +17,7 @@ import {
   spaceNodes,
   spaceTypeCategoryScore,
 } from "@/lib/report"
+import { fetchScoringNotes, observationLines } from "@/lib/qa-scoring-notes"
 import type { SchoolIndexEntry, SchoolLevel, SchoolScorecard, ScoreNode } from "@/lib/types"
 
 function polar(index: number, total: number, value: number, cx: number, cy: number, radius: number) {
@@ -99,17 +100,24 @@ function ReportBar({
   )
 }
 
-function Observations({ title = "Observations" }: { title?: string }) {
+function Observations({
+  title = "Observations",
+  lines,
+}: {
+  title?: string
+  lines: string[]
+}) {
+  const slots = [0, 1, 2].map((index) => lines[index]?.trim() || "")
   return (
     <section className="rounded-2xl border border-amber-200 bg-amber-50/80 px-4 py-3">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-800">{title}</p>
       <ol className="mt-3 space-y-2">
-        {[1, 2, 3].map((n) => (
-          <li key={n} className="flex gap-2 text-[13px] leading-snug text-slate-600">
+        {slots.map((line, index) => (
+          <li key={index} className="flex gap-2 text-[13px] leading-snug text-slate-600">
             <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-[11px] font-bold text-amber-950">
-              {n}
+              {index + 1}
             </span>
-            <span>Observations will be written here</span>
+            <span>{line || "Observations will be written here"}</span>
           </li>
         ))}
       </ol>
@@ -320,6 +328,28 @@ export function CampusReport({
   const totalPages = 2 + focuses.length
   const prepared = formatPreparedDate()
   const scoresAsOf = formatPreparedDate(school.exportedAt)
+  const [observationItems, setObservationItems] = useState<string[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+    fetchScoringNotes(card.schoolId)
+      .then((notes) => {
+        if (!cancelled) {
+          setObservationItems(
+            observationLines(
+              notes,
+              orderedFocusAreas(card, axisOrder).map((area) => area.label),
+            ),
+          )
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setObservationItems([])
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [axisOrder, card])
 
   return (
     <div className="report-print-root space-y-4 print:space-y-0">
@@ -372,7 +402,7 @@ export function CampusReport({
             </p>
             <p className="mt-1 text-sm text-slate-500">Weighted campus score from field ESA</p>
           </div>
-          <Observations />
+          <Observations lines={observationItems} />
         </div>
 
         <div className="mt-8">
@@ -488,7 +518,7 @@ export function CampusReport({
             </div>
 
             <div className="mt-5">
-              <Observations />
+              <Observations lines={observationItems} />
             </div>
 
             <div className="mt-5">

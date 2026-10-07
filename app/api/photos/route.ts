@@ -44,8 +44,24 @@ function publicUrl(path: string): string {
   return `${supabaseUrl()}/storage/v1/object/public/${encodeURIComponent(photosBucket())}/${encodedPath}`
 }
 
-function sourceCampusId(campusId: string): string {
-  return campusId.replace(/-(PILOT(?:-\d+)?(?:-MERGE)?|TEST)$/i, "")
+function campusIdLookups(campusId: string): string[] {
+  const ids = [campusId]
+  let current = campusId
+  const suffix = /-(PILOT(?:-\d+)?(?:-MERGE)?|TEST(?:-ES|-MS|-HS)?)$/i
+  while (suffix.test(current)) {
+    current = current.replace(suffix, "")
+    ids.push(current)
+  }
+  return [...new Set(ids.filter(Boolean))]
+}
+
+function schoolIdLookups(schoolId: string): string[] {
+  const ids = [schoolId]
+  const withoutTest = schoolId.replace(/-test$/i, "")
+  if (withoutTest !== schoolId) ids.push(withoutTest)
+  const withoutPilot = withoutTest.replace(/-pilot-\d+$/i, "")
+  if (withoutPilot !== withoutTest) ids.push(withoutPilot)
+  return [...new Set(ids.filter(Boolean))]
 }
 
 function roomAliases(roomId: string, roomName: string): string[] {
@@ -142,9 +158,16 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "campusId, schoolId, and roomId are required" }, { status: 400 })
     }
 
-    const prefixes = [{ campusId, schoolId }]
-    const sourceId = sourceCampusId(campusId)
-    if (sourceId !== campusId) prefixes.push({ campusId: sourceId, schoolId })
+    const prefixes = []
+    const seenPrefix = new Set()
+    for (const nextCampus of campusIdLookups(campusId)) {
+      for (const nextSchool of schoolIdLookups(schoolId)) {
+        const key = `${nextCampus}::${nextSchool}`
+        if (seenPrefix.has(key)) continue
+        seenPrefix.add(key)
+        prefixes.push({ campusId: nextCampus, schoolId: nextSchool })
+      }
+    }
 
     const aliases = roomAliases(roomId, roomName)
     const seen = new Set<string>()

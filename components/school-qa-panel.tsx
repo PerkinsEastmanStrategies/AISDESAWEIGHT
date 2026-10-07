@@ -11,6 +11,7 @@ import {
   useRoomPhotos,
 } from "@/components/room-photos"
 import { QaAnswerMatrix } from "@/components/qa-answer-matrix"
+import { AisdScoringNotes } from "@/components/aisd-scoring-notes"
 import { QaDiscardDialog } from "@/components/qa-discard-dialog"
 import { RoomQuestionReview } from "@/components/room-question-review"
 import { ScoreBadge } from "@/components/score-badge"
@@ -18,14 +19,8 @@ import { ScoreTree } from "@/components/score-tree"
 import { useRoomNotes } from "@/components/use-room-notes"
 import { answerConsistency } from "@/lib/answer-consistency"
 import { canonicalName } from "@/lib/normalize"
-import {
-  editsForRoom,
-  loadQaEdits,
-  saveEditorName,
-  saveQaEdits,
-  upsertQaEdit,
-  type QaEditRecord,
-} from "@/lib/qa-edits"
+import { editsForRoom, saveEditorName, type QaEditRecord } from "@/lib/qa-edits"
+import { applyEditsToRooms, fetchQaEdits, saveQaEditLive } from "@/lib/qa-live"
 import type { SchoolScorecard, SchoolSnapshot, ScoreNode } from "@/lib/types"
 
 function findRoomNode(nodes: ScoreNode[], roomId: string): ScoreNode | null {
@@ -56,6 +51,7 @@ export function SchoolQaPanel({
   onSelectRoom,
   allowDiscard = false,
   onDiscardRoom,
+  allowScoringNotes = false,
 }: {
   card: SchoolScorecard
   snapshot: SchoolSnapshot
@@ -63,6 +59,7 @@ export function SchoolQaPanel({
   onSelectRoom: (roomId: string | null) => void
   allowDiscard?: boolean
   onDiscardRoom?: (roomId: string) => void
+  allowScoringNotes?: boolean
 }) {
   const [discardOpen, setDiscardOpen] = useState(false)
   const focusAreas = card.focusAreas
@@ -102,7 +99,6 @@ export function SchoolQaPanel({
   const selectedSnapshotRoom = selectedRoomId
     ? snapshot.rooms.find((room) => room.roomId === selectedRoomId)
     : null
-  const categoryNodes = selectedRoomNode?.children?.length ? selectedRoomNode.children : card.categories
   const { photos, loading: photosLoading, error: photosError } = useRoomPhotos({
     campusId: card.campusId,
     schoolId: card.schoolId,
@@ -122,22 +118,43 @@ export function SchoolQaPanel({
     const used = new Set(selectedSnapshotRoom?.units.map((unit) => unit.questionId) ?? [])
     return Object.entries(notes.comments).filter(([questionId]) => !used.has(questionId))
   }, [notes.comments, selectedSnapshotRoom])
+  const [activePhotoUrl, setActivePhotoUrl] = useState<string | null>(null)
+  const [qaEdits, setQaEdits] = useState<QaEditRecord[]>([])
+  const [editsError, setEditsError] = useState<string | null>(null)
+  const roomsWithEdits = useMemo(
+    () => applyEditsToRooms(snapshot.rooms, qaEdits),
+    [snapshot.rooms, qaEdits],
+  )
+  const selectedEditedRoom = selectedRoomId
+    ? (roomsWithEdits.find((room) => room.roomId === selectedRoomId) ?? selectedSnapshotRoom)
+    : null
   const matrixRooms = useMemo(() => {
     if (selectedRoomId || !selectedSpace?.label) return []
     const wanted = canonicalName(selectedSpace.label)
-    return snapshot.rooms.filter(
+    return roomsWithEdits.filter(
       (room) => !room.markedAbsent && canonicalName(room.spaceType) === wanted,
     )
-  }, [selectedRoomId, selectedSpace?.label, snapshot.rooms])
+  }, [selectedRoomId, selectedSpace?.label, roomsWithEdits])
   const matrixRows = useMemo(() => answerConsistency(matrixRooms), [matrixRooms])
   const showAnswerMatrix = !selectedRoomId && matrixRooms.length > 1
-  const [activePhotoUrl, setActivePhotoUrl] = useState<string | null>(null)
-  const [qaEdits, setQaEdits] = useState<QaEditRecord[]>([])
   const roomEdits = selectedRoomId ? editsForRoom(qaEdits, card.schoolId, selectedRoomId) : []
 
   useEffect(() => {
-    setQaEdits(loadQaEdits())
-  }, [])
+    let cancelled = false
+    fetchQaEdits(card.schoolId)
+      .then((edits) => {
+        if (cancelled) return
+        setQaEdits(edits)
+        setEditsError(null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        setEditsError(error instanceof Error ? error.message : "Could not load QA edits")
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [card.schoolId])
 
   useEffect(() => {
     setActivePhotoUrl(null)
@@ -155,7 +172,7 @@ export function SchoolQaPanel({
     onSelectRoom(null)
   }
 
-  function commitEdit(input: {
+  async function commitEdit(input: {
     questionId: string
     selected: string[]
     previous: string[]
@@ -164,18 +181,8 @@ export function SchoolQaPanel({
   }) {
     if (!selectedRoomId) return
     saveEditorName(input.editor)
-    const same = [...input.selected].sort().join("\u0000") === [...input.previous].sort().join("\u0000")
-    if (same) {
-      const next = qaEdits.filter(
-        (item) =>
-          !(item.schoolId === card.schoolId && item.roomId === selectedRoomId && item.questionId === input.questionId),
-      )
-      setQaEdits(next)
-      saveQaEdits(next)
-      return
-    }
-    setQaEdits(
-      upsertQaEdit({
+    const saved = await saveQaEditLive(
+      {
         schoolId: card.schoolId,
         roomId: selectedRoomId,
         questionId: input.questionId,
@@ -184,8 +191,17 @@ export function SchoolQaPanel({
         editor: input.editor,
         reason: input.reason,
         editedAt: new Date().toISOString(),
-      }),
+      },
+      selectedSnapshotRoom?.roomName,
     )
+    setQaEdits((current) => [
+      ...current.filter(
+        (item) =>
+          !(item.schoolId === saved.schoolId && item.roomId === saved.roomId && item.questionId === saved.questionId),
+      ),
+      saved,
+    ])
+    setEditsError(null)
   }
 
   return (
@@ -197,6 +213,7 @@ export function SchoolQaPanel({
             Pick a focus area and space type. If more than one room of that type was assessed, compare answers
             before opening a room.
           </p>
+          {editsError ? <p className="mt-2 text-sm text-rose-700">{editsError}</p> : null}
         </div>
         <ScoreBadge score={card.existingOnly} />
       </div>
@@ -353,7 +370,7 @@ export function SchoolQaPanel({
                   Click an answer to edit it. You will be asked who is making the change and why. Nothing is saved to ESA yet.
                 </p>
                 <RoomQuestionReview
-                  units={selectedSnapshotRoom.units}
+                  units={selectedEditedRoom?.units ?? selectedSnapshotRoom.units}
                   photosByQuestion={photosByQuestion}
                   notesByQuestion={notes.comments}
                   onOpenPhoto={setActivePhotoUrl}
@@ -414,19 +431,22 @@ export function SchoolQaPanel({
             onSelectRoom={onSelectRoom}
           />
           <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
-            <h3 className="mb-2 text-sm font-semibold text-slate-900">
-              {selectedRoomNode ? `${selectedRoomNode.label} categories` : "Campus category scores"}
-            </h3>
+            <h3 className="mb-2 text-sm font-semibold text-slate-900">Scoring focus areas</h3>
             <ScoreTree
-              nodes={categoryNodes}
-              empty="No category scores yet."
-              hint={
-                selectedRoomNode
-                  ? "Category → subcategory → question for the selected room."
-                  : "Select a room to drill into that space. Campus-level categories are shown until then."
-              }
+              nodes={focusAreas}
+              empty="No focus area scores yet."
+              hint="Focus area → space type → room → category. Open a row to drill down."
+              selectedRoomId={selectedRoomId}
+              onSelectRoom={(roomId) => onSelectRoom(roomId)}
             />
           </div>
+          {allowScoringNotes ? (
+            <AisdScoringNotes
+              schoolId={card.schoolId}
+              overallScore={card.existingOnly}
+              focusAreas={focusAreas}
+            />
+          ) : null}
         </div>
       </div>
     </div>

@@ -20,12 +20,13 @@ export function QaQuestionEditDialog({
 }: {
   pending: PendingQuestionEdit
   onCancel: () => void
-  onConfirm: (input: { editor: string; reason: string; selected: string[] }) => void
+  onConfirm: (input: { editor: string; reason: string; selected: string[] }) => void | Promise<void>
 }) {
   const [editor, setEditor] = useState(loadSavedEditorName())
   const [reason, setReason] = useState("")
   const [selected, setSelected] = useState<string[]>(pending.selected)
   const [error, setError] = useState("")
+  const [saving, setSaving] = useState(false)
   const stampedAt = formatEditTimestamp(new Date().toISOString())
 
   useEffect(() => {
@@ -33,6 +34,7 @@ export function QaQuestionEditDialog({
     setReason("")
     setSelected(pending.selected)
     setError("")
+    setSaving(false)
   }, [pending])
 
   useEffect(() => {
@@ -52,14 +54,21 @@ export function QaQuestionEditDialog({
     })
   }
 
-  function confirm() {
+  async function confirm() {
     const name = editor.trim()
     const why = reason.trim()
     if (!name || !why) {
       setError("Enter who is making the edit and a reason for this question.")
       return
     }
-    onConfirm({ editor: name, reason: why, selected })
+    setSaving(true)
+    setError("")
+    try {
+      await onConfirm({ editor: name, reason: why, selected })
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not save this edit.")
+      setSaving(false)
+    }
   }
 
   return (
@@ -76,7 +85,7 @@ export function QaQuestionEditDialog({
         </h3>
         <p className="mt-1 font-mono text-[11px] text-slate-400">{pending.questionId}</p>
         <p className="mt-3 text-xs text-slate-500">
-          Timestamp {stampedAt}. This stays in the browser until ESA save is connected.
+          Timestamp {stampedAt}. Saving writes this answer to ESA and keeps the editor, reason, and time.
         </p>
 
         <div className="mt-4 space-y-2">
@@ -128,16 +137,18 @@ export function QaQuestionEditDialog({
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100"
+            disabled={saving}
+            className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 disabled:opacity-50"
           >
             Cancel
           </button>
           <button
             type="button"
-            onClick={confirm}
-            className="rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
+            onClick={() => void confirm()}
+            disabled={saving}
+            className="rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800 disabled:bg-slate-400"
           >
-            Save this edit
+            {saving ? "Saving…" : "Save this edit"}
           </button>
         </div>
       </div>

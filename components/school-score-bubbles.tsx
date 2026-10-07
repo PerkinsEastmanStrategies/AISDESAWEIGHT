@@ -145,7 +145,6 @@ export function SchoolScoreBubbles({
   cards,
   sliceId,
   focusAreas,
-  scoringCategories,
   onSliceChange,
   onOpenSchool,
   loading,
@@ -156,7 +155,6 @@ export function SchoolScoreBubbles({
   cards: SchoolScorecard[]
   sliceId: string
   focusAreas: string[]
-  scoringCategories: string[]
   onSliceChange: (id: string) => void
   onOpenSchool?: (schoolId: string) => void
   loading?: boolean
@@ -210,11 +208,8 @@ export function SchoolScoreBubbles({
   const meanX = mean == null ? null : scoreToX(mean, width)
   const missing = rows.length - scored.length
   const activeFocus = sliceId.startsWith("focus:") ? sliceId.slice(6) : null
-  const activeCategory = sliceId.startsWith("category:") ? sliceId.slice(9) : null
   const sliceTitle =
-    sliceId === OVERALL_SLICE
-      ? "existing spaces"
-      : shortLabel(activeFocus ?? activeCategory ?? "selected category")
+    sliceId === OVERALL_SLICE ? "existing spaces" : shortLabel(activeFocus ?? "selected focus area")
 
   return (
     <div className="flex h-[calc(100dvh-176px)] min-h-[640px] flex-col space-y-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5">
@@ -243,7 +238,7 @@ export function SchoolScoreBubbles({
 
       <div>
         <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-          Survey category
+          Scoring focus area
         </span>
         <div className="flex flex-wrap gap-1.5">
           <SliceChip active={sliceId === OVERALL_SLICE} onClick={() => onSliceChange(OVERALL_SLICE)}>
@@ -259,20 +254,6 @@ export function SchoolScoreBubbles({
             </SliceChip>
           ))}
         </div>
-        {scoringCategories.length > 0 ? (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {scoringCategories.map((label) => (
-              <SliceChip
-                key={`category:${label}`}
-                active={sliceId === `category:${label}`}
-                onClick={() => onSliceChange(`category:${label}`)}
-                muted
-              >
-                {shortLabel(label)}
-              </SliceChip>
-            ))}
-          </div>
-        ) : null}
       </div>
 
       <div className="grid min-h-0 flex-1 gap-4 xl:grid-cols-[minmax(0,1fr)_260px] xl:grid-rows-[minmax(0,1fr)]">
@@ -416,23 +397,17 @@ function SliceChip({
   active,
   onClick,
   children,
-  muted = false,
 }: {
   active: boolean
   onClick: () => void
   children: ReactNode
-  muted?: boolean
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${
-        active
-          ? "bg-slate-900 text-white"
-          : muted
-            ? "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50"
-            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+        active ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
       }`}
     >
       {children}

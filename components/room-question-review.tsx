@@ -211,7 +211,13 @@ export function RoomQuestionReview({
   notesByQuestion?: Record<string, string>
   onOpenPhoto?: (url: string) => void
   edits?: QaEditRecord[]
-  onCommitEdit?: (input: { questionId: string; selected: string[]; previous: string[]; editor: string; reason: string }) => void
+  onCommitEdit?: (input: {
+    questionId: string
+    selected: string[]
+    previous: string[]
+    editor: string
+    reason: string
+  }) => void | Promise<void>
 }) {
   const [catalog, setCatalog] = useState<QuestionOptionCatalog>({})
   const [pending, setPending] = useState<PendingQuestionEdit | null>(null)
@@ -376,8 +382,8 @@ export function RoomQuestionReview({
         <QaQuestionEditDialog
           pending={pending}
           onCancel={() => setPending(null)}
-          onConfirm={({ editor, reason, selected }) => {
-            onCommitEdit?.({
+          onConfirm={async ({ editor, reason, selected }) => {
+            await onCommitEdit?.({
               questionId: pending.questionId,
               selected,
               previous: pending.previous,
