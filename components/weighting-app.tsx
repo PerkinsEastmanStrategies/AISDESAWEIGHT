@@ -5,6 +5,7 @@ import { Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, RefreshCw,
 import { AisdLogo } from "@/components/aisd-logo"
 import { CampusReport } from "@/components/campus-report"
 import { CategorySpider } from "@/components/category-spider"
+import { SchoolCompareRadial } from "@/components/school-compare-radial"
 import { AisdHandoffBanner, QaHandoffPanel } from "@/components/qa-handoff-panel"
 import { SchoolPanel } from "@/components/school-panel"
 import { SchoolQaPanel } from "@/components/school-qa-panel"
@@ -555,23 +556,32 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   </p>
                 </div>
               ) : (
-                <SchoolScoreBubbles
-                  cards={fleetCards}
-                  sliceId={sliceId.startsWith("category:") ? OVERALL_SLICE : sliceId}
-                  focusAreas={focusAreaOrder}
-                  onSliceChange={setSliceId}
-                  onOpenSchool={openQaCampus}
-                  loading={fleetPending}
-                  levelLabel={LEVELS.find((level) => level.id === schoolLevel)?.label ?? "Schools"}
-                  openHint={
-                    view === "aisd" ? "Click to open in AISD QA" : "Click to open in Internal QA"
-                  }
-                  emptyMessage={
-                    view === "aisd"
-                      ? "No scored AISD QA campuses for this filter."
-                      : "No scored campuses for this filter."
-                  }
-                />
+                <>
+                  <SchoolScoreBubbles
+                    cards={fleetCards}
+                    sliceId={sliceId.startsWith("category:") ? OVERALL_SLICE : sliceId}
+                    focusAreas={focusAreaOrder}
+                    onSliceChange={setSliceId}
+                    onOpenSchool={openQaCampus}
+                    loading={fleetPending}
+                    levelLabel={LEVELS.find((level) => level.id === schoolLevel)?.label ?? "Schools"}
+                    openHint={
+                      view === "aisd" ? "Click to open in AISD QA" : "Click to open in Internal QA"
+                    }
+                    emptyMessage={
+                      view === "aisd"
+                        ? "No scored AISD QA campuses for this filter."
+                        : "No scored campuses for this filter."
+                    }
+                  />
+                  <SchoolCompareRadial
+                    key={`${view}-${schoolLevel}`}
+                    options={fleetSource}
+                    cards={fleetCards}
+                    axisOrder={focusAreaOrder}
+                    loading={fleetPending}
+                  />
+                </>
               )}
             </>
           ) : showingQaCampus ? (
@@ -585,7 +595,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                       ? { ...school, schoolName: `${school.schoolName} · AISD QA` }
                       : school,
                   )}
-                  hiddenId=""
+                  hiddenIds={[]}
                   onChange={(id) => {
                     if (view === "aisd") setAisdSchoolId(id)
                     else setQaSchoolId(id)
@@ -629,7 +639,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   label="School to report"
                   value={reportSchoolId}
                   options={levelOptions}
-                  hiddenId=""
+                  hiddenIds={[]}
                   onChange={setReportSchoolId}
                 />
                 <p className="mt-2 text-xs text-slate-500">
@@ -656,14 +666,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     label="School A"
                     value={leftId}
                     options={levelOptions}
-                    hiddenId={rightId}
+                    hiddenIds={[rightId]}
                     onChange={setLeftId}
                   />
                   <SchoolSelect
                     label="School B"
                     value={rightId}
                     options={levelOptions}
-                    hiddenId={leftId}
+                    hiddenIds={[leftId]}
                     onChange={setRightId}
                   />
                 </div>
@@ -734,13 +744,13 @@ function SchoolSelect({
   label,
   value,
   options,
-  hiddenId,
+  hiddenIds,
   onChange,
 }: {
   label: string
   value: string
   options: SchoolIndexEntry[]
-  hiddenId: string
+  hiddenIds: string[]
   onChange: (value: string) => void
 }) {
   return (
@@ -755,7 +765,11 @@ function SchoolSelect({
       >
         <option value="">Select a school</option>
         {options.map((school) => (
-          <option key={school.schoolId} value={school.schoolId} disabled={school.schoolId === hiddenId}>
+          <option
+            key={school.schoolId}
+            value={school.schoolId}
+            disabled={hiddenIds.includes(school.schoolId)}
+          >
             {school.schoolName}
           </option>
         ))}

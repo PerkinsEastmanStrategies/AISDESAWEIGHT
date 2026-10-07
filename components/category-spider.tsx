@@ -4,8 +4,10 @@ import { formatScore } from "@/lib/format"
 import type { SchoolScorecard } from "@/lib/types"
 
 const SERIES = [
-  { stroke: "#2563eb", fill: "rgba(37, 99, 235, 0.28)" },
-  { stroke: "#0f766e", fill: "rgba(15, 118, 110, 0.22)" },
+  { stroke: "#2563eb", fill: "rgba(37, 99, 235, 0.22)" },
+  { stroke: "#0f766e", fill: "rgba(15, 118, 110, 0.18)" },
+  { stroke: "#c2410c", fill: "rgba(194, 65, 12, 0.18)" },
+  { stroke: "#7c3aed", fill: "rgba(124, 58, 237, 0.18)" },
 ] as const
 
 const SHORT_LABELS: Record<string, string> = {
@@ -82,7 +84,7 @@ export function CategorySpider({
   if (!cards.length) {
     return (
       <div className={`flex items-center justify-center px-6 py-16 text-center text-sm text-slate-500 ${shell}`}>
-        Select two schools to compare focus area scores.
+        Select schools to compare focus area scores.
       </div>
     )
   }
