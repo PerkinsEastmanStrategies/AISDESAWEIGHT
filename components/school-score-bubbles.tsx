@@ -80,7 +80,7 @@ function radiusForCount(count: number, minCount: number, maxCount: number, width
   const t = maxCount <= minCount ? 0.55 : (count - minCount) / (maxCount - minCount)
   const minR = width < 700 ? 11 : 12
   const maxR = width < 700 ? 14 : 17
-  return (minR + Math.max(0, Math.min(1, t)) * (maxR - minR)) * 1.5 * 1.75
+  return (minR + Math.max(0, Math.min(1, t)) * (maxR - minR)) * 1.5 * 1.75 * 0.6
 }
 
 function bubbleLabel(name: string, r: number) {
@@ -339,7 +339,7 @@ export function SchoolScoreBubbles({
                       marginLeft: -sizePx / 2,
                       marginTop: -sizePx / 2,
                       background: color.fill,
-                      fontSize: sizePx >= 56 ? 13 : 11,
+                      fontSize: sizePx >= 44 ? 11 : 9,
                       opacity: hovered && !active ? 0.45 : 1,
                       outline: active ? "3px solid #0f172a" : undefined,
                     }}
