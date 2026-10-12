@@ -557,68 +557,68 @@ ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-026,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-027,Select all that apply (sightlines),6
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-002,Select all that are present (essential early childhood playground features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-002,Select all that are present (essential early childhood playground features),15
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-003,Select all that are present (additional early childhood playground features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-004,Is the early childhood playground in proximity to an appropriate learning neighborhood?,6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-007,Select all that are present (early childhood playground equipment features),0
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-011,Select all that are present (essential elementary playground features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-004,Is the early childhood playground in proximity to an appropriate learning neighborhood?,15
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-007,Select all that are present (early childhood playground equipment features),15
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-011,Select all that are present (essential elementary playground features),15
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-012,Select all that are present (additional elementary playground features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-013,Is the elementary playground in proximity to an appropriate learning neighborhood?,6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-016,Select all that are present (elementary playground equipment features),0
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-024,What is the condition of the nature-based play features?,6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that are present (essential hard play features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),0
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-013,Is the elementary playground in proximity to an appropriate learning neighborhood?,15
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-016,Select all that are present (elementary playground equipment features),15
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-024,What is the condition of the nature-based play features?,3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that are present (essential hard play features),15
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),0
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-039,Select all that apply (outdoor studio adjacencies),6
-ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",6
-ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,6
-ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-001,Is there an early childhood playground (PreK-K)?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-010,Is there an elementary playground (1st-5th)?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-022,Is there a nature-based play area?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,6
+ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,12
+ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,15
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-001,Is there an early childhood playground (PreK-K)?,15
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-010,Is there an elementary playground (1st-5th)?,15
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-022,Is there a nature-based play area?,3
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,6
-ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),6
-ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),6
-ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),6
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
 ES,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 ES,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-017,Does the elementary playground have shade structures or shaded areas on or near it?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-027,Does the hard play area have shade structures or shaded areas on or near it?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-005,Is the early childhood playground enclosed by fencing?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-006,Do the early childhood playground fall zones have soft surfacing?,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-017,Does the elementary playground have shade structures or shaded areas on or near it?,15
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-027,Does the hard play area have shade structures or shaded areas on or near it?,15
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-005,Is the early childhood playground enclosed by fencing?,12
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-006,Do the early childhood playground fall zones have soft surfacing?,12
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-008,Does the early childhood playground have site lighting to allow for safe evening use?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-009,Are there clear sightlines from routinely occupied or supervised areas to the early childhood playground area?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-014,Is the elementary playground enclosed by fencing?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-015,Do the elementary playground fall zones have soft surfacing?,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-009,Are there clear sightlines from routinely occupied or supervised areas to the early childhood playground area?,15
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-014,Is the elementary playground enclosed by fencing?,12
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-015,Do the elementary playground fall zones have soft surfacing?,12
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-018,Does the elementary playground have site lighting to allow for safe evening use?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-019,Are there clear sightlines from routinely occupied or supervised areas to the elementary playground area?,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-019,Are there clear sightlines from routinely occupied or supervised areas to the elementary playground area?,15
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-028,Does the hard play area have site lighting to allow for safe evening use?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-029,Are there clear sightlines from routinely occupied or supervised areas to the hard play area?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-032,Are there clear sightlines from routinely occupied or supervised areas to the play field?,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-029,Are there clear sightlines from routinely occupied or supervised areas to the hard play area?,15
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-032,Are there clear sightlines from routinely occupied or supervised areas to the play field?,9
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does the play field have site lighting to allow for safe evening use?,6
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-035,Are there clear sightlines from routinely occupied or supervised areas to the outdoor studio?,6
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-042,Are there clear sightlines from routinely occupied or supervised areas to the produce garden?,6
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-046,Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,6
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,3
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,9
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-001,What modes of transportation are supported by the site?,6
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-002,Are school bus and personal vehicle drop-off/pick-up zones separated from each other?,6
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-003,Is there a direct pathway from drop-off/pick-up zones to the main entry?,6
@@ -1452,51 +1452,51 @@ MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-026,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-027,Select all that apply (sightlines),6
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-020,Select all that apply (essential soft play features),6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-020,Select all that apply (essential soft play features),15
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-021,Select all that are present (additional soft play features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-024,What is the condition of the nature-based play features?,6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that are present (essential hard play features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),0
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-024,What is the condition of the nature-based play features?,3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that are present (essential hard play features),15
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),0
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-040,Select all that apply (outdoor studio adjacencies),6
-MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",6
-MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,6
-MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-022,Is there a nature-based play area?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,6
+MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,12
+MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,15
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-022,Is there a nature-based play area?,3
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,6
-MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),6
-MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),6
-MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),6
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
 MS,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 MS,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-027,Does the hard play area have shade structures or shaded areas on or near it?,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-027,Does the hard play area have shade structures or shaded areas on or near it?,15
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-028,Does the hard play area have site lighting to allow for safe evening use?,6
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-029,Are there clear sightlines from routinely occupied or supervised areas to the hard play area?,6
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-032,Are there clear sightlines from routinely occupied or supervised areas to the play field?,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-029,Are there clear sightlines from routinely occupied or supervised areas to the hard play area?,15
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-032,Are there clear sightlines from routinely occupied or supervised areas to the play field?,9
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does the play field have site lighting to allow for safe evening use?,6
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-035,Are there clear sightlines from routinely occupied or supervised areas to the outdoor studio?,6
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-042,Are there clear sightlines from routinely occupied or supervised areas to the produce garden?,6
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-046,Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?,6
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,6
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,3
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,9
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-001,What modes of transportation are supported by the site?,6
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-002,Are school bus and personal vehicle drop-off/pick-up zones separated from each other?,6
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-003,Is there a direct pathway from drop-off/pick-up zones to the main entry?,6
@@ -2447,30 +2447,30 @@ HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-026,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-027,Select all that apply (sightlines),6
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),6
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),0
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,6
-HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",6
-HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,6
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,6
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),3
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),3
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+HS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
+HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,12
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,6
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,6
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,6
-HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),6
-HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),6
-HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),6
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
 HS,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 HS,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
 HS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does the play field have site lighting to allow for safe evening use?,6

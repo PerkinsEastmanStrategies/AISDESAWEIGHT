@@ -135,7 +135,7 @@ function workstreamCopy(view: Workstream, qaPane: QaPane): string {
 }
 
 export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntry[] }) {
-  const [schemeId, setSchemeId] = useState<CategorySchemeId>("original")
+  const [schemeId, setSchemeId] = useState<CategorySchemeId>("revised")
   const [schoolLevel, setSchoolLevel] = useState<SchoolLevel>("ES")
   const [view, setView] = useState<Workstream>("internal")
   const [qaPane, setQaPane] = useState<QaPane>("campus")
@@ -394,7 +394,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     onClick={() => {
                       setView(option.id)
                       setQaRoomId(null)
-                      if (option.id === "report") setSchemeId("original")
+                      if (option.id === "report") setSchemeId("revised")
                     }}
                     className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition ${
                       active ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-800"
@@ -524,7 +524,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               </h2>
               <p className="text-xs text-slate-500">
                 {schemeId === "revised"
-                  ? "Revised grouping adds Wrap Around Services and Shared Studios, moves Kitchen under Arrival, and uses the attached starting weights. Inventory and observational items have no points."
+                  ? "Revised grouping and the attached starting weights, including MS/HS focus-area weights and outdoor question weights. Inventory and observational items have no points unless the sheet assigns them."
                   : "Original grouping and starting weights. Occupant Comfort and Safety & Supervision start at 12. Inventory and observational items have no points."}
               </p>
             </div>

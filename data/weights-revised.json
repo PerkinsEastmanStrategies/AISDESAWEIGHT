@@ -49,7 +49,7 @@
     {
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -64,37 +64,37 @@
     {
       "schoolLevel": "MS",
       "focusArea": "Studios",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Special Education",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Visual Arts",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
       "focusArea": "CTE",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Athletics and Wellness",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -109,7 +109,7 @@
     {
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -124,37 +124,37 @@
     {
       "schoolLevel": "HS",
       "focusArea": "Studios",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Special Education",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Visual Arts",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
       "focusArea": "CTE",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Athletics and Wellness",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -17724,7 +17724,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-002",
       "question": "Select all that are present (essential early childhood playground features)",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17744,7 +17744,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-004",
       "question": "Is the early childhood playground in proximity to an appropriate learning neighborhood?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17754,7 +17754,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-007",
       "question": "Select all that are present (early childhood playground equipment features)",
-      "weight": 0
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17764,7 +17764,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-011",
       "question": "Select all that are present (essential elementary playground features)",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17784,7 +17784,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-013",
       "question": "Is the elementary playground in proximity to an appropriate learning neighborhood?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17794,7 +17794,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-016",
       "question": "Select all that are present (elementary playground equipment features)",
-      "weight": 0
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17804,7 +17804,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-023",
       "question": "Select all that are present (nature-based play features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17814,7 +17814,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-024",
       "question": "What is the condition of the nature-based play features?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17824,7 +17824,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-025",
       "question": "Select all that are present (essential hard play features)",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -17834,7 +17834,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-026",
       "question": "Select all that are present (additional hard play features)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17844,7 +17844,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-031",
       "question": "Select all that are present (play field features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -17864,7 +17864,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17874,7 +17874,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17884,7 +17884,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17894,7 +17894,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17904,7 +17904,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17914,7 +17914,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17924,7 +17924,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17934,7 +17934,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -17944,7 +17944,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17954,7 +17954,7 @@
       "subcategory": "Storage",
       "questionId": "OD-063",
       "question": "How sufficient is the outdoor storage for play equipment and materials?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -17974,7 +17974,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17984,7 +17984,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -17994,7 +17994,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-062",
       "question": "How close are the play areas to the gym?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18004,7 +18004,7 @@
       "subcategory": "Availability",
       "questionId": "OD-001",
       "question": "Is there an early childhood playground (PreK-K)?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18014,7 +18014,7 @@
       "subcategory": "Availability",
       "questionId": "OD-010",
       "question": "Is there an elementary playground (1st-5th)?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18024,7 +18024,7 @@
       "subcategory": "Availability",
       "questionId": "OD-022",
       "question": "Is there a nature-based play area?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18034,7 +18034,7 @@
       "subcategory": "Availability",
       "questionId": "OD-030",
       "question": "Is there a play field?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -18074,7 +18074,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18084,7 +18084,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -18094,7 +18094,7 @@
       "subcategory": "Availability",
       "questionId": "OD-058",
       "question": "Is there green stormwater infrastructure?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18104,7 +18104,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-038",
       "question": "Select all that are present (outdoor studio technology)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -18114,7 +18114,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-059",
       "question": "Select all that are present (essential green stormwater features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18124,7 +18124,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -18154,7 +18154,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "OD-017",
       "question": "Does the elementary playground have shade structures or shaded areas on or near it?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18164,7 +18164,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "OD-027",
       "question": "Does the hard play area have shade structures or shaded areas on or near it?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18174,7 +18174,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-005",
       "question": "Is the early childhood playground enclosed by fencing?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -18184,7 +18184,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-006",
       "question": "Do the early childhood playground fall zones have soft surfacing?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -18204,7 +18204,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-009",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the early childhood playground area?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18214,7 +18214,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-014",
       "question": "Is the elementary playground enclosed by fencing?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -18224,7 +18224,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-015",
       "question": "Do the elementary playground fall zones have soft surfacing?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -18244,7 +18244,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-019",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the elementary playground area?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18264,7 +18264,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-029",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the hard play area?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18274,7 +18274,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-032",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the play field?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -18324,7 +18324,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-050",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18334,7 +18334,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -26674,7 +26674,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-020",
       "question": "Select all that apply (essential soft play features)",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "MS",
@@ -26694,7 +26694,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-023",
       "question": "Select all that are present (nature-based play features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26704,7 +26704,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-024",
       "question": "What is the condition of the nature-based play features?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26714,7 +26714,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-025",
       "question": "Select all that are present (essential hard play features)",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "MS",
@@ -26724,7 +26724,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-026",
       "question": "Select all that are present (additional hard play features)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -26734,7 +26734,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-031",
       "question": "Select all that are present (play field features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -26754,7 +26754,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26764,7 +26764,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26774,7 +26774,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26784,7 +26784,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26794,7 +26794,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26804,7 +26804,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26814,7 +26814,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26824,7 +26824,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -26834,7 +26834,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26844,7 +26844,7 @@
       "subcategory": "Storage",
       "questionId": "OD-063",
       "question": "How sufficient is the outdoor storage for play equipment and materials?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
@@ -26864,7 +26864,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26874,7 +26874,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
@@ -26884,7 +26884,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-062",
       "question": "How close are the play areas to the gym?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "MS",
@@ -26894,7 +26894,7 @@
       "subcategory": "Availability",
       "questionId": "OD-022",
       "question": "Is there a nature-based play area?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26904,7 +26904,7 @@
       "subcategory": "Availability",
       "questionId": "OD-030",
       "question": "Is there a play field?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -26944,7 +26944,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26954,7 +26954,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -26964,7 +26964,7 @@
       "subcategory": "Availability",
       "questionId": "OD-058",
       "question": "Is there green stormwater infrastructure?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26974,7 +26974,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-038",
       "question": "Select all that are present (outdoor studio technology)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26984,7 +26984,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-059",
       "question": "Select all that are present (essential green stormwater features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26994,7 +26994,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -27024,7 +27024,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "OD-027",
       "question": "Does the hard play area have shade structures or shaded areas on or near it?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "MS",
@@ -27044,7 +27044,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-029",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the hard play area?",
-      "weight": 6
+      "weight": 15
     },
     {
       "schoolLevel": "MS",
@@ -27054,7 +27054,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-032",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the play field?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -27104,7 +27104,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-050",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -27114,7 +27114,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -36624,7 +36624,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-031",
       "question": "Select all that are present (play field features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -36644,7 +36644,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36654,7 +36654,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36664,7 +36664,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36674,7 +36674,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36684,7 +36684,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36694,7 +36694,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36704,7 +36704,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36714,7 +36714,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -36724,7 +36724,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36734,7 +36734,7 @@
       "subcategory": "Storage",
       "questionId": "OD-063",
       "question": "How sufficient is the outdoor storage for play equipment and materials?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
@@ -36744,7 +36744,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36754,7 +36754,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
@@ -36764,7 +36764,7 @@
       "subcategory": "Availability",
       "questionId": "OD-030",
       "question": "Is there a play field?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -36804,7 +36804,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36814,7 +36814,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -36824,7 +36824,7 @@
       "subcategory": "Availability",
       "questionId": "OD-058",
       "question": "Is there green stormwater infrastructure?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36834,7 +36834,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-038",
       "question": "Select all that are present (outdoor studio technology)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -36844,7 +36844,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-059",
       "question": "Select all that are present (essential green stormwater features)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36854,7 +36854,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",

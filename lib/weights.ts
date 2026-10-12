@@ -17,7 +17,7 @@ import type {
 } from "@/lib/types"
 
 export const DEFAULT_WEIGHT = 6
-export const MAX_WEIGHT = 12
+export const MAX_WEIGHT = 15
 
 export const EMPTY_OVERRIDES: WeightOverrides = {
   focus: {},
