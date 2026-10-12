@@ -21,6 +21,8 @@ import { answerConsistency } from "@/lib/answer-consistency"
 import { canonicalName } from "@/lib/normalize"
 import { editsForRoom, saveEditorName, type QaEditRecord } from "@/lib/qa-edits"
 import { applyEditsToRooms, fetchQaEdits, saveQaEditLive } from "@/lib/qa-live"
+import { scoreSchool } from "@/lib/scoring"
+import type { WeightResolver } from "@/lib/weights"
 import type { SchoolScorecard, SchoolSnapshot, ScoreNode } from "@/lib/types"
 
 function findRoomNode(nodes: ScoreNode[], roomId: string): ScoreNode | null {
@@ -52,6 +54,8 @@ export function SchoolQaPanel({
   allowDiscard = false,
   onDiscardRoom,
   allowScoringNotes = false,
+  resolver,
+  baseline,
 }: {
   card: SchoolScorecard
   snapshot: SchoolSnapshot
@@ -60,10 +64,25 @@ export function SchoolQaPanel({
   allowDiscard?: boolean
   onDiscardRoom?: (roomId: string) => void
   allowScoringNotes?: boolean
+  resolver?: WeightResolver
+  baseline?: WeightResolver
 }) {
   const [discardOpen, setDiscardOpen] = useState(false)
-  const focusAreas = card.focusAreas
-  const [focusLabel, setFocusLabel] = useState(focusAreas[0]?.label ?? "")
+  const [qaEdits, setQaEdits] = useState<QaEditRecord[]>([])
+  const [editsError, setEditsError] = useState<string | null>(null)
+  const roomsWithEdits = useMemo(
+    () => applyEditsToRooms(snapshot.rooms, qaEdits, snapshot.schoolClass),
+    [snapshot.rooms, qaEdits, snapshot.schoolClass],
+  )
+  const liveCard = useMemo(
+    () =>
+      resolver
+        ? scoreSchool({ ...snapshot, rooms: roomsWithEdits }, resolver, baseline)
+        : card,
+    [resolver, snapshot, roomsWithEdits, baseline, card],
+  )
+  const focusAreas = liveCard.focusAreas
+  const [focusLabel, setFocusLabel] = useState(card.focusAreas[0]?.label ?? "")
   const selectedFocus = focusAreas.find((area) => area.label === focusLabel) ?? focusAreas[0] ?? null
   const spaceTypes = useMemo(
     () => (selectedFocus?.children ?? []).filter((node) => node.kind !== "room"),
@@ -119,12 +138,6 @@ export function SchoolQaPanel({
     return Object.entries(notes.comments).filter(([questionId]) => !used.has(questionId))
   }, [notes.comments, selectedSnapshotRoom])
   const [activePhotoUrl, setActivePhotoUrl] = useState<string | null>(null)
-  const [qaEdits, setQaEdits] = useState<QaEditRecord[]>([])
-  const [editsError, setEditsError] = useState<string | null>(null)
-  const roomsWithEdits = useMemo(
-    () => applyEditsToRooms(snapshot.rooms, qaEdits),
-    [snapshot.rooms, qaEdits],
-  )
   const selectedEditedRoom = selectedRoomId
     ? (roomsWithEdits.find((room) => room.roomId === selectedRoomId) ?? selectedSnapshotRoom)
     : null
@@ -215,7 +228,7 @@ export function SchoolQaPanel({
           </p>
           {editsError ? <p className="mt-2 text-sm text-rose-700">{editsError}</p> : null}
         </div>
-        <ScoreBadge score={card.existingOnly} />
+        <ScoreBadge score={liveCard.existingOnly} />
       </div>
 
       <div className="grid min-w-0 gap-4 xl:grid-cols-[minmax(380px,0.95fr)_minmax(0,1.05fr)]">
@@ -426,7 +439,7 @@ export function SchoolQaPanel({
           <FloorPlanPanel
             campusId={card.campusId}
             schoolName={card.schoolName}
-            rooms={card.rooms}
+            rooms={liveCard.rooms}
             selectedRoomId={selectedRoomId}
             onSelectRoom={onSelectRoom}
           />
@@ -443,7 +456,7 @@ export function SchoolQaPanel({
           {allowScoringNotes ? (
             <AisdScoringNotes
               schoolId={card.schoolId}
-              overallScore={card.existingOnly}
+              overallScore={liveCard.existingOnly}
               focusAreas={focusAreas}
             />
           ) : null}

@@ -251,8 +251,9 @@ export function RoomQuestionReview({
         const edit = edits.find((item) => item.questionId === group.questionId)
         const selected = new Set(edit?.selected ?? [...recorded])
         const isMulti = isMultiSelectType(entry?.questionType, group.items)
-        const scored = group.items.map((item) => scorePct(item.score))
-        const average = scored.reduce((sum, value) => sum + value, 0) / scored.length
+        const scored = group.items.map((item) => scorePct(item.score)).filter(Number.isFinite)
+        const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
+        const average = nata || !scored.length ? Number.NaN : scored.reduce((sum, value) => sum + value, 0) / scored.length
         function toggle(label: string) {
           if (!onCommitEdit) return
           const next = new Set(selected)

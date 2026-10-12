@@ -4,6 +4,17 @@ export function isInventoryText(value: string | null | undefined): boolean {
   return /inventory/i.test(String(value ?? ""))
 }
 
+export function isNotAbleToAssessText(value: string | null | undefined): boolean {
+  if (!value) return false
+  const text = value.trim().toLowerCase()
+  return (
+    text === "not able to assess" ||
+    text.startsWith("not able to assess ") ||
+    text === "unable to assess" ||
+    text.startsWith("unable to assess")
+  )
+}
+
 /** Dummy select-all choices that must not sit in the score denominator. */
 export function isNonViableSelectAllOption(value: string | null | undefined): boolean {
   if (!value) return false
@@ -11,10 +22,7 @@ export function isNonViableSelectAllOption(value: string | null | undefined): bo
   return (
     text === "none of the above" ||
     text.startsWith("none of the above ") ||
-    text === "not able to assess" ||
-    text.startsWith("not able to assess ") ||
-    text === "unable to assess" ||
-    text.startsWith("unable to assess")
+    isNotAbleToAssessText(value)
   )
 }
 

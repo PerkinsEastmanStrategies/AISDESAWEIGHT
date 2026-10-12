@@ -48,6 +48,27 @@ export function isExteriorWindowsSkipWhenNoDependent(
   return /^Select all that apply \(exterior windows/i.test(text)
 }
 
+/** Borrowed-daylight follow-up: only scores when the space does not have exterior windows. */
+export function isBorrowedDaylightQuestion(
+  question: Pick<EsaQuestion, "question">,
+): boolean {
+  return question.question
+    .trim()
+    .toLowerCase()
+    .startsWith("is daylight accessible through another means")
+}
+
+/** True when a room already answered Yes to having exterior windows. */
+export function roomHasExteriorWindows(
+  units: ReadonlyArray<{ question: string; answer?: string | null }>,
+): boolean {
+  return units.some(
+    (unit) =>
+      isExteriorWindowsParentQuestion({ question: unit.question }) &&
+      isYesAnswer((unit.answer ?? "").trim() || undefined),
+  )
+}
+
 /**
  * Parent answer → auto-fill a dependent question (kept in scoring; locked in UI).
  */
@@ -67,9 +88,19 @@ function responseValue(response: RoomQuestionResponse | undefined): string | und
   return Array.isArray(response.value) ? response.value[0] : response.value
 }
 
+function isYesAnswer(value: string | undefined): boolean {
+  const text = String(value ?? "").trim().toLowerCase()
+  return text === "yes" || text.startsWith("yes ") || text.startsWith("yes,")
+}
+
 function isParentAnsweredNo(parentId: string, responses: RoomQuestionResponse[]): boolean {
   const parent = responses.find((r) => r.questionId === parentId)
   return responseValue(parent) === "No"
+}
+
+function isParentAnsweredYes(parentId: string, responses: RoomQuestionResponse[]): boolean {
+  const parent = responses.find((r) => r.questionId === parentId)
+  return isYesAnswer(responseValue(parent))
 }
 
 function questionIdsAfterParent(
@@ -97,6 +128,22 @@ function exteriorWindowsSkipDependentIds(
       continue
     }
     if (ids.length > 0) break
+  }
+  return ids
+}
+
+function borrowedDaylightDependentIds(
+  parentId: string,
+  questions: readonly EsaQuestion[],
+): readonly string[] {
+  const parentIndex = questions.findIndex((q) => q.questionId === parentId)
+  if (parentIndex < 0) return []
+
+  const ids: string[] = []
+  for (let i = parentIndex + 1; i < questions.length; i++) {
+    const q = questions[i]
+    if (isExteriorWindowsParentQuestion(q)) break
+    if (isBorrowedDaylightQuestion(q)) ids.push(q.questionId)
   }
   return ids
 }
@@ -132,6 +179,21 @@ function isSkippedByExteriorWindowsNo(
   return false
 }
 
+function isSkippedByExteriorWindowsYes(
+  questionId: string,
+  responses: RoomQuestionResponse[],
+  questions: readonly EsaQuestion[],
+): boolean {
+  for (const question of questions) {
+    if (!isExteriorWindowsParentQuestion(question)) continue
+    if (!isParentAnsweredYes(question.questionId, responses)) continue
+    if (borrowedDaylightDependentIds(question.questionId, questions).includes(questionId)) {
+      return true
+    }
+  }
+  return false
+}
+
 export function isExteriorWindowsNo(
   responses: RoomQuestionResponse[],
   questions?: readonly EsaQuestion[],
@@ -151,6 +213,9 @@ export function isSkippedDependentQuestion(
 ): boolean {
   if (isSkippedAfterAvailabilityNo(questionId, responses, questions)) return true
   if (questions?.length && isSkippedByExteriorWindowsNo(questionId, responses, questions)) {
+    return true
+  }
+  if (questions?.length && isSkippedByExteriorWindowsYes(questionId, responses, questions)) {
     return true
   }
   return false
@@ -209,6 +274,13 @@ export function dependentQuestionDisabledReason(
     isSkippedByExteriorWindowsNo(questionId, responses, questions)
   ) {
     return "Skipped — no exterior windows in this space."
+  }
+
+  if (
+    questions?.length &&
+    isSkippedByExteriorWindowsYes(questionId, responses, questions)
+  ) {
+    return "Skipped — this space already has exterior windows."
   }
 
   if (!isSkippedDependentQuestion(questionId, responses, questions)) return undefined

@@ -1,5 +1,9 @@
 import { canonicalName } from "@/lib/normalize"
-import { unitsForScoring } from "@/lib/non-scoring"
+import { isNotAbleToAssessText, unitsForScoring } from "@/lib/non-scoring"
+import {
+  isBorrowedDaylightQuestion,
+  roomHasExteriorWindows,
+} from "@/lib/esa-question-dependencies"
 import type { WeightResolver } from "@/lib/weights"
 import type { SchoolScorecard, SchoolSnapshot, ScoreNode, ScoredRoom, ScoredUnit } from "@/lib/types"
 
@@ -29,6 +33,25 @@ function isNotPresentRoom(room: ScoredRoom): boolean {
   return /(?:—|-|–)?\s*not (?:at school|present)\b/i.test(room.roomName)
 }
 
+function scoredUnitsForRoom(
+  room: ScoredRoom,
+  weights: WeightResolver,
+): Array<ScoredUnit & { weight: number }> {
+  const omitBorrowedDaylight = roomHasExteriorWindows(room.units)
+  const applicable = room.units.filter((unit) => {
+    if (!Number.isFinite(unit.score)) return false
+    if (isNotAbleToAssessText(unit.answer)) return false
+    if (omitBorrowedDaylight && isBorrowedDaylightQuestion({ question: unit.question })) return false
+    return true
+  })
+  return unitsForScoring(
+    applicable.map((unit) => ({
+      ...unit,
+      weight: weights.question(unit.questionId, unit.category, unit.question),
+    })),
+  )
+}
+
 function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
   if (isNotPresentRoom(room)) {
     return {
@@ -40,12 +63,7 @@ function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
     }
   }
 
-  const units = unitsForScoring(
-    room.units.map((unit) => ({
-      ...unit,
-      weight: weights.question(unit.questionId, unit.category, unit.question),
-    })),
-  )
+  const units = scoredUnitsForRoom(room, weights)
   const unitCounts = new Map<string, number>()
   for (const unit of units) {
     unitCounts.set(unit.questionId, (unitCounts.get(unit.questionId) ?? 0) + 1)
@@ -297,12 +315,7 @@ function categoryNodesForRooms(rooms: RoomResult[], weights: WeightResolver): Sc
       if (existing) existing.scores.push(sub.score)
       else subScores.set(key, { category: sub.category, subcategory: sub.subcategory, scores: [sub.score] })
     }
-    for (const unit of unitsForScoring(
-      room.room.units.map((unit) => ({
-        ...unit,
-        weight: weights.question(unit.questionId, unit.category, unit.question),
-      })),
-    )) {
+    for (const unit of scoredUnitsForRoom(room.room, weights)) {
       const weight = unit.weight ?? weights.question(unit.questionId, unit.category, unit.question)
       if (weight <= 0) continue
       const key = unit.unitId || unit.questionId

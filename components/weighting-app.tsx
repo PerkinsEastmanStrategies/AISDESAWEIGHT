@@ -622,6 +622,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   allowDiscard={view === "internal"}
                   onDiscardRoom={view === "internal" ? discardActiveRoom : undefined}
                   allowScoringNotes={view === "aisd"}
+                  resolver={resolver ?? undefined}
+                  baseline={baseline ?? undefined}
                 />
               ) : null}
               {view === "internal" && qaCard ? (

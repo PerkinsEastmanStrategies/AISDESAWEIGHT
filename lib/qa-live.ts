@@ -1,3 +1,10 @@
+import {
+  getRoomSurveyRubric,
+  isMultiSelectQuestionType,
+  responseRequiresUnableToAssessNote,
+  scoreForScoreId,
+  type SurveyType,
+} from "@aisd/shared"
 import type { QaEditRecord } from "@/lib/qa-edits"
 import type { QaHandoff } from "@/lib/qa-handoff"
 import type { ScoredRoom, ScoredUnit } from "@/lib/types"
@@ -45,16 +52,75 @@ export async function saveQaHandoffLive(handoff: QaHandoff): Promise<QaHandoff> 
   return data.handoff
 }
 
-export function applyEditsToRooms(rooms: ScoredRoom[], edits: QaEditRecord[]): ScoredRoom[] {
+export function applyEditsToRooms(
+  rooms: ScoredRoom[],
+  edits: QaEditRecord[],
+  schoolClass?: string,
+): ScoredRoom[] {
   if (!edits.length) return rooms
-  const byKey = new Map(edits.map((edit) => [`${edit.roomId}::${edit.questionId}`, edit]))
-  return rooms.map((room) => ({
-    ...room,
-    units: room.units.map((unit) => applyEditToUnit(unit, byKey.get(`${room.roomId}::${unit.questionId}`))),
-  }))
+  const byRoom = new Map<string, QaEditRecord[]>()
+  for (const edit of edits) {
+    const list = byRoom.get(edit.roomId) ?? []
+    list.push(edit)
+    byRoom.set(edit.roomId, list)
+  }
+  return rooms.map((room) => {
+    const roomEdits = byRoom.get(room.roomId)
+    if (!roomEdits?.length) return room
+    return {
+      ...room,
+      units: applyEditsToUnits(room, roomEdits, schoolClass),
+    }
+  })
 }
 
-function applyEditToUnit(unit: ScoredUnit, edit: QaEditRecord | undefined): ScoredUnit {
-  if (!edit) return unit
-  return { ...unit, answer: edit.selected.join(", ") }
+function classForRubric(schoolClass?: string): string | undefined {
+  if (!schoolClass) return undefined
+  if (schoolClass === "ES") return "ELEM"
+  if (schoolClass === "MS") return "MID"
+  if (schoolClass === "HS") return "HIGH"
+  return schoolClass
+}
+
+function editValue(edit: QaEditRecord): string | string[] {
+  const selected = edit.selected.map((value) => value.trim()).filter(Boolean)
+  if (selected.length <= 1) return selected[0] ?? ""
+  return selected
+}
+
+function rubricForRoom(room: ScoredRoom, schoolClass?: string) {
+  const klass = classForRubric(schoolClass)
+  return (
+    getRoomSurveyRubric(room.surveyType as SurveyType, room.spaceType, room.gradeType, klass) ??
+    getRoomSurveyRubric(room.surveyType as SurveyType, room.spaceType, undefined, klass)
+  )
+}
+
+function applyEditsToUnits(
+  room: ScoredRoom,
+  edits: QaEditRecord[],
+  schoolClass?: string,
+): ScoredUnit[] {
+  const byQuestion = new Map(edits.map((edit) => [edit.questionId, edit]))
+  const rubric = rubricForRoom(room, schoolClass)
+  const questionById = new Map(rubric?.questions.map((question) => [question.questionId, question]) ?? [])
+
+  return room.units.map((unit) => {
+    const edit = byQuestion.get(unit.questionId)
+    if (!edit) return unit
+    const answer = edit.selected.map((value) => value.trim()).filter(Boolean).join(", ")
+    const question = questionById.get(unit.questionId)
+    if (!question || !rubric) return { ...unit, answer }
+
+    const response = { value: editValue(edit) }
+    const next = scoreForScoreId(unit.unitId, question, response, rubric.options)
+    if (next != null) return { ...unit, answer, score: next }
+    if (
+      isMultiSelectQuestionType(question.questionType) &&
+      !responseRequiresUnableToAssessNote(response.value)
+    ) {
+      return { ...unit, answer, score: 0 }
+    }
+    return { ...unit, answer, score: Number.NaN }
+  })
 }
