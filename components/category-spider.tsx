@@ -45,13 +45,15 @@ function labelLines(text: string, max = 16): string[] {
   return lines
 }
 
-function toPath(points: { x: number; y: number }[]): string {
-  if (!points.length) return ""
-  return `${points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ")} Z`
+function toPath(points: Array<{ x: number; y: number } | null>): string {
+  const kept = points.filter((point): point is { x: number; y: number } => point != null)
+  if (kept.length < 3) return ""
+  return `${kept.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ")} Z`
 }
 
 function scoreForAxis(card: SchoolScorecard, axis: string): number | null {
-  return card.focusAreas.find((area) => area.label === axis)?.score ?? null
+  const score = card.focusAreas.find((area) => area.label === axis)?.score
+  return score == null || Number.isNaN(score) ? null : score
 }
 
 export function CategorySpider({
@@ -64,9 +66,11 @@ export function CategorySpider({
   embedded?: boolean
 }) {
   const seen = new Map<string, string>()
-  for (const label of axisOrder) seen.set(label, label)
   for (const card of cards) {
-    for (const area of card.focusAreas) seen.set(area.label, area.label)
+    for (const area of card.focusAreas) {
+      if (area.score == null || Number.isNaN(area.score)) continue
+      seen.set(area.label, area.label)
+    }
   }
   const axes = [...seen.values()].sort((a, b) => {
     const ai = axisOrder.indexOf(a)
@@ -108,7 +112,7 @@ export function CategorySpider({
       <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-sm font-semibold text-slate-900">Focus area comparison</h2>
-          <p className="text-xs text-slate-500">Campus scores by scoring focus area.</p>
+          <p className="text-xs text-slate-500">Existing spaces by scoring focus area. Not-present areas are omitted.</p>
         </div>
         <div className="flex flex-wrap gap-3">
           {cards.map((card, index) => (
@@ -176,13 +180,16 @@ export function CategorySpider({
           })}
           {cards.map((card, seriesIndex) => {
             const style = SERIES[seriesIndex % SERIES.length]
-            const points = axes.map((axis, index) =>
-              polar(index, axes.length, scoreForAxis(card, axis) ?? 0, cx, cy, radius),
-            )
+            const points = axes.map((axis, index) => {
+              const score = scoreForAxis(card, axis)
+              if (score == null) return null
+              return polar(index, axes.length, score, cx, cy, radius)
+            })
             return (
               <g key={card.schoolId}>
                 <path d={toPath(points)} fill={style.fill} stroke={style.stroke} strokeWidth="3" />
                 {points.map((point, index) => {
+                  if (!point) return null
                   const score = scoreForAxis(card, axes[index])
                   return (
                     <circle

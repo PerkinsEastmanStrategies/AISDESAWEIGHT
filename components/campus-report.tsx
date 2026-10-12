@@ -26,9 +26,15 @@ function polar(index: number, total: number, value: number, cx: number, cy: numb
   return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
 }
 
-function toPath(points: { x: number; y: number }[]): string {
-  if (!points.length) return ""
-  return `${points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ")} Z`
+function toPath(points: Array<{ x: number; y: number } | null>): string {
+  const kept = points.filter((point): point is { x: number; y: number } => point != null)
+  if (kept.length < 3) return ""
+  return `${kept.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ")} Z`
+}
+
+function axisScore(card: SchoolScorecard, axis: string): number | null {
+  const score = card.focusAreas.find((area) => area.label === axis)?.score
+  return score == null || Number.isNaN(score) ? null : score
 }
 
 function scoreNumber(score: number | null | undefined): string {
@@ -201,12 +207,14 @@ function ReportSpider({
   if (!axes.length) {
     return <p className="py-10 text-center text-sm text-slate-500">No focus area scores yet.</p>
   }
-  const campusPoints = axes.map((axis, index) =>
-    polar(index, axes.length, campus.focusAreas.find((area) => area.label === axis)?.score ?? 0, cx, cy, radius),
-  )
-  const averagePoints = axes.map((axis, index) =>
-    polar(index, axes.length, average.focusAreas.find((area) => area.label === axis)?.score ?? 0, cx, cy, radius),
-  )
+  const campusPoints = axes.map((axis, index) => {
+    const score = axisScore(campus, axis)
+    return score == null ? null : polar(index, axes.length, score, cx, cy, radius)
+  })
+  const averagePoints = axes.map((axis, index) => {
+    const score = axisScore(average, axis)
+    return score == null ? null : polar(index, axes.length, score, cx, cy, radius)
+  })
   return (
     <svg viewBox={`0 0 ${size} ${size}`} className="mx-auto h-auto w-full max-w-[300px]" role="img">
       <title>Campus spider plot by scoring focus area</title>
@@ -245,9 +253,9 @@ function ReportSpider({
       })}
       <path d={toPath(averagePoints)} fill="none" stroke="#1e3a8a" strokeWidth="2" strokeDasharray="6 5" />
       <path d={toPath(campusPoints)} fill="rgba(15, 118, 110, 0.28)" stroke="#0f766e" strokeWidth="2.5" />
-      {campusPoints.map((point, index) => (
-        <circle key={axes[index]} cx={point.x} cy={point.y} r="3.5" fill="#0f766e" />
-      ))}
+      {campusPoints.map((point, index) =>
+        point ? <circle key={axes[index]} cx={point.x} cy={point.y} r="3.5" fill="#0f766e" /> : null,
+      )}
     </svg>
   )
 }

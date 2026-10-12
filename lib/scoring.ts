@@ -24,8 +24,13 @@ interface RoomResult {
   questions: Map<string, { questionId: string; question: string; category: string; subcategory: string; score: number }>
 }
 
+function isNotPresentRoom(room: ScoredRoom): boolean {
+  if (room.markedAbsent) return true
+  return /(?:—|-|–)?\s*not (?:at school|present)\b/i.test(room.roomName)
+}
+
 function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
-  if (room.markedAbsent) {
+  if (isNotPresentRoom(room)) {
     return {
       room,
       overall: 0,
@@ -122,11 +127,11 @@ function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
 function omitAbsentPlaceholders(rooms: ScoredRoom[]): ScoredRoom[] {
   const assessedTypes = new Set(
     rooms
-      .filter((room) => !room.markedAbsent)
+      .filter((room) => !isNotPresentRoom(room))
       .map((room) => `${room.surveyType}::${room.spaceType}`),
   )
   return rooms.filter((room) => {
-    if (!room.markedAbsent) return true
+    if (!isNotPresentRoom(room)) return true
     return !assessedTypes.has(`${room.surveyType}::${room.spaceType}`)
   })
 }
@@ -140,26 +145,30 @@ function withDelta(node: ScoreNode, baselineNodes?: ScoreNode[]): ScoreNode {
   }
 }
 
-function buildTree(
-  rooms: RoomResult[],
-  weights: WeightResolver,
-): { overall: number | null; existingOnly: number | null; categories: ScoreNode[]; focusAreas: ScoreNode[] } {
-  const scored = rooms.filter((room) => room.overall != null)
-  const existing = scored.filter((room) => !room.room.markedAbsent)
-
+function groupByFocus(rooms: RoomResult[]): Map<string, RoomResult[]> {
   const byFocus = new Map<string, RoomResult[]>()
-  for (const room of scored) {
+  for (const room of rooms) {
     const list = byFocus.get(room.room.focusAreaLabel) ?? []
     list.push(room)
     byFocus.set(room.room.focusAreaLabel, list)
   }
+  return byFocus
+}
 
-  const focusAreaScores: { score: number; weight: number }[] = []
-  const existingFocusScores: { score: number; weight: number }[] = []
-  const focusAreas: ScoreNode[] = []
+function spaceTypeAverage(rooms: RoomResult[]): number | null {
+  return average(rooms.filter((room) => room.overall != null).map((room) => room.overall as number))
+}
 
-  const focusNames = [...byFocus.keys()].sort((a, b) => a.localeCompare(b))
-  for (const focusArea of focusNames) {
+function summarizeFocusAreas(
+  rooms: RoomResult[],
+  weights: WeightResolver,
+  buildNodes: boolean,
+): { scores: { score: number; weight: number }[]; nodes: ScoreNode[] } {
+  const scores: { score: number; weight: number }[] = []
+  const nodes: ScoreNode[] = []
+  const byFocus = groupByFocus(rooms)
+
+  for (const focusArea of [...byFocus.keys()].sort((a, b) => a.localeCompare(b))) {
     const focusRooms = byFocus.get(focusArea) ?? []
     const bySpace = new Map<string, RoomResult[]>()
     for (const room of focusRooms) {
@@ -170,21 +179,15 @@ function buildTree(
 
     const spaceNodes: ScoreNode[] = []
     const spaceScores: { score: number; weight: number }[] = []
-    const existingSpaceScores: { score: number; weight: number }[] = []
 
     for (const spaceType of [...bySpace.keys()].sort((a, b) => a.localeCompare(b))) {
       const spaceRooms = bySpace.get(spaceType) ?? []
-      const spaceAvg = average(spaceRooms.map((room) => room.overall as number))
-      const existingAvg = average(
-        spaceRooms.filter((room) => !room.room.markedAbsent).map((room) => room.overall as number),
-      )
+      const spaceAvg = spaceTypeAverage(spaceRooms)
       const spaceWeight = weights.space(focusArea, spaceType)
       if (spaceAvg != null && spaceWeight > 0) spaceScores.push({ score: spaceAvg, weight: spaceWeight })
-      if (existingAvg != null && spaceWeight > 0) existingSpaceScores.push({ score: existingAvg, weight: spaceWeight })
+      if (!buildNodes) continue
 
-      const existingRooms = spaceRooms.filter((room) => !room.room.markedAbsent)
-      const scoredSpaceRooms = existingRooms.filter((room) => room.overall != null)
-      const roomNodes: ScoreNode[] = existingRooms
+      const roomNodes: ScoreNode[] = spaceRooms
         .slice()
         .sort((a, b) => a.room.roomName.localeCompare(b.room.roomName, undefined, { numeric: true }))
         .map((room) => {
@@ -192,7 +195,7 @@ function buildTree(
             room.room.neighborhood?.trim() || null,
             room.room.gradeType || null,
             room.overall != null ? "complete" : null,
-            existingRooms.length > 0 ? `${Math.round(100 / existingRooms.length)}% each` : null,
+            spaceRooms.length > 0 ? `${Math.round(100 / spaceRooms.length)}% each` : null,
           ].filter(Boolean)
           return {
             id: `${focusArea}::${spaceType}::${room.room.roomId}`,
@@ -207,51 +210,56 @@ function buildTree(
           }
         })
 
-      if (existingRooms.length > 0) {
-        spaceNodes.push({
-          id: `${focusArea}::${spaceType}`,
-          kind: "group",
-          label: spaceType,
-          score: existingAvg,
-          baseline: null,
-          weight: spaceWeight,
-          scoredCount: scoredSpaceRooms.length,
-          totalCount: existingRooms.length,
-          countLabel: `${scoredSpaceRooms.length} of ${existingRooms.length} room${existingRooms.length === 1 ? "" : "s"}`,
-          children: roomNodes,
-        })
-      }
+      spaceNodes.push({
+        id: `${focusArea}::${spaceType}`,
+        kind: "group",
+        label: spaceType,
+        score: spaceAvg,
+        baseline: null,
+        weight: spaceWeight,
+        scoredCount: spaceRooms.filter((room) => room.overall != null).length,
+        totalCount: spaceRooms.length,
+        countLabel: `${spaceRooms.filter((room) => room.overall != null).length} of ${spaceRooms.length} room${spaceRooms.length === 1 ? "" : "s"}`,
+        children: roomNodes,
+      })
     }
 
     const focusScore = weightedAverage(spaceScores)
-    const existingFocus = weightedAverage(existingSpaceScores)
     const focusWeight = weights.focus(focusArea)
-    if (focusScore != null && focusWeight > 0) focusAreaScores.push({ score: focusScore, weight: focusWeight })
-    if (existingFocus != null && focusWeight > 0) existingFocusScores.push({ score: existingFocus, weight: focusWeight })
+    if (focusScore != null && focusWeight > 0) scores.push({ score: focusScore, weight: focusWeight })
+    if (!buildNodes || !spaceNodes.length || focusScore == null) continue
 
-    if (!spaceNodes.length) continue
-
-    const existingFocusRooms = focusRooms.filter((room) => !room.room.markedAbsent)
-    const scoredFocusRooms = existingFocusRooms.filter((room) => room.overall != null)
-    focusAreas.push({
+    nodes.push({
       id: focusArea,
       kind: "group",
       label: focusArea,
-      score: existingFocus ?? focusScore,
+      score: focusScore,
       baseline: null,
       weight: focusWeight,
-      scoredCount: scoredFocusRooms.length,
-      totalCount: existingFocusRooms.length,
-      countLabel: `${scoredFocusRooms.length} of ${existingFocusRooms.length} space${existingFocusRooms.length === 1 ? "" : "s"} scored`,
+      scoredCount: focusRooms.filter((room) => room.overall != null).length,
+      totalCount: focusRooms.length,
+      countLabel: `${focusRooms.filter((room) => room.overall != null).length} of ${focusRooms.length} space${focusRooms.length === 1 ? "" : "s"} scored`,
       children: spaceNodes,
     })
   }
 
+  return { scores, nodes }
+}
+
+function buildTree(
+  rooms: RoomResult[],
+  weights: WeightResolver,
+): { overall: number | null; existingOnly: number | null; categories: ScoreNode[]; focusAreas: ScoreNode[] } {
+  const assessed = rooms.filter((room) => !isNotPresentRoom(room.room) && room.overall != null)
+  const includingMissing = rooms.filter((room) => room.overall != null)
+  const existing = summarizeFocusAreas(assessed, weights, true)
+  const missing = summarizeFocusAreas(includingMissing, weights, false)
+
   return {
-    overall: weightedAverage(focusAreaScores),
-    existingOnly: weightedAverage(existingFocusScores) ?? average(existing.map((room) => room.overall as number)),
-    categories: categoryNodesForRooms(scored.filter((room) => !room.room.markedAbsent), weights),
-    focusAreas,
+    overall: weightedAverage(missing.scores),
+    existingOnly: weightedAverage(existing.scores) ?? average(assessed.map((room) => room.overall as number)),
+    categories: categoryNodesForRooms(assessed, weights),
+    focusAreas: existing.nodes,
   }
 }
 
@@ -407,11 +415,11 @@ export function scoreSchool(
     existingOnly: tree.existingOnly,
     existingOnlyBaseline: baselineTree?.existingOnly ?? null,
     scoredRoomCount: snapshotRooms.filter((room) => room.units.length > 0).length,
-    absentCount: snapshotRooms.filter((room) => room.markedAbsent).length,
+    absentCount: snapshotRooms.filter((room) => isNotPresentRoom(room)).length,
     categories: tree.categories.map((node) => withDelta(node, baselineTree?.categories)),
     focusAreas: tree.focusAreas.map((node) => withDelta(node, baselineTree?.focusAreas)),
     rooms: rooms
-      .filter((room) => !room.room.markedAbsent)
+      .filter((room) => !isNotPresentRoom(room.room))
       .map((room) => ({
         roomId: room.room.roomId,
         roomName: room.room.roomName,
