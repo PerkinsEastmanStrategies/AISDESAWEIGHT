@@ -29,6 +29,12 @@ create table if not exists esa_qa_handoffs (
 );
 
 alter table esa_qa_edits enable row level security;
+alter table esa_qa_handoffs
+  add column if not exists status text not null default 'aisd',
+  add column if not exists decision_by text not null default '',
+  add column if not exists decision_at timestamptz,
+  add column if not exists decision_comments text not null default '';
+
 alter table esa_qa_handoffs enable row level security;
 
 -- AISD review notes next to campus scores. Run this too if the first script already ran.

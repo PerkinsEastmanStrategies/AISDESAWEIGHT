@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import { Check } from "lucide-react"
+import { isExteriorWindowsSelectAllQuestion } from "@/lib/esa-question-dependencies"
 import { formatScore, scoreTone } from "@/lib/format"
 import { formatEditTimestamp, type QaEditRecord } from "@/lib/qa-edits"
 import { QaQuestionEditDialog, type PendingQuestionEdit } from "@/components/qa-edit-session"
@@ -205,6 +206,8 @@ export function RoomQuestionReview({
   onOpenPhoto,
   edits = [],
   onCommitEdit,
+  instantCommit = false,
+  renderQuestionExtra,
 }: {
   units: ScoredUnit[]
   photosByQuestion?: Record<string, { url: string; path: string; questionId: string | null }[]>
@@ -218,6 +221,8 @@ export function RoomQuestionReview({
     editor: string
     reason: string
   }) => void | Promise<void>
+  instantCommit?: boolean
+  renderQuestionExtra?: (questionId: string) => ReactNode
 }) {
   const [catalog, setCatalog] = useState<QuestionOptionCatalog>({})
   const [pending, setPending] = useState<PendingQuestionEdit | null>(null)
@@ -253,7 +258,13 @@ export function RoomQuestionReview({
         const isMulti = isMultiSelectType(entry?.questionType, group.items)
         const scored = group.items.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
-        const average = nata || !scored.length ? Number.NaN : scored.reduce((sum, value) => sum + value, 0) / scored.length
+        const average =
+          nata || !scored.length
+            ? Number.NaN
+            : isExteriorWindowsSelectAllQuestion({ question: group.question })
+              ? Math.max(...scored)
+              : scored.reduce((sum, value) => sum + value, 0) / scored.length
+        const extra = renderQuestionExtra?.(group.questionId)
         function toggle(label: string) {
           if (!onCommitEdit) return
           const next = new Set(selected)
@@ -264,13 +275,24 @@ export function RoomQuestionReview({
             next.clear()
             next.add(label)
           }
+          const selectedLabels = [...next]
+          if (instantCommit) {
+            void onCommitEdit({
+              questionId: group.questionId,
+              selected: selectedLabels,
+              previous: [...recorded],
+              editor: "explore",
+              reason: "sandbox",
+            })
+            return
+          }
           setPending({
             questionId: group.questionId,
             question: group.question,
             isMulti,
             options: choices.length ? choices : [label],
             previous: [...recorded],
-            selected: [...next],
+            selected: selectedLabels,
           })
         }
         return (
@@ -306,7 +328,7 @@ export function RoomQuestionReview({
                     ) : null}
                     {edit ? (
                       <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
-                        Edited
+                        {instantCommit ? "Exploring" : "Edited"}
                       </span>
                     ) : null}
                   </div>
@@ -337,7 +359,9 @@ export function RoomQuestionReview({
               )}
               {edit ? (
                 <p className="mt-3 text-[11px] leading-snug text-slate-500">
-                  Edited by {edit.editor} · {formatEditTimestamp(edit.editedAt)} · {edit.reason}
+                  {instantCommit
+                    ? "Exploring this answer. It is not saved to ESA or the QA database."
+                    : `Edited by ${edit.editor} · ${formatEditTimestamp(edit.editedAt)} · ${edit.reason}`}
                 </p>
               ) : null}
             </div>
@@ -375,6 +399,9 @@ export function RoomQuestionReview({
                   </div>
                 ) : null}
               </div>
+            ) : null}
+            {extra ? (
+              <div className="border-t border-amber-100 bg-amber-50/40 px-3.5 py-3">{extra}</div>
             ) : null}
           </article>
         )

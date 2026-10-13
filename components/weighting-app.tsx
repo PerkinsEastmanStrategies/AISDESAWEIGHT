@@ -1,13 +1,16 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, RefreshCw, RotateCcw } from "lucide-react"
+import { BadgeCheck, Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, MessageSquare, RefreshCw, RotateCcw } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
 import { CampusReport } from "@/components/campus-report"
 import { CategorySpider } from "@/components/category-spider"
 import { SchoolCompareRadial } from "@/components/school-compare-radial"
+import { AisdDecisionPanel } from "@/components/aisd-decision-panel"
+import { AisdFeedbackPanel } from "@/components/aisd-feedback-panel"
 import { AisdHandoffBanner, QaHandoffPanel } from "@/components/qa-handoff-panel"
 import { SchoolPanel } from "@/components/school-panel"
+import { AisdQaPanel } from "@/components/aisd-qa-panel"
 import { SchoolQaPanel } from "@/components/school-qa-panel"
 import { OVERALL_SLICE, SchoolScoreBubbles } from "@/components/school-score-bubbles"
 import { ScoreBadge, DeltaChip } from "@/components/score-badge"
@@ -18,7 +21,15 @@ import {
   omitDiscardedRooms,
   type DiscardedRoom,
 } from "@/lib/qa-discard"
-import { handoffForSchool, type QaHandoff } from "@/lib/qa-handoff"
+import {
+  formatHandoffTimestamp,
+  handoffForSchool,
+  isAisdQueue,
+  isFinalizedHandoff,
+  isFeedbackHandoff,
+  withHandoffSchoolName,
+  type QaHandoff,
+} from "@/lib/qa-handoff"
 import { fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
 import { fetchSchoolCatalog, fetchSchoolSnapshot, refreshWalkedSchools } from "@/lib/school-catalog"
 import { scoreSchool } from "@/lib/scoring"
@@ -50,12 +61,14 @@ const LEVELS: { id: SchoolLevel; label: string }[] = [
   { id: "HS", label: "High" },
 ]
 
-type Workstream = "internal" | "aisd" | "report" | "explorer"
+type Workstream = "internal" | "aisd" | "feedback" | "finalized" | "report" | "explorer"
 type QaPane = "campus" | "all"
 
 const WORKSTREAMS: { id: Workstream; label: string; icon: typeof ClipboardCheck }[] = [
   { id: "internal", label: "Internal QA", icon: ClipboardCheck },
   { id: "aisd", label: "AISD QA", icon: Building2 },
+  { id: "feedback", label: "Feedback", icon: MessageSquare },
+  { id: "finalized", label: "Finalized", icon: BadgeCheck },
   { id: "report", label: "Report", icon: FileText },
 ]
 
@@ -124,6 +137,14 @@ function workstreamCopy(view: Workstream, qaPane: QaPane): string {
   if (view === "explorer") {
     return "Weighting Explorer: compare walked schools and watch scores move as weights change"
   }
+  if (view === "feedback") {
+    return "Campuses AISD moved here so overall notes, focus-area notes, and question comments can be reviewed"
+  }
+  if (view === "finalized") {
+    return qaPane === "all"
+      ? "Campuses AISD accepted and moved to the finalized list"
+      : "Read-only snapshot of a campus AISD marked as looking good"
+  }
   if (view === "aisd") {
     return qaPane === "all"
       ? "AISD QA overview of campuses that Internal QA has approved and moved forward"
@@ -144,6 +165,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const [rightId, setRightId] = useState("")
   const [qaSchoolId, setQaSchoolId] = useState("")
   const [aisdSchoolId, setAisdSchoolId] = useState("")
+  const [finalizedSchoolId, setFinalizedSchoolId] = useState("")
+  const [feedbackSchoolId, setFeedbackSchoolId] = useState("")
   const [qaRoomId, setQaRoomId] = useState<string | null>(null)
   const [reportSchoolId, setReportSchoolId] = useState("")
   const [handoffs, setHandoffs] = useState<QaHandoff[]>([])
@@ -199,19 +222,52 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     [catalog, schoolLevel],
   )
   const aisdOptions = useMemo(
-    () => levelOptions.filter((school) => handoffForSchool(handoffs, school.schoolId)),
+    () =>
+      withHandoffSchoolName(
+        levelOptions.filter((school) => isAisdQueue(handoffForSchool(handoffs, school.schoolId))),
+        handoffs,
+      ),
     [levelOptions, handoffs],
   )
-  const qaOptions = view === "aisd" ? aisdOptions : levelOptions
-  const activeQaSchoolId = view === "aisd" ? aisdSchoolId : qaSchoolId
-  const showingQaCampus = (view === "internal" || view === "aisd") && qaPane === "campus"
-  const showingQaAll = (view === "internal" || view === "aisd") && qaPane === "all"
+  const finalizedOptions = useMemo(
+    () => levelOptions.filter((school) => isFinalizedHandoff(handoffForSchool(handoffs, school.schoolId))),
+    [levelOptions, handoffs],
+  )
+  const feedbackOptions = useMemo(
+    () => levelOptions.filter((school) => isFeedbackHandoff(handoffForSchool(handoffs, school.schoolId))),
+    [levelOptions, handoffs],
+  )
+  const internalOptions = useMemo(
+    () =>
+      levelOptions.filter((school) => {
+        const handoff = handoffForSchool(handoffs, school.schoolId)
+        return !handoff || isFeedbackHandoff(handoff)
+      }),
+    [levelOptions, handoffs],
+  )
+  const qaOptions =
+    view === "aisd" ? aisdOptions : view === "finalized" ? finalizedOptions : internalOptions
+  const activeQaSchoolId =
+    view === "aisd" ? aisdSchoolId : view === "finalized" ? finalizedSchoolId : qaSchoolId
+  const showingQaCampus = (view === "internal" || view === "aisd" || view === "finalized") && qaPane === "campus"
+  const showingQaAll = (view === "internal" || view === "aisd" || view === "finalized") && qaPane === "all"
   const showingFleet = showingQaAll || view === "report"
   const snapshotKey = showingFleet
-    ? (view === "aisd" ? aisdOptions : levelOptions).map((school) => school.schoolId).join("|")
+    ? (view === "aisd"
+        ? aisdOptions
+        : view === "finalized"
+          ? finalizedOptions
+          : view === "internal"
+            ? internalOptions
+            : levelOptions
+      )
+        .map((school) => school.schoolId)
+        .join("|")
     : showingQaCampus
       ? activeQaSchoolId
-      : [leftId, rightId].filter(Boolean).join("|")
+      : view === "feedback"
+        ? feedbackSchoolId
+        : [leftId, rightId].filter(Boolean).join("|")
   const { snapshots, loadError, setLoadError } = useSchoolSnapshots(snapshotKey, snapshotEpoch)
 
   async function refreshSchools() {
@@ -287,14 +343,16 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     () => [...new Set(levelWeights?.focusAreas.map((row) => row.focusArea) ?? [])],
     [levelWeights],
   )
-  const fleetSource = view === "aisd" ? aisdOptions : levelOptions
+  const fleetSource =
+    view === "aisd" ? aisdOptions : view === "finalized" ? finalizedOptions : view === "internal" ? internalOptions : levelOptions
   const fleetCards = useMemo(() => {
     if (!showingFleet || !resolver || !levelWeights) return []
-    return fleetSource
+    const scored = fleetSource
       .map((option) => snapshots[option.schoolId])
       .filter((school): school is SchoolSnapshot => Boolean(school))
       .map((school) => scoreSchool(prepareSnapshot(school), resolver))
-  }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms])
+    return view === "aisd" || view === "finalized" ? withHandoffSchoolName(scored, handoffs) : scored
+  }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms, view, handoffs])
   const qaAligned = useMemo(() => {
     if (!showingQaCampus || !levelWeights) return null
     const snapshot = snapshots[activeQaSchoolId]
@@ -323,6 +381,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     setRightId("")
     setQaSchoolId("")
     setAisdSchoolId("")
+    setFinalizedSchoolId("")
+    setFeedbackSchoolId("")
     setQaRoomId(null)
     setReportSchoolId("")
     setLoadError(null)
@@ -336,21 +396,85 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
 
   function openQaCampus(schoolId: string) {
     if (view === "aisd") setAisdSchoolId(schoolId)
+    else if (view === "finalized") setFinalizedSchoolId(schoolId)
     else setQaSchoolId(schoolId)
     setQaRoomId(null)
     setQaPane("campus")
   }
 
+  function rememberHandoff(saved: QaHandoff) {
+    setHandoffs((current) => [...current.filter((item) => item.schoolId !== saved.schoolId), saved])
+  }
+
   async function moveToAisdQa(movedBy: string) {
     const school = levelOptions.find((item) => item.schoolId === qaSchoolId)
     if (!school) return
+    const current = handoffForSchool(handoffs, school.schoolId)
     const saved = await saveQaHandoffLive({
       schoolId: school.schoolId,
       schoolName: school.schoolName,
       movedBy,
       movedAt: new Date().toISOString(),
+      status: "aisd",
+      decisionBy: "",
+      decisionAt: "",
+      decisionComments: "",
     })
-    setHandoffs((current) => [...current.filter((item) => item.schoolId !== saved.schoolId), saved])
+    rememberHandoff({ ...saved, movedBy: saved.movedBy || current?.movedBy || movedBy })
+    setAisdSchoolId(school.schoolId)
+    setView("aisd")
+    setQaPane("campus")
+  }
+
+  async function finalizeSchool(schoolId: string, decidedBy: string) {
+    const school = levelOptions.find((item) => item.schoolId === schoolId)
+    const current = handoffForSchool(handoffs, schoolId)
+    if (!school || !current) return
+    const saved = await saveQaHandoffLive({
+      ...current,
+      schoolId: school.schoolId,
+      schoolName: school.schoolName,
+      movedBy: current.movedBy,
+      movedAt: current.movedAt,
+      status: "finalized",
+      decisionBy: decidedBy,
+      decisionAt: new Date().toISOString(),
+      decisionComments: "",
+    })
+    rememberHandoff(saved)
+    setFinalizedSchoolId(school.schoolId)
+    setView("finalized")
+    setQaPane("campus")
+  }
+
+  async function finalizeAisdSchool(decidedBy: string) {
+    await finalizeSchool(aisdSchoolId, decidedBy)
+  }
+
+  async function finalizeReturnedSchool(decidedBy: string) {
+    await finalizeSchool(qaSchoolId, decidedBy)
+  }
+
+  async function moveAisdSchoolToFeedback(decidedBy: string) {
+    const school = levelOptions.find((item) => item.schoolId === aisdSchoolId)
+    const current = handoffForSchool(handoffs, aisdSchoolId)
+    if (!school || !current) return
+    const saved = await saveQaHandoffLive({
+      ...current,
+      schoolId: school.schoolId,
+      schoolName: school.schoolName,
+      movedBy: current.movedBy,
+      movedAt: current.movedAt,
+      status: "feedback",
+      decisionBy: decidedBy,
+      decisionAt: new Date().toISOString(),
+      decisionComments: "",
+    })
+    rememberHandoff(saved)
+    setFeedbackSchoolId(school.schoolId)
+    setQaSchoolId(school.schoolId)
+    setView("internal")
+    setQaPane("campus")
   }
 
   function discardActiveRoom(roomId: string) {
@@ -441,10 +565,10 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
           </div>
         </div>
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-end gap-3 px-4 pb-3">
-          {view === "internal" || view === "aisd" ? (
+          {view === "internal" || view === "aisd" || view === "finalized" ? (
             <div className="min-w-[240px] flex-1">
               <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-                {view === "aisd" ? "AISD QA" : "Internal QA"}
+                {view === "aisd" ? "AISD QA" : view === "finalized" ? "Finalized" : "Internal QA"}
               </span>
               <div className="grid auto-cols-fr grid-flow-col gap-1 rounded-xl bg-slate-100 p-1">
                 <button
@@ -483,8 +607,17 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               const inLevel = catalog.filter((school) => optionLevel(school) === level.id)
               const count =
                 view === "aisd"
-                  ? inLevel.filter((school) => handoffForSchool(handoffs, school.schoolId)).length
-                  : inLevel.length
+                  ? inLevel.filter((school) => isAisdQueue(handoffForSchool(handoffs, school.schoolId))).length
+                  : view === "finalized"
+                    ? inLevel.filter((school) => isFinalizedHandoff(handoffForSchool(handoffs, school.schoolId))).length
+                    : view === "feedback"
+                      ? inLevel.filter((school) => isFeedbackHandoff(handoffForSchool(handoffs, school.schoolId))).length
+                      : view === "internal"
+                        ? inLevel.filter((school) => {
+                            const handoff = handoffForSchool(handoffs, school.schoolId)
+                            return !handoff || isFeedbackHandoff(handoff)
+                          }).length
+                        : inLevel.length
               return {
                 id: level.id,
                 label: `${level.label} ${count}`,
@@ -509,7 +642,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
 
       <main
         className={`mx-auto max-w-[1600px] gap-4 px-4 py-4 ${
-          showingQaCampus || showingQaAll || view === "report"
+          showingQaCampus || showingQaAll || view === "report" || view === "feedback"
             ? "block"
             : `grid grid-cols-1 ${showingQaAll ? "lg:grid-cols-[340px_minmax(0,1fr)]" : "lg:grid-cols-[420px_minmax(0,1fr)]"}`
         }`}
@@ -555,6 +688,13 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     Internal QA has to review a campus and use Move to AISD QA before it appears here.
                   </p>
                 </div>
+              ) : view === "finalized" && finalizedOptions.length === 0 ? (
+                <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-200">
+                  <p className="text-sm font-medium text-slate-900">No finalized campuses yet</p>
+                  <p className="mt-1 text-sm text-slate-500">
+                    AISD QA uses Looks good, move to finalized after a campus review is accepted.
+                  </p>
+                </div>
               ) : (
                 <>
                   <SchoolScoreBubbles
@@ -566,12 +706,18 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     loading={fleetPending}
                     levelLabel={LEVELS.find((level) => level.id === schoolLevel)?.label ?? "Schools"}
                     openHint={
-                      view === "aisd" ? "Click to open in AISD QA" : "Click to open in Internal QA"
+                      view === "aisd"
+                        ? "Click to open in AISD QA"
+                        : view === "finalized"
+                          ? "Click to open a finalized campus"
+                          : "Click to open in Internal QA"
                     }
                     emptyMessage={
                       view === "aisd"
                         ? "No scored AISD QA campuses for this filter."
-                        : "No scored campuses for this filter."
+                        : view === "finalized"
+                          ? "No scored finalized campuses for this filter."
+                          : "No scored campuses for this filter."
                     }
                   />
                   <SchoolCompareRadial
@@ -588,16 +734,23 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
             <div className="space-y-4">
               <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5">
                 <SchoolSelect
-                  label={view === "aisd" ? "School in AISD QA" : "School to review"}
+                  label={
+                    view === "aisd"
+                      ? "School in AISD QA"
+                      : view === "finalized"
+                        ? "Finalized school"
+                        : "School to review"
+                  }
                   value={activeQaSchoolId}
                   options={qaOptions.map((school) =>
-                    view === "internal" && handoffForSchool(handoffs, school.schoolId)
-                      ? { ...school, schoolName: `${school.schoolName} · AISD QA` }
+                    view === "internal" && isFeedbackHandoff(handoffForSchool(handoffs, school.schoolId))
+                      ? { ...school, schoolName: `RETURNED ${school.schoolName}` }
                       : school,
                   )}
                   hiddenIds={[]}
                   onChange={(id) => {
                     if (view === "aisd") setAisdSchoolId(id)
+                    else if (view === "finalized") setFinalizedSchoolId(id)
                     else setQaSchoolId(id)
                     setQaRoomId(null)
                   }}
@@ -607,21 +760,56 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     No campuses have been moved from Internal QA yet.
                   </p>
                 ) : null}
+                {view === "finalized" && finalizedOptions.length === 0 ? (
+                  <p className="mt-2 text-xs text-slate-500">
+                    No campuses have been moved to Finalized yet.
+                  </p>
+                ) : null}
               </div>
               {refreshNote ? <p className="text-sm text-slate-600">{refreshNote}</p> : null}
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
               {handoffError ? <p className="text-sm text-red-600">{handoffError}</p> : null}
               {activeQaSchoolId && !qaCard ? <p className="text-sm text-slate-500">Loading campus…</p> : null}
               {view === "aisd" && qaCard && activeHandoff ? <AisdHandoffBanner handoff={activeHandoff} /> : null}
-              {qaCard && qaAligned ? (
+              {qaCard && qaAligned && (view === "aisd" || view === "finalized") ? (
+                <AisdQaPanel
+                  key={`${view}-${qaCard.schoolId}`}
+                  card={
+                    activeHandoff?.schoolName
+                      ? { ...qaCard, schoolName: activeHandoff.schoolName }
+                      : qaCard
+                  }
+                  snapshot={qaAligned}
+                  resolver={resolver ?? undefined}
+                  baseline={baseline ?? undefined}
+                />
+              ) : null}
+              {view === "aisd" && qaCard ? (
+                <AisdDecisionPanel
+                  schoolName={activeHandoff?.schoolName ?? qaCard.schoolName}
+                  onFinalize={finalizeAisdSchool}
+                  onMoveToFeedback={moveAisdSchoolToFeedback}
+                />
+              ) : null}
+              {view === "finalized" && qaCard && activeHandoff ? (
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-sm text-emerald-950">
+                  Finalized
+                  {activeHandoff.decisionBy ? ` by ${activeHandoff.decisionBy}` : ""}
+                  {activeHandoff.decisionAt ? ` on ${formatHandoffTimestamp(activeHandoff.decisionAt)}` : ""}.
+                </div>
+              ) : null}
+              {qaCard && qaAligned && view === "internal" ? (
                 <SchoolQaPanel
-                  card={qaCard}
+                  card={
+                    isFeedbackHandoff(activeHandoff)
+                      ? { ...qaCard, schoolName: `RETURNED ${qaCard.schoolName}` }
+                      : qaCard
+                  }
                   snapshot={qaAligned}
                   selectedRoomId={qaRoomId}
                   onSelectRoom={setQaRoomId}
-                  allowDiscard={view === "internal"}
-                  onDiscardRoom={view === "internal" ? discardActiveRoom : undefined}
-                  allowScoringNotes={view === "aisd"}
+                  allowDiscard
+                  onDiscardRoom={discardActiveRoom}
                   resolver={resolver ?? undefined}
                   baseline={baseline ?? undefined}
                 />
@@ -631,7 +819,45 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   schoolName={qaCard.schoolName}
                   existing={activeHandoff}
                   onSubmit={moveToAisdQa}
+                  onFinalizeReturned={finalizeReturnedSchool}
                 />
+              ) : null}
+            </div>
+          ) : view === "feedback" ? (
+            <div className="space-y-4">
+              <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5">
+                <SchoolSelect
+                  label="School in Feedback"
+                  value={feedbackSchoolId}
+                  options={feedbackOptions}
+                  hiddenIds={[]}
+                  onChange={setFeedbackSchoolId}
+                />
+                {feedbackOptions.length === 0 ? (
+                  <p className="mt-2 text-xs text-slate-500">
+                    No campuses have been moved from AISD QA to Feedback yet.
+                  </p>
+                ) : null}
+              </div>
+              {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
+              {handoffError ? <p className="text-sm text-red-600">{handoffError}</p> : null}
+              {feedbackSchoolId && !snapshots[feedbackSchoolId] ? (
+                <p className="text-sm text-slate-500">Loading campus comments…</p>
+              ) : null}
+              {feedbackSchoolId ? (
+                <AisdFeedbackPanel
+                  schoolId={feedbackSchoolId}
+                  schoolName={
+                    feedbackOptions.find((school) => school.schoolId === feedbackSchoolId)?.schoolName ??
+                    feedbackSchoolId
+                  }
+                  snapshot={snapshots[feedbackSchoolId]}
+                  handoff={handoffForSchool(handoffs, feedbackSchoolId)}
+                />
+              ) : feedbackOptions.length ? (
+                <p className="rounded-2xl bg-white px-4 py-8 text-center text-sm text-slate-500 shadow-sm ring-1 ring-slate-200">
+                  Pick a school to see the AISD notes that were moved here.
+                </p>
               ) : null}
             </div>
           ) : view === "report" ? (

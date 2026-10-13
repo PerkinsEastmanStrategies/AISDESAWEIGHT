@@ -1,4 +1,25 @@
 export const OVERALL_NOTE_TOPIC = "overall"
+export const QUESTION_NOTE_PREFIX = "question:"
+
+export function questionNoteTopic(roomId: string, questionId: string): string {
+  return `${QUESTION_NOTE_PREFIX}${roomId}::${questionId}`
+}
+
+export function isQuestionNoteTopic(topic: string): boolean {
+  return topic.startsWith(QUESTION_NOTE_PREFIX)
+}
+
+export function parseQuestionNoteTopic(topic: string): { roomId: string; questionId: string } | null {
+  if (!isQuestionNoteTopic(topic)) return null
+  const rest = topic.slice(QUESTION_NOTE_PREFIX.length)
+  const index = rest.indexOf("::")
+  if (index <= 0) return null
+  return { roomId: rest.slice(0, index), questionId: rest.slice(index + 2) }
+}
+
+export function notesHaveComments(notes: QaScoringNotes): boolean {
+  return Object.values(notes.threads).some((comments) => comments.some((comment) => comment.text.trim()))
+}
 
 export interface QaScoringComment {
   id: string
@@ -132,7 +153,10 @@ function formatThread(comments: QaScoringComment[] | undefined): string {
 export function observationLines(notes: QaScoringNotes, categoryOrder: string[] = []): string[] {
   const used = new Set<string>([OVERALL_NOTE_TOPIC, ...categoryOrder])
   const leftover = Object.entries(notes.threads)
-    .filter(([label, comments]) => !used.has(label) && formatThread(comments))
+    .filter(
+      ([label, comments]) =>
+        !used.has(label) && !isQuestionNoteTopic(label) && formatThread(comments),
+    )
     .map(([, comments]) => formatThread(comments))
   return [
     formatThread(notes.threads[OVERALL_NOTE_TOPIC]),
@@ -156,6 +180,12 @@ export async function fetchScoringNotes(schoolId: string): Promise<QaScoringNote
   })
   const data = await readJson<{ notes: QaScoringNotes }>(response)
   return data.notes ?? emptyScoringNotes(schoolId)
+}
+
+export async function fetchAllScoringNotes(): Promise<QaScoringNotes[]> {
+  const response = await fetch("/api/qa/scoring-notes", { cache: "no-store" })
+  const data = await readJson<{ notes: QaScoringNotes[] }>(response)
+  return data.notes ?? []
 }
 
 export async function addScoringCommentLive(input: {

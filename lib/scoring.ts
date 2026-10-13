@@ -1,6 +1,7 @@
 import { canonicalName } from "@/lib/normalize"
 import { isNotAbleToAssessText, unitsForScoring } from "@/lib/non-scoring"
 import {
+  collapseExteriorWindowsSelectAll,
   isBorrowedDaylightQuestion,
   roomHasExteriorWindows,
 } from "@/lib/esa-question-dependencies"
@@ -38,7 +39,7 @@ function scoredUnitsForRoom(
   weights: WeightResolver,
 ): Array<ScoredUnit & { weight: number }> {
   const omitBorrowedDaylight = roomHasExteriorWindows(room.units)
-  const applicable = room.units.filter((unit) => {
+  const applicable = collapseExteriorWindowsSelectAll(room.units).filter((unit) => {
     if (!Number.isFinite(unit.score)) return false
     if (isNotAbleToAssessText(unit.answer)) return false
     if (omitBorrowedDaylight && isBorrowedDaylightQuestion({ question: unit.question })) return false

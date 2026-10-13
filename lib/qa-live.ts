@@ -7,6 +7,7 @@ import {
 } from "@aisd/shared"
 import type { QaEditRecord } from "@/lib/qa-edits"
 import type { QaHandoff } from "@/lib/qa-handoff"
+import { collapseExteriorWindowsSelectAll } from "@/lib/esa-question-dependencies"
 import type { ScoredRoom, ScoredUnit } from "@/lib/types"
 
 async function readJson<T>(response: Response): Promise<T> {
@@ -57,7 +58,6 @@ export function applyEditsToRooms(
   edits: QaEditRecord[],
   schoolClass?: string,
 ): ScoredRoom[] {
-  if (!edits.length) return rooms
   const byRoom = new Map<string, QaEditRecord[]>()
   for (const edit of edits) {
     const list = byRoom.get(edit.roomId) ?? []
@@ -66,10 +66,10 @@ export function applyEditsToRooms(
   }
   return rooms.map((room) => {
     const roomEdits = byRoom.get(room.roomId)
-    if (!roomEdits?.length) return room
+    const units = roomEdits?.length ? applyEditsToUnits(room, roomEdits, schoolClass) : room.units
     return {
       ...room,
-      units: applyEditsToUnits(room, roomEdits, schoolClass),
+      units: collapseExteriorWindowsSelectAll(units),
     }
   })
 }

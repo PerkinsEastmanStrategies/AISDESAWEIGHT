@@ -48,6 +48,35 @@ export function isExteriorWindowsSkipWhenNoDependent(
   return /^Select all that apply \(exterior windows/i.test(text)
 }
 
+export function isExteriorWindowsSelectAllQuestion(
+  question: Pick<EsaQuestion, "question">,
+): boolean {
+  return isExteriorWindowsSkipWhenNoDependent(question)
+}
+
+/**
+ * Views / clerestory / none-of-the-above are separate score units. Campus scoring
+ * averages those units, so "Access to views" alone was 50%. Use the best unit
+ * so views = 100% and clerestory-only stays 50%.
+ */
+export function collapseExteriorWindowsSelectAll<
+  T extends { questionId: string; question: string; score: number },
+>(units: T[]): T[] {
+  const maxByQuestion = new Map<string, number>()
+  for (const unit of units) {
+    if (!isExteriorWindowsSelectAllQuestion({ question: unit.question })) continue
+    if (!Number.isFinite(unit.score)) continue
+    const current = maxByQuestion.get(unit.questionId)
+    if (current == null || unit.score > current) maxByQuestion.set(unit.questionId, unit.score)
+  }
+  if (!maxByQuestion.size) return units
+  return units.map((unit) => {
+    const max = maxByQuestion.get(unit.questionId)
+    if (max == null || !Number.isFinite(unit.score) || unit.score === max) return unit
+    return { ...unit, score: max }
+  })
+}
+
 /** Borrowed-daylight follow-up: only scores when the space does not have exterior windows. */
 export function isBorrowedDaylightQuestion(
   question: Pick<EsaQuestion, "question">,

@@ -26,7 +26,11 @@ export async function GET(request: Request) {
   try {
     const schoolId = new URL(request.url).searchParams.get("schoolId")?.trim() ?? ""
     if (!schoolId) {
-      return NextResponse.json({ error: "schoolId is required" }, { status: 400 })
+      const rows = await supabaseRestSelect<NotesRow>(
+        "esa_qa_scoring_notes",
+        "select=school_id,overall,categories,author,updated_at&order=updated_at.desc",
+      )
+      return NextResponse.json({ notes: rows.map(toNotes) })
     }
     const rows = await supabaseRestSelect<NotesRow>(
       "esa_qa_scoring_notes",
