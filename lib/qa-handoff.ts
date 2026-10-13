@@ -38,6 +38,19 @@ export function isFeedbackHandoff(handoff: QaHandoff | undefined): boolean {
   return handoffStatus(handoff) === "feedback"
 }
 
+export function isTestAisdHandoff(handoff: QaHandoff | undefined): boolean {
+  if (!handoff) return false
+  if (handoff.movedBy.trim() === "TEST bulk move") return true
+  return /--\s*TEST$/i.test(handoff.schoolName.trim())
+}
+
+/** Internal QA keeps live scores; TEST AISD copies stay visible in both queues. */
+export function isInternalQueue(handoff: QaHandoff | undefined): boolean {
+  if (!handoff) return true
+  if (isFeedbackHandoff(handoff)) return true
+  return isTestAisdHandoff(handoff) && isAisdQueue(handoff)
+}
+
 const HANDOFF_KEY = "qa-aisd-handoffs"
 
 function canUseStorage(): boolean {

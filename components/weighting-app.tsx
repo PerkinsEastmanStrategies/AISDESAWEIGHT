@@ -27,6 +27,7 @@ import {
   isAisdQueue,
   isFinalizedHandoff,
   isFeedbackHandoff,
+  isInternalQueue,
   withHandoffSchoolName,
   type QaHandoff,
 } from "@/lib/qa-handoff"
@@ -239,10 +240,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   )
   const internalOptions = useMemo(
     () =>
-      levelOptions.filter((school) => {
-        const handoff = handoffForSchool(handoffs, school.schoolId)
-        return !handoff || isFeedbackHandoff(handoff)
-      }),
+      levelOptions.filter((school) => isInternalQueue(handoffForSchool(handoffs, school.schoolId))),
     [levelOptions, handoffs],
   )
   const qaOptions =
@@ -613,10 +611,9 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                     : view === "feedback"
                       ? inLevel.filter((school) => isFeedbackHandoff(handoffForSchool(handoffs, school.schoolId))).length
                       : view === "internal"
-                        ? inLevel.filter((school) => {
-                            const handoff = handoffForSchool(handoffs, school.schoolId)
-                            return !handoff || isFeedbackHandoff(handoff)
-                          }).length
+                        ? inLevel.filter((school) =>
+                            isInternalQueue(handoffForSchool(handoffs, school.schoolId)),
+                          ).length
                         : inLevel.length
               return {
                 id: level.id,

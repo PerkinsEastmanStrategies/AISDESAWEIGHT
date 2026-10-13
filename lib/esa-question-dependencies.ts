@@ -44,7 +44,7 @@ export function isExteriorWindowsParentQuestion(
 export function isExteriorWindowsSkipWhenNoDependent(
   question: Pick<EsaQuestion, "question">,
 ): boolean {
-  const text = question.question.trim()
+  const text = String(question.question ?? "").trim()
   return /^Select all that apply \(exterior windows/i.test(text)
 }
 
