@@ -38,17 +38,56 @@ export function isFeedbackHandoff(handoff: QaHandoff | undefined): boolean {
   return handoffStatus(handoff) === "feedback"
 }
 
+export const TEST_HANDOFF_SCHOOL_SUFFIX = "--test"
+
+export function isTestHandoffSchoolId(schoolId: string): boolean {
+  return schoolId.endsWith(TEST_HANDOFF_SCHOOL_SUFFIX)
+}
+
+export function baseSchoolIdFromHandoff(schoolId: string): string {
+  return isTestHandoffSchoolId(schoolId)
+    ? schoolId.slice(0, -TEST_HANDOFF_SCHOOL_SUFFIX.length)
+    : schoolId
+}
+
+export function toTestHandoffSchoolId(schoolId: string): string {
+  return `${baseSchoolIdFromHandoff(schoolId)}${TEST_HANDOFF_SCHOOL_SUFFIX}`
+}
+
 export function isTestAisdHandoff(handoff: QaHandoff | undefined): boolean {
   if (!handoff) return false
+  if (isTestHandoffSchoolId(handoff.schoolId)) return true
   if (handoff.movedBy.trim() === "TEST bulk move") return true
   return /--\s*TEST$/i.test(handoff.schoolName.trim())
 }
 
-/** Internal QA keeps live scores; TEST AISD copies stay visible in both queues. */
+/** Real Internal campuses stay in Internal until a real AISD approve. TEST copies use --test ids. */
 export function isInternalQueue(handoff: QaHandoff | undefined): boolean {
   if (!handoff) return true
   if (isFeedbackHandoff(handoff)) return true
+  if (isTestHandoffSchoolId(handoff.schoolId)) return false
   return isTestAisdHandoff(handoff) && isAisdQueue(handoff)
+}
+
+export function aisdQueueEntries<T extends { schoolId: string; schoolName: string }>(
+  catalog: T[],
+  handoffs: QaHandoff[],
+): T[] {
+  const byBase = new Map(catalog.map((school) => [school.schoolId, school]))
+  const rows: T[] = []
+  for (const handoff of handoffs) {
+    if (!isAisdQueue(handoff)) continue
+    const school = byBase.get(baseSchoolIdFromHandoff(handoff.schoolId))
+    if (!school) continue
+    rows.push({
+      ...school,
+      schoolId: handoff.schoolId,
+      schoolName: handoff.schoolName.trim() || school.schoolName,
+    })
+  }
+  return rows.sort((a, b) =>
+    a.schoolName.localeCompare(b.schoolName, undefined, { sensitivity: "base" }),
+  )
 }
 
 const HANDOFF_KEY = "qa-aisd-handoffs"

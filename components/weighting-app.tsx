@@ -22,12 +22,15 @@ import {
   type DiscardedRoom,
 } from "@/lib/qa-discard"
 import {
+  aisdQueueEntries,
   formatHandoffTimestamp,
   handoffForSchool,
-  isAisdQueue,
   isFinalizedHandoff,
   isFeedbackHandoff,
   isInternalQueue,
+  isTestAisdHandoff,
+  isTestHandoffSchoolId,
+  toTestHandoffSchoolId,
   withHandoffSchoolName,
   type QaHandoff,
 } from "@/lib/qa-handoff"
@@ -223,11 +226,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     [catalog, schoolLevel],
   )
   const aisdOptions = useMemo(
-    () =>
-      withHandoffSchoolName(
-        levelOptions.filter((school) => isAisdQueue(handoffForSchool(handoffs, school.schoolId))),
-        handoffs,
-      ),
+    () => aisdQueueEntries(levelOptions, handoffs),
     [levelOptions, handoffs],
   )
   const finalizedOptions = useMemo(
@@ -346,9 +345,15 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const fleetCards = useMemo(() => {
     if (!showingFleet || !resolver || !levelWeights) return []
     const scored = fleetSource
-      .map((option) => snapshots[option.schoolId])
-      .filter((school): school is SchoolSnapshot => Boolean(school))
-      .map((school) => scoreSchool(prepareSnapshot(school), resolver))
+      .map((option) => {
+        const snapshot = snapshots[option.schoolId]
+        if (!snapshot) return null
+        return scoreSchool(
+          prepareSnapshot({ ...snapshot, schoolId: option.schoolId, schoolName: option.schoolName }),
+          resolver,
+        )
+      })
+      .filter((card): card is NonNullable<typeof card> => Boolean(card))
     return view === "aisd" || view === "finalized" ? withHandoffSchoolName(scored, handoffs) : scored
   }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms, view, handoffs])
   const qaAligned = useMemo(() => {
@@ -359,8 +364,11 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   }, [showingQaCampus, levelWeights, snapshots, activeQaSchoolId, discardedRooms])
   const qaCard = useMemo(() => {
     if (!qaAligned || !resolver || !baseline) return null
-    return scoreSchool(qaAligned, resolver, baseline)
-  }, [qaAligned, resolver, baseline])
+    const scored = scoreSchool(qaAligned, resolver, baseline)
+    const option = qaOptions.find((school) => school.schoolId === activeQaSchoolId)
+    if (!option) return scored
+    return { ...scored, schoolId: option.schoolId, schoolName: option.schoolName }
+  }, [qaAligned, resolver, baseline, qaOptions, activeQaSchoolId])
   const reportCard = useMemo(() => {
     if (view !== "report" || !resolver || !levelWeights) return null
     const snapshot = snapshots[reportSchoolId]
@@ -408,6 +416,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     const school = levelOptions.find((item) => item.schoolId === qaSchoolId)
     if (!school) return
     const current = handoffForSchool(handoffs, school.schoolId)
+    if (current && isTestAisdHandoff(current) && !isTestHandoffSchoolId(current.schoolId)) {
+      const kept = await saveQaHandoffLive({
+        ...current,
+        schoolId: toTestHandoffSchoolId(school.schoolId),
+        status: "aisd",
+      })
+      rememberHandoff(kept)
+    }
     const saved = await saveQaHandoffLive({
       schoolId: school.schoolId,
       schoolName: school.schoolName,
@@ -418,7 +434,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
       decisionAt: "",
       decisionComments: "",
     })
-    rememberHandoff({ ...saved, movedBy: saved.movedBy || current?.movedBy || movedBy })
+    rememberHandoff({ ...saved, movedBy: saved.movedBy || movedBy })
     setAisdSchoolId(school.schoolId)
     setView("aisd")
     setQaPane("campus")
@@ -605,7 +621,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               const inLevel = catalog.filter((school) => optionLevel(school) === level.id)
               const count =
                 view === "aisd"
-                  ? inLevel.filter((school) => isAisdQueue(handoffForSchool(handoffs, school.schoolId))).length
+                  ? aisdQueueEntries(inLevel, handoffs).length
                   : view === "finalized"
                     ? inLevel.filter((school) => isFinalizedHandoff(handoffForSchool(handoffs, school.schoolId))).length
                     : view === "feedback"

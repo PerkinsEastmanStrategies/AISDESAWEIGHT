@@ -6,6 +6,7 @@ import { loadSavedEditorName, saveEditorName } from "@/lib/qa-edits"
 import {
   formatHandoffTimestamp,
   isFeedbackHandoff,
+  isTestAisdHandoff,
   type QaHandoff,
 } from "@/lib/qa-handoff"
 
@@ -27,14 +28,14 @@ export function QaHandoffPanel({
   const [saving, setSaving] = useState<"aisd" | "finalized" | null>(null)
 
   useEffect(() => {
-    setMovedBy(existing?.movedBy || loadSavedEditorName())
+    setMovedBy(isTestAisdHandoff(existing) ? loadSavedEditorName() : existing?.movedBy || loadSavedEditorName())
     setApproved(false)
     setAddressed(false)
     setError(null)
     setSaving(null)
-  }, [existing?.movedBy, schoolName])
+  }, [existing, schoolName])
 
-  if (existing?.status === "aisd") {
+  if (existing?.status === "aisd" && !isTestAisdHandoff(existing)) {
     return (
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 px-4 py-4 sm:px-5">
         <div className="flex items-start gap-3">
@@ -163,7 +164,9 @@ export function QaHandoffPanel({
         <p className="mt-1 text-sm text-slate-500">
           {returned
             ? `If more AISD review is needed, move ${schoolName} back to AISD QA.`
-            : `Moving ${schoolName} to AISD QA is a deliberate handoff. Confirm the review is complete and record who is sending it forward.`}
+            : isTestAisdHandoff(existing)
+              ? `A TEST copy stays in AISD QA. Approving adds ${schoolName} there as a real campus and removes it from Internal QA.`
+              : `Moving ${schoolName} to AISD QA is a deliberate handoff. Confirm the review is complete and record who is sending it forward.`}
         </p>
         <label className="mt-4 flex items-start gap-3 rounded-xl bg-slate-50 px-3 py-3 text-sm text-slate-800">
           <input

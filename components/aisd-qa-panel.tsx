@@ -17,6 +17,7 @@ import { useRoomNotes } from "@/components/use-room-notes"
 import { useScoringNotes } from "@/components/use-scoring-notes"
 import { isHiddenReportLabel } from "@/lib/report"
 import { editsForRoom, type QaEditRecord } from "@/lib/qa-edits"
+import { baseSchoolIdFromHandoff } from "@/lib/qa-handoff"
 import { applyEditsToRooms, fetchQaEdits } from "@/lib/qa-live"
 import { OVERALL_NOTE_TOPIC, questionNoteTopic } from "@/lib/qa-scoring-notes"
 import { scoreSchool } from "@/lib/scoring"
@@ -123,9 +124,10 @@ export function AisdQaPanel({
       frozenRooms.find((room) => room.roomId === selectedRoomId) ??
       null)
     : null
+  const sourceSchoolId = baseSchoolIdFromHandoff(card.schoolId)
   const { photos, loading: photosLoading, error: photosError } = useRoomPhotos({
     campusId: card.campusId,
-    schoolId: card.schoolId,
+    schoolId: sourceSchoolId,
     roomId: selectedRoomId,
     roomName: selectedSnapshotRoom?.roomName,
   })
@@ -134,7 +136,7 @@ export function AisdQaPanel({
     [photos],
   )
   const { notes, loading: notesLoading, error: notesError } = useRoomNotes({
-    schoolId: card.schoolId,
+    schoolId: sourceSchoolId,
     roomId: selectedRoomId,
     roomName: selectedSnapshotRoom?.roomName,
   })
@@ -147,7 +149,7 @@ export function AisdQaPanel({
 
   useEffect(() => {
     let cancelled = false
-    fetchQaEdits(card.schoolId)
+    fetchQaEdits(sourceSchoolId)
       .then((edits) => {
         if (cancelled) return
         setFrozenEdits(edits)
@@ -160,7 +162,7 @@ export function AisdQaPanel({
     return () => {
       cancelled = true
     }
-  }, [card.schoolId])
+  }, [sourceSchoolId])
 
   useEffect(() => {
     setActivePhotoUrl(null)

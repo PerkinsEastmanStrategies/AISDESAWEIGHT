@@ -104,14 +104,29 @@ export function inFilter(column: string, values: string[]): string {
   return `${column}=in.(${values.map((value) => encodeURIComponent(value)).join(",")})`
 }
 
+export async function supabaseRestDelete(table: string, query: string): Promise<void> {
+  const url = `${supabaseProjectUrl()}/rest/v1/${table}?${query}`
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: restHeaders("return=minimal"),
+  })
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "")
+    throw new Error(tableMissingMessage(table, detail.slice(0, 400)))
+  }
+}
+
 export function sourceSchoolId(schoolId: string): string {
-  return schoolId.replace(/-test$/i, "").replace(/-pilot-\d+$/i, "")
+  const withoutHandoffTest = schoolId.replace(/--test$/i, "")
+  return withoutHandoffTest.replace(/-test$/i, "").replace(/-pilot-\d+$/i, "")
 }
 
 export function schoolIdLookups(schoolId: string): string[] {
   const ids = [schoolId]
-  const withoutTest = schoolId.replace(/-test$/i, "")
-  if (withoutTest !== schoolId) ids.push(withoutTest)
+  const withoutHandoffTest = schoolId.replace(/--test$/i, "")
+  if (withoutHandoffTest !== schoolId) ids.push(withoutHandoffTest)
+  const withoutTest = withoutHandoffTest.replace(/-test$/i, "")
+  if (withoutTest !== withoutHandoffTest) ids.push(withoutTest)
   const withoutPilot = withoutTest.replace(/-pilot-\d+$/i, "")
   if (withoutPilot !== withoutTest) ids.push(withoutPilot)
   return [...new Set(ids.filter(Boolean))]
