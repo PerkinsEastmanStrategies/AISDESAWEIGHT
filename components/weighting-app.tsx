@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { BadgeCheck, Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, MessageSquare, RefreshCw, RotateCcw } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
 import { CampusReport } from "@/components/campus-report"
-import { CategorySpider } from "@/components/category-spider"
 import { SchoolCompareRadial } from "@/components/school-compare-radial"
 import { AisdDecisionPanel } from "@/components/aisd-decision-panel"
 import { AisdFeedbackPanel } from "@/components/aisd-feedback-panel"
@@ -165,8 +164,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const [view, setView] = useState<Workstream>("internal")
   const [qaPane, setQaPane] = useState<QaPane>("campus")
   const [sliceId, setSliceId] = useState(OVERALL_SLICE)
-  const [leftId, setLeftId] = useState("")
-  const [rightId, setRightId] = useState("")
+  const [explorerIds, setExplorerIds] = useState(["", "", "", ""])
   const [qaSchoolId, setQaSchoolId] = useState("")
   const [aisdSchoolId, setAisdSchoolId] = useState("")
   const [finalizedSchoolId, setFinalizedSchoolId] = useState("")
@@ -264,7 +262,9 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
       ? activeQaSchoolId
       : view === "feedback"
         ? feedbackSchoolId
-        : [leftId, rightId].filter(Boolean).join("|")
+        : view === "explorer"
+          ? levelOptions.map((school) => school.schoolId).join("|")
+          : ""
   const { snapshots, loadError, setLoadError } = useSchoolSnapshots(snapshotKey, snapshotEpoch)
 
   async function refreshSchools() {
@@ -315,27 +315,23 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     }
   }, [schemeId, weightFiles, setLoadError])
 
-  const selectedSchools = useMemo(
-    () => {
-      if (!levelWeights) return []
-      return [leftId, rightId]
-        .map((id) => snapshots[id])
-        .filter((school): school is SchoolSnapshot => Boolean(school))
-        .map((school) => prepareSnapshot(school))
-    },
-    [leftId, rightId, snapshots, levelWeights, discardedRooms],
-  )
-
-  const cards = useMemo(
+  const explorerCards = useMemo(() => {
+    if (view !== "explorer" || !resolver || !baseline || !levelWeights) return []
+    return levelOptions
+      .map((option) => snapshots[option.schoolId])
+      .filter((school): school is SchoolSnapshot => Boolean(school))
+      .map((school) => scoreSchool(prepareSnapshot(school), resolver, baseline))
+  }, [view, resolver, baseline, levelWeights, levelOptions, snapshots, discardedRooms])
+  const explorerSelected = useMemo(
     () =>
-      resolver && baseline
-        ? selectedSchools.map((school) => scoreSchool(school, resolver, baseline))
-        : [],
-    [selectedSchools, resolver, baseline],
+      explorerIds
+        .map((id) => explorerCards.find((card) => card.schoolId === id) ?? null)
+        .filter((card): card is NonNullable<typeof card> => Boolean(card)),
+    [explorerIds, explorerCards],
   )
-
-  const pending =
-    !levelWeights || [leftId, rightId].filter(Boolean).some((id) => !snapshots[id])
+  const explorerPending =
+    view === "explorer" &&
+    (!levelWeights || levelOptions.some((school) => !snapshots[school.schoolId]))
   const focusAreaOrder = useMemo(
     () => [...new Set(levelWeights?.focusAreas.map((row) => row.focusArea) ?? [])],
     [levelWeights],
@@ -383,8 +379,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     if (next === schoolLevel) return
     setSchoolLevel(next)
     setSliceId(OVERALL_SLICE)
-    setLeftId("")
-    setRightId("")
+    setExplorerIds(["", "", "", ""])
     setQaSchoolId("")
     setAisdSchoolId("")
     setFinalizedSchoolId("")
@@ -545,7 +540,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               })}
             </div>
             {view === "explorer"
-              ? cards.map((card) => (
+              ? explorerSelected.map((card) => (
                   <div
                     key={card.schoolId}
                     className="flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1.5 ring-1 ring-slate-200"
@@ -900,43 +895,32 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               ) : null}
             </div>
           ) : (
-            <>
-              <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <SchoolSelect
-                    label="School A"
-                    value={leftId}
-                    options={levelOptions}
-                    hiddenIds={[rightId]}
-                    onChange={setLeftId}
-                  />
-                  <SchoolSelect
-                    label="School B"
-                    value={rightId}
-                    options={levelOptions}
-                    hiddenIds={[leftId]}
-                    onChange={setRightId}
-                  />
-                </div>
-                {levelOptions.length === 0 ? (
-                  <p className="text-sm text-slate-500">
-                    No walked {LEVELS.find((level) => level.id === schoolLevel)?.label.toLowerCase()} schools
-                    in this export yet.
-                  </p>
-                ) : null}
-                {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
-                {pending ? <p className="text-sm text-slate-500">Loading…</p> : null}
-                <CategorySpider cards={cards} axisOrder={focusAreaOrder} embedded />
-              </div>
-
-              {cards.length > 0 ? (
-                <div className={`grid min-w-0 gap-4 ${cards.length > 1 ? "xl:grid-cols-2" : ""}`}>
-                  {cards.map((card) => (
+            <div className="space-y-4">
+              {levelOptions.length === 0 ? (
+                <p className="rounded-2xl bg-white px-4 py-8 text-center text-sm text-slate-500 shadow-sm ring-1 ring-slate-200">
+                  No walked {LEVELS.find((level) => level.id === schoolLevel)?.label.toLowerCase()} schools
+                  in this export yet.
+                </p>
+              ) : (
+                <SchoolCompareRadial
+                  key={`explorer-${schoolLevel}`}
+                  options={levelOptions}
+                  cards={explorerCards}
+                  axisOrder={focusAreaOrder}
+                  loading={explorerPending}
+                  selectedIds={explorerIds}
+                  onSelectionChange={setExplorerIds}
+                />
+              )}
+              {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
+              {explorerSelected.length > 0 ? (
+                <div className={`grid min-w-0 gap-4 ${explorerSelected.length > 1 ? "xl:grid-cols-2" : ""}`}>
+                  {explorerSelected.map((card) => (
                     <SchoolPanel key={`${schemeId}-${card.schoolId}`} card={card} />
                   ))}
                 </div>
               ) : null}
-            </>
+            </div>
           )}
         </div>
       </main>

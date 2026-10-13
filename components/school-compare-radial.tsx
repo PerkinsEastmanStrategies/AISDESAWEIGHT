@@ -11,20 +11,27 @@ export function SchoolCompareRadial({
   cards,
   axisOrder,
   loading = false,
+  selectedIds,
+  onSelectionChange,
 }: {
   options: SchoolIndexEntry[]
   cards: SchoolScorecard[]
   axisOrder: string[]
   loading?: boolean
+  selectedIds?: string[]
+  onSelectionChange?: (ids: string[]) => void
 }) {
-  const [ids, setIds] = useState(["", "", "", ""])
+  const [uncontrolledIds, setUncontrolledIds] = useState(["", "", "", ""])
+  const ids = selectedIds ?? uncontrolledIds
   const selected = ids
     .map((id) => cards.find((card) => card.schoolId === id) ?? null)
     .filter((card): card is SchoolScorecard => Boolean(card))
   const waiting = ids.some((id) => id && !cards.some((card) => card.schoolId === id))
 
   function choose(index: number, schoolId: string) {
-    setIds((current) => current.map((value, slot) => (slot === index ? schoolId : value)))
+    const next = ids.map((value, slot) => (slot === index ? schoolId : value))
+    if (!selectedIds) setUncontrolledIds(next)
+    onSelectionChange?.(next)
   }
 
   return (
