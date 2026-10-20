@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { CommentText } from "@/components/comment-text"
 import { formatEditTimestamp } from "@/lib/qa-edits"
 import { formatHandoffTimestamp, type QaHandoff } from "@/lib/qa-handoff"
 import {
@@ -8,6 +9,7 @@ import {
   emptyScoringNotes,
   fetchScoringNotes,
   isQuestionNoteTopic,
+  notesForStream,
   parseQuestionNoteTopic,
   type QaScoringComment,
   type QaScoringNotes,
@@ -23,7 +25,9 @@ function CommentBlock({ comments }: { comments: QaScoringComment[] }) {
             <p className="text-sm font-semibold text-slate-900">{comment.author}</p>
             <p className="text-[11px] text-slate-400">{formatEditTimestamp(comment.createdAt)}</p>
           </div>
-          <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-slate-800">{comment.text}</p>
+          <p className="mt-1">
+            <CommentText text={comment.text} />
+          </p>
         </li>
       ))}
     </ul>
@@ -50,7 +54,7 @@ export function AisdFeedbackPanel({
     fetchScoringNotes(schoolId)
       .then((loaded) => {
         if (cancelled) return
-        setNotes(loaded)
+        setNotes(notesForStream(loaded, "aisd"))
         setError(null)
       })
       .catch((caught) => {

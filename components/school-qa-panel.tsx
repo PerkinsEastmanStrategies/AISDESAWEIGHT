@@ -16,11 +16,14 @@ import { QaDiscardDialog } from "@/components/qa-discard-dialog"
 import { RoomQuestionReview } from "@/components/room-question-review"
 import { ScoreBadge } from "@/components/score-badge"
 import { ScoreTree } from "@/components/score-tree"
+import { ScoringNoteThread } from "@/components/scoring-note-thread"
 import { useRoomNotes } from "@/components/use-room-notes"
+import { useScoringNotes } from "@/components/use-scoring-notes"
 import { answerConsistency } from "@/lib/answer-consistency"
 import { canonicalName } from "@/lib/normalize"
 import { editsForRoom, saveEditorName, type QaEditRecord } from "@/lib/qa-edits"
 import { applyEditsToRooms, fetchQaEdits, saveQaEditLive } from "@/lib/qa-live"
+import { questionCommentEntries, questionNoteTopic } from "@/lib/qa-scoring-notes"
 import { scoreSchool } from "@/lib/scoring"
 import type { WeightResolver } from "@/lib/weights"
 import type { SchoolScorecard, SchoolSnapshot, ScoreNode } from "@/lib/types"
@@ -151,6 +154,15 @@ export function SchoolQaPanel({
   const matrixRows = useMemo(() => answerConsistency(matrixRooms), [matrixRooms])
   const showAnswerMatrix = !selectedRoomId && matrixRooms.length > 1
   const roomEdits = selectedRoomId ? editsForRoom(qaEdits, card.schoolId, selectedRoomId) : []
+  const scoring = useScoringNotes(card.schoolId, "internal")
+  const notedQuestionIds = useMemo(() => {
+    if (!allowScoringNotes || !selectedRoomId) return new Set<string>()
+    return new Set(
+      questionCommentEntries(scoring.notes)
+        .filter((entry) => entry.roomId === selectedRoomId)
+        .map((entry) => entry.questionId),
+    )
+  }, [allowScoringNotes, scoring.notes, selectedRoomId])
 
   useEffect(() => {
     let cancelled = false
@@ -382,6 +394,21 @@ export function SchoolQaPanel({
                 <p className="mb-3 text-xs text-slate-500">
                   Click an answer to edit it. You will be asked who is making the change and why. Nothing is saved to ESA yet.
                 </p>
+                {allowScoringNotes ? (
+                  <label className="mb-4 block max-w-sm">
+                    <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Your name for notes
+                    </span>
+                    <input
+                      type="text"
+                      value={scoring.author}
+                      onChange={(event) => scoring.setAuthor(event.target.value)}
+                      placeholder="Full name"
+                      className="w-full rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-600/10"
+                    />
+                    {scoring.error ? <p className="mt-2 text-sm text-rose-700">{scoring.error}</p> : null}
+                  </label>
+                ) : null}
                 <RoomQuestionReview
                   units={selectedEditedRoom?.units ?? selectedSnapshotRoom.units}
                   photosByQuestion={photosByQuestion}
@@ -389,6 +416,28 @@ export function SchoolQaPanel({
                   onOpenPhoto={setActivePhotoUrl}
                   edits={roomEdits}
                   onCommitEdit={commitEdit}
+                  schoolLevel={snapshot.schoolLevel}
+                  notedQuestionIds={allowScoringNotes ? notedQuestionIds : undefined}
+                  renderQuestionExtra={
+                    allowScoringNotes && selectedRoomId
+                      ? (questionId) => {
+                          const topic = questionNoteTopic(selectedRoomId, questionId)
+                          return (
+                            <ScoringNoteThread
+                              title="QA question notes"
+                              comments={scoring.notes.threads[topic] ?? []}
+                              draft={scoring.drafts[topic] ?? ""}
+                              onDraftChange={(value) =>
+                                scoring.setDrafts((current) => ({ ...current, [topic]: value }))
+                              }
+                              onAdd={() => void scoring.addComment(topic)}
+                              saving={scoring.savingTopic === topic}
+                              placeholder="Leave a note. Tag someone with @name"
+                            />
+                          )
+                        }
+                      : undefined
+                  }
                 />
                 {leftoverNotes.length ? (
                   <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { BadgeCheck, Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, MessageSquare, RefreshCw, RotateCcw } from "lucide-react"
+import { AtSign, BadgeCheck, Building2, ClipboardCheck, FileText, GitCompare, LayoutGrid, MessageSquare, RefreshCw, RotateCcw } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
 import { CampusReport } from "@/components/campus-report"
 import { SchoolCompareRadial } from "@/components/school-compare-radial"
@@ -10,6 +10,7 @@ import { AisdFeedbackPanel } from "@/components/aisd-feedback-panel"
 import { AisdHandoffBanner, QaHandoffPanel } from "@/components/qa-handoff-panel"
 import { SchoolPanel } from "@/components/school-panel"
 import { AisdQaPanel } from "@/components/aisd-qa-panel"
+import { QaMentionsPanel } from "@/components/qa-mentions-panel"
 import { SchoolQaPanel } from "@/components/school-qa-panel"
 import { OVERALL_SLICE, SchoolScoreBubbles } from "@/components/school-score-bubbles"
 import { ScoreBadge, DeltaChip } from "@/components/score-badge"
@@ -22,8 +23,10 @@ import {
 } from "@/lib/qa-discard"
 import {
   aisdQueueEntries,
+  baseSchoolIdFromHandoff,
   formatHandoffTimestamp,
   handoffForSchool,
+  isAisdQueue,
   isFinalizedHandoff,
   isFeedbackHandoff,
   isInternalQueue,
@@ -65,7 +68,7 @@ const LEVELS: { id: SchoolLevel; label: string }[] = [
 ]
 
 type Workstream = "internal" | "aisd" | "feedback" | "finalized" | "report" | "explorer"
-type QaPane = "campus" | "all"
+type QaPane = "campus" | "all" | "mentions"
 
 const WORKSTREAMS: { id: Workstream; label: string; icon: typeof ClipboardCheck }[] = [
   { id: "internal", label: "Internal QA", icon: ClipboardCheck },
@@ -149,9 +152,15 @@ function workstreamCopy(view: Workstream, qaPane: QaPane): string {
       : "Read-only snapshot of a campus AISD marked as looking good"
   }
   if (view === "aisd") {
+    if (qaPane === "mentions") {
+      return "AISD QA comments tagged with @name, filterable by person"
+    }
     return qaPane === "all"
       ? "AISD QA overview of campuses that Internal QA has approved and moved forward"
       : "AISD review of campuses handed off from Internal QA"
+  }
+  if (qaPane === "mentions") {
+    return "Internal QA comments tagged with @name for the selected grade band, filterable by person"
   }
   return qaPane === "all"
     ? "Internal QA overview of every walked campus, before a campus is moved to AISD review"
@@ -205,6 +214,10 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
       })
   }, [])
 
+  useEffect(() => {
+    if (view !== "aisd" && view !== "internal" && qaPane === "mentions") setQaPane("campus")
+  }, [view, qaPane])
+
   const activeWeights = weightFiles[schemeId] ?? null
   const levelWeights = useMemo(
     () => (activeWeights ? filterWeightsForLevel(activeWeights, schoolLevel) : null),
@@ -246,6 +259,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     view === "aisd" ? aisdSchoolId : view === "finalized" ? finalizedSchoolId : qaSchoolId
   const showingQaCampus = (view === "internal" || view === "aisd" || view === "finalized") && qaPane === "campus"
   const showingQaAll = (view === "internal" || view === "aisd" || view === "finalized") && qaPane === "all"
+  const showingQaMentions = (view === "aisd" || view === "internal") && qaPane === "mentions"
   const showingFleet = showingQaAll || view === "report"
   const snapshotKey = showingFleet
     ? (view === "aisd"
@@ -399,6 +413,21 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     if (view === "aisd") setAisdSchoolId(schoolId)
     else if (view === "finalized") setFinalizedSchoolId(schoolId)
     else setQaSchoolId(schoolId)
+    setQaRoomId(null)
+    setQaPane("campus")
+  }
+
+  function openMentionSchool(schoolId: string) {
+    const base = baseSchoolIdFromHandoff(schoolId)
+    const school =
+      catalog.find((item) => item.schoolId === schoolId) ??
+      catalog.find((item) => item.schoolId === base)
+    if (school) setSchoolLevel(optionLevel(school))
+    if (view === "aisd") {
+      setAisdSchoolId(schoolId)
+    } else {
+      setQaSchoolId(base)
+    }
     setQaRoomId(null)
     setQaPane("campus")
   }
@@ -600,6 +629,18 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   <LayoutGrid size={14} />
                   All schools
                 </button>
+                {view === "aisd" || view === "internal" ? (
+                  <button
+                    type="button"
+                    onClick={() => setQaPane("mentions")}
+                    className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                      qaPane === "mentions" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    <AtSign size={14} />
+                    Mentions
+                  </button>
+                ) : null}
               </div>
             </div>
           ) : null}
@@ -650,7 +691,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
 
       <main
         className={`mx-auto max-w-[1600px] gap-4 px-4 py-4 ${
-          showingQaCampus || showingQaAll || view === "report" || view === "feedback"
+          showingQaCampus || showingQaAll || showingQaMentions || view === "report" || view === "feedback"
             ? "block"
             : `grid grid-cols-1 ${showingQaAll ? "lg:grid-cols-[340px_minmax(0,1fr)]" : "lg:grid-cols-[420px_minmax(0,1fr)]"}`
         }`}
@@ -738,6 +779,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                 </>
               )}
             </>
+          ) : showingQaMentions ? (
+            <QaMentionsPanel
+              catalog={catalog}
+              handoffs={handoffs}
+              stream={view === "aisd" ? "aisd" : "internal"}
+              schoolLevel={schoolLevel}
+              onOpenSchool={openMentionSchool}
+            />
           ) : showingQaCampus ? (
             <div className="space-y-4">
               <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5">
@@ -818,6 +867,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   onSelectRoom={setQaRoomId}
                   allowDiscard
                   onDiscardRoom={discardActiveRoom}
+                  allowScoringNotes
                   resolver={resolver ?? undefined}
                   baseline={baseline ?? undefined}
                 />

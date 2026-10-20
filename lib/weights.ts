@@ -49,18 +49,35 @@ export function filterWeightsForLevel(file: WeightFile, level: SchoolLevel): Wei
   }
 }
 
-/** Re-home snapshot rooms under the focus areas used by this weight scheme. */
+/** Re-home snapshot rooms under the focus areas and question categories used by this weight scheme. */
 export function alignSnapshotToWeights(snapshot: SchoolSnapshot, weights: WeightFile): SchoolSnapshot {
   const focusBySpace = new Map<string, string>()
   for (const row of weights.spaceTypes) {
     focusBySpace.set(canonicalName(row.spaceType), row.focusArea)
   }
+  const questionMeta = new Map<string, { category: string; subcategory: string }>()
+  for (const row of weights.questions) {
+    questionMeta.set(row.questionId, {
+      category: row.category,
+      subcategory: row.subcategory,
+    })
+  }
   return {
     ...snapshot,
     rooms: snapshot.rooms.map((room) => {
-      const mapped = focusBySpace.get(canonicalName(room.spaceType))
-      if (!mapped || mapped === room.focusAreaLabel) return room
-      return { ...room, focusAreaLabel: mapped }
+      const mappedFocus = focusBySpace.get(canonicalName(room.spaceType))
+      const focusAreaLabel =
+        mappedFocus && mappedFocus !== room.focusAreaLabel ? mappedFocus : room.focusAreaLabel
+      let categoryChanged = false
+      const units = room.units.map((unit) => {
+        const meta = questionMeta.get(unit.questionId)
+        if (!meta) return unit
+        if (meta.category === unit.category && meta.subcategory === unit.subcategory) return unit
+        categoryChanged = true
+        return { ...unit, category: meta.category, subcategory: meta.subcategory }
+      })
+      if (focusAreaLabel === room.focusAreaLabel && !categoryChanged) return room
+      return { ...room, focusAreaLabel, units }
     }),
   }
 }

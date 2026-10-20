@@ -1,5 +1,6 @@
 "use client"
 
+import { CommentText } from "@/components/comment-text"
 import { formatEditTimestamp } from "@/lib/qa-edits"
 import type { QaScoringComment } from "@/lib/qa-scoring-notes"
 
@@ -10,7 +11,7 @@ export function ScoringNoteThread({
   onDraftChange,
   onAdd,
   saving = false,
-  placeholder = "Add a comment",
+  placeholder = "Add a comment. Tag someone with @name",
 }: {
   title?: string
   comments: QaScoringComment[]
@@ -31,7 +32,9 @@ export function ScoringNoteThread({
                 <p className="text-sm font-semibold text-slate-900">{comment.author}</p>
                 <p className="text-[11px] text-slate-400">{formatEditTimestamp(comment.createdAt)}</p>
               </div>
-              <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-slate-800">{comment.text}</p>
+              <p className="mt-1">
+                <CommentText text={comment.text} />
+              </p>
             </li>
           ))}
         </ul>

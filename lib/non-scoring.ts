@@ -30,14 +30,41 @@ export function isInventoryUnitId(unitId: string | null | undefined): boolean {
   return String(unitId ?? "").trim().endsWith("i")
 }
 
+export function isDiningCommonsTackboardQuestion(questionId: string | null | undefined): boolean {
+  return String(questionId ?? "").trim().toUpperCase() === "DC-015"
+}
+
+/** MS science utilities (SC-032): only floor drain and eyewash are scored. */
+export function isMsScienceUtilitiesScoredOption(label: string | null | undefined): boolean {
+  const text = String(label ?? "").trim().toLowerCase()
+  if (!text) return false
+  if (text.includes("floor drain")) return true
+  return text.includes("eye wash") || text.includes("eyewash")
+}
+
+export function isMsScienceUtilitiesInventoryOption(input: {
+  questionId?: string | null
+  itemLabel?: string | null
+  schoolLevel?: string | null
+}): boolean {
+  if (String(input.questionId ?? "").trim().toUpperCase() !== "SC-032") return false
+  if (String(input.schoolLevel ?? "").trim().toUpperCase() !== "MS") return false
+  if (isNonViableSelectAllOption(input.itemLabel)) return false
+  return !isMsScienceUtilitiesScoredOption(input.itemLabel)
+}
+
 export function isNonScoringQuestion(input: {
   category?: string | null
   subcategory?: string | null
   question?: string | null
   questionId?: string | null
   unitId?: string | null
+  itemLabel?: string | null
+  schoolLevel?: string | null
   weight?: number | null
 }): boolean {
+  if (isDiningCommonsTackboardQuestion(input.questionId)) return true
+  if (isMsScienceUtilitiesInventoryOption(input)) return true
   if (isObservational(input.category) || isObservational(input.subcategory)) return true
   if (isInventoryText(input.question) || isInventoryText(input.subcategory) || isInventoryText(input.category)) {
     return true
@@ -56,6 +83,7 @@ export function unitsForScoring<
     category?: string | null
     subcategory?: string | null
     question?: string | null
+    schoolLevel?: string | null
     weight?: number | null
   },
 >(units: T[]): T[] {

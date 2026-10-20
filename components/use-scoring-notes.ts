@@ -6,10 +6,12 @@ import {
   addScoringCommentLive,
   emptyScoringNotes,
   fetchScoringNotes,
+  notesForStream,
+  type QaNoteStream,
   type QaScoringNotes,
 } from "@/lib/qa-scoring-notes"
 
-export function useScoringNotes(schoolId: string) {
+export function useScoringNotes(schoolId: string, stream: QaNoteStream) {
   const [notes, setNotes] = useState<QaScoringNotes>(emptyScoringNotes(schoolId))
   const [author, setAuthor] = useState(loadSavedEditorName())
   const [drafts, setDrafts] = useState<Record<string, string>>({})
@@ -27,10 +29,11 @@ export function useScoringNotes(schoolId: string) {
     savingRef.current = false
 
     async function load(background = false) {
+      if (!schoolId) return
       try {
         const loaded = await fetchScoringNotes(schoolId)
         if (cancelled || savingRef.current) return
-        setNotes(loaded)
+        setNotes(notesForStream(loaded, stream))
         if (loaded.author && !loadSavedEditorName()) setAuthor(loaded.author)
         if (!background) setError(null)
       } catch (caught) {
@@ -41,6 +44,11 @@ export function useScoringNotes(schoolId: string) {
     }
 
     void load()
+    if (!schoolId) {
+      return () => {
+        cancelled = true
+      }
+    }
     const timer = window.setInterval(() => {
       void load(true)
     }, 15000)
@@ -48,7 +56,7 @@ export function useScoringNotes(schoolId: string) {
       cancelled = true
       window.clearInterval(timer)
     }
-  }, [schoolId])
+  }, [schoolId, stream])
 
   async function addComment(topic: string) {
     const name = author.trim()
@@ -66,8 +74,8 @@ export function useScoringNotes(schoolId: string) {
     setSavingTopic(topic)
     setError(null)
     try {
-      const saved = await addScoringCommentLive({ schoolId, topic, author: name, text })
-      setNotes(saved)
+      const saved = await addScoringCommentLive({ schoolId, topic, author: name, text, stream })
+      setNotes(notesForStream(saved, stream))
       setDrafts((current) => ({ ...current, [topic]: "" }))
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not save scoring notes")

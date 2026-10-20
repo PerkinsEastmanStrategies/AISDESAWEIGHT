@@ -34,25 +34,41 @@ function tableMissingMessage(table: string, detail: string): string {
   return detail || `${table} request failed`
 }
 
+async function restGet(url: string): Promise<string> {
+  const response = await fetch(url, {
+    headers: restHeaders(),
+    cache: "no-store",
+    signal: AbortSignal.timeout(20000),
+  })
+  const text = await response.text()
+  if (!response.ok) throw new Error(text.slice(0, 400))
+  return text
+}
+
 export async function supabaseRestSelect<T>(table: string, query: string): Promise<T[]> {
   if (/\blimit=/i.test(query)) {
     const url = `${supabaseProjectUrl()}/rest/v1/${table}?${query}`
-    const response = await fetch(url, { headers: restHeaders(), cache: "no-store" })
-    const text = await response.text()
-    if (!response.ok) throw new Error(tableMissingMessage(table, text.slice(0, 400)))
-    const page = JSON.parse(text) as T[]
-    return Array.isArray(page) ? page : []
+    try {
+      const page = JSON.parse(await restGet(url)) as T[]
+      return Array.isArray(page) ? page : []
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : ""
+      throw new Error(tableMissingMessage(table, detail))
+    }
   }
   const pageSize = 1000
   const rows: T[] = []
   for (let offset = 0; ; offset += pageSize) {
     const url = `${supabaseProjectUrl()}/rest/v1/${table}?${query}&limit=${pageSize}&offset=${offset}`
-    const response = await fetch(url, { headers: restHeaders(), cache: "no-store" })
-    const text = await response.text()
-    if (!response.ok) throw new Error(tableMissingMessage(table, text.slice(0, 400)))
-    const page = JSON.parse(text) as T[]
-    rows.push(...page)
-    if (page.length < pageSize) break
+    try {
+      const page = JSON.parse(await restGet(url)) as T[]
+      if (!Array.isArray(page)) break
+      rows.push(...page)
+      if (page.length < pageSize) break
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : ""
+      throw new Error(tableMissingMessage(table, detail))
+    }
   }
   return rows
 }

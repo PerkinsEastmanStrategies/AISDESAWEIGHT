@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { supabaseRestSelect, supabaseRestUpsert } from "@/lib/supabase-rest"
 import {
   emptyScoringNotes,
+  inferNoteStream,
+  isQaNoteStream,
   parseScoringNotes,
   serializeScoringNotes,
   type QaScoringComment,
@@ -28,7 +30,7 @@ export async function GET(request: Request) {
     if (!schoolId) {
       const rows = await supabaseRestSelect<NotesRow>(
         "esa_qa_scoring_notes",
-        "select=school_id,overall,categories,author,updated_at&order=updated_at.desc",
+        "select=school_id,overall,categories,author,updated_at&order=updated_at.desc&limit=500",
       )
       return NextResponse.json({ notes: rows.map(toNotes) })
     }
@@ -51,11 +53,13 @@ export async function POST(request: Request) {
       author?: string
       topic?: string
       text?: string
+      stream?: string
     }
     const schoolId = body.schoolId?.trim() ?? ""
     const author = body.author?.trim() ?? ""
     const topic = body.topic?.trim() ?? ""
     const text = body.text?.trim() ?? ""
+    const stream = isQaNoteStream(body.stream) ? body.stream : inferNoteStream(schoolId)
     if (!schoolId) {
       return NextResponse.json({ error: "schoolId is required" }, { status: 400 })
     }
@@ -80,6 +84,7 @@ export async function POST(request: Request) {
       author,
       text,
       createdAt,
+      stream,
     }
     const notes: QaScoringNotes = {
       schoolId,

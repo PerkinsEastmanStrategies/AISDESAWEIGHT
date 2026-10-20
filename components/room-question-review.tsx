@@ -2,8 +2,23 @@
 
 import { useEffect, useState, type ReactNode } from "react"
 import { Check } from "lucide-react"
-import { isExteriorWindowsSelectAllQuestion } from "@/lib/esa-question-dependencies"
+import {
+  collapseDiningCommonsRestroomProximity,
+  interiorVisibilityScore,
+  isBorrowedDaylightQuestion,
+  isDiningCommonsRestroomProximityQuestion,
+  isExteriorWindowsSelectAllQuestion,
+  isInteriorVisibilitySelectAllQuestion,
+  isPlayFieldFeaturesQuestion,
+  playFieldFeaturesScore,
+  roomHasExteriorWindows,
+} from "@/lib/esa-question-dependencies"
 import { formatScore, scoreTone } from "@/lib/format"
+import {
+  isDiningCommonsTackboardQuestion,
+  isMsScienceUtilitiesInventoryOption,
+  isMsScienceUtilitiesScoredOption,
+} from "@/lib/non-scoring"
 import { formatEditTimestamp, type QaEditRecord } from "@/lib/qa-edits"
 import { QaQuestionEditDialog, type PendingQuestionEdit } from "@/components/qa-edit-session"
 import type { ScoredUnit } from "@/lib/types"
@@ -100,7 +115,9 @@ function selectedLabels(items: ScoredUnit[], options: string[]): Set<string> {
       .split(/\s*,\s*/)
       .map((part) => part.trim())
       .filter(Boolean)
-    const chosen = answerTokens.some((token) => optionMatchesValue(label, token)) || item.score > 0
+    const chosen = answerTokens.length
+      ? answerTokens.some((token) => optionMatchesValue(label, token) || (label && answer.includes(label)))
+      : item.score > 0
     if (chosen) selected.add(label)
   }
 
@@ -171,11 +188,13 @@ function OptionTile({
   label,
   selected,
   editable,
+  inventory,
   onToggle,
 }: {
   label: string
   selected: boolean
   editable?: boolean
+  inventory?: boolean
   onToggle?: () => void
 }) {
   const className = `relative flex min-h-12 items-center rounded-xl border px-3 py-2.5 text-left text-sm leading-snug ${
@@ -186,7 +205,14 @@ function OptionTile({
   const content = (
     <>
       {selected ? <Check className="absolute right-2 top-2 h-3.5 w-3.5 text-blue-700" aria-hidden /> : null}
-      <span className={`w-full break-words ${selected ? "pr-5 font-medium" : ""}`}>{label}</span>
+      <span className={`w-full break-words ${selected ? "pr-5 font-medium" : ""}`}>
+        {label}
+        {inventory ? (
+          <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+            Inventory
+          </span>
+        ) : null}
+      </span>
     </>
   )
   if (editable) {
@@ -208,6 +234,8 @@ export function RoomQuestionReview({
   onCommitEdit,
   instantCommit = false,
   renderQuestionExtra,
+  notedQuestionIds,
+  schoolLevel,
 }: {
   units: ScoredUnit[]
   photosByQuestion?: Record<string, { url: string; path: string; questionId: string | null }[]>
@@ -223,10 +251,22 @@ export function RoomQuestionReview({
   }) => void | Promise<void>
   instantCommit?: boolean
   renderQuestionExtra?: (questionId: string) => ReactNode
+  notedQuestionIds?: ReadonlySet<string>
+  schoolLevel?: string
 }) {
   const [catalog, setCatalog] = useState<QuestionOptionCatalog>({})
   const [pending, setPending] = useState<PendingQuestionEdit | null>(null)
   const questions = groupUnits(units)
+  const skipBorrowedDaylight = roomHasExteriorWindows(
+    units.map((unit) => {
+      const edit = edits.find((item) => item.questionId === unit.questionId)
+      if (!edit) return unit
+      return {
+        ...unit,
+        answer: edit.selected.map((value) => value.trim()).filter(Boolean).join(", "),
+      }
+    }),
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -256,14 +296,31 @@ export function RoomQuestionReview({
         const edit = edits.find((item) => item.questionId === group.questionId)
         const selected = new Set(edit?.selected ?? [...recorded])
         const isMulti = isMultiSelectType(entry?.questionType, group.items)
-        const scored = group.items.map((item) => scorePct(item.score)).filter(Number.isFinite)
+        const restroomItems = isDiningCommonsRestroomProximityQuestion({
+          question: group.question,
+          questionId: group.questionId,
+        })
+          ? collapseDiningCommonsRestroomProximity(group.items)
+          : group.items
+        const averageItems =
+          group.questionId.toUpperCase() === "SC-032" && String(schoolLevel ?? "").toUpperCase() === "MS"
+            ? restroomItems.filter((item) => isMsScienceUtilitiesScoredOption(item.itemLabel))
+            : restroomItems
+        const scored = averageItems.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
+        const unscored =
+          isDiningCommonsTackboardQuestion(group.questionId) ||
+          (skipBorrowedDaylight && isBorrowedDaylightQuestion({ question: group.question }))
         const average =
-          nata || !scored.length
+          nata || unscored || !scored.length
             ? Number.NaN
-            : isExteriorWindowsSelectAllQuestion({ question: group.question })
-              ? Math.max(...scored)
-              : scored.reduce((sum, value) => sum + value, 0) / scored.length
+            : isInteriorVisibilitySelectAllQuestion({ question: group.question })
+              ? scorePct(interiorVisibilityScore(group.items))
+              : isPlayFieldFeaturesQuestion({ question: group.question })
+                ? scorePct(playFieldFeaturesScore(group.items))
+                : isExteriorWindowsSelectAllQuestion({ question: group.question })
+                  ? Math.max(...scored)
+                  : scored.reduce((sum, value) => sum + value, 0) / scored.length
         const extra = renderQuestionExtra?.(group.questionId)
         function toggle(label: string) {
           if (!onCommitEdit) return
@@ -331,6 +388,11 @@ export function RoomQuestionReview({
                         {instantCommit ? "Exploring" : "Edited"}
                       </span>
                     ) : null}
+                    {notedQuestionIds?.has(group.questionId) ? (
+                      <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                        Comment
+                      </span>
+                    ) : null}
                   </div>
                 </div>
                 <span className={`shrink-0 text-sm font-bold tabular-nums ${scoreTone(average)}`}>
@@ -347,6 +409,11 @@ export function RoomQuestionReview({
                       label={label}
                       selected={selected.has(label)}
                       editable={Boolean(onCommitEdit)}
+                      inventory={isMsScienceUtilitiesInventoryOption({
+                        questionId: group.questionId,
+                        itemLabel: label,
+                        schoolLevel,
+                      })}
                       onToggle={() => toggle(label)}
                     />
                   ))}

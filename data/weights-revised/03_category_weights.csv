@@ -78,7 +78,6 @@ ES,Special Education,SPED Flex Studio,Infrastructure,6
 ES,Special Education,SPED Flex Studio,Observational,0
 ES,Special Education,SPED Flex Studio,Occupant Experience,6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,6
-ES,Neighborhoods,Early Childhood Neighborhood,Infrastructure,6
 ES,Neighborhoods,Early Childhood Neighborhood,Occupant Experience,6
 ES,Neighborhoods,Group Room,Amenities,6
 ES,Neighborhoods,Group Room,Function,6
@@ -86,7 +85,6 @@ ES,Neighborhoods,Group Room,Infrastructure,6
 ES,Neighborhoods,Group Room,Observational,0
 ES,Neighborhoods,Group Room,Occupant Experience,6
 ES,Neighborhoods,Neighborhood,Function,6
-ES,Neighborhoods,Neighborhood,Infrastructure,6
 ES,Neighborhoods,Neighborhood,Observational,0
 ES,Neighborhoods,Neighborhood,Occupant Experience,6
 ES,Neighborhoods,Open Collaboration,Amenities,6
@@ -108,11 +106,11 @@ ES,Shared Spaces,Library Media Center,Function,6
 ES,Shared Spaces,Library Media Center,Infrastructure,6
 ES,Shared Spaces,Library Media Center,Observational,0
 ES,Shared Spaces,Library Media Center,Occupant Experience,6
-ES,Outdoor,Outdoor Spaces,Amenities,6
-ES,Outdoor,Outdoor Spaces,Function,6
-ES,Outdoor,Outdoor Spaces,Infrastructure,6
+ES,Outdoor,Outdoor Spaces,Amenities,12
+ES,Outdoor,Outdoor Spaces,Function,9
+ES,Outdoor,Outdoor Spaces,Infrastructure,1
 ES,Outdoor,Outdoor Spaces,Observational,0
-ES,Outdoor,Outdoor Spaces,Occupant Experience,6
+ES,Outdoor,Outdoor Spaces,Occupant Experience,12
 MS,Arrival Experience and Campus Support,Entry Experience,Function,6
 MS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,6
 MS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,6
@@ -236,7 +234,6 @@ MS,Neighborhoods,Group Room,Infrastructure,6
 MS,Neighborhoods,Group Room,Observational,0
 MS,Neighborhoods,Group Room,Occupant Experience,6
 MS,Neighborhoods,Neighborhood,Function,6
-MS,Neighborhoods,Neighborhood,Infrastructure,6
 MS,Neighborhoods,Neighborhood,Observational,0
 MS,Neighborhoods,Neighborhood,Occupant Experience,6
 MS,Neighborhoods,Open Collaboration,Amenities,6
@@ -279,11 +276,11 @@ MS,Shared Spaces,Library Media Center,Function,6
 MS,Shared Spaces,Library Media Center,Infrastructure,6
 MS,Shared Spaces,Library Media Center,Observational,0
 MS,Shared Spaces,Library Media Center,Occupant Experience,6
-MS,Outdoor,Outdoor Spaces,Amenities,6
-MS,Outdoor,Outdoor Spaces,Function,6
-MS,Outdoor,Outdoor Spaces,Infrastructure,6
+MS,Outdoor,Outdoor Spaces,Amenities,12
+MS,Outdoor,Outdoor Spaces,Function,9
+MS,Outdoor,Outdoor Spaces,Infrastructure,1
 MS,Outdoor,Outdoor Spaces,Observational,0
-MS,Outdoor,Outdoor Spaces,Occupant Experience,6
+MS,Outdoor,Outdoor Spaces,Occupant Experience,12
 HS,Arrival Experience and Campus Support,Entry Experience,Function,6
 HS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,6
 HS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,6
@@ -421,7 +418,6 @@ HS,Neighborhoods,Group Room,Infrastructure,6
 HS,Neighborhoods,Group Room,Observational,0
 HS,Neighborhoods,Group Room,Occupant Experience,6
 HS,Neighborhoods,Neighborhood,Function,6
-HS,Neighborhoods,Neighborhood,Infrastructure,6
 HS,Neighborhoods,Neighborhood,Observational,0
 HS,Neighborhoods,Neighborhood,Occupant Experience,6
 HS,Neighborhoods,Open Collaboration,Amenities,6
@@ -472,8 +468,11 @@ HS,Shared Spaces,Library Media Center,Function,6
 HS,Shared Spaces,Library Media Center,Infrastructure,6
 HS,Shared Spaces,Library Media Center,Observational,0
 HS,Shared Spaces,Library Media Center,Occupant Experience,6
-HS,Outdoor,Outdoor Spaces,Amenities,6
-HS,Outdoor,Outdoor Spaces,Function,6
-HS,Outdoor,Outdoor Spaces,Infrastructure,6
+HS,Outdoor,Outdoor Spaces,Amenities,12
+HS,Outdoor,Outdoor Spaces,Function,9
+HS,Outdoor,Outdoor Spaces,Infrastructure,1
 HS,Outdoor,Outdoor Spaces,Observational,0
-HS,Outdoor,Outdoor Spaces,Occupant Experience,6
+HS,Outdoor,Outdoor Spaces,Occupant Experience,12
+ES,Arrival Experience and Campus Support,Kitchen,Occupant Experience,6
+HS,Arrival Experience and Campus Support,Kitchen,Occupant Experience,6
+MS,Arrival Experience and Campus Support,Kitchen,Occupant Experience,6

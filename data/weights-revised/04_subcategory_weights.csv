@@ -1,6 +1,5 @@
 School Level,Scoring Focus Area,Space Type,Category,Subcategory,Weight
 ES,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,6
-ES,Arrival Experience and Campus Support,Entry Experience,Function,Aesthetics,6
 ES,Arrival Experience and Campus Support,Entry Experience,Infrastructure,Utilities & Technology,6
 ES,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Aesthetics,6
 ES,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Safety & Supervision,12
@@ -14,7 +13,6 @@ ES,Arrival Experience and Campus Support,Campus,Occupant Experience,Circulation 
 ES,Arrival Experience and Campus Support,Campus,Occupant Experience,Safety & Supervision,12
 ES,Arrival Experience and Campus Support,Kitchen,Function,Adjacency & Access,6
 ES,Arrival Experience and Campus Support,Kitchen,Function,Availability,6
-ES,Arrival Experience and Campus Support,Kitchen,Function,Circulation & Egress,6
 ES,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Technology,6
 ES,Administration,Admin Offices,Amenities,Furniture & Equipment,6
 ES,Administration,Admin Offices,Function,Adjacency & Access,6
@@ -174,7 +172,6 @@ ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,1
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Availability,6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Layout & Flexibility,6
-ES,Neighborhoods,Early Childhood Neighborhood,Infrastructure,Layout & Flexibility,6
 ES,Neighborhoods,Early Childhood Neighborhood,Occupant Experience,Safety & Supervision,12
 ES,Neighborhoods,Group Room,Amenities,Display & Presentation,6
 ES,Neighborhoods,Group Room,Amenities,Furniture & Equipment,6
@@ -185,7 +182,6 @@ ES,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,12
 ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
 ES,Neighborhoods,Neighborhood,Function,Availability,6
 ES,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
-ES,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
 ES,Neighborhoods,Neighborhood,Observational,Observational,0
 ES,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,12
 ES,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
@@ -225,16 +221,15 @@ ES,Shared Spaces,Library Media Center,Observational,Observational,0
 ES,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 ES,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
-ES,Outdoor,Outdoor Spaces,Amenities,Storage,6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
+ES,Outdoor,Outdoor Spaces,Amenities,Storage,3
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,6
-ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3
 ES,Outdoor,Outdoor Spaces,Observational,Observational,0
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,9
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,12
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,6
-MS,Arrival Experience and Campus Support,Entry Experience,Function,Aesthetics,6
 MS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,Utilities & Technology,6
 MS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Aesthetics,6
 MS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Safety & Supervision,12
@@ -248,7 +243,6 @@ MS,Arrival Experience and Campus Support,Campus,Occupant Experience,Circulation 
 MS,Arrival Experience and Campus Support,Campus,Occupant Experience,Safety & Supervision,12
 MS,Arrival Experience and Campus Support,Kitchen,Function,Adjacency & Access,6
 MS,Arrival Experience and Campus Support,Kitchen,Function,Availability,6
-MS,Arrival Experience and Campus Support,Kitchen,Function,Circulation & Egress,6
 MS,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Technology,6
 MS,Administration,Admin Offices,Amenities,Furniture & Equipment,6
 MS,Administration,Admin Offices,Function,Adjacency & Access,6
@@ -293,7 +287,6 @@ MS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,Furniture
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,Storage,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Adjacency & Access,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Circulation & Egress,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,6
@@ -317,7 +310,6 @@ MS,Studios,Science,Amenities,Furniture & Equipment,6
 MS,Studios,Science,Amenities,Storage,6
 MS,Studios,Science,Function,Adjacency & Access,6
 MS,Studios,Science,Function,Availability,6
-MS,Studios,Science,Function,Circulation & Egress,6
 MS,Studios,Science,Function,Layout & Flexibility,6
 MS,Studios,Science,Infrastructure,Flooring & Surface Finishes,6
 MS,Studios,Science,Infrastructure,Utilities & Technology,6
@@ -327,7 +319,6 @@ MS,Studios,Science,Occupant Experience,Occupant Comfort,9
 MS,Studios,Science,Occupant Experience,Safety & Supervision,12
 MS,Studios,Science Prep Room,Amenities,Storage,6
 MS,Studios,Science Prep Room,Function,Adjacency & Access,6
-MS,Studios,Science Prep Room,Function,Circulation & Egress,6
 MS,Studios,Science Prep Room,Infrastructure,Utilities & Technology,6
 MS,Studios,Science Prep Room,Occupant Experience,Safety & Supervision,12
 MS,Studios,Traditional Studio,Amenities,Display & Presentation,6
@@ -431,7 +422,6 @@ MS,CTE,Low Intensity Lab,Amenities,Storage,6
 MS,CTE,Low Intensity Lab,Function,Adjacency & Access,6
 MS,CTE,Low Intensity Lab,Function,Availability,6
 MS,CTE,Low Intensity Lab,Function,Layout & Flexibility,6
-MS,CTE,Low Intensity Lab,Function,Utilities & Technology,6
 MS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
 MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,6
 MS,CTE,Low Intensity Lab,Observational,Observational,0
@@ -499,7 +489,6 @@ MS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,12
 MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
 MS,Neighborhoods,Neighborhood,Function,Availability,6
 MS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
-MS,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
 MS,Neighborhoods,Neighborhood,Observational,Observational,0
 MS,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,12
 MS,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
@@ -581,16 +570,15 @@ MS,Shared Spaces,Library Media Center,Observational,Observational,0
 MS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 MS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
-MS,Outdoor,Outdoor Spaces,Amenities,Storage,6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
+MS,Outdoor,Outdoor Spaces,Amenities,Storage,3
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,6
-MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3
 MS,Outdoor,Outdoor Spaces,Observational,Observational,0
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,9
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,12
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,6
-HS,Arrival Experience and Campus Support,Entry Experience,Function,Aesthetics,6
 HS,Arrival Experience and Campus Support,Entry Experience,Infrastructure,Utilities & Technology,6
 HS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Aesthetics,6
 HS,Arrival Experience and Campus Support,Entry Experience,Occupant Experience,Safety & Supervision,12
@@ -604,7 +592,6 @@ HS,Arrival Experience and Campus Support,Campus,Occupant Experience,Circulation 
 HS,Arrival Experience and Campus Support,Campus,Occupant Experience,Safety & Supervision,12
 HS,Arrival Experience and Campus Support,Kitchen,Function,Adjacency & Access,6
 HS,Arrival Experience and Campus Support,Kitchen,Function,Availability,6
-HS,Arrival Experience and Campus Support,Kitchen,Function,Circulation & Egress,6
 HS,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Technology,6
 HS,Administration,Admin Offices,Amenities,Furniture & Equipment,6
 HS,Administration,Admin Offices,Function,Adjacency & Access,6
@@ -649,7 +636,6 @@ HS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,Furniture
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Amenities,Storage,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Adjacency & Access,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Circulation & Egress,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,6
@@ -673,7 +659,6 @@ HS,Studios,Science,Amenities,Furniture & Equipment,6
 HS,Studios,Science,Amenities,Storage,6
 HS,Studios,Science,Function,Adjacency & Access,6
 HS,Studios,Science,Function,Availability,6
-HS,Studios,Science,Function,Circulation & Egress,6
 HS,Studios,Science,Function,Layout & Flexibility,6
 HS,Studios,Science,Infrastructure,Flooring & Surface Finishes,6
 HS,Studios,Science,Infrastructure,Utilities & Technology,6
@@ -683,7 +668,6 @@ HS,Studios,Science,Occupant Experience,Occupant Comfort,9
 HS,Studios,Science,Occupant Experience,Safety & Supervision,12
 HS,Studios,Science Prep Room,Amenities,Storage,6
 HS,Studios,Science Prep Room,Function,Adjacency & Access,6
-HS,Studios,Science Prep Room,Function,Circulation & Egress,6
 HS,Studios,Science Prep Room,Infrastructure,Utilities & Technology,6
 HS,Studios,Science Prep Room,Occupant Experience,Safety & Supervision,12
 HS,Studios,Traditional Studio,Amenities,Display & Presentation,6
@@ -798,7 +782,6 @@ HS,CTE,Low Intensity Lab,Amenities,Storage,6
 HS,CTE,Low Intensity Lab,Function,Adjacency & Access,6
 HS,CTE,Low Intensity Lab,Function,Availability,6
 HS,CTE,Low Intensity Lab,Function,Layout & Flexibility,6
-HS,CTE,Low Intensity Lab,Function,Utilities & Technology,6
 HS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,6
 HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,6
 HS,CTE,Low Intensity Lab,Observational,Observational,0
@@ -885,7 +868,6 @@ HS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,12
 HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,6
 HS,Neighborhoods,Neighborhood,Function,Availability,6
 HS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,6
-HS,Neighborhoods,Neighborhood,Infrastructure,Layout & Flexibility,6
 HS,Neighborhoods,Neighborhood,Observational,Observational,0
 HS,Neighborhoods,Neighborhood,Occupant Experience,Safety & Supervision,12
 HS,Neighborhoods,Open Collaboration,Amenities,Display & Presentation,6
@@ -982,10 +964,19 @@ HS,Shared Spaces,Library Media Center,Observational,Observational,0
 HS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 HS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,6
-HS,Outdoor,Outdoor Spaces,Amenities,Storage,6
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
+HS,Outdoor,Outdoor Spaces,Amenities,Storage,3
 HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,6
-HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,6
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3
 HS,Outdoor,Outdoor Spaces,Observational,Observational,0
 HS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,12
+ES,Arrival Experience and Campus Support,Kitchen,Occupant Experience,Circulation & Egress,6
+HS,Arrival Experience and Campus Support,Kitchen,Occupant Experience,Circulation & Egress,6
+HS,Studios,Science Prep Room,Occupant Experience,Circulation & Egress,6
+HS,Studios,Science,Occupant Experience,Circulation & Egress,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,6
+MS,Arrival Experience and Campus Support,Kitchen,Occupant Experience,Circulation & Egress,6
+MS,Studios,Science Prep Room,Occupant Experience,Circulation & Egress,6
+MS,Studios,Science,Occupant Experience,Circulation & Egress,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,6

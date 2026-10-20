@@ -33,10 +33,11 @@ export function skipsAllRemainingQuestionsOnNo(
 export function isExteriorWindowsParentQuestion(
   question: Pick<EsaQuestion, "question">,
 ): boolean {
-  const text = question.question.trim()
+  const text = question.question.trim().toLowerCase()
   return (
-    text === "Are there exterior windows?" ||
-    text.startsWith("Does the community room have exterior windows?")
+    text === "are there exterior windows?" ||
+    text.startsWith("are there exterior windows") ||
+    text.startsWith("does the community room have exterior windows")
   )
 }
 
@@ -77,6 +78,221 @@ export function collapseExteriorWindowsSelectAll<
   })
 }
 
+/** Interior visibility select-all: windows vs door panel / sidelight. */
+export function isInteriorVisibilitySelectAllQuestion(
+  question: Pick<EsaQuestion, "question">,
+): boolean {
+  return /^What type of visibility is provided into the space from adjacent interior spaces/i.test(
+    question.question.trim(),
+  )
+}
+
+function optionLabelSelected(
+  label: string,
+  answer: string,
+  score: number,
+): boolean {
+  const text = label.trim()
+  if (!text) return false
+  if (answer.includes(text)) return true
+  if (!answer && Number.isFinite(score) && score > 0) return true
+  return false
+}
+
+function isVisibilityWindowLabel(label: string): boolean {
+  const text = label.trim()
+  if (/full-height interior window/i.test(text) || /half-height interior window/i.test(text)) {
+    return true
+  }
+  return /^interior window$/i.test(text)
+}
+
+function isVisibilitySidelightLabel(label: string): boolean {
+  return /^sidelight$/i.test(label.trim())
+}
+
+function isVisibilityDoorPanelLabel(label: string): boolean {
+  return /door panel/i.test(label)
+}
+
+/**
+ * Full- or half-height window = 1.
+ * Door panel or sidelight alone = 0.5.
+ * Door panel and sidelight together = 1.
+ */
+export function interiorVisibilityScore(
+  units: ReadonlyArray<{ itemLabel?: string | null; answer?: string | null; score: number }>,
+): number {
+  const answer = units.map((unit) => unit.answer?.trim()).find(Boolean) ?? ""
+  let hasWindow = false
+  let hasSidelight = false
+  let hasDoorPanel = false
+  for (const unit of units) {
+    const label = unit.itemLabel ?? ""
+    if (!optionLabelSelected(label, answer, unit.score)) continue
+    if (isVisibilityWindowLabel(label)) hasWindow = true
+    if (isVisibilitySidelightLabel(label)) hasSidelight = true
+    if (isVisibilityDoorPanelLabel(label)) hasDoorPanel = true
+  }
+  if (hasWindow) return 1
+  if (hasDoorPanel && hasSidelight) return 1
+  if (hasDoorPanel || hasSidelight) return 0.5
+  return 0
+}
+
+export function collapseInteriorVisibilitySelectAll<
+  T extends {
+    questionId: string
+    question: string
+    score: number
+    itemLabel?: string | null
+    answer?: string | null
+  },
+>(units: T[]): T[] {
+  const groups = new Map<string, T[]>()
+  for (const unit of units) {
+    if (!isInteriorVisibilitySelectAllQuestion({ question: unit.question })) continue
+    const list = groups.get(unit.questionId) ?? []
+    list.push(unit)
+    groups.set(unit.questionId, list)
+  }
+  if (!groups.size) return units
+  const scoreByQuestion = new Map<string, number>()
+  for (const [questionId, group] of groups) {
+    scoreByQuestion.set(questionId, interiorVisibilityScore(group))
+  }
+  return units.map((unit) => {
+    const next = scoreByQuestion.get(unit.questionId)
+    if (next == null || !Number.isFinite(unit.score) || unit.score === next) return unit
+    return { ...unit, score: next }
+  })
+}
+
+/** Play field features: four groups, not six checkboxes. */
+export function isPlayFieldFeaturesQuestion(question: Pick<EsaQuestion, "question">): boolean {
+  return /^Select all that are present \(play field features\)/i.test(question.question.trim())
+}
+
+/**
+ * 1) grass or turf  2) shade trees  3) exercise trail  4) seating or play structures.
+ */
+export function playFieldFeaturesScore(
+  units: ReadonlyArray<{ itemLabel?: string | null; answer?: string | null; score: number }>,
+): number {
+  const answer = units.map((unit) => unit.answer?.trim()).find(Boolean) ?? ""
+  let hasSurface = false
+  let hasShade = false
+  let hasTrail = false
+  let hasAmenity = false
+  for (const unit of units) {
+    const label = unit.itemLabel ?? ""
+    if (!optionLabelSelected(label, answer, unit.score)) continue
+    const text = label.trim().toLowerCase()
+    if (text.includes("natural grass") || text.includes("synthetic turf")) hasSurface = true
+    if (text.includes("shade trees")) hasShade = true
+    if (text.includes("exercise trail")) hasTrail = true
+    if (text.includes("flexible seating") || text.includes("play structures")) hasAmenity = true
+  }
+  return ([hasSurface, hasShade, hasTrail, hasAmenity].filter(Boolean).length) / 4
+}
+
+export function collapsePlayFieldFeaturesSelectAll<
+  T extends {
+    questionId: string
+    question: string
+    score: number
+    itemLabel?: string | null
+    answer?: string | null
+  },
+>(units: T[]): T[] {
+  const groups = new Map<string, T[]>()
+  for (const unit of units) {
+    if (!isPlayFieldFeaturesQuestion({ question: unit.question })) continue
+    const list = groups.get(unit.questionId) ?? []
+    list.push(unit)
+    groups.set(unit.questionId, list)
+  }
+  if (!groups.size) return units
+  const scoreByQuestion = new Map<string, number>()
+  for (const [questionId, group] of groups) {
+    scoreByQuestion.set(questionId, playFieldFeaturesScore(group))
+  }
+  return units.map((unit) => {
+    const next = scoreByQuestion.get(unit.questionId)
+    if (next == null || !Number.isFinite(unit.score) || unit.score === next) return unit
+    return { ...unit, score: next }
+  })
+}
+
+export function collapseSelectAllQuestionScores<
+  T extends {
+    questionId: string
+    question: string
+    score: number
+    itemLabel?: string | null
+    answer?: string | null
+  },
+>(units: T[]): T[] {
+  return collapseDiningCommonsRestroomProximity(
+    collapsePlayFieldFeaturesSelectAll(
+      collapseInteriorVisibilitySelectAll(collapseExteriorWindowsSelectAll(units)),
+    ),
+  )
+}
+
+/** Dining Commons restroom proximity: family or learner restroom also credits generic restroom. */
+export function isDiningCommonsRestroomProximityQuestion(
+  question: Pick<EsaQuestion, "question"> & { questionId?: string },
+): boolean {
+  return String(question.questionId ?? "").trim().toUpperCase() === "DC-027"
+}
+
+function isFamilyOrLearnerRestroomLabel(label: string): boolean {
+  const text = label.trim().toLowerCase()
+  return text.includes("family restroom") || text.includes("learner restroom")
+}
+
+function isGenericRestroomAvailableLabel(label: string): boolean {
+  const text = label.trim().toLowerCase()
+  if (text.includes("family restroom") || text.includes("learner restroom")) return false
+  return text.startsWith("a restroom is")
+}
+
+export function collapseDiningCommonsRestroomProximity<
+  T extends {
+    questionId: string
+    question: string
+    score: number
+    itemLabel?: string | null
+    answer?: string | null
+  },
+>(units: T[]): T[] {
+  const groups = new Map<string, T[]>()
+  for (const unit of units) {
+    if (!isDiningCommonsRestroomProximityQuestion(unit)) continue
+    const list = groups.get(unit.questionId) ?? []
+    list.push(unit)
+    groups.set(unit.questionId, list)
+  }
+  if (!groups.size) return units
+  const creditGeneric = new Set<string>()
+  for (const [questionId, group] of groups) {
+    const answer = group.map((unit) => unit.answer?.trim()).find(Boolean) ?? ""
+    const hasSpecific = group.some((unit) => {
+      const label = unit.itemLabel ?? ""
+      return isFamilyOrLearnerRestroomLabel(label) && optionLabelSelected(label, answer, unit.score)
+    })
+    if (hasSpecific) creditGeneric.add(questionId)
+  }
+  if (!creditGeneric.size) return units
+  return units.map((unit) => {
+    if (!creditGeneric.has(unit.questionId)) return unit
+    if (!isGenericRestroomAvailableLabel(unit.itemLabel ?? "")) return unit
+    if (unit.score === 1) return unit
+    return { ...unit, score: 1 }
+  })
+}
+
 /** Borrowed-daylight follow-up: only scores when the space does not have exterior windows. */
 export function isBorrowedDaylightQuestion(
   question: Pick<EsaQuestion, "question">,
@@ -89,13 +305,13 @@ export function isBorrowedDaylightQuestion(
 
 /** True when a room already answered Yes to having exterior windows. */
 export function roomHasExteriorWindows(
-  units: ReadonlyArray<{ question: string; answer?: string | null }>,
+  units: ReadonlyArray<{ question: string; answer?: string | null; score?: number }>,
 ): boolean {
-  return units.some(
-    (unit) =>
-      isExteriorWindowsParentQuestion({ question: unit.question }) &&
-      isYesAnswer((unit.answer ?? "").trim() || undefined),
-  )
+  return units.some((unit) => {
+    if (!isExteriorWindowsParentQuestion({ question: unit.question })) return false
+    if (isYesAnswer((unit.answer ?? "").trim() || undefined)) return true
+    return !unit.answer && unit.score === 1
+  })
 }
 
 /**

@@ -1,7 +1,7 @@
 import { canonicalName } from "@/lib/normalize"
 import { isNotAbleToAssessText, unitsForScoring } from "@/lib/non-scoring"
 import {
-  collapseExteriorWindowsSelectAll,
+  collapseSelectAllQuestionScores,
   isBorrowedDaylightQuestion,
   roomHasExteriorWindows,
 } from "@/lib/esa-question-dependencies"
@@ -37,9 +37,10 @@ function isNotPresentRoom(room: ScoredRoom): boolean {
 function scoredUnitsForRoom(
   room: ScoredRoom,
   weights: WeightResolver,
+  schoolLevel?: string,
 ): Array<ScoredUnit & { weight: number }> {
   const omitBorrowedDaylight = roomHasExteriorWindows(room.units)
-  const applicable = collapseExteriorWindowsSelectAll(room.units).filter((unit) => {
+  const applicable = collapseSelectAllQuestionScores(room.units).filter((unit) => {
     if (!Number.isFinite(unit.score)) return false
     if (isNotAbleToAssessText(unit.answer)) return false
     if (omitBorrowedDaylight && isBorrowedDaylightQuestion({ question: unit.question })) return false
@@ -48,12 +49,13 @@ function scoredUnitsForRoom(
   return unitsForScoring(
     applicable.map((unit) => ({
       ...unit,
+      schoolLevel,
       weight: weights.question(unit.questionId, unit.category, unit.question),
     })),
   )
 }
 
-function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
+function scoreRoom(room: ScoredRoom, weights: WeightResolver, schoolLevel?: string): RoomResult {
   if (isNotPresentRoom(room)) {
     return {
       room,
@@ -64,7 +66,7 @@ function scoreRoom(room: ScoredRoom, weights: WeightResolver): RoomResult {
     }
   }
 
-  const units = scoredUnitsForRoom(room, weights)
+  const units = scoredUnitsForRoom(room, weights, schoolLevel)
   const unitCounts = new Map<string, number>()
   for (const unit of units) {
     unitCounts.set(unit.questionId, (unitCounts.get(unit.questionId) ?? 0) + 1)
@@ -182,6 +184,7 @@ function summarizeFocusAreas(
   rooms: RoomResult[],
   weights: WeightResolver,
   buildNodes: boolean,
+  schoolLevel?: string,
 ): { scores: { score: number; weight: number }[]; nodes: ScoreNode[] } {
   const scores: { score: number; weight: number }[] = []
   const nodes: ScoreNode[] = []
@@ -225,7 +228,7 @@ function summarizeFocusAreas(
             weight: 1,
             roomId: room.room.roomId,
             countLabel: bits.join(" · ") || undefined,
-            children: categoryNodesForRooms([room], weights),
+            children: categoryNodesForRooms([room], weights, schoolLevel),
           }
         })
 
@@ -268,21 +271,22 @@ function summarizeFocusAreas(
 function buildTree(
   rooms: RoomResult[],
   weights: WeightResolver,
+  schoolLevel?: string,
 ): { overall: number | null; existingOnly: number | null; categories: ScoreNode[]; focusAreas: ScoreNode[] } {
   const assessed = rooms.filter((room) => !isNotPresentRoom(room.room) && room.overall != null)
   const includingMissing = rooms.filter((room) => room.overall != null)
-  const existing = summarizeFocusAreas(assessed, weights, true)
-  const missing = summarizeFocusAreas(includingMissing, weights, false)
+  const existing = summarizeFocusAreas(assessed, weights, true, schoolLevel)
+  const missing = summarizeFocusAreas(includingMissing, weights, false, schoolLevel)
 
   return {
     overall: weightedAverage(missing.scores),
     existingOnly: weightedAverage(existing.scores) ?? average(assessed.map((room) => room.overall as number)),
-    categories: categoryNodesForRooms(assessed, weights),
+    categories: categoryNodesForRooms(assessed, weights, schoolLevel),
     focusAreas: existing.nodes,
   }
 }
 
-function categoryNodesForRooms(rooms: RoomResult[], weights: WeightResolver): ScoreNode[] {
+function categoryNodesForRooms(rooms: RoomResult[], weights: WeightResolver, schoolLevel?: string): ScoreNode[] {
   const context = rooms.length === 1 ? rooms[0]?.room : null
   const catScores = new Map<string, number[]>()
   const catLabels = new Map<string, string>()
@@ -316,7 +320,7 @@ function categoryNodesForRooms(rooms: RoomResult[], weights: WeightResolver): Sc
       if (existing) existing.scores.push(sub.score)
       else subScores.set(key, { category: sub.category, subcategory: sub.subcategory, scores: [sub.score] })
     }
-    for (const unit of scoredUnitsForRoom(room.room, weights)) {
+    for (const unit of scoredUnitsForRoom(room.room, weights, schoolLevel)) {
       const weight = unit.weight ?? weights.question(unit.questionId, unit.category, unit.question)
       if (weight <= 0) continue
       const key = unit.unitId || unit.questionId
@@ -411,12 +415,13 @@ export function scoreSchool(
   baseline?: WeightResolver,
 ): SchoolScorecard {
   const snapshotRooms = omitAbsentPlaceholders(snapshot.rooms)
-  const rooms = snapshotRooms.map((room) => scoreRoom(room, weights))
-  const tree = buildTree(rooms, weights)
+  const rooms = snapshotRooms.map((room) => scoreRoom(room, weights, snapshot.schoolLevel))
+  const tree = buildTree(rooms, weights, snapshot.schoolLevel)
   const baselineTree = baseline
     ? buildTree(
-        snapshotRooms.map((room) => scoreRoom(room, baseline)),
+        snapshotRooms.map((room) => scoreRoom(room, baseline, snapshot.schoolLevel)),
         baseline,
+        snapshot.schoolLevel,
       )
     : null
 

@@ -12,7 +12,7 @@ export function formatScoreExact(score: number | null | undefined): string {
 }
 
 export function scoreTone(score: number | null | undefined): string {
-  if (score == null) return "text-slate-400"
+  if (score == null || Number.isNaN(score)) return "text-slate-400"
   if (score >= SCORE_GOOD) return "text-emerald-700"
   if (score >= SCORE_FAIR) return "text-amber-700"
   return "text-red-700"

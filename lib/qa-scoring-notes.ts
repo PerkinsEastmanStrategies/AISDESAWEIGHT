@@ -1,5 +1,26 @@
+import { isTestHandoffSchoolId } from "@/lib/qa-handoff"
+
 export const OVERALL_NOTE_TOPIC = "overall"
 export const QUESTION_NOTE_PREFIX = "question:"
+export type QaNoteStream = "internal" | "aisd"
+
+export function isQaNoteStream(value: unknown): value is QaNoteStream {
+  return value === "internal" || value === "aisd"
+}
+
+export function inferNoteStream(schoolId: string, comment?: { stream?: string | null }): QaNoteStream {
+  if (isQaNoteStream(comment?.stream)) return comment.stream
+  return isTestHandoffSchoolId(schoolId) ? "aisd" : "internal"
+}
+
+export function notesForStream(notes: QaScoringNotes, stream: QaNoteStream): QaScoringNotes {
+  const threads: Record<string, QaScoringComment[]> = {}
+  for (const [topic, comments] of Object.entries(notes.threads)) {
+    const kept = comments.filter((comment) => inferNoteStream(notes.schoolId, comment) === stream)
+    if (kept.length) threads[topic] = kept
+  }
+  return { ...notes, threads }
+}
 
 export function questionNoteTopic(roomId: string, questionId: string): string {
   return `${QUESTION_NOTE_PREFIX}${roomId}::${questionId}`
@@ -21,11 +42,111 @@ export function notesHaveComments(notes: QaScoringNotes): boolean {
   return Object.values(notes.threads).some((comments) => comments.some((comment) => comment.text.trim()))
 }
 
+export function questionCommentEntries(notes: QaScoringNotes): Array<{
+  topic: string
+  roomId: string
+  questionId: string
+  comments: QaScoringComment[]
+}> {
+  return Object.entries(notes.threads).flatMap(([topic, comments]) => {
+    const parsed = parseQuestionNoteTopic(topic)
+    if (!parsed || !comments.length) return []
+    return [{ topic, roomId: parsed.roomId, questionId: parsed.questionId, comments }]
+  })
+}
+
+const MENTION_PATTERN = /@[A-Za-z][A-Za-z0-9._-]*/g
+
+function isMentionStart(text: string, index: number): boolean {
+  if (index <= 0) return true
+  return !/[A-Za-z0-9.]/.test(text[index - 1] ?? "")
+}
+
+export function extractMentions(text: string): string[] {
+  const found: string[] = []
+  const seen = new Set<string>()
+  const re = new RegExp(MENTION_PATTERN.source, "g")
+  let match: RegExpExecArray | null
+  while ((match = re.exec(text))) {
+    if (!isMentionStart(text, match.index)) continue
+    const name = match[0].slice(1)
+    const key = name.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    found.push(name)
+  }
+  return found
+}
+
+export function mentionKey(name: string): string {
+  return name.trim().replace(/^@/, "").toLowerCase()
+}
+
+export type CommentTextPart = { type: "text" | "mention"; value: string }
+
+export function commentTextParts(text: string): CommentTextPart[] {
+  const parts: CommentTextPart[] = []
+  const re = new RegExp(MENTION_PATTERN.source, "g")
+  let last = 0
+  let match: RegExpExecArray | null
+  while ((match = re.exec(text))) {
+    if (!isMentionStart(text, match.index)) continue
+    if (match.index > last) parts.push({ type: "text", value: text.slice(last, match.index) })
+    parts.push({ type: "mention", value: match[0] })
+    last = match.index + match[0].length
+  }
+  if (last < text.length) parts.push({ type: "text", value: text.slice(last) })
+  if (!parts.length) parts.push({ type: "text", value: text })
+  return parts
+}
+
+export function topicLocationLabel(topic: string): string {
+  if (topic === OVERALL_NOTE_TOPIC) return "Overall ESA"
+  const parsed = parseQuestionNoteTopic(topic)
+  if (parsed) return `${parsed.roomId} · ${parsed.questionId}`
+  return topic
+}
+
+export interface QaMentionHit {
+  schoolId: string
+  topic: string
+  location: string
+  roomId?: string
+  questionId?: string
+  comment: QaScoringComment
+  mentions: string[]
+}
+
+export function mentionHitsFromNotes(allNotes: QaScoringNotes[], stream?: QaNoteStream): QaMentionHit[] {
+  const hits: QaMentionHit[] = []
+  for (const notes of allNotes) {
+    for (const [topic, comments] of Object.entries(notes.threads)) {
+      const parsed = parseQuestionNoteTopic(topic)
+      for (const comment of comments) {
+        if (stream && inferNoteStream(notes.schoolId, comment) !== stream) continue
+        const mentions = extractMentions(comment.text)
+        if (!mentions.length) continue
+        hits.push({
+          schoolId: notes.schoolId,
+          topic,
+          location: topicLocationLabel(topic),
+          roomId: parsed?.roomId,
+          questionId: parsed?.questionId,
+          comment,
+          mentions,
+        })
+      }
+    }
+  }
+  return hits.sort((a, b) => b.comment.createdAt.localeCompare(a.comment.createdAt))
+}
+
 export interface QaScoringComment {
   id: string
   author: string
   text: string
   createdAt: string
+  stream?: QaNoteStream
 }
 
 export interface QaScoringNotes {
@@ -53,14 +174,16 @@ function commentFromUnknown(
   if (!isComment(value)) return null
   const text = value.text.trim()
   if (!text) return null
+  const item = value as QaScoringComment
   return {
-    id: typeof value.id === "string" && value.id ? value.id : `legacy-${text.slice(0, 24)}`,
-    author: value.author.trim() || fallbackAuthor || "Previous note",
+    id: typeof item.id === "string" && item.id ? item.id : `legacy-${text.slice(0, 24)}`,
+    author: item.author.trim() || fallbackAuthor || "Previous note",
     text,
     createdAt:
-      typeof value.createdAt === "string" && value.createdAt
-        ? value.createdAt
+      typeof item.createdAt === "string" && item.createdAt
+        ? item.createdAt
         : fallbackAt || new Date().toISOString(),
+    stream: isQaNoteStream(item.stream) ? item.stream : undefined,
   }
 }
 
@@ -175,6 +298,7 @@ async function readJson<T>(response: Response): Promise<T> {
 }
 
 export async function fetchScoringNotes(schoolId: string): Promise<QaScoringNotes> {
+  if (!schoolId.trim()) return emptyScoringNotes()
   const response = await fetch(`/api/qa/scoring-notes?schoolId=${encodeURIComponent(schoolId)}`, {
     cache: "no-store",
   })
@@ -183,7 +307,10 @@ export async function fetchScoringNotes(schoolId: string): Promise<QaScoringNote
 }
 
 export async function fetchAllScoringNotes(): Promise<QaScoringNotes[]> {
-  const response = await fetch("/api/qa/scoring-notes", { cache: "no-store" })
+  const response = await fetch("/api/qa/scoring-notes", {
+    cache: "no-store",
+    signal: AbortSignal.timeout(15000),
+  })
   const data = await readJson<{ notes: QaScoringNotes[] }>(response)
   return data.notes ?? []
 }
@@ -193,6 +320,7 @@ export async function addScoringCommentLive(input: {
   topic: string
   author: string
   text: string
+  stream: QaNoteStream
 }): Promise<QaScoringNotes> {
   const response = await fetch("/api/qa/scoring-notes", {
     method: "POST",

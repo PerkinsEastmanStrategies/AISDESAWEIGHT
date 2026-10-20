@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import { StickyNote } from "lucide-react"
+import { CommentText } from "@/components/comment-text"
 import { ScoreBadge } from "@/components/score-badge"
 import { formatEditTimestamp, loadSavedEditorName, saveEditorName } from "@/lib/qa-edits"
 import {
@@ -9,6 +10,8 @@ import {
   addScoringCommentLive,
   emptyScoringNotes,
   fetchScoringNotes,
+  notesForStream,
+  type QaNoteStream,
   type QaScoringComment,
   type QaScoringNotes,
 } from "@/lib/qa-scoring-notes"
@@ -27,7 +30,9 @@ function CommentList({ comments }: { comments: QaScoringComment[] }) {
             <p className="text-sm font-semibold text-slate-900">{comment.author}</p>
             <p className="text-[11px] text-slate-400">{formatEditTimestamp(comment.createdAt)}</p>
           </div>
-          <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-slate-800">{comment.text}</p>
+          <p className="mt-1">
+            <CommentText text={comment.text} />
+          </p>
         </li>
       ))}
     </ul>
@@ -38,10 +43,12 @@ export function AisdScoringNotes({
   schoolId,
   overallScore,
   focusAreas,
+  stream = "internal",
 }: {
   schoolId: string
   overallScore: number | null
   focusAreas: ScoreNode[]
+  stream?: QaNoteStream
 }) {
   const scoringFocusAreas = useMemo(
     () => focusAreas.filter((area) => !isHiddenReportLabel(area.label)),
@@ -67,7 +74,7 @@ export function AisdScoringNotes({
       try {
         const loaded = await fetchScoringNotes(schoolId)
         if (cancelled || savingRef.current) return
-        setNotes(loaded)
+        setNotes(notesForStream(loaded, stream))
         if (loaded.author && !loadSavedEditorName()) setAuthor(loaded.author)
         if (!background) setError(null)
       } catch (caught) {
@@ -85,7 +92,7 @@ export function AisdScoringNotes({
       cancelled = true
       window.clearInterval(timer)
     }
-  }, [schoolId])
+  }, [schoolId, stream])
 
   async function addComment(topic: string) {
     const name = author.trim()
@@ -103,8 +110,8 @@ export function AisdScoringNotes({
     setSavingTopic(topic)
     setError(null)
     try {
-      const saved = await addScoringCommentLive({ schoolId, topic, author: name, text })
-      setNotes(saved)
+      const saved = await addScoringCommentLive({ schoolId, topic, author: name, text, stream })
+      setNotes(notesForStream(saved, stream))
       setDrafts((current) => ({ ...current, [topic]: "" }))
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not save scoring notes")
@@ -124,10 +131,10 @@ export function AisdScoringNotes({
       <div className="flex items-start gap-2">
         <StickyNote className="mt-0.5 h-4 w-4 shrink-0 text-amber-800" />
         <div>
-          <h4 className="text-sm font-semibold text-slate-900">AISD scoring notes</h4>
+          <h4 className="text-sm font-semibold text-slate-900">QA notes</h4>
           <p className="mt-0.5 text-xs text-slate-600">
-            Anyone on AISD QA can add a comment. Existing comments stay visible, including other
-            reviewers. These also fill Observations 1–3 on the report.
+            Tag someone with @name. Tagged comments stay in Internal QA Mentions.
+            These also fill Observations 1–3 on the report.
           </p>
         </div>
       </div>
@@ -159,7 +166,7 @@ export function AisdScoringNotes({
                 setDrafts((current) => ({ ...current, [topic.id]: event.target.value }))
               }
               rows={2}
-              placeholder="Add a comment"
+              placeholder="Add a comment. Tag someone with @name"
               className="mt-2 w-full rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-600/10"
             />
             <button

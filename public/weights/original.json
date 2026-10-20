@@ -17584,7 +17584,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -25964,7 +25964,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -35754,7 +35754,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",

@@ -7,7 +7,7 @@ import {
 } from "@aisd/shared"
 import type { QaEditRecord } from "@/lib/qa-edits"
 import type { QaHandoff } from "@/lib/qa-handoff"
-import { collapseExteriorWindowsSelectAll } from "@/lib/esa-question-dependencies"
+import { collapseSelectAllQuestionScores } from "@/lib/esa-question-dependencies"
 import type { ScoredRoom, ScoredUnit } from "@/lib/types"
 
 async function readJson<T>(response: Response): Promise<T> {
@@ -69,7 +69,7 @@ export function applyEditsToRooms(
     const units = roomEdits?.length ? applyEditsToUnits(room, roomEdits, schoolClass) : room.units
     return {
       ...room,
-      units: collapseExteriorWindowsSelectAll(units),
+      units: collapseSelectAllQuestionScores(units),
     }
   })
 }

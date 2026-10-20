@@ -12,17 +12,23 @@ import {
 import { FloorPlanPanel } from "@/components/floor-plan-panel"
 import { RoomQuestionReview } from "@/components/room-question-review"
 import { ScoreBadge, ScoreBar, DeltaChip, BigScore } from "@/components/score-badge"
+import { CommentText } from "@/components/comment-text"
 import { ScoringNoteThread } from "@/components/scoring-note-thread"
 import { useRoomNotes } from "@/components/use-room-notes"
 import { useScoringNotes } from "@/components/use-scoring-notes"
 import { isHiddenReportLabel } from "@/lib/report"
-import { editsForRoom, type QaEditRecord } from "@/lib/qa-edits"
+import { editsForRoom, formatEditTimestamp, type QaEditRecord } from "@/lib/qa-edits"
 import { baseSchoolIdFromHandoff } from "@/lib/qa-handoff"
 import { applyEditsToRooms, fetchQaEdits } from "@/lib/qa-live"
-import { OVERALL_NOTE_TOPIC, questionNoteTopic } from "@/lib/qa-scoring-notes"
+import {
+  OVERALL_NOTE_TOPIC,
+  questionCommentEntries,
+  questionNoteTopic,
+  type QaScoringComment,
+} from "@/lib/qa-scoring-notes"
 import { scoreSchool } from "@/lib/scoring"
 import type { WeightResolver } from "@/lib/weights"
-import type { SchoolScorecard, SchoolSnapshot, ScoreNode } from "@/lib/types"
+import type { SchoolScorecard, SchoolSnapshot, ScoreNode, ScoredRoom } from "@/lib/types"
 
 type Drill =
   | { level: "campus" }
@@ -78,6 +84,82 @@ function Breadcrumbs({ children }: { children: ReactNode }) {
   return <nav className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500">{children}</nav>
 }
 
+function commentCountForRoom(notes: ReturnType<typeof useScoringNotes>["notes"], roomId: string) {
+  return questionCommentEntries(notes).reduce(
+    (sum, entry) => sum + (entry.roomId === roomId ? entry.comments.length : 0),
+    0,
+  )
+}
+
+function questionLabel(rooms: ScoredRoom[], roomId: string, questionId: string) {
+  const room = rooms.find((item) => item.roomId === roomId)
+  const unit = room?.units.find((item) => item.questionId === questionId)
+  return {
+    roomName: room?.roomName ?? roomId,
+    spaceType: room?.spaceType ?? "",
+    focus: room?.focusAreaLabel ?? "",
+    question: unit?.question ?? questionId,
+  }
+}
+
+function QuestionCommentCards({
+  entries,
+  rooms,
+  onOpen,
+}: {
+  entries: Array<{ topic: string; roomId: string; questionId: string; comments: QaScoringComment[] }>
+  rooms: ScoredRoom[]
+  onOpen?: (roomId: string) => void
+}) {
+  if (!entries.length) return null
+  return (
+    <ul className="space-y-3">
+      {entries.map((entry) => {
+        const meta = questionLabel(rooms, entry.roomId, entry.questionId)
+        const body = (
+          <>
+            <p className="text-sm font-semibold text-slate-900">
+              {meta.roomName}
+              {meta.spaceType ? ` · ${meta.spaceType}` : ""}
+            </p>
+            <p className="mt-0.5 text-sm text-slate-700">{meta.question}</p>
+            <p className="mt-0.5 font-mono text-[10px] text-slate-400">{entry.questionId}</p>
+            <ul className="mt-2 space-y-2">
+              {entry.comments.map((comment) => (
+                <li key={comment.id} className="rounded-xl bg-white px-3 py-2.5 ring-1 ring-amber-100">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                    <p className="text-sm font-semibold text-slate-900">{comment.author}</p>
+                    <p className="text-[11px] text-slate-400">{formatEditTimestamp(comment.createdAt)}</p>
+                  </div>
+                  <p className="mt-1">
+                    <CommentText text={comment.text} />
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+        return (
+          <li key={entry.topic}>
+            {onOpen ? (
+              <button
+                type="button"
+                onClick={() => onOpen(entry.roomId)}
+                className="w-full rounded-xl border border-amber-100 bg-amber-50/40 p-3 text-left hover:bg-amber-50"
+              >
+                {body}
+                <p className="mt-2 text-xs font-semibold text-blue-700">Open question</p>
+              </button>
+            ) : (
+              <div className="rounded-xl border border-amber-100 bg-amber-50/40 p-3">{body}</div>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 export function AisdQaPanel({
   card,
   snapshot,
@@ -94,7 +176,7 @@ export function AisdQaPanel({
   const [sandboxEdits, setSandboxEdits] = useState<QaEditRecord[]>([])
   const [loadError, setLoadError] = useState<string | null>(null)
   const [activePhotoUrl, setActivePhotoUrl] = useState<string | null>(null)
-  const scoring = useScoringNotes(card.schoolId)
+  const scoring = useScoringNotes(card.schoolId, "aisd")
 
   const frozenRooms = useMemo(
     () => applyEditsToRooms(snapshot.rooms, frozenEdits, snapshot.schoolClass),
@@ -146,6 +228,14 @@ export function AisdQaPanel({
   }, [notes.comments, selectedSnapshotRoom])
   const roomEdits = selectedRoomId ? editsForRoom(sandboxEdits, card.schoolId, selectedRoomId) : []
   const exploring = sandboxEdits.length > 0
+  const notedQuestionIds = useMemo(() => {
+    if (!selectedRoomId) return new Set<string>()
+    return new Set(
+      questionCommentEntries(scoring.notes)
+        .filter((entry) => entry.roomId === selectedRoomId)
+        .map((entry) => entry.questionId),
+    )
+  }, [scoring.notes, selectedRoomId])
 
   useEffect(() => {
     let cancelled = false
@@ -170,6 +260,26 @@ export function AisdQaPanel({
 
   function openSpace(focus: string, space: string) {
     setDrill({ level: "space", focus, space })
+  }
+
+  function openQuestionRoom(roomId: string) {
+    const path =
+      findRoomPath(exploreCard.focusAreas, roomId) ?? findRoomPath(snapshotCard.focusAreas, roomId)
+    const room =
+      exploreRooms.find((item) => item.roomId === roomId) ??
+      frozenRooms.find((item) => item.roomId === roomId)
+    if (path) {
+      setDrill({ level: "questions", focus: path.focus, space: path.space, roomId })
+      return
+    }
+    if (room) {
+      setDrill({
+        level: "questions",
+        focus: room.focusAreaLabel,
+        space: room.spaceType,
+        roomId,
+      })
+    }
   }
 
   function selectRoomFromPlan(roomId: string) {
@@ -275,8 +385,10 @@ export function AisdQaPanel({
           exploring={exploring}
           focusAreas={focusAreas}
           snapshotFocusAreas={snapshotCard.focusAreas}
+          rooms={exploreRooms}
           scoring={scoring}
           onOpenSpace={openSpace}
+          onOpenQuestion={openQuestionRoom}
         />
       ) : null}
 
@@ -316,7 +428,9 @@ export function AisdQaPanel({
               <p className="mt-4 text-sm text-slate-500">No assessed rooms for this space type.</p>
             ) : (
               <ul className="mt-4 divide-y divide-slate-100">
-                {rooms.map((room) => (
+                {rooms.map((room) => {
+                  const notesCount = commentCountForRoom(scoring.notes, room.roomId ?? "")
+                  return (
                   <li key={room.id}>
                     <button
                       type="button"
@@ -335,6 +449,11 @@ export function AisdQaPanel({
                         {room.countLabel ? (
                           <span className="block truncate text-[11px] text-slate-500">{room.countLabel}</span>
                         ) : null}
+                        {notesCount ? (
+                          <span className="mt-1 inline-flex rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                            {notesCount} {notesCount === 1 ? "comment" : "comments"}
+                          </span>
+                        ) : null}
                       </span>
                       <span className="flex shrink-0 items-center gap-2">
                         {exploring ? (
@@ -348,7 +467,8 @@ export function AisdQaPanel({
                       </span>
                     </button>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             )}
           </div>
@@ -462,6 +582,27 @@ export function AisdQaPanel({
                   </div>
                 </div>
               ) : null}
+              {commentCountForRoom(scoring.notes, drill.roomId) ? (
+                <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/70 px-4 py-3">
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-amber-900">
+                    AISD question comments
+                  </p>
+                  <QuestionCommentCards
+                    entries={questionCommentEntries(scoring.notes).filter(
+                      (entry) => entry.roomId === drill.roomId,
+                    )}
+                    rooms={exploreRooms}
+                    onOpen={() =>
+                      setDrill({
+                        level: "questions",
+                        focus: drill.focus,
+                        space: drill.space,
+                        roomId: drill.roomId,
+                      })
+                    }
+                  />
+                </div>
+              ) : null}
               <button
                 type="button"
                 onClick={() =>
@@ -504,6 +645,8 @@ export function AisdQaPanel({
                 edits={roomEdits}
                 instantCommit
                 onCommitEdit={applySandbox}
+                schoolLevel={snapshot.schoolLevel}
+                notedQuestionIds={notedQuestionIds}
                 renderQuestionExtra={(questionId) => {
                   const topic = questionNoteTopic(drill.roomId, questionId)
                   return (
@@ -516,7 +659,7 @@ export function AisdQaPanel({
                       }
                       onAdd={() => void scoring.addComment(topic)}
                       saving={scoring.savingTopic === topic}
-                      placeholder="Leave a note about this question"
+                      placeholder="Leave a note. Tag someone with @name"
                     />
                   )
                 }}
@@ -560,17 +703,22 @@ function CampusOverview({
   exploring,
   focusAreas,
   snapshotFocusAreas,
+  rooms,
   scoring,
   onOpenSpace,
+  onOpenQuestion,
 }: {
   overall: number | null
   snapshotOverall: number | null
   exploring: boolean
   focusAreas: ScoreNode[]
   snapshotFocusAreas: ScoreNode[]
+  rooms: ScoredRoom[]
   scoring: ReturnType<typeof useScoringNotes>
   onOpenSpace: (focus: string, space: string) => void
+  onOpenQuestion: (roomId: string) => void
 }) {
+  const questionEntries = questionCommentEntries(scoring.notes)
   return (
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
@@ -610,6 +758,18 @@ function CampusOverview({
           {scoring.error ? <p className="mt-3 text-sm text-rose-700">{scoring.error}</p> : null}
         </div>
       </div>
+
+      {questionEntries.length ? (
+        <section className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
+          <h3 className="text-sm font-semibold text-slate-900">Question comments</h3>
+          <p className="mt-0.5 text-xs text-slate-600">
+            These are attached to specific questions. Open one to see it in the room review.
+          </p>
+          <div className="mt-3">
+            <QuestionCommentCards entries={questionEntries} rooms={rooms} onOpen={onOpenQuestion} />
+          </div>
+        </section>
+      ) : null}
 
       <div className="space-y-4">
         {focusAreas.map((area) => {

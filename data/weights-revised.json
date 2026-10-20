@@ -1423,13 +1423,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Early Childhood Neighborhood",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Early Childhood Neighborhood",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1473,13 +1466,6 @@
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
       "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
-      "category": "Infrastructure",
       "weight": 6
     },
     {
@@ -1634,21 +1620,21 @@
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Function",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -1662,7 +1648,7 @@
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
@@ -2529,13 +2515,6 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Observational",
       "weight": 0
     },
@@ -2831,21 +2810,21 @@
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Function",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -2859,7 +2838,7 @@
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
@@ -3824,13 +3803,6 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Observational",
       "weight": 0
     },
@@ -4182,21 +4154,21 @@
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
-      "weight": 6
+      "weight": 12
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Function",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
-      "weight": 6
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -4209,6 +4181,27 @@
       "schoolLevel": "HS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
+      "category": "Occupant Experience",
+      "weight": 12
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
+      "category": "Occupant Experience",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
+      "category": "Occupant Experience",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
       "category": "Occupant Experience",
       "weight": 6
     }
@@ -4226,14 +4219,6 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Function",
-      "subcategory": "Aesthetics",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
@@ -4332,14 +4317,6 @@
       "spaceType": "Kitchen",
       "category": "Function",
       "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Kitchen",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
       "weight": 6
     },
     {
@@ -5618,14 +5595,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Early Childhood Neighborhood",
-      "category": "Infrastructure",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Early Childhood Neighborhood",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
@@ -5699,14 +5668,6 @@
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
       "category": "Function",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
-      "category": "Infrastructure",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6028,7 +5989,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Furniture & Equipment",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "ES",
@@ -6036,7 +5997,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -6060,7 +6021,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -6092,14 +6053,6 @@
       "spaceType": "Entry Experience",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
-      "category": "Function",
-      "subcategory": "Aesthetics",
       "weight": 6
     },
     {
@@ -6210,14 +6163,6 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Kitchen",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
@@ -6571,14 +6516,6 @@
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Function",
-      "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6756,14 +6693,6 @@
       "spaceType": "Science",
       "category": "Function",
       "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
       "weight": 6
     },
     {
@@ -6836,14 +6765,6 @@
       "spaceType": "Science Prep Room",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Science Prep Room",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
       "weight": 6
     },
     {
@@ -7668,14 +7589,6 @@
       "spaceType": "Low Intensity Lab",
       "category": "Function",
       "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
-      "subcategory": "Utilities & Technology",
       "weight": 6
     },
     {
@@ -8218,14 +8131,6 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Observational",
       "subcategory": "Observational",
       "weight": 0
@@ -8876,7 +8781,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Furniture & Equipment",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "MS",
@@ -8884,7 +8789,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -8908,7 +8813,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -8940,14 +8845,6 @@
       "spaceType": "Entry Experience",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
-      "category": "Function",
-      "subcategory": "Aesthetics",
       "weight": 6
     },
     {
@@ -9058,14 +8955,6 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Kitchen",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
@@ -9419,14 +9308,6 @@
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Function",
-      "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9604,14 +9485,6 @@
       "spaceType": "Science",
       "category": "Function",
       "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
       "weight": 6
     },
     {
@@ -9684,14 +9557,6 @@
       "spaceType": "Science Prep Room",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Science Prep Room",
-      "category": "Function",
-      "subcategory": "Circulation & Egress",
       "weight": 6
     },
     {
@@ -10604,14 +10469,6 @@
       "spaceType": "Low Intensity Lab",
       "category": "Function",
       "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
-      "subcategory": "Utilities & Technology",
       "weight": 6
     },
     {
@@ -11306,14 +11163,6 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Observational",
       "subcategory": "Observational",
       "weight": 0
@@ -12084,7 +11933,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Furniture & Equipment",
-      "weight": 6
+      "weight": 9
     },
     {
       "schoolLevel": "HS",
@@ -12092,7 +11941,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -12116,7 +11965,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -12133,6 +11982,78 @@
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Science Prep Room",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Kitchen",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Science Prep Room",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
     }
   ],
   "questions": [
@@ -12180,7 +12101,7 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "questionId": "EE-005",
       "question": "Select all that apply (entry area condition)",
@@ -12450,7 +12371,7 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "KT-003",
       "question": "Does the kitchen loading area have a 42\" door and corridor to allow for easy delivery and movement of foods and equipment?",
@@ -13213,7 +13134,7 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "questionId": "PL-018",
-      "question": "How many general-use outlets are provided? (count each wall plate as one, regardless of the number of plugs.)",
+      "question": "Are there any visible workarounds accommodating a lack of power outlets?",
       "weight": 6
     },
     {
@@ -16620,7 +16541,7 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Early Childhood Neighborhood",
-      "category": "Infrastructure",
+      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "questionId": "EN-008",
       "question": "How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?",
@@ -16830,7 +16751,7 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
+      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "questionId": "NH-015",
       "question": "How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?",
@@ -17014,7 +16935,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17754,7 +17675,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-007",
       "question": "Select all that are present (early childhood playground equipment features)",
-      "weight": 15
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17794,7 +17715,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-016",
       "question": "Select all that are present (elementary playground equipment features)",
-      "weight": 15
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17834,7 +17755,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-026",
       "question": "Select all that are present (additional hard play features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17874,7 +17795,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18380,7 +18301,7 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "questionId": "EE-005",
       "question": "Select all that apply (entry area condition)",
@@ -18660,7 +18581,7 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "KT-003",
       "question": "Does the kitchen loading area have a 42\" door and corridor to allow for easy delivery and movement of foods and equipment?",
@@ -19423,7 +19344,7 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "questionId": "PL-018",
-      "question": "How many general-use outlets are provided? (count each wall plate as one, regardless of the number of plugs.)",
+      "question": "Are there any visible workarounds accommodating a lack of power outlets?",
       "weight": 6
     },
     {
@@ -19900,7 +19821,7 @@
       "schoolLevel": "MS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "MW-008",
       "question": "Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",
@@ -20540,7 +20461,7 @@
       "schoolLevel": "MS",
       "focusArea": "Studios",
       "spaceType": "Science",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "SC-003",
       "question": "Does the science lab have a secondary door to the corridor?",
@@ -20760,7 +20681,7 @@
       "schoolLevel": "MS",
       "focusArea": "Studios",
       "spaceType": "Science Prep Room",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "SI-002",
       "question": "Does the science prep room have a secondary door to the corridor?",
@@ -23130,7 +23051,7 @@
       "schoolLevel": "MS",
       "focusArea": "CTE",
       "spaceType": "Low Intensity Lab",
-      "category": "Function",
+      "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "questionId": "LI-019",
       "question": "Is a utility sink provided?",
@@ -24810,7 +24731,7 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
+      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "questionId": "NH-015",
       "question": "How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?",
@@ -25714,7 +25635,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26724,7 +26645,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-026",
       "question": "Select all that are present (additional hard play features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26764,7 +26685,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -27160,7 +27081,7 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "questionId": "EE-005",
       "question": "Select all that apply (entry area condition)",
@@ -27440,7 +27361,7 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "KT-003",
       "question": "Does the kitchen loading area have a 42\" door and corridor to allow for easy delivery and movement of foods and equipment?",
@@ -28203,7 +28124,7 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "questionId": "PL-018",
-      "question": "How many general-use outlets are provided? (count each wall plate as one, regardless of the number of plugs.)",
+      "question": "Are there any visible workarounds accommodating a lack of power outlets?",
       "weight": 6
     },
     {
@@ -28680,7 +28601,7 @@
       "schoolLevel": "HS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "MW-008",
       "question": "Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",
@@ -29320,7 +29241,7 @@
       "schoolLevel": "HS",
       "focusArea": "Studios",
       "spaceType": "Science",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "SC-003",
       "question": "Does the science lab have a secondary door to the corridor?",
@@ -29540,7 +29461,7 @@
       "schoolLevel": "HS",
       "focusArea": "Studios",
       "spaceType": "Science Prep Room",
-      "category": "Function",
+      "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "questionId": "SI-002",
       "question": "Does the science prep room have a secondary door to the corridor?",
@@ -32290,7 +32211,7 @@
       "schoolLevel": "HS",
       "focusArea": "CTE",
       "spaceType": "Low Intensity Lab",
-      "category": "Function",
+      "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "questionId": "LI-019",
       "question": "Is a utility sink provided?",
@@ -34320,7 +34241,7 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Infrastructure",
+      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "questionId": "NH-015",
       "question": "How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?",
@@ -35674,7 +35595,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36654,7 +36575,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
