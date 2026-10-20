@@ -5,6 +5,7 @@ import { Check } from "lucide-react"
 import {
   collapseDiningCommonsRestroomProximity,
   interiorVisibilityScore,
+  isAdjacentVisibilitySelectAllQuestion,
   isBorrowedDaylightQuestion,
   isDiningCommonsRestroomProximityQuestion,
   isExteriorWindowsSelectAllQuestion,
@@ -15,9 +16,13 @@ import {
 } from "@/lib/esa-question-dependencies"
 import { formatScore, scoreTone } from "@/lib/format"
 import {
+  isArtVariedSeatingQuestion,
   isDiningCommonsTackboardQuestion,
+  isExteriorAccessQuestion,
   isMsScienceUtilitiesInventoryOption,
   isMsScienceUtilitiesScoredOption,
+  isSharedLearningAccessQuestion,
+  isSpecialEducationAcousticQuestion,
 } from "@/lib/non-scoring"
 import { formatEditTimestamp, type QaEditRecord } from "@/lib/qa-edits"
 import { QaQuestionEditDialog, type PendingQuestionEdit } from "@/components/qa-edit-session"
@@ -308,8 +313,14 @@ export function RoomQuestionReview({
             : restroomItems
         const scored = averageItems.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
-        const unscored =
+        const inventoryQuestion =
           isDiningCommonsTackboardQuestion(group.questionId) ||
+          isSpecialEducationAcousticQuestion(group) ||
+          isArtVariedSeatingQuestion(group) ||
+          isSharedLearningAccessQuestion(group) ||
+          isExteriorAccessQuestion(group)
+        const unscored =
+          inventoryQuestion ||
           (skipBorrowedDaylight && isBorrowedDaylightQuestion({ question: group.question }))
         const average =
           nata || unscored || !scored.length
@@ -318,7 +329,8 @@ export function RoomQuestionReview({
               ? scorePct(interiorVisibilityScore(group.items))
               : isPlayFieldFeaturesQuestion({ question: group.question })
                 ? scorePct(playFieldFeaturesScore(group.items))
-                : isExteriorWindowsSelectAllQuestion({ question: group.question })
+                : isExteriorWindowsSelectAllQuestion({ question: group.question }) ||
+                    isAdjacentVisibilitySelectAllQuestion(group)
                   ? Math.max(...scored)
                   : scored.reduce((sum, value) => sum + value, 0) / scored.length
         const extra = renderQuestionExtra?.(group.questionId)
@@ -383,6 +395,11 @@ export function RoomQuestionReview({
                         Select all that apply
                       </span>
                     ) : null}
+                    {inventoryQuestion ? (
+                      <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+                        Inventory
+                      </span>
+                    ) : null}
                     {edit ? (
                       <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
                         {instantCommit ? "Exploring" : "Edited"}
@@ -409,11 +426,14 @@ export function RoomQuestionReview({
                       label={label}
                       selected={selected.has(label)}
                       editable={Boolean(onCommitEdit)}
-                      inventory={isMsScienceUtilitiesInventoryOption({
-                        questionId: group.questionId,
-                        itemLabel: label,
-                        schoolLevel,
-                      })}
+                      inventory={
+                        inventoryQuestion ||
+                        isMsScienceUtilitiesInventoryOption({
+                          questionId: group.questionId,
+                          itemLabel: label,
+                          schoolLevel,
+                        })
+                      }
                       onToggle={() => toggle(label)}
                     />
                   ))}

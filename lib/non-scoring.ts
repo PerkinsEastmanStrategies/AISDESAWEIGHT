@@ -34,6 +34,87 @@ export function isDiningCommonsTackboardQuestion(questionId: string | null | und
   return String(questionId ?? "").trim().toUpperCase() === "DC-015"
 }
 
+const SPECIAL_ED_ACOUSTIC_IDS = new Set(["SN-016", "LS-021", "VO-021", "SP-023"])
+
+/** SPED acoustic-feature checklists are recorded only. */
+export function isSpecialEducationAcousticQuestion(input: {
+  questionId?: string | null
+  question?: string | null
+}): boolean {
+  const id = String(input.questionId ?? "").trim().toUpperCase()
+  if (SPECIAL_ED_ACOUSTIC_IDS.has(id)) return true
+  return String(input.question ?? "").trim().toLowerCase() === "select all that apply (acoustic features)"
+}
+
+const ART_VARIED_SEATING_IDS = new Set(["EA-024", "TW-023", "TH-024", "DA-019"])
+const ART_QUESTION_PREFIXES = new Set(["EA", "TW", "TH", "DA"])
+
+/** Art (all levels): varied seating is recorded only. */
+export function isArtVariedSeatingQuestion(input: {
+  questionId?: string | null
+  question?: string | null
+}): boolean {
+  const id = String(input.questionId ?? "").trim().toUpperCase()
+  if (ART_VARIED_SEATING_IDS.has(id)) return true
+  const prefix = id.split("-")[0] ?? ""
+  if (!ART_QUESTION_PREFIXES.has(prefix)) return false
+  return /how varied are the seating options/i.test(String(input.question ?? ""))
+}
+
+/** Collaboration-space / small-group-room access (ST-028 / ST-029 and the same prompt on other space types). */
+export function isSharedLearningAccessQuestion(input: {
+  questionId?: string | null
+  question?: string | null
+}): boolean {
+  const text = String(input.question ?? "").trim().toLowerCase()
+  if (text.includes("access does the space have to a collaboration space")) return true
+  if (text.includes("access does the space have to a small group room")) return true
+  const id = String(input.questionId ?? "").trim().toUpperCase()
+  return (
+    id === "ST-028" ||
+    id === "ST-029" ||
+    id === "SC-025" ||
+    id === "SC-026" ||
+    id === "PK-029" ||
+    id === "PK-030" ||
+    id === "EC-028" ||
+    id === "EC-029" ||
+    id === "MS-028" ||
+    id === "MU-002"
+  )
+}
+
+/** Direct outdoor / exterior-door access — Traditional Studio, Maker Space, and the same prompt elsewhere. */
+export function isExteriorAccessQuestion(input: {
+  questionId?: string | null
+  question?: string | null
+}): boolean {
+  const text = String(input.question ?? "").trim().toLowerCase()
+  if (text.includes("access does the space have to the exterior")) return true
+  if (text.includes("direct access to outdoor")) return true
+  if (text.includes("access to an art patio or outdoor work")) return true
+  const id = String(input.questionId ?? "").trim().toUpperCase()
+  return (
+    id === "ST-031" ||
+    id === "MS-029" ||
+    id === "MS-030" ||
+    id === "MS-032" ||
+    id === "EA-028" ||
+    id === "SC-028" ||
+    id === "TW-027" ||
+    id === "TH-028" ||
+    id === "DA-023" ||
+    id === "MI-026" ||
+    id === "EM-029" ||
+    id === "HI-009" ||
+    id === "EA-029" ||
+    id === "TW-028" ||
+    id === "TH-029" ||
+    id === "DA-024" ||
+    id === "HI-010"
+  )
+}
+
 /** MS science utilities (SC-032): only floor drain and eyewash are scored. */
 export function isMsScienceUtilitiesScoredOption(label: string | null | undefined): boolean {
   const text = String(label ?? "").trim().toLowerCase()
@@ -64,6 +145,10 @@ export function isNonScoringQuestion(input: {
   weight?: number | null
 }): boolean {
   if (isDiningCommonsTackboardQuestion(input.questionId)) return true
+  if (isSpecialEducationAcousticQuestion(input)) return true
+  if (isArtVariedSeatingQuestion(input)) return true
+  if (isSharedLearningAccessQuestion(input)) return true
+  if (isExteriorAccessQuestion(input)) return true
   if (isMsScienceUtilitiesInventoryOption(input)) return true
   if (isObservational(input.category) || isObservational(input.subcategory)) return true
   if (isInventoryText(input.question) || isInventoryText(input.subcategory) || isInventoryText(input.category)) {

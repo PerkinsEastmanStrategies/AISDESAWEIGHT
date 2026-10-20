@@ -224,6 +224,35 @@ export function collapsePlayFieldFeaturesSelectAll<
   })
 }
 
+/** Adjacent-space visibility: either collaboration or small-group visibility is full credit. */
+export function isAdjacentVisibilitySelectAllQuestion(
+  question: Pick<EsaQuestion, "question"> & { questionId?: string },
+): boolean {
+  const id = String(question.questionId ?? "").trim().toUpperCase()
+  if (id === "ST-030" || id === "PK-031" || id === "EC-030" || id === "SC-027") return true
+  return /^Select all that are present \(visibility into adjacent spaces\)/i.test(
+    String(question.question ?? "").trim(),
+  )
+}
+
+export function collapseAdjacentVisibilitySelectAll<
+  T extends { questionId: string; question: string; score: number },
+>(units: T[]): T[] {
+  const maxByQuestion = new Map<string, number>()
+  for (const unit of units) {
+    if (!isAdjacentVisibilitySelectAllQuestion(unit)) continue
+    if (!Number.isFinite(unit.score)) continue
+    const current = maxByQuestion.get(unit.questionId)
+    if (current == null || unit.score > current) maxByQuestion.set(unit.questionId, unit.score)
+  }
+  if (!maxByQuestion.size) return units
+  return units.map((unit) => {
+    const max = maxByQuestion.get(unit.questionId)
+    if (max == null || !Number.isFinite(unit.score) || unit.score === max) return unit
+    return { ...unit, score: max }
+  })
+}
+
 export function collapseSelectAllQuestionScores<
   T extends {
     questionId: string
@@ -235,7 +264,9 @@ export function collapseSelectAllQuestionScores<
 >(units: T[]): T[] {
   return collapseDiningCommonsRestroomProximity(
     collapsePlayFieldFeaturesSelectAll(
-      collapseInteriorVisibilitySelectAll(collapseExteriorWindowsSelectAll(units)),
+      collapseAdjacentVisibilitySelectAll(
+        collapseInteriorVisibilitySelectAll(collapseExteriorWindowsSelectAll(units)),
+      ),
     ),
   )
 }
