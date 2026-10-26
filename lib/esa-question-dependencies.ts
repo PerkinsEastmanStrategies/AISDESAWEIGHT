@@ -1,4 +1,5 @@
 import type { EsaQuestion, RoomQuestionResponse } from "@aisd/shared"
+import { isNotAbleToAssessText } from "@/lib/non-scoring"
 
 /** When answered "No", all following questions in the rubric are skipped. */
 export const SPACE_TYPE_PRESENT_QUESTION = "Is this space type present at the school?"
@@ -263,9 +264,11 @@ export function collapseSelectAllQuestionScores<
   },
 >(units: T[]): T[] {
   return collapseDiningCommonsRestroomProximity(
-    collapsePlayFieldFeaturesSelectAll(
-      collapseAdjacentVisibilitySelectAll(
-        collapseInteriorVisibilitySelectAll(collapseExteriorWindowsSelectAll(units)),
+    collapseSafetyExteriorCoveringFromWindowCoverings(
+      collapsePlayFieldFeaturesSelectAll(
+        collapseAdjacentVisibilitySelectAll(
+          collapseInteriorVisibilitySelectAll(collapseExteriorWindowsSelectAll(units)),
+        ),
       ),
     ),
   )
@@ -319,6 +322,63 @@ export function collapseDiningCommonsRestroomProximity<
   return units.map((unit) => {
     if (!creditGeneric.has(unit.questionId)) return unit
     if (!isGenericRestroomAvailableLabel(unit.itemLabel ?? "")) return unit
+    if (unit.score === 1) return unit
+    return { ...unit, score: 1 }
+  })
+}
+
+export function isWindowCoveringsQuestion(
+  question: Pick<EsaQuestion, "question">,
+): boolean {
+  return /^what window coverings are provided on exterior windows/i.test(question.question.trim())
+}
+
+export function isSafetySelectAllQuestion(
+  question: Pick<EsaQuestion, "question">,
+): boolean {
+  return /^select all that apply \(safety\)/i.test(question.question.trim())
+}
+
+export function isExteriorGlassCoveringLabel(label: string | null | undefined): boolean {
+  return /exterior windows and doors with glass can be covered/i.test(String(label ?? ""))
+}
+
+function isPresentWindowCoveringLabel(value: string | null | undefined): boolean {
+  const text = String(value ?? "").trim().toLowerCase()
+  if (!text) return false
+  if (isNotAbleToAssessText(value)) return false
+  if (text.includes("no window covering")) return false
+  if (/mini[-\s]?blinds?/.test(text)) return true
+  if (/roller shades?/.test(text)) return true
+  return /\bother\b/.test(text)
+}
+
+/** Mini-blinds, roller shades, or other coverings were recorded on the earlier covering question. */
+export function roomHasPresentWindowCoverings(
+  units: ReadonlyArray<{ question: string; itemLabel?: string | null; answer?: string | null }>,
+): boolean {
+  return units.some((unit) => {
+    if (!isWindowCoveringsQuestion({ question: unit.question })) return false
+    return isPresentWindowCoveringLabel(unit.answer) || isPresentWindowCoveringLabel(unit.itemLabel)
+  })
+}
+
+/**
+ * If coverings are already present, treat "exterior windows and doors with glass
+ * can be covered with a single movement" as met on the safety select-all.
+ */
+export function collapseSafetyExteriorCoveringFromWindowCoverings<
+  T extends {
+    question: string
+    score: number
+    itemLabel?: string | null
+    answer?: string | null
+  },
+>(units: T[]): T[] {
+  if (!roomHasPresentWindowCoverings(units)) return units
+  return units.map((unit) => {
+    if (!isSafetySelectAllQuestion({ question: unit.question })) return unit
+    if (!isExteriorGlassCoveringLabel(unit.itemLabel)) return unit
     if (unit.score === 1) return unit
     return { ...unit, score: 1 }
   })

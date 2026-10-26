@@ -222,7 +222,7 @@ ES,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 ES,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
-ES,Outdoor,Outdoor Spaces,Amenities,Storage,3
+ES,Outdoor,Outdoor Spaces,Amenities,Storage,1
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,6
 ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3
@@ -571,7 +571,7 @@ MS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 MS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
-MS,Outdoor,Outdoor Spaces,Amenities,Storage,3
+MS,Outdoor,Outdoor Spaces,Amenities,Storage,1
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,6
 MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3
@@ -965,7 +965,7 @@ HS,Shared Spaces,Library Media Center,Occupant Experience,Aesthetics,6
 HS,Shared Spaces,Library Media Center,Occupant Experience,Occupant Comfort,9
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,12
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,9
-HS,Outdoor,Outdoor Spaces,Amenities,Storage,3
+HS,Outdoor,Outdoor Spaces,Amenities,Storage,1
 HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,6
 HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,3

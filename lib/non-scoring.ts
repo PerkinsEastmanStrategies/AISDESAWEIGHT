@@ -34,6 +34,56 @@ export function isDiningCommonsTackboardQuestion(questionId: string | null | und
   return String(questionId ?? "").trim().toUpperCase() === "DC-015"
 }
 
+/**
+ * Version C survey questions whose every option ScoreID ends in `i` (inventory /
+ * recorded only) but walk snapshots still store scored unit IDs. Keep this list
+ * aligned with the spreadsheet, not with weights.
+ */
+const SURVEY_INVENTORY_QUESTION_IDS = new Set([
+  "AD-016",
+  "AD-017",
+  "AT-003",
+  "AT-004",
+  "AT-007",
+  "DN-002",
+  "DN-003",
+  "DN-004",
+  "EG-008",
+  "EM-004",
+  "LI-002",
+  "LI-020",
+  "MA-012",
+  "MI-021",
+  "MW-002",
+  "MW-008",
+  "MW-021",
+  "MW-036",
+  "OA-009",
+  "OD-003",
+  "OD-012",
+  "OD-014",
+  "OD-021",
+  "OD-037",
+  "OD-044",
+  "OD-048",
+  "OD-049",
+  "OD-050",
+  "OD-051",
+  "OD-052",
+  "OD-053",
+  "OD-054",
+  "OD-055",
+  "OD-056",
+  "OD-057",
+  "OD-060",
+  "PL-004",
+  "WE-002",
+])
+
+export function isSurveyInventoryQuestion(questionId: string | null | undefined): boolean {
+  return SURVEY_INVENTORY_QUESTION_IDS.has(String(questionId ?? "").trim().toUpperCase())
+}
+
 const SPECIAL_ED_ACOUSTIC_IDS = new Set(["SN-016", "LS-021", "VO-021", "SP-023"])
 
 /** SPED acoustic-feature checklists are recorded only. */
@@ -145,6 +195,7 @@ export function isNonScoringQuestion(input: {
   weight?: number | null
 }): boolean {
   if (isDiningCommonsTackboardQuestion(input.questionId)) return true
+  if (isSurveyInventoryQuestion(input.questionId)) return true
   if (isSpecialEducationAcousticQuestion(input)) return true
   if (isArtVariedSeatingQuestion(input)) return true
   if (isSharedLearningAccessQuestion(input)) return true

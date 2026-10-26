@@ -5997,7 +5997,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 3
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -8789,7 +8789,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 3
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -11941,7 +11941,7 @@
       "spaceType": "Outdoor Spaces",
       "category": "Amenities",
       "subcategory": "Storage",
-      "weight": 3
+      "weight": 1
     },
     {
       "schoolLevel": "HS",
@@ -17665,7 +17665,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-004",
       "question": "Is the early childhood playground in proximity to an appropriate learning neighborhood?",
-      "weight": 15
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -17705,7 +17705,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-013",
       "question": "Is the elementary playground in proximity to an appropriate learning neighborhood?",
-      "weight": 15
+      "weight": 12
     },
     {
       "schoolLevel": "ES",
@@ -17795,7 +17795,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17815,7 +17815,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 3
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17885,7 +17885,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-039",
       "question": "Select all that apply (outdoor studio adjacencies)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -17905,7 +17905,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 12
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -17915,7 +17915,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-062",
       "question": "How close are the play areas to the gym?",
-      "weight": 15
+      "weight": 1
     },
     {
       "schoolLevel": "ES",
@@ -18095,7 +18095,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-005",
       "question": "Is the early childhood playground enclosed by fencing?",
-      "weight": 12
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18105,7 +18105,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-006",
       "question": "Do the early childhood playground fall zones have soft surfacing?",
-      "weight": 12
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18135,7 +18135,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-014",
       "question": "Is the elementary playground enclosed by fencing?",
-      "weight": 12
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18145,7 +18145,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-015",
       "question": "Do the elementary playground fall zones have soft surfacing?",
-      "weight": 12
+      "weight": 15
     },
     {
       "schoolLevel": "ES",
@@ -18195,7 +18195,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-032",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the play field?",
-      "weight": 9
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18225,7 +18225,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-042",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the produce garden?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18235,7 +18235,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-046",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "ES",
@@ -18255,7 +18255,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 9
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26685,7 +26685,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -26705,7 +26705,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 3
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -26775,7 +26775,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-040",
       "question": "Select all that apply (outdoor studio adjacencies)",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -26795,7 +26795,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 12
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26805,7 +26805,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-062",
       "question": "How close are the play areas to the gym?",
-      "weight": 15
+      "weight": 1
     },
     {
       "schoolLevel": "MS",
@@ -26975,7 +26975,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-032",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the play field?",
-      "weight": 9
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -27005,7 +27005,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-042",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the produce garden?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -27015,7 +27015,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-046",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?",
-      "weight": 6
+      "weight": 3
     },
     {
       "schoolLevel": "MS",
@@ -27035,7 +27035,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 9
+      "weight": 3
     },
     {
       "schoolLevel": "HS",
@@ -36575,7 +36575,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-043",
       "question": "Select all that are present (essential produce garden features)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -36595,7 +36595,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-047",
       "question": "Select all that are present (essential habitat garden features)",
-      "weight": 3
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -36675,7 +36675,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-061",
       "question": "Are the play areas easily accessible for after-hours community use?",
-      "weight": 12
+      "weight": 1
     },
     {
       "schoolLevel": "HS",

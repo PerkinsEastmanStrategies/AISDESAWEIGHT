@@ -4,15 +4,19 @@ import { useEffect, useState, type ReactNode } from "react"
 import { Check } from "lucide-react"
 import {
   collapseDiningCommonsRestroomProximity,
+  collapseSafetyExteriorCoveringFromWindowCoverings,
   interiorVisibilityScore,
   isAdjacentVisibilitySelectAllQuestion,
   isBorrowedDaylightQuestion,
   isDiningCommonsRestroomProximityQuestion,
+  isExteriorGlassCoveringLabel,
   isExteriorWindowsSelectAllQuestion,
   isInteriorVisibilitySelectAllQuestion,
   isPlayFieldFeaturesQuestion,
+  isSafetySelectAllQuestion,
   playFieldFeaturesScore,
   roomHasExteriorWindows,
+  roomHasPresentWindowCoverings,
 } from "@/lib/esa-question-dependencies"
 import { formatScore, scoreTone } from "@/lib/format"
 import {
@@ -23,6 +27,7 @@ import {
   isMsScienceUtilitiesScoredOption,
   isSharedLearningAccessQuestion,
   isSpecialEducationAcousticQuestion,
+  isSurveyInventoryQuestion,
 } from "@/lib/non-scoring"
 import { formatEditTimestamp, type QaEditRecord } from "@/lib/qa-edits"
 import { QaQuestionEditDialog, type PendingQuestionEdit } from "@/components/qa-edit-session"
@@ -262,16 +267,19 @@ export function RoomQuestionReview({
   const [catalog, setCatalog] = useState<QuestionOptionCatalog>({})
   const [pending, setPending] = useState<PendingQuestionEdit | null>(null)
   const questions = groupUnits(units)
-  const skipBorrowedDaylight = roomHasExteriorWindows(
-    units.map((unit) => {
-      const edit = edits.find((item) => item.questionId === unit.questionId)
-      if (!edit) return unit
-      return {
-        ...unit,
-        answer: edit.selected.map((value) => value.trim()).filter(Boolean).join(", "),
-      }
-    }),
-  )
+  const unitsWithEdits = units.map((unit) => {
+    const edit = edits.find((item) => item.questionId === unit.questionId)
+    if (!edit) return unit
+    return {
+      ...unit,
+      answer: edit.selected.map((value) => value.trim()).filter(Boolean).join(", "),
+    }
+  })
+  const skipBorrowedDaylight = roomHasExteriorWindows(unitsWithEdits)
+  const creditExteriorCovering = roomHasPresentWindowCoverings(unitsWithEdits)
+  const unitsWithCoveringCredit = creditExteriorCovering
+    ? collapseSafetyExteriorCoveringFromWindowCoverings(unitsWithEdits)
+    : unitsWithEdits
 
   useEffect(() => {
     let cancelled = false
@@ -300,6 +308,10 @@ export function RoomQuestionReview({
         const recorded = selectedLabels(group.items, choices)
         const edit = edits.find((item) => item.questionId === group.questionId)
         const selected = new Set(edit?.selected ?? [...recorded])
+        if (creditExteriorCovering && isSafetySelectAllQuestion({ question: group.question })) {
+          const exteriorChoice = choices.find((label) => isExteriorGlassCoveringLabel(label))
+          if (exteriorChoice) selected.add(exteriorChoice)
+        }
         const isMulti = isMultiSelectType(entry?.questionType, group.items)
         const restroomItems = isDiningCommonsRestroomProximityQuestion({
           question: group.question,
@@ -307,14 +319,18 @@ export function RoomQuestionReview({
         })
           ? collapseDiningCommonsRestroomProximity(group.items)
           : group.items
+        const coveringItems = isSafetySelectAllQuestion({ question: group.question })
+          ? unitsWithCoveringCredit.filter((item) => item.questionId === group.questionId)
+          : restroomItems
         const averageItems =
           group.questionId.toUpperCase() === "SC-032" && String(schoolLevel ?? "").toUpperCase() === "MS"
-            ? restroomItems.filter((item) => isMsScienceUtilitiesScoredOption(item.itemLabel))
-            : restroomItems
+            ? coveringItems.filter((item) => isMsScienceUtilitiesScoredOption(item.itemLabel))
+            : coveringItems
         const scored = averageItems.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
         const inventoryQuestion =
           isDiningCommonsTackboardQuestion(group.questionId) ||
+          isSurveyInventoryQuestion(group.questionId) ||
           isSpecialEducationAcousticQuestion(group) ||
           isArtVariedSeatingQuestion(group) ||
           isSharedLearningAccessQuestion(group) ||
