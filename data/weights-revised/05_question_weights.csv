@@ -107,7 +107,7 @@ ES,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-
 ES,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
 ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
+ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
 ES,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 ES,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 ES,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -486,9 +486,9 @@ ES,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,OC-004
 ES,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,OC-012,Select all that are present (water access),6
 ES,Neighborhoods,Open Collaboration,Observational,Observational,OC-013,Select all that apply (Education Efficiency),0
 ES,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,OC-005,What type of visibility do neighboring studios have into the space?,6
-ES,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
+ES,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
 ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
+ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-016,How many storage closets are provided for the Dining Commons?,6
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-019,Select all that apply (storage),6
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
@@ -728,7 +728,7 @@ MS,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-
 MS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
 MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
+MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
 MS,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 MS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 MS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -1288,10 +1288,10 @@ MS,Athletics and Wellness,Athletics Wing,Amenities,Storage,AT-005,How many stora
 MS,Athletics and Wellness,Athletics Wing,Function,Adjacency & Access,AT-002,Does the athletics wing provide direct access to the outdoor athletics area?,6
 MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all that are present (spaces checklist),6
 MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,6
+MS,Athletics and Wellness,Athletics Wing,Function,Availability,LR-002,Select all that are present:,6
 MS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,AT-001,Select all that apply (after-hours access),6
 MS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,LR-004,Select all that apply (access),6
 MS,Athletics and Wellness,Locker Room,Function,Availability,LR-001,Is this space type present at the school?,0
-MS,Athletics and Wellness,Locker Room,Function,Availability,LR-002,Select all that are present:,6
 MS,Athletics and Wellness,Locker Room,Infrastructure,Utilities & Technology,LR-005,Select all that apply (plumbing),6
 MS,Athletics and Wellness,Locker Room,Occupant Experience,Safety & Supervision,LR-003,Are the locker rooms secure and lockable when not in use?,6
 MS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Display & Presentation,MG-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
@@ -1356,9 +1356,9 @@ MS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,WE-006,Do ov
 MS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,WE-008,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,WE-009,Select all that apply (water),6
 MS,Athletics and Wellness,Weight Room,Occupant Experience,Circulation & Egress,WE-007,"Is at least one interior door a minimum of 72"" wide?",6
-MS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
+MS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
 MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
+MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-017,How many storage closets are provided for the Dining Commons?,6
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-020,Select all that apply (storage),6
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
@@ -1394,7 +1394,7 @@ MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-003,"Is the space
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-005,Is there close proximity to a custodial space that has the capacity for housing specialized equipment?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-007,Do the Staging Areas have a 12' wide opening connecting to their adjacent Core Space?,6
-MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select all that apply (staging area connections),6
+MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select what best describes the space (staging area connections),6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-010,What sightlines does the Control Room have into the Core Space(s)?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-030,How is the Empower Center's loading area configured?,6
@@ -1410,7 +1410,7 @@ MS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,EM-02
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-012,Select all that apply (lighting),6
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-019,How many ceiling-hung outlets are provided?,6
-MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),6
+MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),0
 MS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,EM-013,Which of the following describes the condition of the wall finishes?,6
 MS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,EM-031,Select all that apply (doors from primary circulation),6
 MS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,EM-014,Are there exterior windows?,6
@@ -1606,7 +1606,7 @@ HS,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-
 HS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
 HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
+HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
 HS,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 HS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 HS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -2241,6 +2241,7 @@ HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all
 HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-004,Select all that are present (spaces checklist),6
 HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-006,How many small group rooms are provided?,6
 HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,6
+HS,Athletics and Wellness,Athletics Wing,Function,Availability,LR-002,Select all that are present:,6
 HS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,AT-001,Select all that apply (after-hours access),6
 HS,Athletics and Wellness,Competition Gym,Amenities,Display & Presentation,CG-013,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
 HS,Athletics and Wellness,Competition Gym,Amenities,Display & Presentation,CG-015,Select all that apply (presentation technology),6
@@ -2266,7 +2267,6 @@ HS,Athletics and Wellness,Competition Gym,Occupant Experience,Circulation & Egre
 HS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,LR-004,Select all that apply (access),6
 HS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,LR-006,Select all that apply (close proximity),6
 HS,Athletics and Wellness,Locker Room,Function,Availability,LR-001,Is this space type present at the school?,0
-HS,Athletics and Wellness,Locker Room,Function,Availability,LR-002,Select all that are present:,6
 HS,Athletics and Wellness,Locker Room,Infrastructure,Utilities & Technology,LR-005,Select all that apply (plumbing),6
 HS,Athletics and Wellness,Locker Room,Occupant Experience,Safety & Supervision,LR-003,Are the locker rooms secure and lockable when not in use?,6
 HS,Athletics and Wellness,Multi-Purpose Gym,Amenities,Display & Presentation,MG-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
@@ -2352,9 +2352,9 @@ HS,Athletics and Wellness,Wrestling,Function,Layout & Flexibility,WR-005,Does th
 HS,Athletics and Wellness,Wrestling,Infrastructure,Utilities & Technology,WR-008,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,Athletics and Wellness,Wrestling,Infrastructure,Utilities & Technology,WR-009,Select all that apply (water),6
 HS,Athletics and Wellness,Wrestling,Occupant Experience,Circulation & Egress,WR-006,"Is at least one interior door a minimum of 72"" wide?",6
-HS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
+HS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
 HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
+HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
 HS,Shared Spaces,Dining Commons,Amenities,Storage,DC-018,"Is a storage closet provided for chairs, tables, and portable stage?",6
 HS,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
 HS,Shared Spaces,Dining Commons,Function,Adjacency & Access,DC-005,Which best describes the Dining Commons configuration?,6
@@ -2387,7 +2387,7 @@ HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-003,"Is the space
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-005,Is there close proximity to a custodial space that has the capacity for housing specialized equipment?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-007,Do the Staging Areas have a 12' wide opening connecting to their adjacent Core Space?,6
-HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select all that apply (staging area connections),6
+HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select what best describes the space (staging area connections),6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-010,What sightlines does the Control Room have into the Core Space(s)?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-030,How is the Empower Center's loading area configured?,6
@@ -2403,7 +2403,7 @@ HS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,EM-02
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-012,Select all that apply (lighting),6
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-019,How many ceiling-hung outlets are provided?,6
-HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),6
+HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),0
 HS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,EM-013,Which of the following describes the condition of the wall finishes?,6
 HS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,EM-031,Select all that apply (doors from primary circulation),6
 HS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,EM-014,Are there exterior windows?,6

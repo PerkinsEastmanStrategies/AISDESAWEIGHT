@@ -15,6 +15,7 @@ import {
   isPlayFieldFeaturesQuestion,
   isSafetySelectAllQuestion,
   playFieldFeaturesScore,
+  roomAnsweredNoExteriorWindows,
   roomHasExteriorWindows,
   roomHasPresentWindowCoverings,
 } from "@/lib/esa-question-dependencies"
@@ -26,6 +27,7 @@ import {
   isMsScienceUtilitiesInventoryOption,
   isMsScienceUtilitiesScoredOption,
   isSharedLearningAccessQuestion,
+  isShelterInPlaceSafetyLabel,
   isSpecialEducationAcousticQuestion,
   isSurveyInventoryQuestion,
 } from "@/lib/non-scoring"
@@ -276,7 +278,9 @@ export function RoomQuestionReview({
     }
   })
   const skipBorrowedDaylight = roomHasExteriorWindows(unitsWithEdits)
-  const creditExteriorCovering = roomHasPresentWindowCoverings(unitsWithEdits)
+  const skipExteriorCovering = roomAnsweredNoExteriorWindows(unitsWithEdits)
+  const creditExteriorCovering =
+    !skipExteriorCovering && roomHasPresentWindowCoverings(unitsWithEdits)
   const unitsWithCoveringCredit = creditExteriorCovering
     ? collapseSafetyExteriorCoveringFromWindowCoverings(unitsWithEdits)
     : unitsWithEdits
@@ -320,7 +324,12 @@ export function RoomQuestionReview({
           ? collapseDiningCommonsRestroomProximity(group.items)
           : group.items
         const coveringItems = isSafetySelectAllQuestion({ question: group.question })
-          ? unitsWithCoveringCredit.filter((item) => item.questionId === group.questionId)
+          ? unitsWithCoveringCredit.filter(
+              (item) =>
+                item.questionId === group.questionId &&
+                !isShelterInPlaceSafetyLabel(item.itemLabel) &&
+                !(skipExteriorCovering && isExteriorGlassCoveringLabel(item.itemLabel)),
+            )
           : restroomItems
         const averageItems =
           group.questionId.toUpperCase() === "SC-032" && String(schoolLevel ?? "").toUpperCase() === "MS"
@@ -444,6 +453,8 @@ export function RoomQuestionReview({
                       editable={Boolean(onCommitEdit)}
                       inventory={
                         inventoryQuestion ||
+                        (skipExteriorCovering && isExteriorGlassCoveringLabel(label)) ||
+                        isShelterInPlaceSafetyLabel(label) ||
                         isMsScienceUtilitiesInventoryOption({
                           questionId: group.questionId,
                           itemLabel: label,

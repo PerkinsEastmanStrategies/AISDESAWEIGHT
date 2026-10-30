@@ -3,6 +3,10 @@ import { isNotAbleToAssessText, unitsForScoring } from "@/lib/non-scoring"
 import {
   collapseSelectAllQuestionScores,
   isBorrowedDaylightQuestion,
+  isExteriorGlassCoveringLabel,
+  isSafetySelectAllQuestion,
+  isShelterInPlaceSafetyLabel,
+  roomAnsweredNoExteriorWindows,
   roomHasExteriorWindows,
 } from "@/lib/esa-question-dependencies"
 import type { WeightResolver } from "@/lib/weights"
@@ -40,10 +44,24 @@ function scoredUnitsForRoom(
   schoolLevel?: string,
 ): Array<ScoredUnit & { weight: number }> {
   const omitBorrowedDaylight = roomHasExteriorWindows(room.units)
+  const omitExteriorCovering = roomAnsweredNoExteriorWindows(room.units)
   const applicable = collapseSelectAllQuestionScores(room.units).filter((unit) => {
     if (!Number.isFinite(unit.score)) return false
     if (isNotAbleToAssessText(unit.answer)) return false
     if (omitBorrowedDaylight && isBorrowedDaylightQuestion({ question: unit.question })) return false
+    if (
+      omitExteriorCovering &&
+      isSafetySelectAllQuestion({ question: unit.question }) &&
+      isExteriorGlassCoveringLabel(unit.itemLabel)
+    ) {
+      return false
+    }
+    if (
+      isSafetySelectAllQuestion({ question: unit.question }) &&
+      isShelterInPlaceSafetyLabel(unit.itemLabel)
+    ) {
+      return false
+    }
     return true
   })
   return unitsForScoring(
