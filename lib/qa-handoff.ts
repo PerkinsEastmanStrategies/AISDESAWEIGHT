@@ -61,12 +61,16 @@ export function isTestAisdHandoff(handoff: QaHandoff | undefined): boolean {
   return /--\s*TEST$/i.test(handoff.schoolName.trim())
 }
 
-/** Real Internal campuses stay in Internal until a real AISD approve. TEST copies use --test ids. */
+/** Real Internal campuses stay in Internal until a real AISD approve. */
 export function isInternalQueue(handoff: QaHandoff | undefined): boolean {
   if (!handoff) return true
   if (isFeedbackHandoff(handoff)) return true
-  if (isTestHandoffSchoolId(handoff.schoolId)) return false
-  return isTestAisdHandoff(handoff) && isAisdQueue(handoff)
+  if (isTestAisdHandoff(handoff)) return true
+  return false
+}
+
+export function visibleQaHandoffs(handoffs: QaHandoff[]): QaHandoff[] {
+  return handoffs.filter((handoff) => !isTestAisdHandoff(handoff))
 }
 
 export function aisdQueueEntries<T extends { schoolId: string; schoolName: string }>(
@@ -75,7 +79,7 @@ export function aisdQueueEntries<T extends { schoolId: string; schoolName: strin
 ): T[] {
   const byBase = new Map(catalog.map((school) => [school.schoolId, school]))
   const rows: T[] = []
-  for (const handoff of handoffs) {
+  for (const handoff of visibleQaHandoffs(handoffs)) {
     if (!isAisdQueue(handoff)) continue
     const school = byBase.get(baseSchoolIdFromHandoff(handoff.schoolId))
     if (!school) continue

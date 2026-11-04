@@ -1,16 +1,8 @@
 import { NextResponse } from "next/server"
+import { supabaseRestSelect, supabaseRestUpsert } from "@/lib/supabase-rest"
 import {
-  supabaseRestDelete,
-  supabaseRestInsert,
-  supabaseRestSelect,
-  supabaseRestUpsert,
-} from "@/lib/supabase-rest"
-import {
-  isAisdQueue,
   isTestAisdHandoff,
-  isTestHandoffSchoolId,
   normalizeHandoffStatus,
-  toTestHandoffSchoolId,
   type QaHandoff,
   type QaHandoffStatus,
 } from "@/lib/qa-handoff"
@@ -59,51 +51,12 @@ async function loadHandoffRows(): Promise<HandoffRow[]> {
   }
 }
 
-async function retainTestHandoffCopies(rows: HandoffRow[]): Promise<HandoffRow[]> {
-  const occupying = rows.filter((row) => {
-    if (isTestHandoffSchoolId(row.school_id)) return false
-    const handoff = toHandoff(row)
-    return isTestAisdHandoff(handoff) && isAisdQueue(handoff)
-  })
-  if (!occupying.length) return rows
-  const existingIds = new Set(rows.map((row) => row.school_id))
-  for (const row of occupying) {
-    const testId = toTestHandoffSchoolId(row.school_id)
-    if (!existingIds.has(testId)) {
-      try {
-        await supabaseRestInsert("esa_qa_handoffs", [
-          {
-            school_id: testId,
-            school_name: row.school_name,
-            moved_by: row.moved_by,
-            moved_at: row.moved_at,
-            status: row.status ?? "aisd",
-            decision_by: row.decision_by ?? "",
-            decision_at: row.decision_at ?? null,
-            decision_comments: row.decision_comments ?? "",
-          },
-        ])
-      } catch {
-        await supabaseRestInsert("esa_qa_handoffs", [
-          {
-            school_id: testId,
-            school_name: row.school_name,
-            moved_by: row.moved_by,
-            moved_at: row.moved_at,
-          },
-        ])
-      }
-      existingIds.add(testId)
-    }
-    await supabaseRestDelete("esa_qa_handoffs", `school_id=eq.${encodeURIComponent(row.school_id)}`)
-  }
-  return loadHandoffRows()
-}
-
 export async function GET() {
   try {
-    const rows = await retainTestHandoffCopies(await loadHandoffRows())
-    return NextResponse.json({ handoffs: rows.map(toHandoff) })
+    const rows = await loadHandoffRows()
+    return NextResponse.json({
+      handoffs: rows.map(toHandoff).filter((handoff) => !isTestAisdHandoff(handoff)),
+    })
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not load AISD QA handoffs"
     const status = message.includes("not configured") || message.includes("Add SUPABASE") ? 503 : 500

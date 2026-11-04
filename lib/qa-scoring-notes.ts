@@ -1,4 +1,5 @@
 import { isTestHandoffSchoolId } from "@/lib/qa-handoff"
+import { isQaTestSchool } from "@/lib/school-catalog"
 
 export const OVERALL_NOTE_TOPIC = "overall"
 export const QUESTION_NOTE_PREFIX = "question:"
@@ -120,6 +121,7 @@ export interface QaMentionHit {
 export function mentionHitsFromNotes(allNotes: QaScoringNotes[], stream?: QaNoteStream): QaMentionHit[] {
   const hits: QaMentionHit[] = []
   for (const notes of allNotes) {
+    if (isQaTestSchool({ schoolId: notes.schoolId })) continue
     for (const [topic, comments] of Object.entries(notes.threads)) {
       const parsed = parseQuestionNoteTopic(topic)
       for (const comment of comments) {

@@ -6,7 +6,7 @@ import {
   type SurveyType,
 } from "@aisd/shared"
 import type { QaEditRecord } from "@/lib/qa-edits"
-import type { QaHandoff } from "@/lib/qa-handoff"
+import { visibleQaHandoffs, type QaHandoff } from "@/lib/qa-handoff"
 import { collapseSelectAllQuestionScores } from "@/lib/esa-question-dependencies"
 import type { ScoredRoom, ScoredUnit } from "@/lib/types"
 
@@ -40,7 +40,7 @@ export async function saveQaEditLive(edit: QaEditRecord, roomName?: string): Pro
 export async function fetchQaHandoffs(): Promise<QaHandoff[]> {
   const response = await fetch("/api/qa/handoffs", { cache: "no-store" })
   const data = await readJson<{ handoffs: QaHandoff[] }>(response)
-  return data.handoffs ?? []
+  return visibleQaHandoffs(data.handoffs ?? [])
 }
 
 export async function saveQaHandoffLive(handoff: QaHandoff): Promise<QaHandoff> {

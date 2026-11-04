@@ -26,18 +26,15 @@ import {
   baseSchoolIdFromHandoff,
   formatHandoffTimestamp,
   handoffForSchool,
-  isAisdQueue,
   isFinalizedHandoff,
   isFeedbackHandoff,
   isInternalQueue,
-  isTestAisdHandoff,
-  isTestHandoffSchoolId,
-  toTestHandoffSchoolId,
+  visibleQaHandoffs,
   withHandoffSchoolName,
   type QaHandoff,
 } from "@/lib/qa-handoff"
 import { fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
-import { fetchSchoolCatalog, fetchSchoolSnapshot, refreshWalkedSchools } from "@/lib/school-catalog"
+import { fetchSchoolCatalog, fetchSchoolSnapshot, isQaTestSchool, refreshWalkedSchools } from "@/lib/school-catalog"
 import { scoreSchool } from "@/lib/scoring"
 import {
   alignSnapshotToWeights,
@@ -201,14 +198,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     setDiscardedRooms(loadDiscardedRooms())
     fetchQaHandoffs()
       .then((rows) => {
-        setHandoffs(rows)
+        setHandoffs(visibleQaHandoffs(rows))
         setHandoffError(null)
       })
       .catch((error) => {
         setHandoffError(error instanceof Error ? error.message : "Could not load AISD QA handoffs")
       })
     fetchSchoolCatalog()
-      .then(setCatalog)
+      .then((schools) => setCatalog(schools.filter((school) => !isQaTestSchool(school))))
       .catch(() => {
         /* keep the bundled school list if live catalog is unavailable */
       })
@@ -287,7 +284,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     setLoadError(null)
     try {
       const result = await refreshWalkedSchools()
-      setCatalog(result.schools)
+      setCatalog(result.schools.filter((school) => !isQaTestSchool(school)))
       setSnapshotEpoch((value) => value + 1)
       if (result.added.length || result.updated.length) {
         const bits = []
@@ -433,21 +430,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   }
 
   function rememberHandoff(saved: QaHandoff) {
-    setHandoffs((current) => [...current.filter((item) => item.schoolId !== saved.schoolId), saved])
+    setHandoffs((current) =>
+      visibleQaHandoffs([...current.filter((item) => item.schoolId !== saved.schoolId), saved]),
+    )
   }
 
   async function moveToAisdQa(movedBy: string) {
     const school = levelOptions.find((item) => item.schoolId === qaSchoolId)
     if (!school) return
-    const current = handoffForSchool(handoffs, school.schoolId)
-    if (current && isTestAisdHandoff(current) && !isTestHandoffSchoolId(current.schoolId)) {
-      const kept = await saveQaHandoffLive({
-        ...current,
-        schoolId: toTestHandoffSchoolId(school.schoolId),
-        status: "aisd",
-      })
-      rememberHandoff(kept)
-    }
     const saved = await saveQaHandoffLive({
       schoolId: school.schoolId,
       schoolName: school.schoolName,

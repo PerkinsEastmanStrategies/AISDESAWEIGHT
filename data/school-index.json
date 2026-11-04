@@ -80,16 +80,6 @@
     "exportedAt": "2026-10-07T04:59:59.999Z"
   },
   {
-    "schoolId": "casis-pilot-2-test",
-    "schoolName": "Casis Elementary (Pilot #2) — Test",
-    "campusId": "112-TEST",
-    "schoolClass": "ELEM",
-    "schoolLevel": "ES",
-    "roomCount": 41,
-    "scoredUnitCount": 1078,
-    "exportedAt": "2026-10-07T14:58:17.232Z"
-  },
-  {
     "schoolId": "cook",
     "schoolName": "Cook ES",
     "campusId": "161",
@@ -98,16 +88,6 @@
     "roomCount": 35,
     "scoredUnitCount": 820,
     "exportedAt": "2026-10-07T04:59:59.999Z"
-  },
-  {
-    "schoolId": "cook-test",
-    "schoolName": "Cook ES — Test",
-    "campusId": "161-TEST",
-    "schoolClass": "ELEM",
-    "schoolLevel": "ES",
-    "roomCount": 35,
-    "scoredUnitCount": 820,
-    "exportedAt": "2026-10-07T14:58:22.143Z"
   },
   {
     "schoolId": "cowan",

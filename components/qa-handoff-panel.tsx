@@ -164,9 +164,7 @@ export function QaHandoffPanel({
         <p className="mt-1 text-sm text-slate-500">
           {returned
             ? `If more AISD review is needed, move ${schoolName} back to AISD QA.`
-            : isTestAisdHandoff(existing)
-              ? `A TEST copy stays in AISD QA. Approving adds ${schoolName} there as a real campus and removes it from Internal QA.`
-              : `Moving ${schoolName} to AISD QA is a deliberate handoff. Confirm the review is complete and record who is sending it forward.`}
+            : `Moving ${schoolName} to AISD QA is a deliberate handoff. Confirm the review is complete and record who is sending it forward.`}
         </p>
         <label className="mt-4 flex items-start gap-3 rounded-xl bg-slate-50 px-3 py-3 text-sm text-slate-800">
           <input

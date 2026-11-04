@@ -4,6 +4,21 @@ export const HIDDEN_SCHOOL_IDS = new Set(["barton-hills", "casis", "ortega"])
 export const WALKED_SINCE = "2026-09-17T00:00:00.000Z"
 export const MIN_SCORED_UNITS = 100
 
+export function isQaTestSchool(school: {
+  schoolId: string
+  schoolName?: string
+  campusId?: string
+}): boolean {
+  const id = school.schoolId.trim()
+  if (HIDDEN_SCHOOL_IDS.has(id)) return true
+  if (/-test$/i.test(id)) return true
+  if (/(^|-)TEST(\b|-|$)/i.test(school.campusId ?? "")) return true
+  const name = (school.schoolName ?? "").trim()
+  if (/—\s*Test$|--\s*TEST$/i.test(name)) return true
+  if (/^TEST\b/i.test(name)) return true
+  return false
+}
+
 export function optionLevel(school: SchoolIndexEntry): SchoolLevel {
   if (school.schoolLevel) return school.schoolLevel
   if (school.schoolClass === "MID") return "MS"
@@ -33,7 +48,7 @@ export function mergeSchoolIndexes(
   for (const school of live) byId.set(school.schoolId, school)
   const levelOrder: Record<SchoolLevel, number> = { ES: 0, MS: 1, HS: 2 }
   return [...byId.values()]
-    .filter((school) => !HIDDEN_SCHOOL_IDS.has(school.schoolId))
+    .filter((school) => !isQaTestSchool(school))
     .sort(
       (a, b) =>
         levelOrder[optionLevel(a)] - levelOrder[optionLevel(b)] ||
@@ -45,7 +60,7 @@ export async function fetchSchoolCatalog(): Promise<SchoolIndexEntry[]> {
   const response = await fetch("/api/schools", { cache: "no-store" })
   const data = (await response.json()) as { schools?: SchoolIndexEntry[]; error?: string }
   if (!response.ok) throw new Error(data.error || "Could not load schools")
-  return data.schools ?? []
+  return (data.schools ?? []).filter((school) => !isQaTestSchool(school))
 }
 
 export async function fetchSchoolSnapshot(schoolId: string): Promise<SchoolSnapshot> {
@@ -72,6 +87,6 @@ export async function refreshWalkedSchools(): Promise<{
   return {
     added: data.added ?? [],
     updated: data.updated ?? [],
-    schools: data.schools ?? [],
+    schools: (data.schools ?? []).filter((school) => !isQaTestSchool(school)),
   }
 }
