@@ -14,6 +14,7 @@ import { QaAnswerMatrix } from "@/components/qa-answer-matrix"
 import { AisdScoringNotes } from "@/components/aisd-scoring-notes"
 import { QaDiscardDialog } from "@/components/qa-discard-dialog"
 import { RoomQuestionReview } from "@/components/room-question-review"
+import { displayUnitsForRoom } from "@/lib/qa-room-questions"
 import { ScoreBadge } from "@/components/score-badge"
 import { ScoreTree } from "@/components/score-tree"
 import { ScoringNoteThread } from "@/components/scoring-note-thread"
@@ -136,14 +137,25 @@ export function SchoolQaPanel({
     roomId: selectedRoomId,
     roomName: selectedSnapshotRoom?.roomName,
   })
-  const leftoverNotes = useMemo(() => {
-    const used = new Set(selectedSnapshotRoom?.units.map((unit) => unit.questionId) ?? [])
-    return Object.entries(notes.comments).filter(([questionId]) => !used.has(questionId))
-  }, [notes.comments, selectedSnapshotRoom])
   const [activePhotoUrl, setActivePhotoUrl] = useState<string | null>(null)
   const selectedEditedRoom = selectedRoomId
     ? (roomsWithEdits.find((room) => room.roomId === selectedRoomId) ?? selectedSnapshotRoom)
     : null
+  const displayQuestions = useMemo(
+    () =>
+      selectedEditedRoom
+        ? displayUnitsForRoom({
+            room: selectedEditedRoom,
+            schoolClass: snapshot.schoolClass,
+            liveAnswers: notes.answers,
+          })
+        : { units: [], skippedReasons: {}, questionIds: [] as string[], inventoryIds: [] as string[] },
+    [selectedEditedRoom, snapshot.schoolClass, notes.answers],
+  )
+  const leftoverNotes = useMemo(() => {
+    const used = new Set(displayQuestions.questionIds)
+    return Object.entries(notes.comments).filter(([questionId]) => !used.has(questionId))
+  }, [notes.comments, displayQuestions.questionIds])
   const matrixRooms = useMemo(() => {
     if (selectedRoomId || !selectedSpace?.label) return []
     const wanted = canonicalName(selectedSpace.label)
@@ -410,7 +422,9 @@ export function SchoolQaPanel({
                   </label>
                 ) : null}
                 <RoomQuestionReview
-                  units={selectedEditedRoom?.units ?? selectedSnapshotRoom.units}
+                  units={displayQuestions.units}
+                  skippedReasons={displayQuestions.skippedReasons}
+                  inventoryIds={displayQuestions.inventoryIds}
                   photosByQuestion={photosByQuestion}
                   notesByQuestion={notes.comments}
                   onOpenPhoto={setActivePhotoUrl}

@@ -20,10 +20,12 @@ import {
   roomHasPresentWindowCoverings,
 } from "@/lib/esa-question-dependencies"
 import { formatScore, scoreTone } from "@/lib/format"
+import { isObservational } from "@/lib/normalize"
 import {
   isArtVariedSeatingQuestion,
   isDiningCommonsTackboardQuestion,
   isExteriorAccessQuestion,
+  isInventoryText,
   isMsScienceUtilitiesInventoryOption,
   isMsScienceUtilitiesScoredOption,
   isSharedLearningAccessQuestion,
@@ -248,6 +250,8 @@ export function RoomQuestionReview({
   renderQuestionExtra,
   notedQuestionIds,
   schoolLevel,
+  skippedReasons = {},
+  inventoryIds,
 }: {
   units: ScoredUnit[]
   photosByQuestion?: Record<string, { url: string; path: string; questionId: string | null }[]>
@@ -265,10 +269,13 @@ export function RoomQuestionReview({
   renderQuestionExtra?: (questionId: string) => ReactNode
   notedQuestionIds?: ReadonlySet<string>
   schoolLevel?: string
+  skippedReasons?: Record<string, string>
+  inventoryIds?: ReadonlySet<string> | readonly string[]
 }) {
   const [catalog, setCatalog] = useState<QuestionOptionCatalog>({})
   const [pending, setPending] = useState<PendingQuestionEdit | null>(null)
   const questions = groupUnits(units)
+  const inventoryIdSet = inventoryIds instanceof Set ? inventoryIds : new Set(inventoryIds ?? [])
   const unitsWithEdits = units.map((unit) => {
     const edit = edits.find((item) => item.questionId === unit.questionId)
     if (!edit) return unit
@@ -337,15 +344,25 @@ export function RoomQuestionReview({
             : coveringItems
         const scored = averageItems.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
+        const skippedReason = skippedReasons[group.questionId]
         const inventoryQuestion =
+          inventoryIdSet.has(group.questionId) ||
           isDiningCommonsTackboardQuestion(group.questionId) ||
           isSurveyInventoryQuestion(group.questionId) ||
           isSpecialEducationAcousticQuestion(group) ||
           isArtVariedSeatingQuestion(group) ||
           isSharedLearningAccessQuestion(group) ||
-          isExteriorAccessQuestion(group)
+          isExteriorAccessQuestion(group) ||
+          isInventoryText(group.question) ||
+          isInventoryText(group.subcategory) ||
+          isInventoryText(group.category) ||
+          isObservational(group.category) ||
+          isObservational(group.subcategory)
+        const unanswered = !selected.size && !nata
         const unscored =
+          Boolean(skippedReason) ||
           inventoryQuestion ||
+          unanswered ||
           (skipBorrowedDaylight && isBorrowedDaylightQuestion({ question: group.question }))
         const average =
           nata || unscored || !scored.length
@@ -425,6 +442,15 @@ export function RoomQuestionReview({
                         Inventory
                       </span>
                     ) : null}
+                    {skippedReason ? (
+                      <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+                        Skipped
+                      </span>
+                    ) : unanswered ? (
+                      <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                        Unanswered
+                      </span>
+                    ) : null}
                     {edit ? (
                       <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
                         {instantCommit ? "Exploring" : "Edited"}
@@ -443,6 +469,9 @@ export function RoomQuestionReview({
               </div>
             </div>
             <div className="bg-slate-50/80 px-3.5 py-3.5">
+              {skippedReason ? (
+                <p className="mb-3 text-sm leading-snug text-slate-500">{skippedReason}</p>
+              ) : null}
               {choices.length ? (
                 <div className={optionGridClass(choices)}>
                   {choices.map((label) => (
@@ -450,7 +479,7 @@ export function RoomQuestionReview({
                       key={label}
                       label={label}
                       selected={selected.has(label)}
-                      editable={Boolean(onCommitEdit)}
+                      editable={Boolean(onCommitEdit) && !skippedReason}
                       inventory={
                         inventoryQuestion ||
                         (skipExteriorCovering && isExteriorGlassCoveringLabel(label)) ||

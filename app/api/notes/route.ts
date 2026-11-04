@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { answerFromResponseValue } from "@/lib/qa-room-questions"
 
 export const runtime = "nodejs"
 
@@ -97,6 +98,7 @@ interface ResponseRow {
   room_id: string
   question_id: string
   comment: string | null
+  value: unknown
 }
 
 interface MappingRow {
@@ -130,7 +132,7 @@ export async function GET(request: Request) {
       if (sessions.length) break
     }
     if (!sessions.length) {
-      return NextResponse.json({ roomId, roomNotes: [], comments: {} })
+      return NextResponse.json({ roomId, roomNotes: [], comments: {}, answers: {} })
     }
 
     const sessionIds = sessions.map((session) => session.id)
@@ -143,28 +145,37 @@ export async function GET(request: Request) {
     ).filter((row) => roomMatches(row, aliases))
 
     if (!rooms.length) {
-      return NextResponse.json({ roomId, roomNotes: [], comments: {} })
+      return NextResponse.json({ roomId, roomNotes: [], comments: {}, answers: {} })
     }
 
     const matchedRoomIds = [...new Set(rooms.map((row) => row.room_id))]
     const responses = await restSelectAll<ResponseRow>(
       "esa_question_responses",
-      `${inFilter("survey_session_id", sessionIds)}&${inFilter("room_id", matchedRoomIds)}&select=survey_session_id,room_id,question_id,comment`,
+      `${inFilter("survey_session_id", sessionIds)}&${inFilter("room_id", matchedRoomIds)}&select=survey_session_id,room_id,question_id,comment,value`,
     )
 
     const commentsByKey = new Map<string, Record<string, string>>()
+    const answersByKey = new Map<string, Record<string, string>>()
     for (const row of responses) {
-      const comment = cleanNote(row.comment)
-      if (!comment) continue
       const key = `${row.survey_session_id}::${row.room_id}`
-      const list = commentsByKey.get(key) ?? {}
-      list[row.question_id] = comment
-      commentsByKey.set(key, list)
+      const comment = cleanNote(row.comment)
+      if (comment) {
+        const list = commentsByKey.get(key) ?? {}
+        list[row.question_id] = comment
+        commentsByKey.set(key, list)
+      }
+      const answer = answerFromResponseValue(row.value)
+      if (answer) {
+        const list = answersByKey.get(key) ?? {}
+        list[row.question_id] = answer
+        answersByKey.set(key, list)
+      }
     }
 
-    function noteScore(room: RoomRow, comments: Record<string, string>) {
+    function noteScore(room: RoomRow, comments: Record<string, string>, answers: Record<string, string>) {
       return (
         Object.keys(comments).length * 10 +
+        Object.keys(answers).length * 5 +
         (cleanNote(room.pre_walk_note1) ? 1 : 0) +
         (cleanNote(room.pre_walk_note2) ? 1 : 0)
       )
@@ -173,13 +184,16 @@ export async function GET(request: Request) {
     const firstRoom = rooms[0]!
     let bestRoom = firstRoom
     let bestComments = commentsByKey.get(`${firstRoom.survey_session_id}::${firstRoom.room_id}`) ?? {}
-    let bestScore = noteScore(firstRoom, bestComments)
+    let bestAnswers = answersByKey.get(`${firstRoom.survey_session_id}::${firstRoom.room_id}`) ?? {}
+    let bestScore = noteScore(firstRoom, bestComments, bestAnswers)
     for (const room of rooms.slice(1)) {
       const comments = commentsByKey.get(`${room.survey_session_id}::${room.room_id}`) ?? {}
-      const score = noteScore(room, comments)
+      const answers = answersByKey.get(`${room.survey_session_id}::${room.room_id}`) ?? {}
+      const score = noteScore(room, comments, answers)
       if (score > bestScore) {
         bestRoom = room
         bestComments = comments
+        bestAnswers = answers
         bestScore = score
       }
     }
@@ -204,6 +218,7 @@ export async function GET(request: Request) {
       roomId: bestRoom.room_id,
       roomNotes,
       comments: bestComments,
+      answers: bestAnswers,
     })
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not load notes"

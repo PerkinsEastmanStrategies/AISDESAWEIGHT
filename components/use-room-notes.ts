@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 export interface RoomNotesPayload {
   roomNotes: string[]
   comments: Record<string, string>
+  answers: Record<string, string>
 }
 
 export function useRoomNotes({
@@ -16,13 +17,13 @@ export function useRoomNotes({
   roomId: string | null
   roomName?: string
 }) {
-  const [notes, setNotes] = useState<RoomNotesPayload>({ roomNotes: [], comments: {} })
+  const [notes, setNotes] = useState<RoomNotesPayload>({ roomNotes: [], comments: {}, answers: {} })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!schoolId || !roomId) {
-      setNotes({ roomNotes: [], comments: {} })
+      setNotes({ roomNotes: [], comments: {}, answers: {} })
       setError(null)
       setLoading(false)
       return
@@ -33,7 +34,7 @@ export function useRoomNotes({
     const controller = new AbortController()
     setLoading(true)
     setError(null)
-    setNotes({ roomNotes: [], comments: {} })
+    setNotes({ roomNotes: [], comments: {}, answers: {} })
 
     fetch(`/api/notes?${params.toString()}`, { signal: controller.signal })
       .then(async (response) => {
@@ -42,6 +43,7 @@ export function useRoomNotes({
         return {
           roomNotes: body.roomNotes ?? [],
           comments: body.comments ?? {},
+          answers: body.answers ?? {},
         }
       })
       .then((next) => {

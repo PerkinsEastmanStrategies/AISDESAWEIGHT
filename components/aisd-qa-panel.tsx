@@ -11,6 +11,7 @@ import {
 } from "@/components/room-photos"
 import { FloorPlanPanel } from "@/components/floor-plan-panel"
 import { RoomQuestionReview } from "@/components/room-question-review"
+import { displayUnitsForRoom } from "@/lib/qa-room-questions"
 import { ScoreBadge, ScoreBar, DeltaChip, BigScore } from "@/components/score-badge"
 import { CommentText } from "@/components/comment-text"
 import { ScoringNoteThread } from "@/components/scoring-note-thread"
@@ -222,10 +223,21 @@ export function AisdQaPanel({
     roomId: selectedRoomId,
     roomName: selectedSnapshotRoom?.roomName,
   })
+  const displayQuestions = useMemo(
+    () =>
+      selectedSnapshotRoom
+        ? displayUnitsForRoom({
+            room: selectedSnapshotRoom,
+            schoolClass: snapshot.schoolClass,
+            liveAnswers: notes.answers,
+          })
+        : { units: [], skippedReasons: {}, questionIds: [] as string[], inventoryIds: [] as string[] },
+    [selectedSnapshotRoom, snapshot.schoolClass, notes.answers],
+  )
   const leftoverNotes = useMemo(() => {
-    const used = new Set(selectedSnapshotRoom?.units.map((unit) => unit.questionId) ?? [])
+    const used = new Set(displayQuestions.questionIds)
     return Object.entries(notes.comments).filter(([questionId]) => !used.has(questionId))
-  }, [notes.comments, selectedSnapshotRoom])
+  }, [notes.comments, displayQuestions.questionIds])
   const roomEdits = selectedRoomId ? editsForRoom(sandboxEdits, card.schoolId, selectedRoomId) : []
   const exploring = sandboxEdits.length > 0
   const notedQuestionIds = useMemo(() => {
@@ -638,7 +650,9 @@ export function AisdQaPanel({
               </label>
               {scoring.error ? <p className="mb-3 text-sm text-rose-700">{scoring.error}</p> : null}
               <RoomQuestionReview
-                units={selectedSnapshotRoom.units}
+                units={displayQuestions.units}
+                skippedReasons={displayQuestions.skippedReasons}
+                inventoryIds={displayQuestions.inventoryIds}
                 photosByQuestion={photosByQuestion}
                 notesByQuestion={notes.comments}
                 onOpenPhoto={setActivePhotoUrl}
