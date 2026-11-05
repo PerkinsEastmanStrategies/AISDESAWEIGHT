@@ -1,10 +1,26 @@
 import { NextResponse } from "next/server"
+import {
+  isImageObjectName,
+  linkedPhotoFromUrl,
+  parseSurveyPhotoPath,
+  photoUrlsFromValue,
+  roomFolderAliases,
+  roomsShareIdentity,
+  sanitizePhotoSegment,
+  type QaPhoto,
+} from "@/lib/qa-photos"
+import {
+  campusIdLookups,
+  inFilter,
+  schoolIdLookups,
+  supabaseRestSelect,
+} from "@/lib/supabase-rest"
 
 export const runtime = "nodejs"
 
 const DEFAULT_PHOTOS_BUCKET = "ESA Pictures"
-const MAX_PHOTOS = 80
-const MAX_DEPTH = 6
+const MAX_PHOTOS = 250
+const MAX_DEPTH = 8
 
 function supabaseUrl(): string {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()
@@ -26,16 +42,6 @@ function supabaseKey(): string {
   return key
 }
 
-function sanitize(value: string): string {
-  return (
-    value
-      .trim()
-      .replace(/[^a-zA-Z0-9._-]+/g, "_")
-      .replace(/^_+|_+$/g, "")
-      .slice(0, 120) || "unknown"
-  )
-}
-
 function publicUrl(path: string): string {
   const encodedPath = path
     .split("/")
@@ -44,47 +50,30 @@ function publicUrl(path: string): string {
   return `${supabaseUrl()}/storage/v1/object/public/${encodeURIComponent(photosBucket())}/${encodedPath}`
 }
 
-function campusIdLookups(campusId: string): string[] {
-  const ids = [campusId]
-  let current = campusId
-  const suffix = /-(PILOT(?:-\d+)?(?:-MERGE)?|TEST(?:-ES|-MS|-HS)?)$/i
-  while (suffix.test(current)) {
-    current = current.replace(suffix, "")
-    ids.push(current)
-  }
-  return [...new Set(ids.filter(Boolean))]
-}
-
-function schoolIdLookups(schoolId: string): string[] {
-  const ids = [schoolId]
-  const withoutTest = schoolId.replace(/-test$/i, "")
-  if (withoutTest !== schoolId) ids.push(withoutTest)
-  const withoutPilot = withoutTest.replace(/-pilot-\d+$/i, "")
-  if (withoutPilot !== withoutTest) ids.push(withoutPilot)
-  return [...new Set(ids.filter(Boolean))]
-}
-
-function roomAliases(roomId: string, roomName: string): string[] {
-  const values = [roomId, roomName]
-  const aliases = new Set<string>()
-  for (const value of values) {
-    const trimmed = value.trim()
-    if (!trimmed) continue
-    aliases.add(trimmed)
-    aliases.add(sanitize(trimmed))
-    aliases.add(trimmed.replace(/\s+/g, ""))
-    const parent = trimmed.replace(/\.\d+[A-Z]?$/i, "")
-    if (parent && parent !== trimmed) {
-      aliases.add(parent)
-      aliases.add(sanitize(parent))
-    }
-  }
-  return [...aliases].filter(Boolean)
-}
-
 interface StorageListEntry {
   name: string
   id: string | null
+  metadata?: Record<string, unknown> | null
+}
+
+interface SessionRow {
+  id: string
+}
+
+interface RoomRow {
+  survey_session_id: string
+  room_id: string
+  room_number: string | null
+  school_room_number: string | null
+  general_photos?: string[] | null
+}
+
+interface ResponseRow {
+  survey_session_id: string
+  room_id: string
+  question_id: string
+  comment: string | null
+  photos?: unknown
 }
 
 async function listPrefix(prefix: string): Promise<StorageListEntry[]> {
@@ -113,37 +102,138 @@ async function listPrefix(prefix: string): Promise<StorageListEntry[]> {
   return (await response.json()) as StorageListEntry[]
 }
 
-async function walkJpegs(prefix: string, results: string[], depth: number): Promise<void> {
+async function walkImages(prefix: string, results: string[], depth: number): Promise<void> {
   if (results.length >= MAX_PHOTOS || depth > MAX_DEPTH) return
   const entries = await listPrefix(prefix)
   for (const entry of entries) {
     if (results.length >= MAX_PHOTOS) break
     const childPath = `${prefix}${entry.name}`
-    const isFolder = entry.id === null
-    if (!isFolder && entry.name.toLowerCase().endsWith(".jpg")) {
+    if (isImageObjectName(entry.name)) {
       results.push(childPath)
       continue
     }
-    if (isFolder) await walkJpegs(`${childPath}/`, results, depth + 1)
+    const isFolder = entry.id === null || entry.metadata == null
+    if (isFolder) await walkImages(`${childPath}/`, results, depth + 1)
   }
 }
 
-function parsePhoto(path: string) {
-  const segments = path.replace(/^\/+/, "").split("/").filter(Boolean)
-  if (segments.length < 5 || !path.toLowerCase().endsWith(".jpg")) return null
-  const [campusId, schoolId, surveyType, roomId, ...rest] = segments
-  const last = rest[rest.length - 1]?.replace(/\.jpg$/i, "") ?? ""
-  const isPrewalk = rest[0] === "prewalk"
+function addPhoto(photos: QaPhoto[], seen: Set<string>, photo: QaPhoto | null): void {
+  if (!photo) return
+  const keys = [photo.url, photo.path].filter(Boolean)
+  if (keys.some((key) => seen.has(key))) return
+  for (const key of keys) seen.add(key)
+  photos.push(photo)
+}
+
+async function loadLinkedPhotos(schoolId: string, roomId: string, roomName: string): Promise<{
+  photos: QaPhoto[]
+  folderNames: string[]
+}> {
+  const empty = { photos: [] as QaPhoto[], folderNames: roomFolderAliases(roomId, roomName) }
+  const schoolIds = schoolIdLookups(schoolId)
+  let sessions: SessionRow[] = []
+  for (const id of schoolIds) {
+    sessions = await supabaseRestSelect<SessionRow>(
+      "esa_survey_sessions",
+      `school_id=eq.${encodeURIComponent(id)}&select=id`,
+    )
+    if (sessions.length) break
+  }
+  if (!sessions.length) return empty
+
+  const aliases = new Set(roomFolderAliases(roomId, roomName))
+  const sessionIds = sessions.map((session) => session.id)
+  let rooms: RoomRow[] = []
+  try {
+    rooms = (
+      await supabaseRestSelect<RoomRow>(
+        "esa_survey_rooms",
+        `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,room_number,school_room_number,general_photos`,
+      )
+    ).filter((row) => roomsShareIdentity(row, aliases))
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ""
+    if (!/general_photos|schema cache|PGRST204/i.test(message)) throw error
+    rooms = (
+      await supabaseRestSelect<RoomRow>(
+        "esa_survey_rooms",
+        `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,room_number,school_room_number`,
+      )
+    ).filter((row) => roomsShareIdentity(row, aliases))
+  }
+  if (!rooms.length) return empty
+
+  const matchedRoomIds = [...new Set(rooms.map((row) => row.room_id))]
+  let responses: ResponseRow[] = []
+  try {
+    responses = await supabaseRestSelect<ResponseRow>(
+      "esa_question_responses",
+      `${inFilter("survey_session_id", sessionIds)}&${inFilter("room_id", matchedRoomIds)}&select=survey_session_id,room_id,question_id,comment,photos`,
+    )
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ""
+    if (!/photos|schema cache|PGRST204/i.test(message)) throw error
+    responses = await supabaseRestSelect<ResponseRow>(
+      "esa_question_responses",
+      `${inFilter("survey_session_id", sessionIds)}&${inFilter("room_id", matchedRoomIds)}&select=survey_session_id,room_id,question_id,comment`,
+    )
+  }
+
+  const photosByKey = new Map<string, QaPhoto[]>()
+  const commentCount = new Map<string, number>()
+  for (const row of responses) {
+    const key = `${row.survey_session_id}::${row.room_id}`
+    if (row.comment?.trim()) commentCount.set(key, (commentCount.get(key) ?? 0) + 1)
+    for (const url of photoUrlsFromValue(row.photos)) {
+      const photo = linkedPhotoFromUrl({
+        url,
+        questionId: row.question_id,
+        roomId: row.room_id,
+        bucket: photosBucket(),
+      })
+      if (!photo) continue
+      const list = photosByKey.get(key) ?? []
+      list.push(photo)
+      photosByKey.set(key, list)
+    }
+  }
+
+  function score(room: RoomRow) {
+    const key = `${room.survey_session_id}::${room.room_id}`
+    return (
+      (photosByKey.get(key)?.length ?? 0) * 10 +
+      photoUrlsFromValue(room.general_photos).length * 8 +
+      (commentCount.get(key) ?? 0)
+    )
+  }
+
+  const bestRoom = rooms.reduce((best, room) => (score(room) > score(best) ? room : best), rooms[0]!)
+  const bestKey = `${bestRoom.survey_session_id}::${bestRoom.room_id}`
+  const photos: QaPhoto[] = []
+  const seen = new Set<string>()
+  for (const photo of photosByKey.get(bestKey) ?? []) addPhoto(photos, seen, photo)
+  for (const url of photoUrlsFromValue(bestRoom.general_photos)) {
+    addPhoto(
+      photos,
+      seen,
+      linkedPhotoFromUrl({
+        url,
+        questionId: null,
+        roomId: bestRoom.room_id,
+        bucket: photosBucket(),
+      }),
+    )
+  }
+
   return {
-    path,
-    url: publicUrl(path),
-    campusId,
-    schoolId,
-    surveyType,
-    roomId,
-    kind: isPrewalk ? "prewalk" : "question",
-    questionId: isPrewalk ? null : rest[0]?.replace(/\.jpg$/i, "") ?? null,
-    photoId: rest.length > 1 ? last : null,
+    photos,
+    folderNames: roomFolderAliases(
+      roomId,
+      roomName,
+      bestRoom.room_id,
+      bestRoom.room_number,
+      bestRoom.school_room_number,
+    ),
   }
 }
 
@@ -158,8 +248,16 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "campusId, schoolId, and roomId are required" }, { status: 400 })
     }
 
+    let linked: { photos: QaPhoto[]; folderNames: string[] }
+    try {
+      linked = await loadLinkedPhotos(schoolId, roomId, roomName)
+    } catch {
+      linked = { photos: [], folderNames: roomFolderAliases(roomId, roomName) }
+    }
+    const photos = [...linked.photos]
+    const seen = new Set(photos.flatMap((photo) => [photo.url, photo.path].filter(Boolean)))
     const prefixes = []
-    const seenPrefix = new Set()
+    const seenPrefix = new Set<string>()
     for (const nextCampus of campusIdLookups(campusId)) {
       for (const nextSchool of schoolIdLookups(schoolId)) {
         const key = `${nextCampus}::${nextSchool}`
@@ -169,25 +267,21 @@ export async function GET(request: Request) {
       }
     }
 
-    const aliases = roomAliases(roomId, roomName)
-    const seen = new Set<string>()
-    const photos = []
-
+    const aliases = linked.folderNames
     for (const prefix of prefixes) {
-      const root = `${sanitize(prefix.campusId)}/${sanitize(prefix.schoolId)}/`
+      const root = `${sanitizePhotoSegment(prefix.campusId)}/${sanitizePhotoSegment(prefix.schoolId)}/`
       const surveyFolders = await listPrefix(root)
       for (const survey of surveyFolders) {
-        if (survey.id !== null) continue
+        if (survey.id !== null && survey.metadata != null) continue
+        if (isImageObjectName(survey.name)) continue
         for (const alias of aliases) {
-          const roomPrefix = `${root}${survey.name}/${sanitize(alias)}/`
+          const roomPrefix = `${root}${survey.name}/${sanitizePhotoSegment(alias)}/`
           const paths: string[] = []
-          await walkJpegs(roomPrefix, paths, 0)
+          await walkImages(roomPrefix, paths, 0)
           for (const path of paths) {
-            if (seen.has(path)) continue
-            const parsed = parsePhoto(path)
+            const parsed = parseSurveyPhotoPath(path, publicUrl(path))
             if (!parsed) continue
-            seen.add(path)
-            photos.push(parsed)
+            addPhoto(photos, seen, parsed)
           }
         }
       }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { isQuestionPhotoId } from "@/lib/qa-photos"
 
 export interface RoomPhoto {
   url: string
@@ -64,7 +65,7 @@ export function useRoomPhotos({
 }
 
 export function isGeneralPhoto(photo: RoomPhoto): boolean {
-  return photo.kind === "prewalk" || !photo.questionId
+  return photo.kind === "prewalk" || !isQuestionPhotoId(photo.questionId)
 }
 
 export function partitionRoomPhotos(photos: RoomPhoto[]) {
