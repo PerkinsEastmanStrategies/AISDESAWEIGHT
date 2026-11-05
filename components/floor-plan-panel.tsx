@@ -2,11 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import { Maximize2, Minimize2, RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
+import { Layers, Maximize2, Minimize2, RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
 import { ScoreBadge } from "@/components/score-badge"
 import { loadFloorPlanForCampus } from "@/lib/floor-plan-loader"
 import { overlayPointsForRoom, viewBoxString, type ParsedPlanRoom } from "@/lib/floor-plan-parse"
 import { scoreBandLabel, scoreFillRgba, scoreStrokeRgba } from "@/lib/format"
+import {
+  colorWithAlpha,
+  fetchCampusNeighborhoods,
+  neighborhoodFillColor,
+  neighborhoodForPlanRoom,
+  neighborhoodLegendColors,
+} from "@/lib/neighborhood-colors"
 import type { ScoredRoomSummary } from "@/lib/types"
 
 const PAN_THRESHOLD_PX = 6
@@ -67,31 +74,45 @@ function planRoomMatchesSelection(
   return scored ? [scored.roomId, scored.roomName].map(normalizeRoomId).includes(wanted) : false
 }
 
+function polygonPoints(room: ParsedPlanRoom): string {
+  return overlayPointsForRoom(room)
+    .map((pt) => `${pt.x},${pt.y}`)
+    .join(" ")
+}
+
 function RoomOverlay({
   room,
   score,
+  neighborhood,
   selected,
+  showNeighborhoods,
   onSelect,
 }: {
   room: ParsedPlanRoom
   score: number | null | undefined
+  neighborhood?: string
   selected: boolean
+  showNeighborhoods: boolean
   onSelect: (roomId: string) => void
 }) {
   const tapRef = useRef<{ pointerId: number; x: number; y: number } | null>(null)
   const hasScore = score != null
-  const fill = hasScore
-    ? scoreFillRgba(score, selected ? 0.58 : 0.45)
-    : selected
-      ? "rgba(37, 99, 235, 0.15)"
-      : "rgba(255, 255, 255, 0.01)"
-  const stroke = hasScore
-    ? selected
-      ? "#2563eb"
-      : scoreStrokeRgba(score)
-    : selected
-      ? "#2563eb"
-      : "transparent"
+  const neighborhoodColor = showNeighborhoods ? neighborhoodFillColor(neighborhood) : null
+  const fill =
+    showNeighborhoods && neighborhoodColor
+      ? colorWithAlpha(neighborhoodColor, selected ? 0.62 : 0.4)
+      : hasScore
+        ? scoreFillRgba(score, selected ? 0.62 : 0.42)
+        : selected
+          ? "rgba(37, 99, 235, 0.22)"
+          : "rgba(255, 255, 255, 0.01)"
+  const stroke = selected
+    ? "#1d4ed8"
+    : showNeighborhoods && neighborhoodColor
+      ? neighborhoodColor
+      : hasScore
+        ? scoreStrokeRgba(score)
+        : "transparent"
 
   const trySelect = (pointerId: number, x: number, y: number) => {
     const start = tapRef.current
@@ -103,13 +124,12 @@ function RoomOverlay({
 
   return (
     <polygon
-      points={overlayPointsForRoom(room)
-        .map((pt) => `${pt.x},${pt.y}`)
-        .join(" ")}
+      points={polygonPoints(room)}
       fill={fill}
       fillRule="evenodd"
-      stroke={stroke}
-      strokeWidth={selected ? 14 : hasScore ? 8 : 0}
+      stroke={selected ? "none" : stroke}
+      strokeWidth={hasScore || neighborhoodColor ? 2.5 : 0}
+      vectorEffect="non-scaling-stroke"
       style={{ cursor: "pointer", pointerEvents: "all", touchAction: "manipulation" }}
       onPointerDown={(event) => {
         if (event.pointerType === "mouse" && event.button !== 0) return
@@ -126,6 +146,65 @@ function RoomOverlay({
         if (tapRef.current?.pointerId === event.pointerId) tapRef.current = null
       }}
     />
+  )
+}
+
+function SelectedRoomCallout({
+  room,
+  label,
+  viewBoxWidth,
+}: {
+  room: ParsedPlanRoom
+  label: string
+  viewBoxWidth: number
+}) {
+  const fontSize = Math.max(viewBoxWidth * 0.012, 18)
+  const padX = fontSize * 0.55
+  const padY = fontSize * 0.32
+  const width = Math.max(label.length, 4) * fontSize * 0.62 + padX * 2
+  const height = fontSize + padY * 2
+  return (
+    <g pointerEvents="none">
+      <polygon
+        points={polygonPoints(room)}
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth={5}
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+      />
+      <polygon
+        points={polygonPoints(room)}
+        fill="none"
+        stroke="#1d4ed8"
+        strokeWidth={2.5}
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+      />
+      <g transform={`translate(${room.x}, ${room.y})`}>
+        <rect
+          x={-width / 2}
+          y={-height - fontSize * 0.35}
+          width={width}
+          height={height}
+          rx={fontSize * 0.28}
+          fill="#1d4ed8"
+          stroke="#ffffff"
+          strokeWidth={2}
+          vectorEffect="non-scaling-stroke"
+        />
+        <text
+          y={-fontSize * 0.55}
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize={fontSize}
+          fontWeight={700}
+          style={{ fontFamily: "ui-sans-serif, system-ui, sans-serif" }}
+        >
+          {label}
+        </text>
+      </g>
+    </g>
   )
 }
 
@@ -154,6 +233,8 @@ export function FloorPlanPanel({
   const [pan, setPanState] = useState({ x: 0, y: 0 })
   const [rotation, setRotation] = useState(0)
   const [expanded, setExpanded] = useState(false)
+  const [planView, setPlanView] = useState<"scores" | "neighborhoods">("scores")
+  const [neighborhoodLookup, setNeighborhoodLookup] = useState<Map<string, string>>(new Map())
   const [isPanning, setIsPanning] = useState(false)
   const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 })
   const activePointerId = useRef<number | null>(null)
@@ -183,6 +264,8 @@ export function FloorPlanPanel({
     setZoom(DEFAULT_ZOOM)
     setPan({ x: 0, y: 0 })
     setRotation(0)
+    setPlanView("scores")
+    setNeighborhoodLookup(new Map())
 
     loadFloorPlanForCampus(campusId, schoolName)
       .then((result) => {
@@ -198,6 +281,20 @@ export function FloorPlanPanel({
       cancelled = true
     }
   }, [campusId, schoolName, setPan, setZoom])
+
+  useEffect(() => {
+    let cancelled = false
+    fetchCampusNeighborhoods(campusId)
+      .then((lookup) => {
+        if (!cancelled) setNeighborhoodLookup(lookup)
+      })
+      .catch(() => {
+        if (!cancelled) setNeighborhoodLookup(new Map())
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [campusId])
 
   const activeLevelId = levelId ?? plan?.defaultLevelId ?? plan?.levels[0]?.id ?? null
   const level = plan?.levels.find((item) => item.id === activeLevelId)
@@ -216,6 +313,23 @@ export function FloorPlanPanel({
   }, [levelRooms, rooms])
 
   const matchedScoreCount = scoredByPlanId.size
+  const neighborhoodByPlanId = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const planRoom of levelRooms) {
+      const neighborhood = neighborhoodForPlanRoom(
+        planRoom,
+        neighborhoodLookup,
+        scoredByPlanId.get(planRoom.id)?.neighborhood,
+      )
+      if (neighborhood) map.set(planRoom.id, neighborhood)
+    }
+    return map
+  }, [levelRooms, neighborhoodLookup, scoredByPlanId])
+  const neighborhoodLegend = useMemo(
+    () => neighborhoodLegendColors(neighborhoodByPlanId.values()),
+    [neighborhoodByPlanId],
+  )
+  const showNeighborhoods = planView === "neighborhoods"
   const selectedPlan =
     selectedRoomId && plan
       ? plan.rooms.find((room) => planRoomMatchesSelection(room, selectedRoomId, rooms))
@@ -322,7 +436,7 @@ export function FloorPlanPanel({
 
   if (loading && !plan) {
     return (
-      <div className="flex h-[min(42vh,380px)] items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm text-slate-500">
+      <div className="flex h-[min(48vh,460px)] items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm text-slate-500">
         Loading floor plan…
       </div>
     )
@@ -364,6 +478,34 @@ export function FloorPlanPanel({
           ))}
         </div>
         <div className="flex items-center gap-1">
+          <div className="mr-1 grid grid-cols-2 gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            <button
+              type="button"
+              onClick={() => setPlanView("scores")}
+              aria-pressed={planView === "scores"}
+              className={`rounded-md px-2.5 py-1.5 text-[11px] font-semibold ${
+                planView === "scores"
+                  ? "bg-white text-slate-900 shadow-sm"
+                  : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              Scores
+            </button>
+            <button
+              type="button"
+              onClick={() => setPlanView("neighborhoods")}
+              aria-pressed={planView === "neighborhoods"}
+              disabled={neighborhoodLegend.length === 0 && neighborhoodLookup.size === 0}
+              className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-[11px] font-semibold disabled:cursor-not-allowed disabled:opacity-40 ${
+                planView === "neighborhoods"
+                  ? "bg-white text-slate-900 shadow-sm"
+                  : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <Layers className="h-3.5 w-3.5" />
+              Neighborhoods
+            </button>
+          </div>
           <button
             type="button"
             onClick={() => setZoom((value) => clampZoom(value + ZOOM_BUTTON_STEP))}
@@ -402,7 +544,7 @@ export function FloorPlanPanel({
 
       <div
         ref={viewportRef}
-        className={`relative w-full overflow-hidden bg-white select-none ${expanded ? "min-h-0 flex-1" : "h-[min(42vh,380px)]"}`}
+        className={`relative w-full overflow-hidden bg-white select-none ${expanded ? "min-h-0 flex-1" : "h-[min(48vh,460px)]"}`}
         style={{ touchAction: "none" }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -434,32 +576,59 @@ export function FloorPlanPanel({
                 key={room.id}
                 room={room}
                 score={scoredByPlanId.get(room.id)?.score}
+                neighborhood={neighborhoodByPlanId.get(room.id)}
                 selected={Boolean(selectedRoomId && planRoomMatchesSelection(room, selectedRoomId, rooms))}
+                showNeighborhoods={showNeighborhoods}
                 onSelect={selectRoom}
               />
             ))}
+            {selectedPlan && selectedPlan.levelId === activeLevelId ? (
+              <SelectedRoomCallout
+                room={selectedPlan}
+                label={selectedScored?.roomName ?? selectedPlan.name}
+                viewBoxWidth={vb.w}
+              />
+            ) : null}
           </svg>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-slate-200 bg-white px-3 py-2 text-[10px] text-slate-600">
-        <span className="inline-flex items-center gap-1">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm bg-emerald-600/70" aria-hidden />
-          Good (80%+)
-        </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm bg-amber-500/70" aria-hidden />
-          Fair (55–80%)
-        </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm bg-rose-600/70" aria-hidden />
-          Needs attention (&lt;55%)
-        </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm bg-slate-300/50" aria-hidden />
-          No score
-        </span>
-      </div>
+      {showNeighborhoods && neighborhoodLegend.length > 0 ? (
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-slate-200 bg-white px-3 py-2">
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+            Neighborhood
+          </span>
+          {neighborhoodLegend.map((item) => (
+            <span key={item.id} className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-700">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-sm ring-1 ring-slate-300/70"
+                style={{ backgroundColor: item.color }}
+                aria-hidden
+              />
+              {item.id}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-slate-200 bg-white px-3 py-2 text-[10px] text-slate-600">
+          <span className="inline-flex items-center gap-1">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-emerald-600/70" aria-hidden />
+            Good (80%+)
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-amber-500/70" aria-hidden />
+            Fair (55–80%)
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-rose-600/70" aria-hidden />
+            Needs attention (&lt;55%)
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-slate-300/50" aria-hidden />
+            No score
+          </span>
+        </div>
+      )}
 
       <div className="border-t border-slate-200 bg-slate-50/70 px-3 py-2 text-[11px] text-slate-500">
         {matchedScoreCount} of {levelRooms.length} rooms on this level match assessed spaces. Tap a room for
@@ -468,15 +637,20 @@ export function FloorPlanPanel({
       </div>
 
       {selectedPlan ? (
-        <div className="border-t border-slate-200 bg-white px-3 py-3">
+        <div className="border-t-2 border-blue-600 bg-blue-50/70 px-3 py-3">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-blue-800">
+                Selected room
+              </p>
               <p className="text-sm font-semibold text-slate-900">
                 {selectedScored?.roomName ?? selectedPlan.name}
               </p>
-              <p className="mt-0.5 text-xs text-slate-500">
+              <p className="mt-0.5 text-xs text-slate-600">
                 {selectedScored?.spaceType ?? "Unscored on this walk"}
-                {selectedScored?.neighborhood ? ` · Neighborhood ${selectedScored.neighborhood}` : ""}
+                {(selectedPlan && neighborhoodByPlanId.get(selectedPlan.id)) || selectedScored?.neighborhood
+                  ? ` · Neighborhood ${neighborhoodByPlanId.get(selectedPlan.id) ?? selectedScored?.neighborhood}`
+                  : ""}
               </p>
               {scoreBandLabel(selectedScored?.score ?? null) ? (
                 <p className="mt-1 text-[11px] text-slate-500">{scoreBandLabel(selectedScored?.score ?? null)}</p>

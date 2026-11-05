@@ -5,6 +5,7 @@ import {
   parseFloorPlanManifest,
   type FloorPlanLevelEntry,
 } from "@/lib/floor-plan-manifest"
+import { prepareFloorPlanSvgForDisplay } from "@/lib/floor-plan-style"
 import {
   floorPlanSvgDataUrl,
   parsePlanRoomsFromSvg,
@@ -31,7 +32,7 @@ export interface LoadedFloorPlan {
 
 let manifestPromise: Promise<ReturnType<typeof parseFloorPlanManifest>> | null = null
 const planCache = new Map<string, Promise<LoadedFloorPlan | null>>()
-const PLAN_PARSE_VERSION = "cafm-v3"
+const PLAN_PARSE_VERSION = "cafm-v5-thin"
 
 async function loadManifest() {
   if (!manifestPromise) {
@@ -64,6 +65,8 @@ async function loadLevel(floor: FloorPlanLevelEntry): Promise<{
   if (!svg) return null
   const viewBox = parseSvgViewBox(svg)
   if (!viewBox) return null
+  const rooms = parsePlanRoomsFromSvg(svg, floor.id)
+  const displaySvg = prepareFloorPlanSvgForDisplay(svg)
   return {
     level: {
       id: floor.id,
@@ -71,11 +74,11 @@ async function loadLevel(floor: FloorPlanLevelEntry): Promise<{
       filename: floor.filename,
       viewBox,
       src:
-        typeof URL !== "undefined" && svg.length > 400_000
-          ? URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }))
-          : floorPlanSvgDataUrl(svg),
+        typeof URL !== "undefined" && displaySvg.length > 400_000
+          ? URL.createObjectURL(new Blob([displaySvg], { type: "image/svg+xml" }))
+          : floorPlanSvgDataUrl(displaySvg),
     },
-    rooms: parsePlanRoomsFromSvg(svg, floor.id),
+    rooms,
   }
 }
 
