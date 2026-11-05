@@ -14,6 +14,7 @@ import {
   neighborhoodForPlanRoom,
   neighborhoodLegendColors,
 } from "@/lib/neighborhood-colors"
+import { matchScoredRoom, normalizeRoomId } from "@/lib/room-id-match"
 import type { ScoredRoomSummary } from "@/lib/types"
 
 const PAN_THRESHOLD_PX = 6
@@ -30,36 +31,6 @@ function pointerDistance(pointers: Map<number, { x: number; y: number }>): numbe
   const pts = [...pointers.values()]
   if (pts.length < 2) return 0
   return Math.hypot(pts[0]!.x - pts[1]!.x, pts[0]!.y - pts[1]!.y)
-}
-
-function normalizeRoomId(value: string): string {
-  return value.trim().toUpperCase().replace(/\s+/g, "")
-}
-
-function roomMatchKeys(value: string): string[] {
-  const collapsed = normalizeRoomId(value)
-  if (!collapsed) return []
-  const keys = new Set<string>([collapsed, collapsed.replace(/-/g, "")])
-  if (/^\d+$/.test(collapsed)) keys.add(String(Number.parseInt(collapsed, 10)))
-  const parent = collapsed.replace(/\.\d+[A-Z]?$/i, "")
-  if (parent && parent !== collapsed) {
-    keys.add(parent)
-    keys.add(parent.replace(/-/g, ""))
-  }
-  return [...keys].filter(Boolean)
-}
-
-function matchScoredRoom(planRoom: ParsedPlanRoom, rooms: ScoredRoomSummary[]): ScoredRoomSummary | undefined {
-  const planKeys = new Set(
-    [planRoom.id, planRoom.name].flatMap(roomMatchKeys),
-  )
-  const exact = rooms.find((room) =>
-    [room.roomId, room.roomName].map(normalizeRoomId).some((id) => planKeys.has(id)),
-  )
-  if (exact) return exact
-  return rooms.find((room) =>
-    [room.roomId, room.roomName].flatMap(roomMatchKeys).some((key) => planKeys.has(key)),
-  )
 }
 
 function planRoomMatchesSelection(

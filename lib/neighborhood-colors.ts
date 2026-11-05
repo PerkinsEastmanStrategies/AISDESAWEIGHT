@@ -1,3 +1,5 @@
+import { neighborhoodLookupKeys, registerNeighborhoodKeys } from "@/lib/room-id-match"
+
 const NEIGHBORHOOD_PALETTE: Record<string, string> = {
   "1": "#CCEDAF",
   "2": "#40AEAB",
@@ -53,33 +55,22 @@ export function neighborhoodLegendColors(neighborhoods: Iterable<string>): { id:
 }
 
 export function roomNeighborhoodKeys(value: string): string[] {
-  const id = value.trim()
-  if (!id) return []
-  const upper = id.toUpperCase()
-  const collapsed = upper.replace(/\s+/g, "")
-  const alnum = upper.replace(/[^A-Z0-9]/g, "")
-  const keys = new Set<string>([id, upper])
-  if (collapsed) keys.add(collapsed)
-  if (alnum) keys.add(alnum)
-  if (/^\d+$/.test(collapsed)) keys.add(String(Number.parseInt(collapsed, 10)))
-  const parent = collapsed.replace(/\.\d+[A-Z]?$/i, "")
-  if (parent && parent !== collapsed) {
-    keys.add(parent)
-    keys.add(parent.replace(/[^A-Z0-9]/g, ""))
-  }
-  return [...keys].filter(Boolean)
+  return neighborhoodLookupKeys(value)
 }
 
 export function buildNeighborhoodLookup(
   rooms: Array<{ cafmId?: string; name?: string; neighborhood?: string }>,
 ): Map<string, string> {
   const map = new Map<string, string>()
+  const owners = new Map<string, string>()
   for (const room of rooms) {
     const neighborhood = room.neighborhood?.trim()
-    if (!neighborhood) continue
-    for (const key of [...roomNeighborhoodKeys(room.cafmId ?? ""), ...roomNeighborhoodKeys(room.name ?? "")]) {
-      if (!map.has(key)) map.set(key, neighborhood)
-    }
+    const sourceId = (room.cafmId || room.name || "").trim()
+    if (!neighborhood || !sourceId) continue
+    registerNeighborhoodKeys(map, owners, sourceId, neighborhood, [
+      ...neighborhoodLookupKeys(room.cafmId ?? ""),
+      ...neighborhoodLookupKeys(room.name ?? ""),
+    ])
   }
   return map
 }
@@ -89,7 +80,7 @@ export function neighborhoodForPlanRoom(
   lookup: Map<string, string>,
   fallback?: string | null,
 ): string | undefined {
-  for (const key of [...roomNeighborhoodKeys(room.id), ...roomNeighborhoodKeys(room.name ?? "")]) {
+  for (const key of [...neighborhoodLookupKeys(room.id), ...neighborhoodLookupKeys(room.name ?? "")]) {
     const hit = lookup.get(key)
     if (hit) return hit
   }
