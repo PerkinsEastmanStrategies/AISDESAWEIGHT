@@ -246,6 +246,46 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
   }
 }
 
+export async function walkedSchoolById(schoolId: string): Promise<WalkedSchool | null> {
+  const schools = await supabaseRestSelect<{
+    school_id: string
+    campus_id: string
+    name: string
+    display_name: string | null
+    school_class: string | null
+  }>(
+    "esa_schools",
+    `school_id=eq.${encodeURIComponent(schoolId)}&select=school_id,campus_id,name,display_name,school_class&limit=1`,
+  )
+  const school = schools[0]
+  if (!school) return null
+  const schoolClass = school.school_class ?? ""
+  if (!CLASS_TO_LEVEL[schoolClass]) return null
+  if (
+    isTestOrSandboxSchool({
+      schoolId: school.school_id,
+      campusId: school.campus_id,
+      name: school.name,
+    })
+  ) {
+    return null
+  }
+  const latest = await supabaseRestSelect<{ updated_at: string }>(
+    "esa_survey_sessions",
+    `school_id=eq.${encodeURIComponent(schoolId)}&select=updated_at&order=updated_at.desc&limit=1`,
+  )
+  const latestSessionAt = latest[0]?.updated_at
+  if (!latestSessionAt) return null
+  return {
+    schoolId: school.school_id,
+    schoolName: school.display_name?.trim() || school.name || schoolId,
+    campusId: school.campus_id ?? "",
+    schoolClass,
+    schoolLevel: CLASS_TO_LEVEL[schoolClass] ?? "ES",
+    latestSessionAt,
+  }
+}
+
 export async function discoverWalkedSchools(): Promise<WalkedSchool[]> {
   const schools = await supabaseRestSelect<{
     school_id: string

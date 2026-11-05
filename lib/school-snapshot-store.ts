@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises"
 import path from "node:path"
 import staticIndex from "@/data/school-index.json"
 import { indexEntryFromSnapshot, mergeSchoolIndexes } from "@/lib/school-catalog"
+import { exportWalkedSchool, shouldExportSchool, walkedSchoolById } from "@/lib/esa-walked-schools"
 import { baseSchoolIdFromHandoff } from "@/lib/qa-handoff"
 import { supabaseRestSelect, supabaseRestUpsert } from "@/lib/supabase-rest"
 import type { SchoolIndexEntry, SchoolSnapshot } from "@/lib/types"
@@ -65,21 +66,42 @@ export async function loadMergedSchoolIndex(): Promise<SchoolIndexEntry[]> {
   return mergeSchoolIndexes(staticSchoolIndex(), live)
 }
 
+async function refreshSnapshotIfStale(
+  schoolId: string,
+  stored: SchoolSnapshot | null,
+): Promise<SchoolSnapshot | null> {
+  try {
+    const walked = await walkedSchoolById(schoolId)
+    if (!walked) return stored
+    if (!shouldExportSchool(walked, stored ? indexEntryFromSnapshot(stored) : undefined)) {
+      return stored
+    }
+    const snapshot = await exportWalkedSchool(walked)
+    if (!snapshot.rooms.length) return stored
+    await saveSnapshot(snapshot)
+    return snapshot
+  } catch {
+    return stored
+  }
+}
+
 export async function loadSnapshot(schoolId: string): Promise<SchoolSnapshot | null> {
   const ids = [...new Set([schoolId, baseSchoolIdFromHandoff(schoolId)])]
   for (const id of ids) {
+    let stored: SchoolSnapshot | null = null
     try {
       const rows = await supabaseRestSelect<SnapshotRow>(
         TABLE,
         `school_id=eq.${encodeURIComponent(id)}&select=snapshot&limit=1`,
       )
-      if (rows[0]?.snapshot) return rows[0].snapshot
+      stored = rows[0]?.snapshot ?? null
     } catch (error) {
       const message = error instanceof Error ? error.message : ""
       if (!message.includes("esa_qa_school_snapshots")) throw error
     }
-    const file = await readStaticSnapshot(id)
-    if (file) return file
+    if (!stored) stored = await readStaticSnapshot(id)
+    const snapshot = await refreshSnapshotIfStale(id, stored)
+    if (snapshot) return snapshot
   }
   return null
 }

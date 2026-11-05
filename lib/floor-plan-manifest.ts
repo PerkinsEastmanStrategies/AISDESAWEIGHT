@@ -36,6 +36,10 @@ export interface FloorPlanManifestRow {
   floors: Partial<Record<FloorLevelId, string>>
 }
 
+export function isFloorPlanSvgFilename(filename: string): boolean {
+  return /^[A-Za-z0-9][A-Za-z0-9 .()_+#-]*\.svg$/i.test(filename.trim())
+}
+
 function parseCsvRecords(csvText: string): string[][] {
   const rows: string[][] = []
   let row: string[] = []
@@ -110,7 +114,7 @@ export function parseFloorPlanManifest(csvText: string): FloorPlanManifestRow[] 
     for (const { id, index } of floorColumnIndexes) {
       if (index === -1) continue
       const filename = cells[index]?.trim()
-      if (filename) floors[id] = filename
+      if (filename && isFloorPlanSvgFilename(filename)) floors[id] = filename
     }
 
     rows.push({
@@ -151,7 +155,7 @@ export function matchManifestRow(
 export function floorsForRow(row: FloorPlanManifestRow): FloorPlanLevelEntry[] {
   return FLOOR_LEVELS.flatMap((level) => {
     const filename = row.floors[level.id]?.trim()
-    if (!filename) return []
+    if (!filename || !isFloorPlanSvgFilename(filename)) return []
     return [
       {
         id: level.id,
