@@ -55,16 +55,21 @@ export function AisdScoringNotes({
     [focusAreas],
   )
   const [notes, setNotes] = useState<QaScoringNotes>(emptyScoringNotes(schoolId))
-  const [author, setAuthor] = useState(loadSavedEditorName())
+  const [author, setAuthorState] = useState(loadSavedEditorName())
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [error, setError] = useState<string | null>(null)
   const [savingTopic, setSavingTopic] = useState<string | null>(null)
   const savingRef = useRef(false)
 
+  function setAuthor(value: string) {
+    setAuthorState(value)
+    saveEditorName(value)
+  }
+
   useEffect(() => {
     let cancelled = false
     setNotes(emptyScoringNotes(schoolId))
-    setAuthor(loadSavedEditorName())
+    setAuthorState(loadSavedEditorName())
     setDrafts({})
     setError(null)
     setSavingTopic(null)
@@ -75,7 +80,6 @@ export function AisdScoringNotes({
         const loaded = await fetchScoringNotes(schoolId)
         if (cancelled || savingRef.current) return
         setNotes(notesForStream(loaded, stream))
-        if (loaded.author && !loadSavedEditorName()) setAuthor(loaded.author)
         if (!background) setError(null)
       } catch (caught) {
         if (!cancelled && !background) {
@@ -148,6 +152,7 @@ export function AisdScoringNotes({
           value={author}
           onChange={(event) => setAuthor(event.target.value)}
           placeholder="Full name"
+          autoComplete="name"
           className="w-full rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-600/10"
         />
       </label>

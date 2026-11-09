@@ -416,6 +416,7 @@ export function SchoolQaPanel({
                       value={scoring.author}
                       onChange={(event) => scoring.setAuthor(event.target.value)}
                       placeholder="Full name"
+                      autoComplete="name"
                       className="w-full rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-600/10"
                     />
                     {scoring.error ? <p className="mt-2 text-sm text-rose-700">{scoring.error}</p> : null}

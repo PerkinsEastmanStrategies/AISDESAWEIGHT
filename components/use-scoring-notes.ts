@@ -13,16 +13,21 @@ import {
 
 export function useScoringNotes(schoolId: string, stream: QaNoteStream) {
   const [notes, setNotes] = useState<QaScoringNotes>(emptyScoringNotes(schoolId))
-  const [author, setAuthor] = useState(loadSavedEditorName())
+  const [author, setAuthorState] = useState(loadSavedEditorName())
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [error, setError] = useState<string | null>(null)
   const [savingTopic, setSavingTopic] = useState<string | null>(null)
   const savingRef = useRef(false)
 
+  function setAuthor(value: string) {
+    setAuthorState(value)
+    saveEditorName(value)
+  }
+
   useEffect(() => {
     let cancelled = false
     setNotes(emptyScoringNotes(schoolId))
-    setAuthor(loadSavedEditorName())
+    setAuthorState(loadSavedEditorName())
     setDrafts({})
     setError(null)
     setSavingTopic(null)
@@ -34,7 +39,6 @@ export function useScoringNotes(schoolId: string, stream: QaNoteStream) {
         const loaded = await fetchScoringNotes(schoolId)
         if (cancelled || savingRef.current) return
         setNotes(notesForStream(loaded, stream))
-        if (loaded.author && !loadSavedEditorName()) setAuthor(loaded.author)
         if (!background) setError(null)
       } catch (caught) {
         if (!cancelled && !background) {
