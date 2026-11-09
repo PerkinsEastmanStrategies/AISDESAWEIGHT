@@ -358,7 +358,7 @@ export function RoomQuestionReview({
           isInventoryText(group.category) ||
           isObservational(group.category) ||
           isObservational(group.subcategory)
-        const unanswered = !selected.size && !nata
+        const unanswered = !selected.size && !nata && !group.items.some((item) => item.answer?.trim())
         const unscored =
           Boolean(skippedReason) ||
           inventoryQuestion ||

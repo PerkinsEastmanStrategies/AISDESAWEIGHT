@@ -73,7 +73,7 @@ async function refreshSnapshotIfStale(
   try {
     const walked = await walkedSchoolById(schoolId)
     if (!walked) return stored
-    if (!shouldExportSchool(walked, stored ? indexEntryFromSnapshot(stored) : undefined)) {
+    if (!shouldExportSchool(walked, stored ? indexEntryFromSnapshot(stored) : undefined, stored)) {
       return stored
     }
     const snapshot = await exportWalkedSchool(walked)

@@ -36,6 +36,8 @@ export interface SchoolSnapshot {
   roomCount: number
   scoredUnitCount: number
   rooms: ScoredRoom[]
+  /** Bump when snapshot unit mapping changes so stale rows rebuild on load. */
+  unitsFormat?: number
 }
 
 export interface WeightRowFocus {

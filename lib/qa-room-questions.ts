@@ -126,11 +126,14 @@ export function displayUnitsForRoom(input: {
     const reason = dependentQuestionDisabledReason(question.questionId, responses, rubric.questions)
     if (reason) skippedReasons[question.questionId] = reason
     const existing = unitsByQuestion.get(question.questionId)
+    const live = liveAnswers[question.questionId]?.trim() || null
     if (existing?.length) {
-      units.push(...existing)
+      units.push(
+        ...existing.map((unit) => (unit.answer?.trim() || !live ? unit : { ...unit, answer: live })),
+      )
       continue
     }
-    units.push(syntheticUnit(question, liveAnswers[question.questionId]?.trim() || null))
+    units.push(syntheticUnit(question, live))
   }
 
   for (const [questionId, existing] of unitsByQuestion) {

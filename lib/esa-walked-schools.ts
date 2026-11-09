@@ -2,12 +2,10 @@ import {
   getRoomSurveyRubric,
   isAbsentSpaceTypeRoomId,
   isInventoryOption,
-  isMultiSelectQuestionType,
   isNotAbleToAssessOption,
   lookupTableEntry,
   lookupTableEntryBySpaceType,
   mergeTraditionalStudioSizeScore,
-  responseRequiresUnableToAssessNote,
   scoreRoom,
   scoringFocusAreaForRoom,
   scoringFocusAreaLabel,
@@ -63,10 +61,30 @@ interface ResponseRow {
   value: unknown
 }
 
+export const SNAPSHOT_UNITS_FORMAT = 2
+
 function asResponseValue(value: unknown): string | string[] {
   if (Array.isArray(value)) return value.map((item) => String(item))
   if (value == null) return ""
+  if (typeof value === "string") {
+    const trimmed = value.trim()
+    if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+      try {
+        const parsed = JSON.parse(trimmed) as unknown
+        if (Array.isArray(parsed)) return parsed.map((item) => String(item))
+      } catch {
+        /* keep the original string */
+      }
+    }
+    return value
+  }
   return String(value)
+}
+
+function hasResponseValue(value: unknown): boolean {
+  if (value == null || value === "") return false
+  if (Array.isArray(value)) return value.some((item) => String(item ?? "").trim())
+  return String(value).trim().length > 0
 }
 
 function isNonViableSelectAllOption(optionLabel: string | null | undefined): boolean {
@@ -93,9 +111,11 @@ function viableOptionGroups(questionId: string, options: EsaQuestionOption[]) {
   for (const opt of options) {
     if (opt.questionId !== questionId) continue
     if (!opt.option?.trim()) continue
-    if (isInventoryOption(opt)) continue
     if (isNonViableSelectAllOption(opt.option)) continue
-    const unitId = opt.scoreGroupId || opt.scoreId
+    const inventory = isInventoryOption(opt)
+    // Keep recorded-only / observational answers on the snapshot for QA display.
+    // Prefer scoreId so inventory units end in "i" and stay out of scoring.
+    const unitId = inventory ? opt.scoreId || opt.scoreGroupId : opt.scoreGroupId || opt.scoreId
     if (!unitId) continue
     const list = groups.get(unitId) ?? []
     list.push(opt)
@@ -195,10 +215,8 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
   const skippedSet = new Set(skipped)
   for (const question of rubric.questions) {
     if (skippedSet.has(question.questionId)) continue
-    if (!isMultiSelectQuestionType(question.questionType)) continue
     const response = roomSession.responses.find((row) => row.questionId === question.questionId)
-    if (!response) continue
-    if (responseRequiresUnableToAssessNote(response.value)) continue
+    if (!response || !hasResponseValue(response.value)) continue
     parentIds.add(question.questionId)
   }
 
@@ -206,16 +224,28 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
   for (const parentId of parentIds) {
     const question = questionById.get(parentId)
     const groups = viableOptionGroups(parentId, rubric.options)
-    if (!groups.size) continue
     const response = roomSession.responses.find((row) => row.questionId === parentId)
     const answer = answerLabel(response?.value)
-    const isMulti = question ? isMultiSelectQuestionType(question.questionType) : false
+    if (!groups.size) {
+      if (!answer) continue
+      units.push({
+        questionId: parentId,
+        unitId: parentId,
+        question: question?.question ?? parentId,
+        category: question?.category ?? "",
+        subcategory: question?.subcategory ?? "",
+        score: Number.NaN,
+        itemLabel: null,
+        answer,
+      })
+      continue
+    }
 
     for (const [unitId, unitOptions] of groups) {
       const scored = scoredByUnitId.get(unitId)
       let score = scored?.score
       if (score == null) {
-        if (!isMulti) continue
+        if (!answer) continue
         score = 0
       }
       const texts = [...new Set(unitOptions.map((opt) => opt.option.trim()).filter(Boolean))]
@@ -415,6 +445,7 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
     roomCount: kept.length,
     scoredUnitCount: kept.reduce((sum, room) => sum + room.units.length, 0),
     rooms: kept,
+    unitsFormat: SNAPSHOT_UNITS_FORMAT,
   }
 }
 
@@ -422,7 +453,12 @@ export function snapshotMeetsMinimum(snapshot: SchoolSnapshot): boolean {
   return snapshot.scoredUnitCount >= MIN_SCORED_UNITS
 }
 
-export function shouldExportSchool(school: WalkedSchool, current?: SchoolIndexEntry): boolean {
+export function shouldExportSchool(
+  school: WalkedSchool,
+  current?: SchoolIndexEntry,
+  snapshot?: Pick<SchoolSnapshot, "unitsFormat"> | null,
+): boolean {
   if (!current) return true
+  if ((snapshot?.unitsFormat ?? 0) < SNAPSHOT_UNITS_FORMAT) return true
   return school.latestSessionAt > current.exportedAt
 }
