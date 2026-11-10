@@ -1,40 +1,81 @@
 "use client"
 
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
+import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react"
 import { Printer } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
-import { SCORE_FAIR, SCORE_GOOD, barTone, scoreTone } from "@/lib/format"
+import { SCORE_FAIR, SCORE_GOOD } from "@/lib/format"
+import {
+  REPORT_PALETTES,
+  hexToRgba,
+  loadReportPaletteId,
+  saveReportPaletteId,
+  scoreBandColors,
+  scoreBandHex,
+  type ReportPalette,
+  type ReportPaletteId,
+} from "@/lib/report-palette"
 import {
   averageScorecard,
+  campusObservationSlots,
+  categorySubcategories,
   displaySchoolName,
+  expectedSpacesFromRows,
+  focusObservationSlots,
+  focusSpaceTableRows,
   formatPreparedDate,
   isHiddenReportLabel,
   levelAverageLabel,
   orderedFocusAreas,
+  reportDisplayLabel,
   scoringCategories,
   shortFocus,
   spaceCategoryTree,
-  spaceNodes,
   spaceTypeCategoryScore,
 } from "@/lib/report"
-import { fetchScoringNotes, observationLines } from "@/lib/qa-scoring-notes"
 import type { SchoolIndexEntry, SchoolLevel, SchoolScorecard, ScoreNode } from "@/lib/types"
 
-function polar(index: number, total: number, value: number, cx: number, cy: number, radius: number) {
-  const angle = -Math.PI / 2 + (index * 2 * Math.PI) / total
-  const r = radius * Math.max(0, Math.min(1, value / 100))
-  return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
+const OBS_STORAGE_PREFIX = "esa-report-observations:v2:"
+
+type ObservationEdits = {
+  lines: [string, string, string]
+  edited: [boolean, boolean, boolean]
 }
 
-function toPath(points: Array<{ x: number; y: number } | null>): string {
-  const kept = points.filter((point): point is { x: number; y: number } => point != null)
-  if (kept.length < 3) return ""
-  return `${kept.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ")} Z`
+function padObservationSlots(lines: string[]): [string, string, string] {
+  return [lines[0]?.trim() ?? "", lines[1]?.trim() ?? "", lines[2]?.trim() ?? ""]
 }
 
-function axisScore(card: SchoolScorecard, axis: string): number | null {
-  const score = card.focusAreas.find((area) => area.label === axis)?.score
-  return score == null || Number.isNaN(score) ? null : score
+function loadObservationEdits(storageKey: string): ObservationEdits | null {
+  if (typeof window === "undefined") return null
+  try {
+    const raw = window.localStorage.getItem(`${OBS_STORAGE_PREFIX}${storageKey}`)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as Partial<ObservationEdits> | unknown
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null
+    const record = parsed as Partial<ObservationEdits>
+    if (!Array.isArray(record.lines) || !Array.isArray(record.edited)) return null
+    return {
+      lines: padObservationSlots(record.lines.map((item) => String(item ?? ""))),
+      edited: [Boolean(record.edited[0]), Boolean(record.edited[1]), Boolean(record.edited[2])],
+    }
+  } catch {
+    return null
+  }
+}
+
+function saveObservationEdits(storageKey: string, edits: ObservationEdits): void {
+  if (typeof window === "undefined") return
+  try {
+    window.localStorage.setItem(`${OBS_STORAGE_PREFIX}${storageKey}`, JSON.stringify(edits))
+  } catch {
+    /* ignore quota */
+  }
+}
+
+const ReportPaletteContext = createContext<ReportPalette>(REPORT_PALETTES.good)
+
+function useReportPalette() {
+  return useContext(ReportPaletteContext)
 }
 
 function scoreNumber(score: number | null | undefined): string {
@@ -42,33 +83,100 @@ function scoreNumber(score: number | null | undefined): string {
   return String(Math.round(score))
 }
 
-function scoreCellClass(score: number | null | undefined): string {
-  if (score == null || Number.isNaN(score)) return "bg-slate-50 text-slate-400"
-  if (score >= SCORE_GOOD) return "bg-emerald-100 text-emerald-800"
-  if (score >= SCORE_FAIR) return "bg-amber-100 text-amber-900"
-  return "bg-rose-100 text-rose-800"
-}
-
-function ScoreCell({ score, strong = false }: { score: number | null | undefined; strong?: boolean }) {
+function ScoreCell({
+  score,
+  strong = false,
+  blank = false,
+}: {
+  score: number | null | undefined
+  strong?: boolean
+  blank?: boolean
+}) {
+  if (blank) {
+    return <td className="border border-slate-200 bg-white px-2 py-2" />
+  }
+  const palette = useReportPalette()
+  const colors = scoreBandColors(score, palette)
   return (
-    <td className={`px-2 py-1.5 text-right tabular-nums ${strong ? "font-semibold" : ""} ${scoreCellClass(score)}`}>
+    <td
+      className={`border-2 border-white px-2 py-2 text-center tabular-nums ${strong ? "font-semibold" : ""}`}
+      style={{ backgroundColor: colors.bg, color: colors.fg }}
+    >
       {scoreNumber(score)}
     </td>
   )
 }
 
+function ScoreChip({
+  score,
+  className = "",
+}: {
+  score: number | null | undefined
+  className?: string
+}) {
+  const palette = useReportPalette()
+  const colors = scoreBandColors(score, palette)
+  return (
+    <span className={className} style={{ backgroundColor: colors.bg, color: colors.fg }}>
+      {scoreNumber(score)}
+    </span>
+  )
+}
+
+function ScoreText({
+  score,
+  className = "",
+}: {
+  score: number | null | undefined
+  className?: string
+}) {
+  const palette = useReportPalette()
+  return (
+    <span className={className} style={{ color: scoreBandHex(score, palette) }}>
+      {scoreNumber(score)}
+    </span>
+  )
+}
+
 function ScoreLegend() {
+  const palette = useReportPalette()
+  const good = scoreBandColors(SCORE_GOOD, palette)
+  const fair = scoreBandColors(SCORE_FAIR, palette)
+  const poor = scoreBandColors(SCORE_FAIR - 1, palette)
   return (
     <div className="flex flex-wrap gap-2 text-[11px] text-slate-500">
-      <span className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium text-emerald-800 bg-emerald-100">
+      <span
+        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
+        style={{ backgroundColor: good.bg, color: good.fg }}
+      >
         Good {SCORE_GOOD}+
       </span>
-      <span className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium text-amber-900 bg-amber-100">
+      <span
+        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
+        style={{ backgroundColor: fair.bg, color: fair.fg }}
+      >
         Fair {SCORE_FAIR}–{SCORE_GOOD}
       </span>
-      <span className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium text-rose-800 bg-rose-100">
+      <span
+        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
+        style={{ backgroundColor: poor.bg, color: poor.fg }}
+      >
         Poor below {SCORE_FAIR}
       </span>
+    </div>
+  )
+}
+
+function AverageTickLegend({ label = "Grade-type average" }: { label?: string }) {
+  const palette = useReportPalette()
+  return (
+    <div className="flex shrink-0 items-center gap-2 text-[11px] leading-none text-slate-500">
+      <span
+        className="inline-block h-3.5 w-[3px] rounded-full"
+        style={{ backgroundColor: palette.navy }}
+        aria-hidden
+      />
+      <span>{label}</span>
     </div>
   )
 }
@@ -82,6 +190,7 @@ function ReportBar({
   score: number | null
   average?: number | null
 }) {
+  const palette = useReportPalette()
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_2.5rem] items-center gap-3">
       <div>
@@ -89,14 +198,19 @@ function ReportBar({
         <div className="relative h-3 overflow-visible rounded-full bg-slate-200">
           {score != null ? (
             <div
-              className={`h-3 rounded-full ${barTone(score)}`}
-              style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
+              className="h-3 rounded-full"
+              style={{
+                width: `${Math.max(0, Math.min(100, score))}%`,
+                backgroundColor: scoreBandHex(score, palette),
+              }}
             />
           ) : null}
           {average != null ? (
             <span
-              className="absolute top-1/2 h-4 w-[3px] -translate-y-1/2 rounded-full bg-slate-900"
-              style={{ left: `${Math.max(0, Math.min(100, average))}%` }}
+              className="absolute top-1/2 h-4 w-[3px] -translate-y-1/2 rounded-full"
+              style={{ left: `${Math.max(0, Math.min(100, average))}%`, backgroundColor: palette.navy }}
+              title="Grade-type average"
+              aria-label="Grade-type average"
             />
           ) : null}
         </div>
@@ -106,24 +220,130 @@ function ReportBar({
   )
 }
 
+function CategoryBreakdownCard({
+  category,
+  average,
+}: {
+  category: ScoreNode
+  average?: number | null
+}) {
+  const subs = categorySubcategories(category)
+  return (
+    <article className="rounded-xl border border-slate-200 bg-white p-2.5">
+      <ReportBar label={category.label} score={category.score} average={average} />
+      {subs.length ? (
+        <ul className="mt-2 divide-y divide-slate-100">
+          {subs.map((sub) => (
+            <li key={sub.id} className="flex items-center justify-between gap-3 py-1">
+              <span className="text-[12px] leading-snug text-slate-600">{reportDisplayLabel(sub.label)}</span>
+              <ScoreChip
+                score={sub.score}
+                className="shrink-0 rounded-md px-1.5 py-0.5 text-[11px] font-semibold tabular-nums"
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 text-[11px] text-slate-400">No scored items in this category yet</p>
+      )}
+    </article>
+  )
+}
+
+function renderObservationMarkup(text: string): ReactNode {
+  if (!text.trim()) return null
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+    const match = /^\*\*([^*]+)\*\*$/.exec(part)
+    if (match) {
+      return (
+        <strong key={index} className="font-semibold text-slate-800">
+          {match[1]}
+        </strong>
+      )
+    }
+    return <span key={index}>{part}</span>
+  })
+}
+
 function Observations({
   title = "Observations",
-  lines,
+  storageKey,
+  preset,
 }: {
   title?: string
-  lines: string[]
+  storageKey: string
+  preset: string[]
 }) {
-  const slots = [0, 1, 2].map((index) => lines[index]?.trim() || "")
+  const auto = padObservationSlots(preset)
+  const [edits, setEdits] = useState<ObservationEdits>(
+    () => loadObservationEdits(storageKey) ?? { lines: auto, edited: [false, false, false] },
+  )
+  const [editingIndex, setEditingIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    setEdits(loadObservationEdits(storageKey) ?? { lines: auto, edited: [false, false, false] })
+    setEditingIndex(null)
+  }, [storageKey])
+
+  const lines: [string, string, string] = [
+    edits.edited[0] ? edits.lines[0] : auto[0],
+    edits.edited[1] ? edits.lines[1] : auto[1],
+    edits.edited[2] ? edits.lines[2] : auto[2],
+  ]
+
+  function update(index: number, value: string) {
+    setEdits((current) => {
+      const next: ObservationEdits = {
+        lines: [current.edited[0] ? current.lines[0] : auto[0], current.edited[1] ? current.lines[1] : auto[1], current.edited[2] ? current.lines[2] : auto[2]],
+        edited: [...current.edited] as [boolean, boolean, boolean],
+      }
+      next.lines[index] = value
+      next.edited[index] = true
+      saveObservationEdits(storageKey, next)
+      return next
+    })
+  }
+
   return (
-    <section className="rounded-2xl border border-amber-200 bg-amber-50/80 px-4 py-3">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-800">{title}</p>
-      <ol className="mt-3 space-y-2">
-        {slots.map((line, index) => (
-          <li key={index} className="flex gap-2 text-[13px] leading-snug text-slate-600">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-200 text-[11px] font-bold text-amber-950">
+    <section className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{title}</p>
+        <p className="text-[10px] text-slate-400 print:hidden">Auto-filled from scores. Click a line to edit; saved on this browser.</p>
+      </div>
+      <ol className="mt-2 space-y-1.5">
+        {lines.map((line, index) => (
+          <li key={index} className="flex gap-2 text-lg leading-snug text-slate-600">
+            <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-200 text-[13px] font-bold text-slate-700">
               {index + 1}
             </span>
-            <span>{line || "Observations will be written here"}</span>
+            {editingIndex === index ? (
+              <>
+                <textarea
+                  autoFocus
+                  value={line}
+                  onChange={(event) => update(index, event.target.value)}
+                  onBlur={() => setEditingIndex(null)}
+                  rows={2}
+                  placeholder="Observations will be written here"
+                  className="min-h-[2.75rem] w-full resize-none rounded-lg border border-slate-300 bg-white px-1.5 py-1 text-lg leading-snug text-slate-700 outline-none print:hidden"
+                />
+                <p className="hidden min-h-[2.75rem] w-full px-1.5 py-1 text-lg leading-snug text-slate-700 print:block">
+                  {renderObservationMarkup(line)}
+                </p>
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setEditingIndex(index)}
+                className="min-h-[2.75rem] w-full rounded-lg px-1.5 py-1 text-left text-lg leading-snug text-slate-700 print:cursor-default"
+              >
+                {line.trim() ? (
+                  renderObservationMarkup(line)
+                ) : (
+                  <span className="text-slate-400 print:hidden">Observations will be written here</span>
+                )}
+              </button>
+            )}
           </li>
         ))}
       </ol>
@@ -143,9 +363,30 @@ function ReportFooter({ page, total, schoolName }: { page: number; total: number
   )
 }
 
+const ReportFitContext = createContext<{
+  zoom: number
+  report: (id: string, ratio: number) => void
+}>({ zoom: 1, report: () => {} })
+
+function ReportFitProvider({ children }: { children: ReactNode }) {
+  const [ratios, setRatios] = useState<Record<string, number>>({})
+  const zoom = useMemo(() => {
+    const values = Object.values(ratios)
+    if (!values.length) return 1
+    return Math.min(1, ...values)
+  }, [ratios])
+  const report = useCallback((id: string, ratio: number) => {
+    const next = Math.round(Math.min(1, Math.max(0.5, ratio)) * 1000) / 1000
+    setRatios((current) => (current[id] === next ? current : { ...current, [id]: next }))
+  }, [])
+  return <ReportFitContext.Provider value={{ zoom, report }}>{children}</ReportFitContext.Provider>
+}
+
 function ReportPage({ children }: { children: ReactNode }) {
   const frameRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
+  const id = useId()
+  const { zoom, report } = useContext(ReportFitContext)
 
   useLayoutEffect(() => {
     const frame = frameRef.current
@@ -158,13 +399,9 @@ function ReportPage({ children }: { children: ReactNode }) {
       const available = frame.clientHeight
       const needed = inner.scrollHeight
       if (available <= 0 || needed <= 0) return
-      if (needed > available + 2) {
-        inner.style.setProperty("zoom", String(available / needed))
-        inner.style.minHeight = "0px"
-      } else {
-        inner.style.setProperty("zoom", "1")
-        inner.style.minHeight = `${available}px`
-      }
+      report(id, needed > available + 2 ? available / needed : 1)
+      inner.style.setProperty("zoom", String(zoom))
+      inner.style.minHeight = `${available / zoom}px`
     }
 
     fit()
@@ -178,7 +415,7 @@ function ReportPage({ children }: { children: ReactNode }) {
       frameObserver.disconnect()
       window.removeEventListener("beforeprint", fit)
     }
-  }, [children])
+  }, [children, id, report, zoom])
 
   return (
     <section className="report-page mx-auto box-border h-[8.5in] w-[11in] max-w-full overflow-hidden bg-white p-8 shadow-sm ring-1 ring-slate-200 print:max-w-none print:shadow-none print:ring-0">
@@ -191,84 +428,17 @@ function ReportPage({ children }: { children: ReactNode }) {
   )
 }
 
-function ReportSpider({
-  campus,
-  average,
-  axes,
-}: {
-  campus: SchoolScorecard
-  average: SchoolScorecard
-  axes: string[]
-}) {
-  const size = 300
-  const cx = size / 2
-  const cy = size / 2
-  const radius = 102
-  if (!axes.length) {
-    return <p className="py-10 text-center text-sm text-slate-500">No focus area scores yet.</p>
-  }
-  const campusPoints = axes.map((axis, index) => {
-    const score = axisScore(campus, axis)
-    return score == null ? null : polar(index, axes.length, score, cx, cy, radius)
-  })
-  const averagePoints = axes.map((axis, index) => {
-    const score = axisScore(average, axis)
-    return score == null ? null : polar(index, axes.length, score, cx, cy, radius)
-  })
-  return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="mx-auto h-auto w-full max-w-[300px]" role="img">
-      <title>Campus spider plot by scoring focus area</title>
-      {[25, 50, 75, 100].map((ring) => {
-        const points = axes.map((_, index) => polar(index, axes.length, ring, cx, cy, radius))
-        return (
-          <polygon
-            key={ring}
-            points={points.map((point) => `${point.x},${point.y}`).join(" ")}
-            fill="none"
-            stroke="#e2e8f0"
-            strokeWidth="1"
-          />
-        )
-      })}
-      {axes.map((axis, index) => {
-        const end = polar(index, axes.length, 100, cx, cy, radius)
-        const label = polar(index, axes.length, 128, cx, cy, radius)
-        const anchor = Math.abs(label.x - cx) < 10 ? "middle" : label.x > cx ? "start" : "end"
-        return (
-          <g key={axis}>
-            <line x1={cx} y1={cy} x2={end.x} y2={end.y} stroke="#cbd5e1" strokeWidth="1" />
-            <text
-              x={label.x}
-              y={label.y}
-              textAnchor={anchor}
-              dominantBaseline="middle"
-              fill="#334155"
-              fontSize="10"
-              fontWeight="600"
-            >
-              {shortFocus(axis)}
-            </text>
-          </g>
-        )
-      })}
-      <path d={toPath(averagePoints)} fill="none" stroke="#1e3a8a" strokeWidth="2" strokeDasharray="6 5" />
-      <path d={toPath(campusPoints)} fill="rgba(15, 118, 110, 0.28)" stroke="#0f766e" strokeWidth="2.5" />
-      {campusPoints.map((point, index) =>
-        point ? <circle key={axes[index]} cx={point.x} cy={point.y} r="3.5" fill="#0f766e" /> : null,
-      )}
-    </svg>
-  )
-}
-
 function SpaceScoreCard({ space, categories }: { space: ScoreNode; categories: string[] }) {
+  const palette = useReportPalette()
   const tree = spaceCategoryTree(space)
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <h5 className="min-w-0 truncate text-sm font-semibold text-slate-900">{space.label}</h5>
-        <span className={`shrink-0 rounded-md px-1.5 py-0.5 text-sm font-bold tabular-nums ${scoreCellClass(space.score)}`}>
-          {scoreNumber(space.score)}
-        </span>
+        <ScoreChip
+          score={space.score}
+          className="shrink-0 rounded-md px-1.5 py-0.5 text-sm font-bold tabular-nums"
+        />
       </div>
       <div className="space-y-3">
         {categories.map((category) => {
@@ -284,26 +454,31 @@ function SpaceScoreCard({ space, categories }: { space: ScoreNode; categories: s
                   <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
                     {score != null ? (
                       <div
-                        className={`h-full rounded-full ${barTone(score)}`}
-                        style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${Math.max(0, Math.min(100, score))}%`,
+                          backgroundColor: scoreBandHex(score, palette),
+                        }}
                       />
                     ) : null}
                   </div>
                 </div>
-                <span className={`text-right text-[11px] tabular-nums font-semibold ${scoreTone(score)}`}>
-                  {scoreNumber(score)}
-                </span>
+                <ScoreText score={score} className="text-right text-[11px] font-semibold tabular-nums" />
               </div>
               {subs.length ? (
                 <div className="mt-1.5 flex flex-wrap gap-1">
-                  {subs.map((sub) => (
-                    <span
-                      key={sub.id}
-                      className={`rounded-md px-1.5 py-0.5 text-[10px] leading-tight ${scoreCellClass(sub.score)}`}
-                    >
-                      {sub.label} {scoreNumber(sub.score)}
-                    </span>
-                  ))}
+                  {subs.map((sub) => {
+                    const colors = scoreBandColors(sub.score, palette)
+                    return (
+                      <span
+                        key={sub.id}
+                        className="rounded-md px-1.5 py-0.5 text-[10px] leading-tight"
+                        style={{ backgroundColor: colors.bg, color: colors.fg }}
+                      >
+                        {reportDisplayLabel(sub.label)} {scoreNumber(sub.score)}
+                      </span>
+                    )
+                  })}
                 </div>
               ) : null}
             </div>
@@ -320,48 +495,64 @@ export function CampusReport({
   school,
   schoolLevel,
   axisOrder,
+  spaceTypeRows = [],
 }: {
   card: SchoolScorecard
   fleet: SchoolScorecard[]
   school: SchoolIndexEntry
   schoolLevel: SchoolLevel
   axisOrder: string[]
+  spaceTypeRows?: Array<{ focusArea: string; spaceType: string }>
 }) {
   const averageLabel = levelAverageLabel(schoolLevel)
   const average = averageScorecard(fleet, averageLabel, schoolLevel)
   const name = displaySchoolName(card.schoolName)
   const focuses = orderedFocusAreas(card, axisOrder)
-  const axes = focuses.map((area) => area.label)
   const categories = scoringCategories(card)
   const totalPages = 2 + focuses.length
   const prepared = formatPreparedDate()
   const scoresAsOf = formatPreparedDate(school.exportedAt)
-  const [observationItems, setObservationItems] = useState<string[]>([])
+  const [paletteId, setPaletteId] = useState<ReportPaletteId>(loadReportPaletteId)
+  const palette = REPORT_PALETTES[paletteId]
+  const expectedSpaces = useMemo(() => expectedSpacesFromRows(spaceTypeRows), [spaceTypeRows])
+  const overviewObservations = campusObservationSlots(card, fleet, schoolLevel, expectedSpaces)
 
-  useEffect(() => {
-    let cancelled = false
-    fetchScoringNotes(card.schoolId)
-      .then((notes) => {
-        if (!cancelled) {
-          setObservationItems(
-            observationLines(
-              notes,
-              orderedFocusAreas(card, axisOrder).map((area) => area.label),
-            ),
-          )
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setObservationItems([])
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [axisOrder, card])
+  function selectPalette(id: ReportPaletteId) {
+    setPaletteId(id)
+    saveReportPaletteId(id)
+  }
 
   return (
+    <ReportPaletteContext.Provider value={palette}>
+    <ReportFitProvider>
     <div className="report-print-root space-y-4 print:space-y-0">
       <div className="flex flex-wrap items-center justify-end gap-2 print:hidden">
+        <div className="inline-flex items-center rounded-full bg-white p-0.5 text-xs font-semibold shadow-sm ring-1 ring-slate-200">
+          {(["good", "worst"] as const).map((id) => {
+            const option = REPORT_PALETTES[id]
+            const selected = paletteId === id
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => selectPalette(id)}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5"
+                style={
+                  selected
+                    ? { backgroundColor: option.navy, color: "#ffffff" }
+                    : { backgroundColor: "transparent", color: option.navy }
+                }
+              >
+                <span className="flex items-center gap-0.5" aria-hidden>
+                  <span className="h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: option.navy }} />
+                  <span className="h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: option.blue }} />
+                  <span className="h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: option.accent }} />
+                </span>
+                {option.label}
+              </button>
+            )
+          })}
+        </div>
         <button
           type="button"
           onClick={() => window.print()}
@@ -374,51 +565,52 @@ export function CampusReport({
 
       <ReportPage>
         <div className="overflow-hidden rounded-2xl">
-          <div className="flex items-center bg-white px-6 py-3">
-            <AisdLogo className="h-12 w-auto" />
+          <div className="flex items-center bg-white px-6 py-2.5">
+            <AisdLogo className="h-10 w-auto" />
           </div>
-          <div className="h-1 bg-[#c4a35a]" />
-          <div className="bg-[#0f4c5c] px-6 py-5 text-white">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-100">Campus Assessment Report</p>
-            <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
+          <div className="h-1" style={{ backgroundColor: palette.accent }} />
+          <div className="px-6 py-3.5 text-white" style={{ backgroundColor: palette.navy }}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: palette.blue }}>
+              Educational Suitability Assessment Report
+            </p>
+            <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h2 className="text-3xl font-semibold tracking-tight">{name}</h2>
-                <p className="mt-1 text-sm text-teal-100">
-                  Campus ID {card.campusId.replace(/-PILOT-\d+$/i, "")}
-                  {card.campusId.includes("PILOT") ? " · Pilot" : ""} ·{" "}
-                  {schoolLevel === "ES" ? "Elementary" : schoolLevel === "MS" ? "Middle" : "High"}
+                <p className="mt-1 text-sm" style={{ color: hexToRgba("#ffffff", 0.78) }}>
+                  [Address]
                 </p>
-                <p className="mt-1 text-xs text-teal-200">
+                <p className="mt-1 text-xs" style={{ color: hexToRgba("#ffffff", 0.62) }}>
                   Scores as of {scoresAsOf || prepared} · Prepared {prepared} · Perkins Eastman · AISD ESA
                 </p>
               </div>
-              <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-white shadow-inner">
+              <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-white shadow-inner">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">ESA</p>
-                <p className={`text-4xl font-bold tabular-nums leading-none ${scoreTone(card.existingOnly)}`}>
-                  {scoreNumber(card.existingOnly)}
-                </p>
+                <ScoreText score={card.existingOnly} className="text-3xl font-bold leading-none tabular-nums" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-[200px_minmax(0,1fr)] gap-4">
-          <div className="rounded-2xl bg-slate-50 px-4 py-4 ring-1 ring-slate-200">
+        <div className="mt-3 grid grid-cols-[minmax(13.5rem,15.5rem)_minmax(0,1fr)] gap-3">
+          <div className="rounded-2xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200">
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Educational Suitability</p>
-            <p className={`mt-2 text-4xl font-bold tabular-nums ${scoreTone(card.existingOnly)}`}>
-              {scoreNumber(card.existingOnly)}
+            <ScoreText score={card.existingOnly} className="mt-2 block text-4xl font-bold tabular-nums" />
+            <p className="mt-2 text-[11px] leading-snug text-slate-500">
+              ESA measures how well campus spaces support teaching and learning. It scores the existing campus from the on-site walk.
             </p>
-            <p className="mt-1 text-sm text-slate-500">Weighted campus score from field ESA</p>
+            <p className="mt-1.5 text-[11px] leading-snug text-slate-500">
+              This score is paired with FCI and Space Sufficiency to create a comprehensive view of the building&apos;s needs.
+            </p>
           </div>
-          <Observations lines={observationItems} />
+          <Observations storageKey={`${card.schoolId}:overview`} preset={overviewObservations} />
         </div>
 
-        <div className="mt-8">
-          <div className="mb-3 flex items-end justify-between gap-3">
-            <h3 className="text-sm font-semibold text-slate-900">ESA focus areas at a glance</h3>
-            <p className="text-[11px] text-slate-500">{averageLabel} (navy marker)</p>
+        <div className="mt-4">
+          <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
+            <h4 className="text-sm font-semibold text-slate-900">ESA focus areas at a glance</h4>
+            <AverageTickLegend />
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {focuses.map((area) => (
               <ReportBar
                 key={area.id}
@@ -437,37 +629,31 @@ export function CampusReport({
           <div className="flex min-w-0 items-start gap-3">
             <AisdLogo className="h-10 w-auto" />
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal-800">Educational Suitability Assessment</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: palette.navy }}>
+                Educational Suitability Assessment
+              </p>
               <h3 className="text-xl font-semibold text-slate-900">{name}</h3>
             </div>
           </div>
           <p className="text-xs font-semibold text-slate-500">ESA OVERVIEW · Campus {card.campusId.replace(/-PILOT-\d+$/i, "")}</p>
         </div>
-        <div className="mt-5 flex flex-nowrap items-start justify-center gap-x-12">
-          <div className="w-[19rem] shrink-0">
-            <h4 className="text-sm font-semibold text-slate-900">Campus spider plot by scoring focus area</h4>
-            <p className="text-xs text-slate-500">
-              Teal fill = {name} · Dashed navy = {averageLabel}
-            </p>
-            <ReportSpider campus={card} average={average} axes={axes} />
-          </div>
-          <div className="shrink-0">
-            <h4 className="text-base font-semibold text-slate-900">Campus vs grade-type average</h4>
-            <p className="mt-1 text-xs text-slate-500">Campus score compared with {averageLabel}</p>
-            <table className="mt-3 w-max max-w-full text-[14px]">
+        <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)] items-stretch gap-5">
+          <div className="flex min-h-0 flex-col">
+            <h4 className="text-sm font-semibold text-slate-900">Campus vs grade-type average</h4>
+            <table className="mt-2 w-full table-fixed border-collapse text-[13px]">
               <thead>
-                <tr className="border-b border-slate-200 text-left text-[11px] uppercase tracking-wide text-slate-500">
-                  <th className="pb-2 pr-6 font-semibold">Focus area</th>
-                  <th className="w-16 pb-2 pl-3 text-right font-semibold">Campus</th>
-                  <th className="w-14 pb-2 pl-3 text-right font-semibold">Avg</th>
+                <tr className="bg-slate-50 text-[10px] uppercase tracking-wide text-slate-500">
+                  <th className="w-[58%] border border-slate-200 px-2 py-1.5 text-left font-semibold">Focus area</th>
+                  <th className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Campus</th>
+                  <th className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Avg</th>
                 </tr>
               </thead>
               <tbody>
                 {focuses.map((area) => (
-                  <tr key={area.id} className="border-b border-slate-100">
-                    <td className="whitespace-nowrap py-1.5 pr-6 leading-snug text-slate-800">{area.label}</td>
+                  <tr key={area.id}>
+                    <td className="border border-slate-200 px-2 py-1.5 leading-snug text-slate-800">{area.label}</td>
                     <ScoreCell score={area.score} strong />
-                    <td className="py-1.5 pl-3 text-right tabular-nums text-slate-500">
+                    <td className="border border-slate-200 px-2 py-1.5 text-center tabular-nums text-slate-500">
                       {scoreNumber(average.focusAreas.find((item) => item.label === area.label)?.score)}
                     </td>
                   </tr>
@@ -478,55 +664,55 @@ export function CampusReport({
               <ScoreLegend />
             </div>
           </div>
-        </div>
-        <div className="mt-5">
-          <div className="mb-2 flex items-end justify-between gap-3">
-            <h4 className="text-sm font-semibold text-slate-900">Campus-wide categories</h4>
-            <p className="text-[11px] text-slate-500">{averageLabel} (navy marker)</p>
-          </div>
-          <p className="mb-2 text-xs text-slate-500">Original scoring categories, aggregated across every scored space</p>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-            {card.categories
-              .filter((node) => !isHiddenReportLabel(node.label))
-              .map((node) => (
-                <ReportBar
-                  key={node.id}
-                  label={node.label}
-                  score={node.score}
-                  average={average.categories.find((item) => item.label === node.label)?.score}
-                />
-              ))}
+          <div className="min-w-0">
+            <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
+              <h4 className="text-sm font-semibold text-slate-900">Campus-wide categories</h4>
+              <AverageTickLegend />
+            </div>
+            <div className="grid grid-cols-2 gap-2.5">
+              {card.categories
+                .filter((node) => !isHiddenReportLabel(node.label))
+                .sort((a, b) => categories.indexOf(a.label) - categories.indexOf(b.label))
+                .map((node) => (
+                  <CategoryBreakdownCard
+                    key={node.id}
+                    category={node}
+                    average={average.categories.find((item) => item.label === node.label)?.score}
+                  />
+                ))}
+            </div>
           </div>
         </div>
         <ReportFooter page={2} total={totalPages} schoolName={name} />
       </ReportPage>
 
       {focuses.map((focus, index) => {
-        const spaces = spaceNodes(focus)
+        const spaceRows = focusSpaceTableRows(focus, card, fleet, expectedSpaces)
+        const scoredSpaces = spaceRows.filter((row) => !row.missing && row.space)
+        const hasMissingSpaces = spaceRows.some((row) => row.missing)
         return (
           <ReportPage key={focus.id}>
             <div className="flex items-start justify-between gap-3">
               <div className="flex min-w-0 items-start gap-3">
                 <AisdLogo className="h-10 w-auto" />
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal-800">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: palette.navy }}>
                     Scoring focus area
                   </p>
                   <h3 className="text-xl font-semibold text-slate-900">{focus.label}</h3>
-                  <p className="text-sm text-slate-500">
-                    {focus.weight > 0 ? `Weight ${focus.weight}` : "Focus area"} · {spaces.length} space type
-                    {spaces.length === 1 ? "" : "s"}
-                  </p>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Focus score</p>
-                <p className={`text-4xl font-bold tabular-nums ${scoreTone(focus.score)}`}>{scoreNumber(focus.score)}</p>
+                <ScoreText score={focus.score} className="text-4xl font-bold tabular-nums" />
               </div>
             </div>
 
             <div className="mt-5">
-              <Observations lines={observationItems} />
+              <Observations
+                storageKey={`${card.schoolId}:${focus.label}`}
+                preset={focusObservationSlots(focus, card, fleet, schoolLevel, expectedSpaces)}
+              />
             </div>
 
             <div className="mt-5">
@@ -534,35 +720,55 @@ export function CampusReport({
                 <h4 className="text-sm font-semibold text-slate-900">Space types</h4>
                 <ScoreLegend />
               </div>
-              <table className="w-full text-[12px]">
+              <table className="w-full table-fixed border-collapse text-[12px]">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50 text-left text-[10px] text-slate-500">
-                    <th className="px-2 py-1.5 font-semibold uppercase tracking-wide">Space type</th>
+                  <tr className="bg-slate-50 text-[10px] text-slate-500">
+                    <th className="w-[22%] border border-slate-200 px-2 py-1.5 text-left font-semibold uppercase tracking-wide">
+                      Space type
+                    </th>
                     {categories.map((category) => (
-                      <th key={category} className="px-1 py-1.5 text-right font-semibold leading-tight">
+                      <th
+                        key={category}
+                        className="border border-slate-200 px-1.5 py-1.5 text-center font-semibold leading-tight"
+                      >
                         {category}
                       </th>
                     ))}
-                    <th className="px-2 py-1.5 text-right font-semibold">Total</th>
+                    <th className="border border-slate-200 px-1.5 py-1.5 text-center font-semibold">Total</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {spaces.map((space) => (
-                    <tr key={space.id} className="border-b border-slate-100">
-                      <td className="px-2 py-1 text-slate-800">{space.label}</td>
+                  {spaceRows.map((row) => (
+                    <tr key={row.space?.id ?? `missing:${row.label}`}>
+                      <td
+                        className={`border border-slate-200 px-2 py-1.5 ${
+                          row.missing ? "italic text-slate-400" : "text-slate-800"
+                        }`}
+                      >
+                        {row.label}
+                      </td>
                       {categories.map((category) => (
-                        <ScoreCell key={category} score={spaceTypeCategoryScore(space, category)} />
+                        <ScoreCell
+                          key={category}
+                          blank={row.missing}
+                          score={row.space ? spaceTypeCategoryScore(row.space, category) : null}
+                        />
                       ))}
-                      <ScoreCell score={space.score} strong />
+                      <ScoreCell blank={row.missing} score={row.space?.score} strong />
                     </tr>
                   ))}
                 </tbody>
               </table>
+              {hasMissingSpaces ? (
+                <p className="mt-2 text-[11px] leading-snug text-slate-500">
+                  Missing space types are accounted for in the Space Sufficiency calculation.
+                </p>
+              ) : null}
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-3">
-              {spaces.map((space) => (
-                <SpaceScoreCard key={`${space.id}-detail`} space={space} categories={categories} />
+              {scoredSpaces.map((row) => (
+                <SpaceScoreCard key={`${row.space!.id}-detail`} space={row.space!} categories={categories} />
               ))}
             </div>
             <ReportFooter page={3 + index} total={totalPages} schoolName={name} />
@@ -570,5 +776,7 @@ export function CampusReport({
         )
       })}
     </div>
+    </ReportFitProvider>
+    </ReportPaletteContext.Provider>
   )
 }

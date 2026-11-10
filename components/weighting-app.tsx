@@ -910,7 +910,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
             </div>
           ) : view === "report" ? (
             <div className="space-y-4">
-              <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5 print:hidden">
+              <div className="relative z-30 overflow-visible rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-5 print:hidden">
                 <SchoolSelect
                   label="School to report"
                   value={reportSchoolId}
@@ -931,6 +931,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   school={reportSchool}
                   schoolLevel={schoolLevel}
                   axisOrder={focusAreaOrder}
+                  spaceTypeRows={levelWeights?.spaceTypes ?? []}
                 />
               ) : null}
             </div>
@@ -1018,27 +1019,76 @@ function SchoolSelect({
   hiddenIds: string[]
   onChange: (value: string) => void
 }) {
+  const [open, setOpen] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const selected = options.find((school) => school.schoolId === value)
+  const selectedLabel = selected?.schoolName?.trim() || (value ? value : "Select a school")
+
+  useEffect(() => {
+    if (!open) return
+    function onPointerDown(event: PointerEvent) {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false)
+    }
+    document.addEventListener("pointerdown", onPointerDown)
+    document.addEventListener("keydown", onKeyDown)
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown)
+      document.removeEventListener("keydown", onKeyDown)
+    }
+  }, [open])
+
   return (
-    <label className="block">
+    <div ref={rootRef} className={`relative block ${open ? "z-50" : "z-30"}`}>
       <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
         {label}
       </span>
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-900 outline-none ring-blue-600/0 transition focus:border-blue-300 focus:bg-white focus:ring-4"
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((current) => !current)}
+        className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-left text-sm font-medium text-slate-900 outline-none transition focus:border-blue-300 focus:bg-white focus:ring-4 focus:ring-blue-600/20"
       >
-        <option value="">Select a school</option>
-        {options.map((school) => (
-          <option
-            key={school.schoolId}
-            value={school.schoolId}
-            disabled={hiddenIds.includes(school.schoolId)}
-          >
-            {school.schoolName}
-          </option>
-        ))}
-      </select>
-    </label>
+        <span className={selected?.schoolName ? "text-slate-900" : "text-slate-400"}>{selectedLabel}</span>
+        <span className="ml-3 text-slate-400" aria-hidden>
+          ▾
+        </span>
+      </button>
+      {open ? (
+        <ul
+          role="listbox"
+          className="absolute z-50 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 text-sm text-slate-900 shadow-lg"
+        >
+          {options.length === 0 ? (
+            <li className="px-3 py-2 text-slate-400">No schools in this list</li>
+          ) : (
+            options.map((school) => {
+              const disabled = hiddenIds.includes(school.schoolId)
+              const active = school.schoolId === value
+              return (
+                <li key={school.schoolId} role="option" aria-selected={active}>
+                  <button
+                    type="button"
+                    disabled={disabled}
+                    onClick={() => {
+                      onChange(school.schoolId)
+                      setOpen(false)
+                    }}
+                    className={`block w-full px-3 py-2 text-left text-slate-900 hover:bg-slate-100 disabled:cursor-not-allowed disabled:text-slate-400 ${
+                      active ? "bg-slate-100 font-semibold" : "font-medium"
+                    }`}
+                  >
+                    {school.schoolName?.trim() || school.schoolId}
+                  </button>
+                </li>
+              )
+            })
+          )}
+        </ul>
+      ) : null}
+    </div>
   )
 }

@@ -290,6 +290,18 @@ export function observationLines(notes: QaScoringNotes, categoryOrder: string[] 
   ].filter(Boolean)
 }
 
+export function observationSlotsFromComments(comments: QaScoringComment[] | undefined): string[] {
+  return (comments ?? [])
+    .map((comment) => {
+      const text = comment.text.trim()
+      if (!text) return ""
+      const author = comment.author.trim()
+      return author ? `${author}: ${text}` : text
+    })
+    .filter(Boolean)
+    .slice(0, 3)
+}
+
 async function readJson<T>(response: Response): Promise<T> {
   const text = await response.text()
   const data = text ? (JSON.parse(text) as T & { error?: string }) : ({} as T & { error?: string })

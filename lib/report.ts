@@ -1,4 +1,4 @@
-import { isObservational } from "@/lib/normalize"
+import { isObservational, namesMatch } from "@/lib/normalize"
 import type { SchoolLevel, SchoolScorecard, ScoreNode } from "@/lib/types"
 
 export const REPORT_CATEGORY_ORDER = [
@@ -8,6 +8,19 @@ export const REPORT_CATEGORY_ORDER = [
   "Function",
   "Size",
   "Wrap Around Services",
+]
+
+export const REPORT_SUBCATEGORY_ORDER = [
+  "Utilities and Technology",
+  "Flooring and Surface Finishes",
+  "Display and Presentation",
+  "Storage",
+  "Furniture and Equipment",
+  "Aesthetics",
+  "Occupant Comfort",
+  "Safety and Supervision",
+  "Layout and Flexibility",
+  "Adjacency and Access",
 ]
 
 export function isHiddenReportLabel(label: string | null | undefined): boolean {
@@ -34,6 +47,19 @@ export function averageNumbers(values: Array<number | null | undefined>): number
   return scores.reduce((sum, value) => sum + value, 0) / scores.length
 }
 
+export function categorySubcategories(category: ScoreNode): ScoreNode[] {
+  return [...(category.children ?? [])]
+    .filter((child) => child.kind !== "question" && !isHiddenReportLabel(child.label))
+    .sort((a, b) => {
+      const ai = REPORT_SUBCATEGORY_ORDER.indexOf(a.label)
+      const bi = REPORT_SUBCATEGORY_ORDER.indexOf(b.label)
+      if (ai !== -1 && bi !== -1) return ai - bi
+      if (ai !== -1) return -1
+      if (bi !== -1) return 1
+      return a.label.localeCompare(b.label)
+    })
+}
+
 export function scoringCategories(card: SchoolScorecard): string[] {
   const labels = card.categories.map((node) => node.label).filter((label) => !isHiddenReportLabel(label))
   return [...labels].sort((a, b) => {
@@ -48,6 +74,16 @@ export function scoringCategories(card: SchoolScorecard): string[] {
 
 export function shortFocus(label: string): string {
   return FOCUS_SHORT[label] ?? label
+}
+
+const REPORT_DISPLAY_LABELS: Record<string, string> = {
+  "Safety and Supervision": "Supervision",
+  "Safety & Supervision": "Supervision",
+}
+
+/** Report-only display names. Scoring still uses the source labels. */
+export function reportDisplayLabel(label: string): string {
+  return REPORT_DISPLAY_LABELS[label] ?? label
 }
 
 export function categoryScore(node: ScoreNode | null | undefined, category: string): number | null {
@@ -192,97 +228,308 @@ function roundScore(score: number | null | undefined): number | null {
   return Math.round(score)
 }
 
-function vsAverage(score: number | null, average: number | null): string {
+export function gradeBandLabel(schoolLevel: SchoolLevel): string {
+  if (schoolLevel === "MS") return "middle schools"
+  if (schoolLevel === "HS") return "high schools"
+  return "elementary schools"
+}
+
+export function expectedSpacesFromRows(
+  rows: Array<{ focusArea: string; spaceType: string }>,
+): Record<string, string[]> {
+  const map: Record<string, string[]> = {}
+  for (const row of rows) {
+    const list = map[row.focusArea] ?? []
+    if (!list.some((name) => namesMatch(name, row.spaceType))) list.push(row.spaceType)
+    map[row.focusArea] = list
+  }
+  return map
+}
+
+function spacesForFocus(catalog: Record<string, string[]>, focusLabel: string): string[] {
+  if (catalog[focusLabel]?.length) return catalog[focusLabel]
+  const match = Object.keys(catalog).find((label) => namesMatch(label, focusLabel))
+  return match ? catalog[match] : []
+}
+
+function joinList(items: string[]): string {
+  if (items.length === 0) return ""
+  if (items.length === 1) return items[0]
+  if (items.length === 2) return `${items[0]} and ${items[1]}`
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`
+}
+
+function bold(value: string | number): string {
+  return `**${value}**`
+}
+
+function formatNameList(names: string[], limit = 8): string {
+  if (names.length <= limit) return joinList(names)
+  return `${joinList(names.slice(0, limit))}, and ${names.length - limit} other${names.length - limit === 1 ? "" : "s"}`
+}
+
+function ordinal(value: number): string {
+  const remainder = value % 100
+  if (remainder >= 11 && remainder <= 13) return `${value}th`
+  switch (value % 10) {
+    case 1:
+      return `${value}st`
+    case 2:
+      return `${value}nd`
+    case 3:
+      return `${value}rd`
+    default:
+      return `${value}th`
+  }
+}
+
+function quartileLabel(quartile: 1 | 2 | 3 | 4): string {
+  if (quartile === 1) return "the top quartile"
+  if (quartile === 2) return "the second quartile"
+  if (quartile === 3) return "the third quartile"
+  return "the bottom quartile"
+}
+
+export function scoreQuartile(
+  score: number | null | undefined,
+  peerScores: Array<number | null | undefined>,
+): { quartile: 1 | 2 | 3 | 4; rank: number; of: number } | null {
+  const campus = roundScore(score)
+  if (campus == null) return null
+  const scores = peerScores
+    .map((value) => roundScore(value))
+    .filter((value): value is number => value != null)
+    .sort((a, b) => b - a)
+  if (!scores.length) return null
+  const rank = scores.filter((value) => value > campus).length + 1
+  const percentileFromTop = (rank - 1) / scores.length
+  const quartile: 1 | 2 | 3 | 4 =
+    percentileFromTop < 0.25 ? 1 : percentileFromTop < 0.5 ? 2 : percentileFromTop < 0.75 ? 3 : 4
+  return { quartile, rank, of: scores.length }
+}
+
+function uniquePeerScores(
+  card: SchoolScorecard,
+  fleet: SchoolScorecard[],
+  scoreOf: (item: SchoolScorecard) => number | null | undefined,
+): number[] {
+  const byId = new Map<string, number>()
+  for (const item of [card, ...fleet]) {
+    const score = scoreOf(item)
+    if (score == null || Number.isNaN(score)) continue
+    byId.set(item.schoolId, score)
+  }
+  return [...byId.values()]
+}
+
+function vsAveragePhrase(score: number | null | undefined, average: number | null | undefined): string | null {
   const campus = roundScore(score)
   const avg = roundScore(average)
-  if (campus == null) return "does not yet have a score"
-  if (avg == null) return `scores ${campus}`
+  if (campus == null || avg == null) return null
   const delta = campus - avg
-  if (delta >= 5) return `scores ${campus}, ${delta} points above the ${avg} grade-type average`
-  if (delta <= -5) return `scores ${campus}, ${Math.abs(delta)} points below the ${avg} grade-type average`
-  if (delta > 0) return `scores ${campus}, slightly above the ${avg} grade-type average`
-  if (delta < 0) return `scores ${campus}, slightly below the ${avg} grade-type average`
-  return `scores ${campus}, in line with the ${avg} grade-type average`
+  if (delta >= 5) return `${bold(`${delta} points above`)} the grade-band average of ${bold(avg)}`
+  if (delta <= -5) return `${bold(`${Math.abs(delta)} points below`)} the grade-band average of ${bold(avg)}`
+  if (delta > 0) return `${bold("slightly above")} the grade-band average of ${bold(avg)}`
+  if (delta < 0) return `${bold("slightly below")} the grade-band average of ${bold(avg)}`
+  return `${bold("in line with")} the grade-band average of ${bold(avg)}`
 }
 
-function rankedByScore(nodes: ScoreNode[]): ScoreNode[] {
-  return nodes.filter((node) => node.score != null).sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+function missingSpaceNames(scored: ScoreNode[], expected: string[]): string[] {
+  const scoredNames = scored.filter((space) => space.score != null).map((space) => space.label)
+  return expected.filter((name) => !scoredNames.some((scoredName) => namesMatch(scoredName, name)))
 }
 
-export interface ReportTakeaway {
-  n: number
-  text: string
+function spaceHighLowSentence(
+  scored: Array<{ label: string; score: number; focus?: string }>,
+  missing: string[] | null,
+  emptyScored: string,
+): string {
+  const missingSentence =
+    missing == null
+      ? ""
+      : missing.length
+        ? `${formatNameList(missing.map(bold))} ${missing.length === 1 ? "was" : "were"} not assessed.`
+        : "No expected space types were missing from this assessment."
+  if (!scored.length) {
+    return `${emptyScored}${missingSentence ? ` ${missingSentence}` : ""}`
+  }
+  const rounded = scored.map((item) => ({
+    ...item,
+    score: Math.round(item.score),
+  }))
+  const max = Math.max(...rounded.map((item) => item.score))
+  const min = Math.min(...rounded.map((item) => item.score))
+  const high = rounded.filter((item) => item.score === max)
+  const low = rounded.filter((item) => item.score === min)
+  const labelOf = (item: (typeof rounded)[number]) =>
+    item.focus ? `${item.label} in ${shortFocus(item.focus)}` : item.label
+  if (high.length === rounded.length) {
+    return rounded.length === 1
+      ? `${bold(labelOf(rounded[0]))} is the only scored space type, at ${bold(max)}.${missingSentence ? ` ${missingSentence}` : ""}`
+      : `All scored space types are tied at ${bold(max)}.${missingSentence ? ` ${missingSentence}` : ""}`
+  }
+  return `${formatNameList(high.map((item) => bold(labelOf(item))))} scored the highest at ${bold(max)}, and ${formatNameList(low.map((item) => bold(labelOf(item))))} scored the lowest at ${bold(min)}.${missingSentence ? ` ${missingSentence}` : ""}`
 }
 
-export function campusTakeaways(
+function categorySentence(nodes: ScoreNode[], empty: string): string {
+  const scored = nodes
+    .filter((node) => !isHiddenReportLabel(node.label) && node.score != null)
+    .slice()
+    .sort((a, b) => {
+      const ai = REPORT_CATEGORY_ORDER.indexOf(a.label)
+      const bi = REPORT_CATEGORY_ORDER.indexOf(b.label)
+      if (ai !== -1 && bi !== -1) return ai - bi
+      if (ai !== -1) return -1
+      if (bi !== -1) return 1
+      return a.label.localeCompare(b.label)
+    })
+    .map((node) => ({ label: reportDisplayLabel(node.label), score: Math.round(node.score as number) }))
+  if (!scored.length) return empty
+  const max = Math.max(...scored.map((item) => item.score))
+  const min = Math.min(...scored.map((item) => item.score))
+  const high = scored.filter((item) => item.score === max)
+  const low = scored.filter((item) => item.score === min)
+  const rest = scored.filter((item) => item.score !== max && item.score !== min)
+  if (high.length === scored.length) {
+    return scored.length === 1
+      ? `${bold(scored[0].label)} scored ${bold(scored[0].score)}.`
+      : `${joinList(scored.map((item) => bold(item.label)))} are grouped tightly, each scoring ${bold(max)}.`
+  }
+  const lead = `${joinList(high.map((item) => bold(item.label)))} ${high.length === 1 ? "is" : "are"} the strongest ${high.length === 1 ? "category" : "categories"} at ${bold(max)}, and ${joinList(low.map((item) => bold(item.label)))} ${low.length === 1 ? "is" : "are"} the weakest at ${bold(min)}.`
+  if (!rest.length) return lead
+  return `${lead} ${joinList(rest.map((item) => `${bold(item.label)} scored ${bold(item.score)}`))}.`
+}
+
+export function focusSpaceTableRows(
+  focus: ScoreNode,
   card: SchoolScorecard,
-  average: SchoolScorecard,
-  axisOrder: string[],
-): ReportTakeaway[] {
-  const focuses = orderedFocusAreas(card, axisOrder)
-  const rankedFocus = rankedByScore(focuses)
-  const high = rankedFocus[0]
-  const low = rankedFocus[rankedFocus.length - 1]
-  const spaces = focuses.flatMap((focus) => spaceNodes(focus).map((space) => ({ focus: focus.label, space })))
-  const rankedSpaces = spaces
-    .filter((item) => item.space.score != null)
-    .sort((a, b) => (a.space.score ?? 0) - (b.space.score ?? 0))
-  const weakestSpace = rankedSpaces[0]
-  const cats = card.categories.filter((node) => !isHiddenReportLabel(node.label) && node.score != null)
-  const rankedCats = rankedByScore(cats)
-  const highCat = rankedCats[0]
-  const lowCat = rankedCats[rankedCats.length - 1]
-  const name = displaySchoolName(card.schoolName)
-
-  const lines = [
-    `Campus ESA ${vsAverage(card.existingOnly, average.existingOnly)} among walked schools at this grade level.`,
-    high
-      ? `${shortFocus(high.label)} is the strongest scoring focus area at ${roundScore(high.score)}.`
-      : `${name} does not yet have scored focus areas.`,
-    low && low !== high
-      ? `${shortFocus(low.label)} is the lowest scoring focus area at ${roundScore(low.score)}.`
-      : "Focus area scores are tightly grouped across the campus.",
-    weakestSpace
-      ? `${weakestSpace.space.label} in ${shortFocus(weakestSpace.focus)} is the lowest space type at ${roundScore(weakestSpace.space.score)}.`
-      : "Space type scores are not available yet.",
-    highCat && lowCat
-      ? `Campus-wide, ${highCat.label} leads at ${roundScore(highCat.score)} while ${lowCat.label} is the weakest category at ${roundScore(lowCat.score)}.`
-      : "Category scores will appear once rooms are scored.",
-  ]
-  return lines.slice(0, 5).map((text, index) => ({ n: index + 1, text }))
+  fleet: SchoolScorecard[],
+  expectedSpaces: Record<string, string[]>,
+): Array<{ label: string; space: ScoreNode | null; missing: boolean }> {
+  const spaces = spaceNodes(focus)
+  const expected = inferredSpacesForFocus(focus, card, fleet, expectedSpaces)
+  const names = expected.length ? [...expected] : spaces.map((space) => space.label)
+  for (const space of spaces) {
+    if (!names.some((name) => namesMatch(name, space.label))) names.push(space.label)
+  }
+  const used = new Set<string>()
+  return names.map((name) => {
+    const space = spaces.find((item) => namesMatch(item.label, name) && !used.has(item.id)) ?? null
+    if (space) used.add(space.id)
+    const missing = space == null || space.score == null
+    return { label: space?.label ?? name, space, missing }
+  })
 }
 
-export function focusTakeaways(focus: ScoreNode, averageFocus: ScoreNode | null): ReportTakeaway[] {
-  const spaces = rankedByScore(spaceNodes(focus))
-  const highSpace = spaces[0]
-  const lowSpace = spaces[spaces.length - 1]
-  const categories = rankedByScore(focusCategoryTree(focus))
-  const highCat = categories[0]
-  const lowCat = categories[categories.length - 1]
-  const subs = categories.flatMap((category) =>
-    (category.children ?? []).map((sub) => ({ category: category.label, sub })),
-  )
-  const rankedSubs = subs
-    .filter((item) => item.sub.score != null)
-    .sort((a, b) => (a.sub.score ?? 0) - (b.sub.score ?? 0))
-  const weakSub = rankedSubs[0]
+function inferredSpacesForFocus(
+  focus: ScoreNode,
+  card: SchoolScorecard,
+  fleet: SchoolScorecard[],
+  catalog: Record<string, string[]>,
+): string[] {
+  const listed = spacesForFocus(catalog, focus.label)
+  if (listed.length) return listed
+  const names: string[] = []
+  for (const school of [card, ...fleet]) {
+    const match = school.focusAreas.find((area) => namesMatch(area.label, focus.label))
+    for (const space of match ? spaceNodes(match) : []) {
+      if (!names.some((name) => namesMatch(name, space.label))) names.push(space.label)
+    }
+  }
+  return names
+}
 
-  const lines = [
-    `${shortFocus(focus.label)} ${vsAverage(focus.score, averageFocus?.score ?? null)}.`,
-    highSpace
-      ? `${highSpace.label} is the strongest space type at ${roundScore(highSpace.score)}.`
-      : "No assessed space types are available in this focus area.",
-    lowSpace && lowSpace !== highSpace
-      ? `${lowSpace.label} is the lowest space type at ${roundScore(lowSpace.score)}.`
-      : `${spaceNodes(focus).length} space type${spaceNodes(focus).length === 1 ? " is" : "s are"} scored in this focus area.`,
-    lowCat
-      ? `${lowCat.label} is the weakest category at ${roundScore(lowCat.score)}.`
-      : "Category scores are not available for this focus area.",
-    weakSub
-      ? `${weakSub.sub.label} (${weakSub.category}) is the lowest subcategory at ${roundScore(weakSub.sub.score)}.`
-      : highCat
-        ? `${highCat.label} is the strongest category at ${roundScore(highCat.score)}.`
-        : "Subcategory scores are not available for this focus area.",
-  ]
-  return lines.slice(0, 5).map((text, index) => ({ n: index + 1, text }))
+export function campusObservationSlots(
+  card: SchoolScorecard,
+  fleet: SchoolScorecard[],
+  schoolLevel: SchoolLevel,
+  expectedSpaces: Record<string, string[]>,
+): [string, string, string] {
+  const name = displaySchoolName(card.schoolName)
+  const band = gradeBandLabel(schoolLevel)
+  const peers = uniquePeerScores(card, fleet, (item) => item.existingOnly)
+  const standing = scoreQuartile(card.existingOnly, peers)
+  const average = averageNumbers(peers)
+  const vs = vsAveragePhrase(card.existingOnly, average)
+  const score = roundScore(card.existingOnly)
+
+  let first = `${name} does not yet have a campus ESA score, so it cannot be placed in a grade-band quartile among walked ${band}.`
+  if (score != null && standing && standing.of <= 1) {
+    first = `${name}'s ESA score is ${bold(score)}. It is currently the only walked ${band.replace(/s$/, "")} with a campus score, so a grade-band quartile is not available yet.`
+  } else if (score != null && standing) {
+    first = `Compared with other walked ${band}, ${name}'s ESA score of ${bold(score)} places it in ${bold(quartileLabel(standing.quartile))} (${bold(`${ordinal(standing.rank)} of ${standing.of}`)})`
+    first += vs ? `, ${vs}.` : "."
+  }
+
+  const scoredSpaces = card.focusAreas.flatMap((focus) =>
+    spaceNodes(focus)
+      .filter((space) => space.score != null)
+      .map((space) => ({ label: space.label, score: space.score as number, focus: focus.label })),
+  )
+  const expected = Object.values(expectedSpaces).flat()
+  const uniqueExpected = expected.filter(
+    (name, index) => expected.findIndex((item) => namesMatch(item, name)) === index,
+  )
+  const missing = uniqueExpected.length
+    ? uniqueExpected.filter((name) => !scoredSpaces.some((space) => namesMatch(space.label, name)))
+    : null
+  const second = spaceHighLowSentence(
+    scoredSpaces,
+    missing,
+    "No space types have been scored yet.",
+  )
+
+  const third = categorySentence(
+    card.categories,
+    "Campus-wide category scores are not available yet.",
+  )
+
+  return [first, second, third]
+}
+
+export function focusObservationSlots(
+  focus: ScoreNode,
+  card: SchoolScorecard,
+  fleet: SchoolScorecard[],
+  schoolLevel: SchoolLevel,
+  expectedSpaces: Record<string, string[]>,
+): [string, string, string] {
+  const name = displaySchoolName(card.schoolName)
+  const band = gradeBandLabel(schoolLevel)
+  const focusName = focus.label
+  const peers = uniquePeerScores(
+    card,
+    fleet,
+    (item) => item.focusAreas.find((area) => namesMatch(area.label, focusName))?.score,
+  )
+  const standing = scoreQuartile(focus.score, peers)
+  const average = averageNumbers(peers)
+  const vs = vsAveragePhrase(focus.score, average)
+  const score = roundScore(focus.score)
+
+  let first = `${name} does not yet have a ${focusName} score, so it cannot be placed in a grade-band quartile among walked ${band} for this focus area.`
+  if (score != null && standing && standing.of <= 1) {
+    first = `${name}'s ${focusName} score is ${bold(score)}. It is currently the only walked ${band.replace(/s$/, "")} with a score in this focus area, so a grade-band quartile is not available yet.`
+  } else if (score != null && standing) {
+    first = `Compared with other walked ${band}, ${name}'s ${focusName} score of ${bold(score)} places it in ${bold(quartileLabel(standing.quartile))} (${bold(`${ordinal(standing.rank)} of ${standing.of}`)})`
+    first += vs ? `, ${vs}.` : "."
+  }
+
+  const spaces = spaceNodes(focus)
+  const scoredSpaces = spaces
+    .filter((space) => space.score != null)
+    .map((space) => ({ label: space.label, score: space.score as number }))
+  const expected = inferredSpacesForFocus(focus, card, fleet, expectedSpaces)
+  const missing = expected.length ? missingSpaceNames(spaces, expected) : null
+  const second = spaceHighLowSentence(
+    scoredSpaces,
+    missing,
+    "No space types have been scored in this focus area yet.",
+  )
+  const third = categorySentence(
+    focusCategoryTree(focus),
+    "Category scores are not available for this focus area yet.",
+  )
+
+  return [first, second, third]
 }

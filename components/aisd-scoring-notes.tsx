@@ -138,7 +138,6 @@ export function AisdScoringNotes({
           <h4 className="text-sm font-semibold text-slate-900">QA notes</h4>
           <p className="mt-0.5 text-xs text-slate-600">
             Tag someone with @name. Tagged comments stay in Internal QA Mentions.
-            These also fill Observations 1–3 on the report.
           </p>
         </div>
       </div>
