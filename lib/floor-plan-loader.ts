@@ -4,6 +4,7 @@ import {
   matchManifestRow,
   parseFloorPlanManifest,
   type FloorPlanLevelEntry,
+  type FloorPlanManifestRow,
 } from "@/lib/floor-plan-manifest"
 import { prepareFloorPlanSvgForDisplay } from "@/lib/floor-plan-style"
 import {
@@ -30,19 +31,30 @@ export interface LoadedFloorPlan {
   rooms: ParsedPlanRoom[]
 }
 
-let manifestPromise: Promise<ReturnType<typeof parseFloorPlanManifest>> | null = null
+let manifestPromise: Promise<FloorPlanManifestRow[]> | null = null
 const planCache = new Map<string, Promise<LoadedFloorPlan | null>>()
-const PLAN_PARSE_VERSION = "cafm-v5-thin"
+const PLAN_PARSE_VERSION = "cafm-v7-clone-source"
+
+async function loadBundledManifest(): Promise<FloorPlanManifestRow[]> {
+  try {
+    const response = await fetch("/aisd-floor-plan-manifest.csv")
+    if (!response.ok) return []
+    return parseFloorPlanManifest(await response.text())
+  } catch {
+    return []
+  }
+}
 
 async function loadManifest() {
   if (!manifestPromise) {
-    manifestPromise = fetch("/aisd-floor-plan-manifest.csv")
-      .then((response) => {
+    manifestPromise = fetch("/api/floor-plan-manifest", { cache: "no-store" })
+      .then(async (response) => {
         if (!response.ok) throw new Error("Could not load floor plan manifest")
-        return response.text()
+        const payload = (await response.json()) as { rows?: FloorPlanManifestRow[] }
+        if (Array.isArray(payload.rows) && payload.rows.length) return payload.rows
+        throw new Error("Empty floor plan manifest")
       })
-      .then(parseFloorPlanManifest)
-      .catch(() => [])
+      .catch(() => loadBundledManifest())
   }
   return manifestPromise
 }

@@ -59,9 +59,11 @@ interface ResponseRow {
   room_id: string
   question_id: string
   value: unknown
+  comment?: string | null
+  photos?: string[] | null
 }
 
-export const SNAPSHOT_UNITS_FORMAT = 2
+export const SNAPSHOT_UNITS_FORMAT = 3
 
 function asResponseValue(value: unknown): string | string[] {
   if (Array.isArray(value)) return value.map((item) => String(item))
@@ -85,6 +87,22 @@ function hasResponseValue(value: unknown): boolean {
   if (value == null || value === "") return false
   if (Array.isArray(value)) return value.some((item) => String(item ?? "").trim())
   return String(value).trim().length > 0
+}
+
+function hasResponseContent(row: ResponseRow): boolean {
+  if (hasResponseValue(row.value)) return true
+  if (row.comment?.trim()) return true
+  return Array.isArray(row.photos) && row.photos.some((photo) => String(photo ?? "").trim())
+}
+
+function sessionContentScore(
+  surveyType: SurveyType | undefined,
+  responses: ResponseRow[],
+): number {
+  const filled = responses.filter((row) => hasResponseValue(row.value)).length
+  const notes = responses.filter((row) => hasResponseContent(row)).length
+  const home = surveyType && surveyType !== "closeout" ? 1 : 0
+  return filled * 1000 + notes * 20 + responses.length + home
 }
 
 function isNonViableSelectAllOption(optionLabel: string | null | undefined): boolean {
@@ -133,7 +151,7 @@ function isTestOrSandboxSchool(input: { schoolId: string; campusId: string; name
 }
 
 function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass: string): ScoredRoom | null {
-  const surveyType = (room.source_survey_type || "studios") as SurveyType
+  const surveyType = (room.source_survey_type?.trim() || "studios") as SurveyType
   const roomSession: RoomSurveySession = {
     roomId: room.room_id,
     roomNumber: room.room_number,
@@ -183,7 +201,21 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
     schoolClass,
     room.source_survey_type,
   )
-  if (!rubric || !focusAreaId) return null
+  if (!rubric || !focusAreaId) {
+    if (!focusAreaId || !responses.some(hasResponseContent)) return null
+    return {
+      roomId: room.room_id,
+      roomName: room.school_room_number?.trim() || room.room_number || room.room_id,
+      surveyType,
+      spaceType,
+      focusAreaId,
+      focusAreaLabel,
+      neighborhood: room.neighborhood ?? undefined,
+      gradeType: room.grade_type || undefined,
+      markedAbsent: false,
+      units: [],
+    }
+  }
 
   const skipped = rubric.questions
     .filter((question) => isSkippedDependentQuestion(question.questionId, roomSession.responses, rubric.questions))
@@ -199,7 +231,7 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
     skipped,
   )
   result = mergeTraditionalStudioSizeScore(result, room.area_sqft, rubric.categories, rubric.subcategories)
-  if (!result.questionScores.length) return null
+  if (!result.questionScores.length && !responses.some(hasResponseContent)) return null
 
   const questionById = new Map(rubric.questions.map((question) => [question.questionId, question]))
   const parentByUnit = new Map<string, string>()
@@ -389,7 +421,7 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
     ),
     supabaseRestSelect<ResponseRow>(
       "esa_question_responses",
-      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,question_id,value`,
+      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,question_id,value,comment,photos`,
     ),
   ])
 
@@ -402,18 +434,23 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
     responsesByRoom.set(key, list)
   }
 
-  const bestByRoom = new Map<string, { room: RoomRow; responses: ResponseRow[] }>()
+  const bestByRoom = new Map<string, { room: RoomRow; responses: ResponseRow[]; surveyType: SurveyType }>()
   for (const room of rooms) {
     const surveyType = sessionType.get(room.survey_session_id)
     if (!surveyType) continue
     const roomResponses = responsesByRoom.get(`${room.survey_session_id}::${room.room_id}`) ?? []
-    const effectiveType = surveyType === "closeout" ? room.source_survey_type ?? surveyType : surveyType
+    const effectiveType = (room.source_survey_type?.trim() || surveyType) as SurveyType
     const next = {
-      room: { ...room, source_survey_type: room.source_survey_type ?? effectiveType },
+      room: { ...room, source_survey_type: effectiveType },
       responses: roomResponses,
+      surveyType,
     }
     const existing = bestByRoom.get(room.room_id)
-    if (!existing || next.responses.length > existing.responses.length) {
+    if (
+      !existing ||
+      sessionContentScore(next.surveyType, next.responses) >
+        sessionContentScore(existing.surveyType, existing.responses)
+    ) {
       bestByRoom.set(room.room_id, next)
     }
   }

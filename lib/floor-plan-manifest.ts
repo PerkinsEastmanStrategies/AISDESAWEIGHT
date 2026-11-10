@@ -1,3 +1,9 @@
+import { testCampusCloneForSchool } from "@aisd/shared"
+
+/** Live Google Sheet used by the ESA assessment tool. */
+export const DEFAULT_FLOOR_PLAN_MANIFEST_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGFUvsaGfYsp9TK7ZjHT8_ZHaUq4xqxiPSedQC9XeGpmY5QCS2rkcyGuZJm517sB4RWRsNqhmxFaW_/pub?output=csv"
+
 export const FLOOR_LEVELS = [
   { id: "basement", column: "Basement", shortLabel: "B", fullLabel: "Basement" },
   { id: "floor-1", column: "Floor 1", shortLabel: "L1", fullLabel: "Floor 1" },
@@ -34,6 +40,20 @@ export interface FloorPlanManifestRow {
   campusId: string
   updatedName?: string
   floors: Partial<Record<FloorLevelId, string>>
+}
+
+export type FloorPlanManifestDbRow = {
+  campus_id: string
+  school_name: string
+  school_class: string | null
+  floor_level_id: string
+  floor_label: string
+  filename: string
+  mobile_filename: string | null
+}
+
+const FLOOR_LEVEL_ID_ALIASES: Record<string, FloorLevelId> = {
+  athletics: "athletics-building",
 }
 
 export function isFloorPlanSvgFilename(filename: string): boolean {
@@ -136,20 +156,111 @@ function normalizeName(value: string): string {
   return value.toUpperCase().replace(/\s+/g, " ").trim()
 }
 
+function coreSchoolName(value: string): string {
+  return normalizeName(value).replace(/\s+(ELEMENTARY|MIDDLE|HIGH|ECHS|ES|MS|HS|ALT)$/i, "")
+}
+
 export function matchManifestRow(
   rows: FloorPlanManifestRow[],
   campusId: string,
   schoolName: string,
 ): FloorPlanManifestRow | undefined {
-  const sourceId = sourceCampusId(campusId)
+  const clone = testCampusCloneForSchool({ campusId, name: schoolName, id: "" })
+  const sourceId = sourceCampusId(clone?.sourceCampusId || campusId)
   const byCampus = rows.find((row) => row.campusId && row.campusId === sourceId)
   if (byCampus) return byCampus
 
-  const wanted = normalizeName(schoolName)
-  return rows.find((row) => {
-    const names = [row.schoolName, row.updatedName].filter(Boolean).map((name) => normalizeName(name!))
-    return names.some((name) => name === wanted || wanted.includes(name) || name.includes(wanted))
-  })
+  const namesToTry = [schoolName, clone?.sourceName, clone?.displayName].filter(Boolean) as string[]
+  for (const name of namesToTry) {
+    const wanted = normalizeName(name)
+    const wantedCore = coreSchoolName(name)
+    const match = rows.find((row) => {
+      const names = [row.schoolName, row.updatedName].filter(Boolean).map((rowName) => normalizeName(rowName!))
+      if (names.includes(wanted)) return true
+      return names.map(coreSchoolName).includes(wantedCore)
+    })
+    if (match) return match
+  }
+}
+
+function normalizeFloorLevelId(raw: string): FloorLevelId | null {
+  const id = raw.trim()
+  if (!id) return null
+  const aliased = FLOOR_LEVEL_ID_ALIASES[id] ?? id
+  return FLOOR_LEVELS.some((level) => level.id === aliased) ? (aliased as FloorLevelId) : null
+}
+
+export function supabaseRowsToManifest(rows: FloorPlanManifestDbRow[]): FloorPlanManifestRow[] {
+  const byKey = new Map<string, FloorPlanManifestRow>()
+  for (const row of rows) {
+    const campusId = row.campus_id?.trim() ?? ""
+    const schoolName = row.school_name?.trim() ?? ""
+    if (!campusId && !schoolName) continue
+    const levelId = normalizeFloorLevelId(row.floor_level_id ?? "")
+    const filename = row.filename?.trim() || row.mobile_filename?.trim() || ""
+    if (!levelId || !filename || !isFloorPlanSvgFilename(filename)) continue
+    const key = campusId || normalizeName(schoolName)
+    let existing = byKey.get(key)
+    if (!existing) {
+      existing = { schoolName, campusId, floors: {} }
+      byKey.set(key, existing)
+    }
+    existing.floors[levelId] = filename
+  }
+  return [...byKey.values()]
+}
+
+function overlayLocalSvgFloors(
+  sheetRows: FloorPlanManifestRow[],
+  localRows: FloorPlanManifestRow[],
+): FloorPlanManifestRow[] {
+  if (!localRows.length) return sheetRows
+  if (!sheetRows.length) return localRows
+  const merged = sheetRows.map((row) => ({ ...row, floors: { ...row.floors } }))
+  for (const localRow of localRows) {
+    const match = matchManifestRow(merged, localRow.campusId, localRow.updatedName || localRow.schoolName)
+    if (!match) {
+      if (FLOOR_LEVELS.some((level) => isFloorPlanSvgFilename(localRow.floors[level.id] ?? ""))) {
+        merged.push({ ...localRow, floors: { ...localRow.floors } })
+      }
+      continue
+    }
+    for (const level of FLOOR_LEVELS) {
+      const filename = localRow.floors[level.id]?.trim() ?? ""
+      if (!isFloorPlanSvgFilename(filename)) continue
+      const current = match.floors[level.id]?.trim() ?? ""
+      if (!isFloorPlanSvgFilename(current)) match.floors[level.id] = filename
+    }
+  }
+  return merged
+}
+
+function mergeSheetWithSupabase(
+  sheetRows: FloorPlanManifestRow[],
+  supabaseRows: FloorPlanManifestRow[],
+): FloorPlanManifestRow[] {
+  if (!supabaseRows.length) return sheetRows
+  const merged = sheetRows.map((row) => ({ ...row, floors: { ...row.floors } }))
+  for (const supabaseRow of supabaseRows) {
+    const match = matchManifestRow(merged, supabaseRow.campusId, supabaseRow.schoolName)
+    if (match) {
+      match.floors = { ...match.floors, ...supabaseRow.floors }
+      if (!match.campusId && supabaseRow.campusId) match.campusId = supabaseRow.campusId
+    } else {
+      merged.push(supabaseRow)
+    }
+  }
+  return merged
+}
+
+/** Same merge order as the ESA assessment tool: live sheet, local CSV gaps, then converter table. */
+export function mergeLiveFloorPlanManifest(
+  sheetRows: FloorPlanManifestRow[],
+  localRows: FloorPlanManifestRow[],
+  supabaseRows: FloorPlanManifestRow[],
+): FloorPlanManifestRow[] {
+  const sheet = sheetRows.length ? overlayLocalSvgFloors(sheetRows, localRows) : localRows
+  return mergeSheetWithSupabase(sheet, supabaseRows)
 }
 
 export function floorsForRow(row: FloorPlanManifestRow): FloorPlanLevelEntry[] {

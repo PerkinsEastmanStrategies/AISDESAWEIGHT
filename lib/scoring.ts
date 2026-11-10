@@ -291,9 +291,10 @@ function buildTree(
   weights: WeightResolver,
   schoolLevel?: string,
 ): { overall: number | null; existingOnly: number | null; categories: ScoreNode[]; focusAreas: ScoreNode[] } {
-  const assessed = rooms.filter((room) => !isNotPresentRoom(room.room) && room.overall != null)
+  const visible = rooms.filter((room) => !isNotPresentRoom(room.room))
+  const assessed = visible.filter((room) => room.overall != null)
   const includingMissing = rooms.filter((room) => room.overall != null)
-  const existing = summarizeFocusAreas(assessed, weights, true, schoolLevel)
+  const existing = summarizeFocusAreas(visible, weights, true, schoolLevel)
   const missing = summarizeFocusAreas(includingMissing, weights, false, schoolLevel)
 
   return {
