@@ -14,7 +14,7 @@ import {
   neighborhoodForPlanRoom,
   neighborhoodLegendColors,
 } from "@/lib/neighborhood-colors"
-import { matchPlanRoomsToScored, matchScoredRoom, normalizeRoomId } from "@/lib/room-id-match"
+import { matchPlanRoomsToScored, normalizeRoomId } from "@/lib/room-id-match"
 import type { ScoredRoomSummary } from "@/lib/types"
 
 const PAN_THRESHOLD_PX = 6
@@ -56,6 +56,14 @@ function findPlanRoomForSelection(
   selectedRoomId: string,
   scoredByPlanId: Map<string, ScoredRoomSummary>,
 ) {
+  const wanted = normalizeRoomId(selectedRoomId)
+  if (wanted) {
+    for (const [planId, scored] of scoredByPlanId) {
+      if ([scored.roomId, scored.roomName].map(normalizeRoomId).includes(wanted)) {
+        return planRooms.find((room) => room.id === planId)
+      }
+    }
+  }
   return (
     planRooms.find((room) => planRoomExactIdMatch(room, selectedRoomId)) ??
     planRooms.find((room) => planRoomMatchesSelection(room, selectedRoomId, scoredByPlanId))
@@ -318,9 +326,7 @@ export function FloorPlanPanel({
     selectedRoomId && plan
       ? findPlanRoomForSelection(plan.rooms, selectedRoomId, scoredByPlanId)
       : undefined
-  const selectedScored = selectedPlan
-    ? scoredByPlanId.get(selectedPlan.id) ?? matchScoredRoom(selectedPlan, rooms)
-    : undefined
+  const selectedScored = selectedPlan ? scoredByPlanId.get(selectedPlan.id) : undefined
 
   const selectRoom = useCallback(
     (planRoomId: string) => {

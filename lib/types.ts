@@ -22,6 +22,8 @@ export interface ScoredRoom {
   focusAreaLabel: string
   neighborhood?: string
   gradeType?: string
+  levelId?: string
+  building?: string
   markedAbsent: boolean
   units: ScoredUnit[]
 }
@@ -123,6 +125,8 @@ export interface ScoredRoomSummary {
   spaceType: string
   focusAreaLabel?: string
   neighborhood?: string
+  levelId?: string
+  building?: string
   score: number | null
 }
 
@@ -135,6 +139,7 @@ export interface SchoolIndexEntry {
   roomCount: number
   scoredUnitCount: number
   exportedAt: string
+  unitsFormat?: number
 }
 
 export interface SchoolScorecard {

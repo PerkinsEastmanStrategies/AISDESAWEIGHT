@@ -52,6 +52,8 @@ interface RoomRow {
   area_sqft: number | null
   deferred_to_closeout: boolean
   source_survey_type: SurveyType | null
+  building: string | null
+  level_id: string | null
 }
 
 interface ResponseRow {
@@ -63,7 +65,7 @@ interface ResponseRow {
   photos?: string[] | null
 }
 
-export const SNAPSHOT_UNITS_FORMAT = 4
+export const SNAPSHOT_UNITS_FORMAT = 6
 
 function asResponseValue(value: unknown): string | string[] {
   if (Array.isArray(value)) return value.map((item) => String(item))
@@ -115,15 +117,20 @@ function sessionContentScore(
   roomType = "",
   sourceSurveyType: string | null | undefined = null,
   schoolClass = "",
+  deferredToCloseout = false,
 ): number {
   const filled = responses.filter((row) => hasResponseValue(row.value)).length
   const notes = responses.filter((row) => hasResponseContent(row)).length
   const home = surveyType && surveyType !== "closeout" ? 1 : 0
+  const deferredPenalty = deferredToCloseout ? -500_000 : 0
+  const closeoutPenalty = surveyType === "closeout" ? -200_000 : 0
   return (
     filled * 1000 +
     notes * 20 +
     responses.length +
     home +
+    deferredPenalty +
+    closeoutPenalty +
     sessionFitBonus(surveyType, roomType, sourceSurveyType, schoolClass)
   )
 }
@@ -232,6 +239,8 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
       focusAreaLabel,
       neighborhood: room.neighborhood ?? undefined,
       gradeType: room.grade_type || undefined,
+      levelId: room.level_id?.trim() || undefined,
+      building: room.building?.trim() || undefined,
       markedAbsent: true,
       units: [],
     }
@@ -255,6 +264,8 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
       focusAreaLabel,
       neighborhood: room.neighborhood ?? undefined,
       gradeType: room.grade_type || undefined,
+      levelId: room.level_id?.trim() || undefined,
+      building: room.building?.trim() || undefined,
       markedAbsent: false,
       units: [],
     }
@@ -346,6 +357,8 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
     focusAreaLabel,
     neighborhood: room.neighborhood ?? undefined,
     gradeType: room.grade_type || undefined,
+    levelId: room.level_id?.trim() || undefined,
+    building: room.building?.trim() || undefined,
     markedAbsent: false,
     units,
   }
@@ -460,7 +473,7 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
   const [rooms, responses] = await Promise.all([
     supabaseRestSelect<RoomRow>(
       "esa_survey_rooms",
-      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,room_number,school_room_number,room_type,grade_type,neighborhood,area_sqft,deferred_to_closeout,source_survey_type`,
+      `${inFilter("survey_session_id", sessionIds)}&select=survey_session_id,room_id,room_number,school_room_number,room_type,grade_type,neighborhood,area_sqft,deferred_to_closeout,source_survey_type,building,level_id`,
     ),
     supabaseRestSelect<ResponseRow>(
       "esa_question_responses",
@@ -497,6 +510,7 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
         next.room.room_type,
         next.room.source_survey_type,
         school.schoolClass,
+        next.room.deferred_to_closeout,
       ) >
         sessionContentScore(
           existing.surveyType,
@@ -504,6 +518,7 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
           existing.room.room_type,
           existing.room.source_survey_type,
           school.schoolClass,
+          existing.room.deferred_to_closeout,
         )
     ) {
       bestByRoom.set(room.room_id, next)

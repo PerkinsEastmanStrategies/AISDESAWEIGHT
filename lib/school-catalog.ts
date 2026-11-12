@@ -36,6 +36,7 @@ export function indexEntryFromSnapshot(snapshot: SchoolSnapshot): SchoolIndexEnt
     roomCount: snapshot.roomCount,
     scoredUnitCount: snapshot.scoredUnitCount,
     exportedAt: snapshot.exportedAt,
+    unitsFormat: snapshot.unitsFormat,
   }
 }
 

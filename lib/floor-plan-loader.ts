@@ -33,7 +33,7 @@ export interface LoadedFloorPlan {
 
 let manifestPromise: Promise<FloorPlanManifestRow[]> | null = null
 const planCache = new Map<string, Promise<LoadedFloorPlan | null>>()
-const PLAN_PARSE_VERSION = "cafm-v8-slash-and-claimed-ids"
+const PLAN_PARSE_VERSION = "cafm-v9-walk-level-building"
 
 async function loadBundledManifest(): Promise<FloorPlanManifestRow[]> {
   try {

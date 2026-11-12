@@ -464,6 +464,8 @@ export function scoreSchool(
         spaceType: room.room.spaceType,
         focusAreaLabel: room.room.focusAreaLabel,
         neighborhood: room.room.neighborhood,
+        levelId: room.room.levelId,
+        building: room.room.building,
         score: room.overall,
       })),
   }

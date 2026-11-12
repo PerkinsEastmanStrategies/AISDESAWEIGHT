@@ -19,6 +19,7 @@ interface SnapshotRow {
   scored_unit_count: number
   exported_at: string
   snapshot?: SchoolSnapshot
+  units_format?: number | null
 }
 
 function rowToIndex(row: SnapshotRow): SchoolIndexEntry {
@@ -31,6 +32,10 @@ function rowToIndex(row: SnapshotRow): SchoolIndexEntry {
     roomCount: row.room_count,
     scoredUnitCount: row.scored_unit_count,
     exportedAt: row.exported_at,
+    unitsFormat:
+      typeof row.units_format === "number"
+        ? row.units_format
+        : row.snapshot?.unitsFormat,
   }
 }
 
@@ -47,12 +52,20 @@ export async function readStaticSnapshot(schoolId: string): Promise<SchoolSnapsh
   }
 }
 
+const INDEX_SELECT =
+  "select=school_id,school_name,campus_id,school_class,school_level,room_count,scored_unit_count,exported_at"
+const INDEX_SELECT_WITH_FORMAT = `${INDEX_SELECT},units_format:snapshot->unitsFormat`
+
 export async function loadLiveSchoolIndex(): Promise<SchoolIndexEntry[]> {
   try {
-    const rows = await supabaseRestSelect<SnapshotRow>(
-      TABLE,
-      "select=school_id,school_name,campus_id,school_class,school_level,room_count,scored_unit_count,exported_at",
-    )
+    let rows: SnapshotRow[]
+    try {
+      rows = await supabaseRestSelect<SnapshotRow>(TABLE, INDEX_SELECT_WITH_FORMAT)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : ""
+      if (message.includes("esa_qa_school_snapshots")) return []
+      rows = await supabaseRestSelect<SnapshotRow>(TABLE, INDEX_SELECT)
+    }
     return rows.map(rowToIndex)
   } catch (error) {
     const message = error instanceof Error ? error.message : ""

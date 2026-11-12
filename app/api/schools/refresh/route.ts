@@ -15,7 +15,7 @@ export async function POST() {
 
     for (const school of walked) {
       const existing = currentById.get(school.schoolId)
-      if (!shouldExportSchool(school, existing)) continue
+      if (!shouldExportSchool(school, existing, { unitsFormat: existing?.unitsFormat ?? 0 })) continue
       const snapshot = await exportWalkedSchool(school)
       if (!existing && !snapshotMeetsMinimum(snapshot)) continue
       await saveSnapshot(snapshot)
@@ -30,6 +30,7 @@ export async function POST() {
         roomCount: snapshot.roomCount,
         scoredUnitCount: snapshot.scoredUnitCount,
         exportedAt: snapshot.exportedAt,
+        unitsFormat: snapshot.unitsFormat,
       })
     }
 

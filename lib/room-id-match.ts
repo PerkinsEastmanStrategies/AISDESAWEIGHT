@@ -158,31 +158,95 @@ function adminLabelMatch<T extends { roomId: string; roomName: string; spaceType
   return undefined
 }
 
+type WalkedMatchFields = {
+  roomId: string
+  roomName: string
+  spaceType?: string
+  levelId?: string
+  building?: string
+}
+
+type PlanMatchFields = { id: string; name?: string | null; levelId?: string; building?: string }
+
+function usableWalkLevel(levelId: string | undefined): string {
+  const value = levelId?.trim() ?? ""
+  if (!value || value === "campus") return ""
+  return value
+}
+
+function pickBestPlanRoom<T extends WalkedMatchFields>(
+  planRooms: PlanMatchFields[],
+  room: T,
+  matches: (planRoom: PlanMatchFields) => boolean,
+): PlanMatchFields | undefined {
+  const ranked = planRooms.filter(matches)
+  if (!ranked.length) return undefined
+  const wantedLevel = usableWalkLevel(room.levelId)
+  if (wantedLevel) {
+    const onLevel = ranked.find((planRoom) => planRoom.levelId === wantedLevel)
+    if (onLevel) return onLevel
+  }
+  const wantedBuilding = room.building?.trim().toUpperCase() ?? ""
+  if (wantedBuilding) {
+    const inBuilding = ranked.find(
+      (planRoom) => planRoom.building?.trim().toUpperCase() === wantedBuilding,
+    )
+    if (inBuilding) return inBuilding
+  }
+  return ranked.find((planRoom) => idsMatch(planRoom.id, room.roomId)) ?? ranked[0]
+}
+
+function idsMatch(left: string | null | undefined, right: string | null | undefined): boolean {
+  const a = left?.trim().toUpperCase()
+  const b = right?.trim().toUpperCase()
+  return !!a && !!b && a === b
+}
+
 /**
- * Assign each plan polygon to at most one walked room, and each walked room to
- * at most one polygon. Exact IDs win so A143 does not also paint a different
- * building's 143 on the same floor plate.
+ * Assign each walked room to one plan polygon the same way ESA does: exact id,
+ * then aliases, preferring the floor/building stored on the walk room. Bare
+ * number cores (B107 → 107) only fill leftover polygons.
  */
-export function matchPlanRoomsToScored<T extends { roomId: string; roomName: string; spaceType?: string }>(
-  planRooms: Array<{ id: string; name?: string | null }>,
+export function matchPlanRoomsToScored<T extends WalkedMatchFields>(
+  planRooms: PlanMatchFields[],
   rooms: T[],
 ): Map<string, T> {
   const assessed = rooms.filter(isAssessedRoom)
-  const claimed = new Set<string>()
+  const claimedRooms = new Set<string>()
+  const claimedPlans = new Set<string>()
   const result = new Map<string, T>()
 
-  const take = (planId: string, room: T | undefined) => {
-    if (!room || claimed.has(room.roomId) || result.has(planId)) return
-    claimed.add(room.roomId)
-    result.set(planId, room)
+  const availablePlans = () => planRooms.filter((planRoom) => !claimedPlans.has(planRoom.id))
+
+  const claim = (planRoom: PlanMatchFields | undefined, room: T) => {
+    if (!planRoom || claimedRooms.has(room.roomId) || claimedPlans.has(planRoom.id)) return
+    claimedRooms.add(room.roomId)
+    claimedPlans.add(planRoom.id)
+    result.set(planRoom.id, room)
   }
 
-  const remaining = () => assessed.filter((room) => !claimed.has(room.roomId))
-
-  for (const planRoom of planRooms) take(planRoom.id, exactScoredMatch(planIdsOf(planRoom), remaining()))
-  for (const planRoom of planRooms) take(planRoom.id, aliasedScoredMatch(planIdsOf(planRoom), remaining()))
-  for (const planRoom of planRooms) take(planRoom.id, uniqueCoreMatch(planIdsOf(planRoom), remaining()))
-  for (const planRoom of planRooms) take(planRoom.id, adminLabelMatch(planIdsOf(planRoom), remaining()))
+  for (const room of assessed) {
+    claim(
+      pickBestPlanRoom(availablePlans(), room, (planRoom) =>
+        Boolean(exactScoredMatch(planIdsOf(planRoom), [room])),
+      ),
+      room,
+    )
+  }
+  for (const room of assessed) {
+    if (claimedRooms.has(room.roomId)) continue
+    claim(
+      pickBestPlanRoom(availablePlans(), room, (planRoom) =>
+        Boolean(aliasedScoredMatch(planIdsOf(planRoom), [room])),
+      ),
+      room,
+    )
+  }
+  for (const planRoom of availablePlans()) {
+    const leftover = assessed.filter((room) => !claimedRooms.has(room.roomId))
+    const hit = uniqueCoreMatch(planIdsOf(planRoom), leftover) ?? adminLabelMatch(planIdsOf(planRoom), leftover)
+    if (hit) claim(planRoom, hit)
+  }
   return result
 }
 
