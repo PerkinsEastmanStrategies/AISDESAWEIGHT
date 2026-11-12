@@ -420,7 +420,7 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
         category: scored?.category ?? question?.category ?? "",
         subcategory: scored?.subcategory ?? question?.subcategory ?? "",
         score,
-        itemLabel: groups.size > 1 ? (texts.length === 1 ? texts[0] : unitId) : null,
+        itemLabel: groups.size > 1 ? (texts.length === 1 ? texts[0] : texts[0] ?? null) : null,
         answer,
       })
     }

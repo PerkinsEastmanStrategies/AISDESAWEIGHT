@@ -99,25 +99,33 @@ function uniqueByCore<T extends { roomId: string; roomName: string }>(rooms: T[]
   return unique
 }
 
-export function matchScoredRoom<T extends { roomId: string; roomName: string; spaceType?: string }>(
-  planRoom: { id: string; name?: string | null },
-  rooms: T[],
-): T | undefined {
-  const assessed = rooms.filter(isAssessedRoom)
-  const planIds = [planRoom.id, planRoom.name ?? ""].map(normalizeRoomId).filter(Boolean)
-  if (!planIds.length) return undefined
+function planIdsOf(planRoom: { id: string; name?: string | null }): string[] {
+  return [planRoom.id, planRoom.name ?? ""].map(normalizeRoomId).filter(Boolean)
+}
 
-  const exact = assessed.find((room) =>
+function exactScoredMatch<T extends { roomId: string; roomName: string }>(
+  planIds: string[],
+  assessed: T[],
+): T | undefined {
+  return assessed.find((room) =>
     [room.roomId, room.roomName].map(normalizeRoomId).some((id) => planIds.includes(id)),
   )
-  if (exact) return exact
+}
 
+function aliasedScoredMatch<T extends { roomId: string; roomName: string }>(
+  planIds: string[],
+  assessed: T[],
+): T | undefined {
   const planKeys = new Set(planIds.flatMap(roomMatchKeys))
-  const aliased = assessed.find((room) =>
+  return assessed.find((room) =>
     [room.roomId, room.roomName].flatMap(roomMatchKeys).some((key) => planKeys.has(key)),
   )
-  if (aliased) return aliased
+}
 
+function uniqueCoreMatch<T extends { roomId: string; roomName: string }>(
+  planIds: string[],
+  assessed: T[],
+): T | undefined {
   const uniqueCores = uniqueByCore(assessed)
   for (const id of planIds) {
     if (!isBarePlanId(id)) continue
@@ -127,23 +135,62 @@ export function matchScoredRoom<T extends { roomId: string; roomName: string; sp
       if (hit) return hit
     }
   }
+  return undefined
+}
 
+function adminLabelMatch<T extends { roomId: string; roomName: string; spaceType?: string }>(
+  planIds: string[],
+  assessed: T[],
+): T | undefined {
   const adminRooms = assessed
     .filter(isAdminAssessedRoom)
     .sort((a, b) => a.roomId.localeCompare(b.roomId, undefined, { numeric: true }))
   const adminAlreadyLabeled = adminRooms.some((room) =>
     [room.roomId, room.roomName].some((value) => ADMIN_LABEL.test(normalizeRoomId(value))),
   )
-  if (!adminAlreadyLabeled) {
-    for (const id of planIds) {
-      const index = adminLabelIndex(id)
-      if (index == null) continue
-      const hit = adminRooms[index - 1]
-      if (hit) return hit
-    }
+  if (adminAlreadyLabeled) return undefined
+  for (const id of planIds) {
+    const index = adminLabelIndex(id)
+    if (index == null) continue
+    const hit = adminRooms[index - 1]
+    if (hit) return hit
+  }
+  return undefined
+}
+
+/**
+ * Assign each plan polygon to at most one walked room, and each walked room to
+ * at most one polygon. Exact IDs win so A143 does not also paint a different
+ * building's 143 on the same floor plate.
+ */
+export function matchPlanRoomsToScored<T extends { roomId: string; roomName: string; spaceType?: string }>(
+  planRooms: Array<{ id: string; name?: string | null }>,
+  rooms: T[],
+): Map<string, T> {
+  const assessed = rooms.filter(isAssessedRoom)
+  const claimed = new Set<string>()
+  const result = new Map<string, T>()
+
+  const take = (planId: string, room: T | undefined) => {
+    if (!room || claimed.has(room.roomId) || result.has(planId)) return
+    claimed.add(room.roomId)
+    result.set(planId, room)
   }
 
-  return undefined
+  const remaining = () => assessed.filter((room) => !claimed.has(room.roomId))
+
+  for (const planRoom of planRooms) take(planRoom.id, exactScoredMatch(planIdsOf(planRoom), remaining()))
+  for (const planRoom of planRooms) take(planRoom.id, aliasedScoredMatch(planIdsOf(planRoom), remaining()))
+  for (const planRoom of planRooms) take(planRoom.id, uniqueCoreMatch(planIdsOf(planRoom), remaining()))
+  for (const planRoom of planRooms) take(planRoom.id, adminLabelMatch(planIdsOf(planRoom), remaining()))
+  return result
+}
+
+export function matchScoredRoom<T extends { roomId: string; roomName: string; spaceType?: string }>(
+  planRoom: { id: string; name?: string | null },
+  rooms: T[],
+): T | undefined {
+  return matchPlanRoomsToScored([planRoom], rooms).get(planRoom.id)
 }
 
 /** Register schedule ids so unprefixed plan labels can resolve uniquely. */

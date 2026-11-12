@@ -57,7 +57,13 @@ const FLOOR_LEVEL_ID_ALIASES: Record<string, FloorLevelId> = {
 }
 
 export function isFloorPlanSvgFilename(filename: string): boolean {
-  return /^[A-Za-z0-9][A-Za-z0-9 .()_+#-]*\.svg$/i.test(filename.trim())
+  const trimmed = filename.trim()
+  if (!trimmed || trimmed.includes("\\") || trimmed.includes("..")) return false
+  const parts = trimmed.split("/")
+  if (parts.length > 2 || parts.some((part) => !part)) return false
+  const last = parts[parts.length - 1] ?? ""
+  if (!/^[A-Za-z0-9][A-Za-z0-9 .()_+#-]*\.svg$/i.test(last)) return false
+  return parts.slice(0, -1).every((part) => /^[A-Za-z0-9][A-Za-z0-9 .()_+#-]*$/i.test(part))
 }
 
 function parseCsvRecords(csvText: string): string[][] {

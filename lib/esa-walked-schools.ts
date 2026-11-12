@@ -63,7 +63,7 @@ interface ResponseRow {
   photos?: string[] | null
 }
 
-export const SNAPSHOT_UNITS_FORMAT = 3
+export const SNAPSHOT_UNITS_FORMAT = 4
 
 function asResponseValue(value: unknown): string | string[] {
   if (Array.isArray(value)) return value.map((item) => String(item))
@@ -95,14 +95,37 @@ function hasResponseContent(row: ResponseRow): boolean {
   return Array.isArray(row.photos) && row.photos.some((photo) => String(photo ?? "").trim())
 }
 
+function sessionFitBonus(
+  surveyType: SurveyType | undefined,
+  roomType: string,
+  sourceSurveyType: string | null | undefined,
+  schoolClass: string,
+): number {
+  if (!surveyType) return 0
+  const source = sourceSurveyType?.trim()
+  if (source && source === surveyType) return 100_000
+  const table = lookupTableEntryBySpaceType(roomType, schoolClass)
+  if (table?.surveyType === surveyType) return 50_000
+  return 0
+}
+
 function sessionContentScore(
   surveyType: SurveyType | undefined,
   responses: ResponseRow[],
+  roomType = "",
+  sourceSurveyType: string | null | undefined = null,
+  schoolClass = "",
 ): number {
   const filled = responses.filter((row) => hasResponseValue(row.value)).length
   const notes = responses.filter((row) => hasResponseContent(row)).length
   const home = surveyType && surveyType !== "closeout" ? 1 : 0
-  return filled * 1000 + notes * 20 + responses.length + home
+  return (
+    filled * 1000 +
+    notes * 20 +
+    responses.length +
+    home +
+    sessionFitBonus(surveyType, roomType, sourceSurveyType, schoolClass)
+  )
 }
 
 function isNonViableSelectAllOption(optionLabel: string | null | undefined): boolean {
@@ -122,6 +145,26 @@ function answerLabel(value: string | string[] | null | undefined): string | null
     return joined || null
   }
   return String(value)
+}
+
+function itemLabelForGroup(
+  groupCount: number,
+  optionTexts: string[],
+  answer: string | null,
+): string | null {
+  if (groupCount <= 1) return null
+  if (optionTexts.length === 1) return optionTexts[0] ?? null
+  if (answer) {
+    const selected = new Set(
+      answer
+        .split(",")
+        .map((part) => part.trim())
+        .filter(Boolean),
+    )
+    const hit = optionTexts.find((text) => selected.has(text))
+    if (hit) return hit
+  }
+  return optionTexts[0] ?? null
 }
 
 function viableOptionGroups(questionId: string, options: EsaQuestionOption[]) {
@@ -288,7 +331,7 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
         category: scored?.category ?? question?.category ?? "",
         subcategory: scored?.subcategory ?? question?.subcategory ?? "",
         score,
-        itemLabel: groups.size > 1 ? (texts.length === 1 ? texts[0] : unitId) : null,
+        itemLabel: itemLabelForGroup(groups.size, texts, answer),
         answer,
       })
     }
@@ -448,8 +491,20 @@ export async function exportWalkedSchool(school: WalkedSchool): Promise<SchoolSn
     const existing = bestByRoom.get(room.room_id)
     if (
       !existing ||
-      sessionContentScore(next.surveyType, next.responses) >
-        sessionContentScore(existing.surveyType, existing.responses)
+      sessionContentScore(
+        next.surveyType,
+        next.responses,
+        next.room.room_type,
+        next.room.source_survey_type,
+        school.schoolClass,
+      ) >
+        sessionContentScore(
+          existing.surveyType,
+          existing.responses,
+          existing.room.room_type,
+          existing.room.source_survey_type,
+          school.schoolClass,
+        )
     ) {
       bestByRoom.set(room.room_id, next)
     }

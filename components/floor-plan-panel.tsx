@@ -14,7 +14,7 @@ import {
   neighborhoodForPlanRoom,
   neighborhoodLegendColors,
 } from "@/lib/neighborhood-colors"
-import { matchScoredRoom, normalizeRoomId } from "@/lib/room-id-match"
+import { matchPlanRoomsToScored, matchScoredRoom, normalizeRoomId } from "@/lib/room-id-match"
 import type { ScoredRoomSummary } from "@/lib/types"
 
 const PAN_THRESHOLD_PX = 6
@@ -33,16 +33,33 @@ function pointerDistance(pointers: Map<number, { x: number; y: number }>): numbe
   return Math.hypot(pts[0]!.x - pts[1]!.x, pts[0]!.y - pts[1]!.y)
 }
 
+function planRoomExactIdMatch(planRoom: ParsedPlanRoom, selectedRoomId: string) {
+  const wanted = normalizeRoomId(selectedRoomId)
+  if (!wanted) return false
+  return [planRoom.id, planRoom.name].map(normalizeRoomId).includes(wanted)
+}
+
 function planRoomMatchesSelection(
   planRoom: ParsedPlanRoom,
   selectedRoomId: string,
-  rooms: ScoredRoomSummary[],
+  scoredByPlanId: Map<string, ScoredRoomSummary>,
 ) {
+  if (planRoomExactIdMatch(planRoom, selectedRoomId)) return true
   const wanted = normalizeRoomId(selectedRoomId)
   if (!wanted) return false
-  if ([planRoom.id, planRoom.name].map(normalizeRoomId).includes(wanted)) return true
-  const scored = matchScoredRoom(planRoom, rooms)
+  const scored = scoredByPlanId.get(planRoom.id)
   return scored ? [scored.roomId, scored.roomName].map(normalizeRoomId).includes(wanted) : false
+}
+
+function findPlanRoomForSelection(
+  planRooms: ParsedPlanRoom[],
+  selectedRoomId: string,
+  scoredByPlanId: Map<string, ScoredRoomSummary>,
+) {
+  return (
+    planRooms.find((room) => planRoomExactIdMatch(room, selectedRoomId)) ??
+    planRooms.find((room) => planRoomMatchesSelection(room, selectedRoomId, scoredByPlanId))
+  )
 }
 
 function polygonPoints(room: ParsedPlanRoom): string {
@@ -274,14 +291,10 @@ export function FloorPlanPanel({
     [plan, activeLevelId],
   )
 
-  const scoredByPlanId = useMemo(() => {
-    const map = new Map<string, ScoredRoomSummary>()
-    for (const planRoom of levelRooms) {
-      const match = matchScoredRoom(planRoom, rooms)
-      if (match) map.set(planRoom.id, match)
-    }
-    return map
-  }, [levelRooms, rooms])
+  const scoredByPlanId = useMemo(
+    () => matchPlanRoomsToScored(levelRooms, rooms),
+    [levelRooms, rooms],
+  )
 
   const matchedScoreCount = scoredByPlanId.size
   const neighborhoodByPlanId = useMemo(() => {
@@ -303,26 +316,28 @@ export function FloorPlanPanel({
   const showNeighborhoods = planView === "neighborhoods"
   const selectedPlan =
     selectedRoomId && plan
-      ? plan.rooms.find((room) => planRoomMatchesSelection(room, selectedRoomId, rooms))
+      ? findPlanRoomForSelection(plan.rooms, selectedRoomId, scoredByPlanId)
       : undefined
-  const selectedScored = selectedPlan ? matchScoredRoom(selectedPlan, rooms) : undefined
+  const selectedScored = selectedPlan
+    ? scoredByPlanId.get(selectedPlan.id) ?? matchScoredRoom(selectedPlan, rooms)
+    : undefined
 
   const selectRoom = useCallback(
     (planRoomId: string) => {
       const planRoom = plan?.rooms.find((room) => room.id === planRoomId)
-      const scored = planRoom ? matchScoredRoom(planRoom, rooms) : undefined
+      const scored = planRoom ? scoredByPlanId.get(planRoom.id) : undefined
       const next = scored?.roomId ?? planRoomId
       setInternalSelected(next)
       onSelectRoom?.(next)
     },
-    [onSelectRoom, plan, rooms],
+    [onSelectRoom, plan, scoredByPlanId],
   )
 
   useEffect(() => {
     if (!selectedRoomId || !plan) return
-    const match = plan.rooms.find((room) => planRoomMatchesSelection(room, selectedRoomId, rooms))
+    const match = findPlanRoomForSelection(plan.rooms, selectedRoomId, scoredByPlanId)
     if (match && match.levelId !== activeLevelId) setLevelId(match.levelId)
-  }, [selectedRoomId, plan, rooms, activeLevelId])
+  }, [selectedRoomId, plan, scoredByPlanId, activeLevelId])
 
   useEffect(() => {
     const el = viewportRef.current
@@ -548,7 +563,7 @@ export function FloorPlanPanel({
                 room={room}
                 score={scoredByPlanId.get(room.id)?.score}
                 neighborhood={neighborhoodByPlanId.get(room.id)}
-                selected={Boolean(selectedRoomId && planRoomMatchesSelection(room, selectedRoomId, rooms))}
+                selected={Boolean(selectedRoomId && planRoomMatchesSelection(room, selectedRoomId, scoredByPlanId))}
                 showNeighborhoods={showNeighborhoods}
                 onSelect={selectRoom}
               />

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { isFloorPlanSvgFilename } from "@/lib/floor-plan-manifest"
 
 export const runtime = "nodejs"
 
@@ -8,10 +9,7 @@ const SUPABASE_URL = (
 const BUCKET = process.env.NEXT_PUBLIC_SUPABASE_FLOOR_PLANS_BUCKET ?? "floor-plans"
 
 function isSafeFilename(filename: string): boolean {
-  if (!filename || filename.includes("/") || filename.includes("\\") || filename.includes("..")) {
-    return false
-  }
-  return /^[A-Za-z0-9][A-Za-z0-9 .()_+#-]*\.svg$/i.test(filename)
+  return isFloorPlanSvgFilename(filename)
 }
 
 function toMobileFilename(filename: string): string {
