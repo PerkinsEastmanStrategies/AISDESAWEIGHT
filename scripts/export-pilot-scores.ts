@@ -407,10 +407,11 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
 
     for (const [unitId, unitOptions] of groups) {
       const scored = scoredByUnitId.get(unitId)
+      const inventory = unitOptions.some((opt) => isInventoryOption(opt))
       let score = scored?.score
       if (score == null) {
         if (!answer) continue
-        score = 0
+        score = inventory ? Number.NaN : 0
       }
       const texts = [...new Set(unitOptions.map((opt) => opt.option.trim()).filter(Boolean))]
       units.push({

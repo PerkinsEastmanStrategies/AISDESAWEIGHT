@@ -26,8 +26,11 @@ import {
   isDiningCommonsTackboardQuestion,
   isExteriorAccessQuestion,
   isInventoryText,
+  isInventoryUnitId,
   isMsScienceUtilitiesInventoryOption,
   isMsScienceUtilitiesScoredOption,
+  isNonScoringQuestion,
+  isNonViableSelectAllOption,
   isSharedLearningAccessQuestion,
   isShelterInPlaceSafetyLabel,
   isSpecialEducationAcousticQuestion,
@@ -338,10 +341,21 @@ export function RoomQuestionReview({
                 !(skipExteriorCovering && isExteriorGlassCoveringLabel(item.itemLabel)),
             )
           : restroomItems
-        const averageItems =
-          group.questionId.toUpperCase() === "SC-032" && String(schoolLevel ?? "").toUpperCase() === "MS"
-            ? coveringItems.filter((item) => isMsScienceUtilitiesScoredOption(item.itemLabel))
-            : coveringItems
+        const averageItems = coveringItems.filter((item) => {
+          if (isInventoryUnitId(item.unitId) || isNonViableSelectAllOption(item.itemLabel)) return false
+          if (
+            isNonScoringQuestion({
+              ...item,
+              schoolLevel,
+            })
+          ) {
+            return false
+          }
+          if (group.questionId.toUpperCase() === "SC-032" && String(schoolLevel ?? "").toUpperCase() === "MS") {
+            return isMsScienceUtilitiesScoredOption(item.itemLabel)
+          }
+          return true
+        })
         const scored = averageItems.map((item) => scorePct(item.score)).filter(Number.isFinite)
         const nata = group.items.some((item) => isNotAbleToAssess(item.answer))
         const skippedReason = skippedReasons[group.questionId]
@@ -488,7 +502,12 @@ export function RoomQuestionReview({
                           questionId: group.questionId,
                           itemLabel: label,
                           schoolLevel,
-                        })
+                        }) ||
+                        group.items.some(
+                          (item) =>
+                            item.itemLabel === label &&
+                            (isInventoryUnitId(item.unitId) || isNonViableSelectAllOption(item.itemLabel)),
+                        )
                       }
                       onToggle={() => toggle(label)}
                     />
