@@ -12425,7 +12425,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "AD-016",
       "question": "Select all that apply (proximity to collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -12445,7 +12445,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "AD-015",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -12565,7 +12565,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "AD-017",
       "question": "Select all that apply (visibility into collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -12575,7 +12575,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "MA-012",
       "question": "How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -12725,7 +12725,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-022",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -12735,7 +12735,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-042",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -13095,7 +13095,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "PL-004",
       "question": "Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13115,7 +13115,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "PL-026",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -13145,7 +13145,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "PL-027",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -13525,7 +13525,7 @@
       "subcategory": "Availability",
       "questionId": "MW-018",
       "question": "Is there a Core Counseling space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13535,7 +13535,7 @@
       "subcategory": "Availability",
       "questionId": "MW-032",
       "question": "Is there a Wellness Room (i.e., brain lab)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13545,7 +13545,7 @@
       "subcategory": "Availability",
       "questionId": "MW-040",
       "question": "Is there a Licensed Mental Health Professional (LMHP) Office?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13555,7 +13555,7 @@
       "subcategory": "Layout & Flexibility",
       "questionId": "MW-002",
       "question": "How are the mental wellness and counseling spaces laid out?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13645,7 +13645,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-021",
       "question": "Select all that apply (acoustic features - Core Counseling)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13675,7 +13675,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-036",
       "question": "Select all that apply (wellness room acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13775,7 +13775,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "PK-034",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -13835,7 +13835,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "PK-029",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -13845,7 +13845,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "PK-030",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14175,7 +14175,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-028",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14185,7 +14185,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-029",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14205,7 +14205,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-031",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14435,7 +14435,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "EA-024",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14495,7 +14495,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EA-028",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -15445,7 +15445,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EC-028",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -15455,7 +15455,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EC-029",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -15895,7 +15895,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "LS-021",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16125,7 +16125,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SN-016",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16435,7 +16435,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SP-023",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16505,7 +16505,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EN-007",
       "question": "Select all that apply (neighborhood adjacency)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16705,7 +16705,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "NH-014",
       "question": "Select all that apply (neighborhood adjacency)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16735,7 +16735,7 @@
       "subcategory": "Availability",
       "questionId": "NH-007",
       "question": "How many small group rooms (fits 3-5 students) are in the neighborhood?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16935,7 +16935,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -16955,7 +16955,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "DC-029",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17195,7 +17195,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "EG-008",
       "question": "How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17475,7 +17475,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MC-034",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17655,7 +17655,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-003",
       "question": "Select all that are present (additional early childhood playground features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17695,7 +17695,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-012",
       "question": "Select all that are present (additional elementary playground features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17785,7 +17785,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17805,7 +17805,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17825,7 +17825,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17835,7 +17835,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17845,7 +17845,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17855,7 +17855,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17865,7 +17865,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17895,7 +17895,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -17995,7 +17995,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18005,7 +18005,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18045,7 +18045,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18245,7 +18245,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-050",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -18255,7 +18255,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -18635,7 +18635,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "AD-016",
       "question": "Select all that apply (proximity to collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -18655,7 +18655,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "AD-015",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -18775,7 +18775,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "AD-017",
       "question": "Select all that apply (visibility into collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -18785,7 +18785,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "MA-012",
       "question": "How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -18935,7 +18935,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-022",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -18945,7 +18945,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-042",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -19305,7 +19305,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "PL-004",
       "question": "Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19325,7 +19325,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "PL-026",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -19355,7 +19355,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "PL-027",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -19775,7 +19775,7 @@
       "subcategory": "Availability",
       "questionId": "MW-018",
       "question": "Is there a Core Counseling space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19805,7 +19805,7 @@
       "subcategory": "Availability",
       "questionId": "MW-032",
       "question": "Is there a Wellness Room (i.e., brain lab)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19815,7 +19815,7 @@
       "subcategory": "Availability",
       "questionId": "MW-040",
       "question": "Is there a Licensed Mental Health Professional (LMHP) Office?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19825,7 +19825,7 @@
       "subcategory": "Circulation & Egress",
       "questionId": "MW-008",
       "question": "Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19835,7 +19835,7 @@
       "subcategory": "Layout & Flexibility",
       "questionId": "MW-002",
       "question": "How are the mental wellness and counseling spaces laid out?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19935,7 +19935,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-021",
       "question": "Select all that apply (acoustic features - Core Counseling)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -19965,7 +19965,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-036",
       "question": "Select all that apply (wellness room acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20415,7 +20415,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-025",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20425,7 +20425,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-026",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20445,7 +20445,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-028",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20835,7 +20835,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-028",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20845,7 +20845,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-029",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -20865,7 +20865,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-031",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -21195,7 +21195,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SN-016",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -21505,7 +21505,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SP-023",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -21765,7 +21765,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "VO-021",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -21855,7 +21855,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "TW-023",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -21905,7 +21905,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "TW-027",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -22175,7 +22175,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "TH-024",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -22235,7 +22235,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "TH-028",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -22475,7 +22475,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "DA-019",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -22525,7 +22525,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DA-023",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23025,7 +23025,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "LI-002",
       "question": "Does the space have close proximity to a CTE Studio to support concurrent use?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23105,7 +23105,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "LI-020",
       "question": "How many floor outlets are provided?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23335,7 +23335,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "MI-026",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23425,7 +23425,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "MI-021",
       "question": "Are there exhaust fans present, and if so, have they been retrofitted?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23635,7 +23635,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DN-003",
       "question": "Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23645,7 +23645,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DN-004",
       "question": "Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -23715,7 +23715,7 @@
       "subcategory": "Availability",
       "questionId": "DN-002",
       "question": "Select all that are present (spaces checklist)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -24085,7 +24085,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "RH-013",
       "question": "Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -24685,7 +24685,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "NH-014",
       "question": "Select all that apply (neighborhood adjacency)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -24715,7 +24715,7 @@
       "subcategory": "Availability",
       "questionId": "NH-008",
       "question": "How many small group rooms (fits 3-5 students) are in the neighborhood?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -24935,7 +24935,7 @@
       "subcategory": "Availability",
       "questionId": "AT-003",
       "question": "Select all that are present (spaces checklist)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -24945,7 +24945,7 @@
       "subcategory": "Availability",
       "questionId": "AT-007",
       "question": "How many Athletics and Wellness PLCs are provided?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -25325,7 +25325,7 @@
       "subcategory": "Availability",
       "questionId": "OA-003",
       "question": "Is there a flat grass playfield (separate from the football/soccer field)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -25395,7 +25395,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OA-009",
       "question": "Is field lighting provided at the football/soccer field?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -25575,7 +25575,7 @@
       "subcategory": "Availability",
       "questionId": "WE-002",
       "question": "Select all that are present:",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -25635,7 +25635,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -25655,7 +25655,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "DC-029",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -25985,7 +25985,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EM-004",
       "question": "What is the Empower Center's proximity to the Dining Commons?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26035,7 +26035,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EM-029",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26175,7 +26175,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "EM-037",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -26425,7 +26425,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MC-034",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -26605,7 +26605,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-021",
       "question": "Select all that are present (additional soft play features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26675,7 +26675,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26695,7 +26695,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26715,7 +26715,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26725,7 +26725,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26735,7 +26735,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26745,7 +26745,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26755,7 +26755,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26785,7 +26785,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26865,7 +26865,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26875,7 +26875,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -26915,7 +26915,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -27025,7 +27025,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-050",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -27035,7 +27035,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "OD-055",
       "question": "Are there clear sightlines from routinely occupied or supervised areas to the nature trail?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -27415,7 +27415,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "AD-016",
       "question": "Select all that apply (proximity to collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -27435,7 +27435,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "AD-015",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -27555,7 +27555,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "AD-017",
       "question": "Select all that apply (visibility into collaboration space or group room)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -27565,7 +27565,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "MA-012",
       "question": "How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -27715,7 +27715,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-022",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -27725,7 +27725,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MA-042",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -28085,7 +28085,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "PL-004",
       "question": "Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28105,7 +28105,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "PL-026",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -28135,7 +28135,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "PL-027",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -28555,7 +28555,7 @@
       "subcategory": "Availability",
       "questionId": "MW-018",
       "question": "Is there a Core Counseling space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28585,7 +28585,7 @@
       "subcategory": "Availability",
       "questionId": "MW-032",
       "question": "Is there a Wellness Room (i.e., brain lab)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28595,7 +28595,7 @@
       "subcategory": "Availability",
       "questionId": "MW-040",
       "question": "Is there a Licensed Mental Health Professional (LMHP) Office?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28605,7 +28605,7 @@
       "subcategory": "Circulation & Egress",
       "questionId": "MW-008",
       "question": "Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28615,7 +28615,7 @@
       "subcategory": "Layout & Flexibility",
       "questionId": "MW-002",
       "question": "How are the mental wellness and counseling spaces laid out?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28715,7 +28715,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-021",
       "question": "Select all that apply (acoustic features - Core Counseling)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -28745,7 +28745,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "MW-036",
       "question": "Select all that apply (wellness room acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29195,7 +29195,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-025",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29205,7 +29205,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-026",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29225,7 +29225,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "SC-028",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29615,7 +29615,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-028",
       "question": "What access does the space have to a collaboration space?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29625,7 +29625,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-029",
       "question": "What access does the space have to a small group room?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29645,7 +29645,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "ST-031",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -29975,7 +29975,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SN-016",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -30285,7 +30285,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "SP-023",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -30545,7 +30545,7 @@
       "subcategory": "Occupant Comfort",
       "questionId": "VO-021",
       "question": "Select all that apply (acoustic features)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -30635,7 +30635,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "TW-023",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -30685,7 +30685,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "TW-027",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -30955,7 +30955,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "TH-024",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -31015,7 +31015,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "TH-028",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -31255,7 +31255,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "DA-019",
       "question": "How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -31305,7 +31305,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DA-023",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -31825,7 +31825,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "HI-009",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -32185,7 +32185,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "LI-002",
       "question": "Does the space have close proximity to a CTE Studio to support concurrent use?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -32265,7 +32265,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "LI-020",
       "question": "How many floor outlets are provided?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -32495,7 +32495,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "MI-026",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -32585,7 +32585,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "MI-021",
       "question": "Are there exhaust fans present, and if so, have they been retrofitted?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -33045,7 +33045,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DN-003",
       "question": "Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -33055,7 +33055,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "DN-004",
       "question": "Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -33125,7 +33125,7 @@
       "subcategory": "Availability",
       "questionId": "DN-002",
       "question": "Select all that are present (spaces checklist)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -33515,7 +33515,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "RH-013",
       "question": "Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34175,7 +34175,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "NH-014",
       "question": "Select all that apply (neighborhood adjacency)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34205,7 +34205,7 @@
       "subcategory": "Availability",
       "questionId": "NH-008",
       "question": "How many small group rooms (fits 3-5 students) are in the neighborhood?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34215,7 +34215,7 @@
       "subcategory": "Availability",
       "questionId": "NH-010",
       "question": "Is there a large group room (fits 8-14 students) in the neighborhood?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34445,7 +34445,7 @@
       "subcategory": "Availability",
       "questionId": "AT-003",
       "question": "Select all that are present (spaces checklist)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34455,7 +34455,7 @@
       "subcategory": "Availability",
       "questionId": "AT-004",
       "question": "Select all that are present (spaces checklist)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -34475,7 +34475,7 @@
       "subcategory": "Availability",
       "questionId": "AT-007",
       "question": "How many Athletics and Wellness PLCs are provided?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -35295,7 +35295,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OA-009",
       "question": "Is field lighting provided at the football/soccer field?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -35445,7 +35445,7 @@
       "subcategory": "Availability",
       "questionId": "WE-002",
       "question": "Select all that are present:",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -35595,7 +35595,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "DC-015",
       "question": "How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -35615,7 +35615,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "DC-029",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -35915,7 +35915,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EM-004",
       "question": "What is the Empower Center's proximity to the Dining Commons?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -35965,7 +35965,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "EM-029",
       "question": "What access does the space have to the exterior?",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36105,7 +36105,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "EM-037",
       "question": "Select all that apply (general inventory)",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -36375,7 +36375,7 @@
       "subcategory": "Flooring & Surface Finishes",
       "questionId": "MC-034",
       "question": "What type of flooring is in the space?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -36565,7 +36565,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-037",
       "question": "Select all that apply (additional outdoor studio features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36585,7 +36585,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-044",
       "question": "Select all that are present (additional produce garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36605,7 +36605,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-048",
       "question": "Select all that are present (additional habitat garden features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36615,7 +36615,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-051",
       "question": "Select all that are present (essential domestic animal habitat features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36625,7 +36625,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-052",
       "question": "Select all that are present (additional domestic animal habitat features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36635,7 +36635,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-056",
       "question": "Select all that are present (essential nature trail features)",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36645,7 +36645,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "OD-057",
       "question": "Select all that are present (additional nature trail features)",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36665,7 +36665,7 @@
       "subcategory": "Adjacency & Access",
       "questionId": "OD-053",
       "question": "Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36725,7 +36725,7 @@
       "subcategory": "Availability",
       "questionId": "OD-049",
       "question": "Is there a domestic animal habitat?",
-      "weight": 3
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36735,7 +36735,7 @@
       "subcategory": "Availability",
       "questionId": "OD-054",
       "question": "Is there a nature trail?",
-      "weight": 9
+      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -36775,7 +36775,7 @@
       "subcategory": "Utilities & Technology",
       "questionId": "OD-060",
       "question": "Select all that are present (additional green stormwater features)",
-      "weight": 1
+      "weight": 0
     },
     {
       "schoolLevel": "HS",

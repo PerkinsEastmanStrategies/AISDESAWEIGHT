@@ -35,9 +35,9 @@ ES,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Tech
 ES,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-013,Select all that are present (furniture),0
 ES,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-014,What is the condition of the furniture?,6
 ES,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-018,Select all that apply (general inventory),0
-ES,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),6
+ES,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),0
 ES,Administration,Admin Offices,Function,Layout & Flexibility,AD-001,"Does the office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-ES,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,0
+ES,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,6
 ES,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-002,Select all that apply (lighting),6
 ES,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-008,Are there any visible workarounds accommodating a lack of power outlets?,0
 ES,Administration,Admin Offices,Occupant Experience,Aesthetics,AD-003,Which of the following describes the condition of the wall finishes?,6
@@ -49,8 +49,8 @@ ES,Administration,Admin Offices,Occupant Experience,Occupant Comfort,AD-009,Sele
 ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-010,"Is visibility provided into the space from adjacent interior spaces or circulation (i.e., glass exists, even if currently covered)?",6
 ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-011,What type of visibility is provided into the space from adjacent interior spaces?,0
 ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-012,Select all that apply (safety),6
-ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),6
-ES,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
+ES,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),0
+ES,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",0
 ES,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-013,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,6
 ES,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-015,Select all that are present (furniture),0
 ES,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-026,Select all that are present (workroom),6
@@ -65,8 +65,8 @@ ES,Administration,Main Admin Suite,Function,Adjacency & Access,MA-023,How close 
 ES,Administration,Main Admin Suite,Function,Availability,MA-017,Select all that are provided within or directly adjacent to the admin suite (spaces checklist),6
 ES,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-016,How many staff workstations are provided in the reception area?,6
 ES,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-027,"Does the principal's office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-ES,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,0
-ES,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,0
+ES,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,6
+ES,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,6
 ES,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-018,Select all that apply (lighting),6
 ES,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-029,Select all that apply (lighting),6
 ES,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-035,Are there any visible workarounds accommodating a lack of power outlets?,0
@@ -102,12 +102,12 @@ ES,Administration,Professional Learning Center,Amenities,Storage,PL-011,How much
 ES,Administration,Professional Learning Center,Amenities,Storage,PL-014,What lockable personal storage is provided for staff using the space?,6
 ES,Administration,Professional Learning Center,Amenities,Storage,PL-015,How sufficient does the storage appear for the space's program needs?,6
 ES,Administration,Professional Learning Center,Amenities,Storage,PL-016,"How much writable surface (e.g., markerboard) is provided in the PLC meeting room, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
-ES,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,6
+ES,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,0
 ES,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-001,Does the room shape allow for flexible configuration for group work?,6
-ES,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
+ES,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,6
 ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
+ES,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
 ES,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 ES,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 ES,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -145,10 +145,10 @@ ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Adjacency 
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-001,Is this space type present at the school?,0
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-010,Is there a Professional School Counselor Office?,6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-011,How many Professional School Counselor offices are provided?,6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,0
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",0
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,0
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,0
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-005,Are there any visible workarounds accommodating a lack of power outlets?,6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-007,Select one (temperature control),6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Observational,Observational,MW-009,Can the environment support student wellness and support services? (check all that apply),0
@@ -157,10 +157,10 @@ ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-015,Does the Counselor Office have a dimmable light fixture?,6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-019,"Does Core Counseling have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-020,Does Core Counseling have a dimmable light fixture?,6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),0
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-034,"Does the Wellness Room have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-035,Does the Wellness Room have a dimmable light fixture?,6
-ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),6
+ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),0
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-041,"Does the LMHP Office have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 ES,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,MW-033,Is passive supervision into the Wellness Room provided via sightline from either the Counselor Offices or Reception?,6
 ES,Studios,Early childhood studio,Amenities,Display & Presentation,PK-010,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
@@ -170,14 +170,14 @@ ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-023,Select 
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-024,How easily can the furniture be rearranged?,6
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-025,"How varied are the seating options for students (i.e., are multiple seating types available)?",6
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-026,What is the condition of the furniture?,6
-ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-034,Select all that apply (general inventory),0
+ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-034,Select all that apply (general inventory),6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-013,How much casework is provided in the space?,6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-014,How much countertop is provided in the space?,6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-015,Select all that apply (storage),0
 ES,Studios,Early childhood studio,Amenities,Storage,PK-016,How sufficient does the storage appear for the space's program needs?,6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-017,"Is there sufficient storage for sleeping mats, either within casework or mobile storage?",6
-ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-029,What access does the space have to a collaboration space?,6
-ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-030,What access does the space have to a small group room?,6
+ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-029,What access does the space have to a collaboration space?,0
+ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-030,What access does the space have to a small group room?,0
 ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-031,Select all that are present (visibility into adjacent spaces),6
 ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-032,What restroom access is provided for the studio?,6
 ES,Studios,Early childhood studio,Function,Adjacency & Access,PK-033,"If the restroom is located within the studio, is there a secondary door between the studio and the restroom?",6
@@ -210,10 +210,10 @@ ES,Studios,Traditional Studio,Amenities,Storage,ST-014,How much casework is prov
 ES,Studios,Traditional Studio,Amenities,Storage,ST-015,How much countertop is provided in the space?,6
 ES,Studios,Traditional Studio,Amenities,Storage,ST-016,Select all that apply (storage),0
 ES,Studios,Traditional Studio,Amenities,Storage,ST-017,How sufficient does the storage appear for the space's program needs?,6
-ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,6
-ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,6
+ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,0
+ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,0
 ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-030,Select all that are present (visibility into adjacent spaces),6
-ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,6
+ES,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,0
 ES,Studios,Traditional Studio,Function,Availability,ST-001,Is this space type present at the school?,0
 ES,Studios,Traditional Studio,Function,Layout & Flexibility,ST-002,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
 ES,Studios,Traditional Studio,Function,Layout & Flexibility,ST-003,"Is there a dedicated Peace Center within the studio (i.e., a furniture-based or designed ~25 SF space)?",6
@@ -236,13 +236,13 @@ ES,Shared Studios,Art Studio,Amenities,Display & Presentation,EA-015,Which built
 ES,Shared Studios,Art Studio,Amenities,Display & Presentation,EA-016,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces.,6
 ES,Shared Studios,Art Studio,Amenities,Display & Presentation,EA-017,How much display case is provided? Include both fixed and mobile surfaces.,6
 ES,Shared Studios,Art Studio,Amenities,Furniture & Equipment,EA-023,How easily can the furniture be rearranged?,6
-ES,Shared Studios,Art Studio,Amenities,Furniture & Equipment,EA-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+ES,Shared Studios,Art Studio,Amenities,Furniture & Equipment,EA-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 ES,Shared Studios,Art Studio,Amenities,Furniture & Equipment,EA-025,Select all that are present (furniture),0
 ES,Shared Studios,Art Studio,Amenities,Furniture & Equipment,EA-026,What is the condition of the furniture?,6
 ES,Shared Studios,Art Studio,Amenities,Storage,EA-010,Select all that apply (storage),0
 ES,Shared Studios,Art Studio,Amenities,Storage,EA-011,How sufficient does the storage appear for the space's program needs?,6
 ES,Shared Studios,Art Studio,Function,Adjacency & Access,EA-004,Select all that are present (spaces checklist),6
-ES,Shared Studios,Art Studio,Function,Adjacency & Access,EA-028,What access does the space have to the exterior?,6
+ES,Shared Studios,Art Studio,Function,Adjacency & Access,EA-028,What access does the space have to the exterior?,0
 ES,Shared Studios,Art Studio,Function,Adjacency & Access,EA-029,Does the exterior door provide access to an art patio or outdoor work area?,6
 ES,Shared Studios,Art Studio,Function,Adjacency & Access,EA-031,Is the all-learner restroom directly accessible from the Art Studio?,6
 ES,Shared Studios,Art Studio,Function,Availability,EA-001,Is this space type present at the school?,0
@@ -337,8 +337,8 @@ ES,Special Education,Early childhood special education studio,Amenities,Storage,
 ES,Special Education,Early childhood special education studio,Amenities,Storage,EC-015,Select all that apply (storage),0
 ES,Special Education,Early childhood special education studio,Amenities,Storage,EC-016,How sufficient does the storage appear for the space's program needs?,6
 ES,Special Education,Early childhood special education studio,Amenities,Storage,EC-017,"Is there sufficient storage for sleeping mats, either within casework or mobile storage?",6
-ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-028,What access does the space have to a collaboration space?,6
-ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-029,What access does the space have to a small group room?,6
+ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-028,What access does the space have to a collaboration space?,0
+ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-029,What access does the space have to a small group room?,0
 ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-030,Select all that are present (visibility into adjacent spaces),6
 ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-032,What restroom access is provided for the studio?,6
 ES,Special Education,Early childhood special education studio,Function,Adjacency & Access,EC-033,"If the restroom is located within the studio, is there a secondary door between the studio and the restroom?",6
@@ -382,7 +382,7 @@ ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-
 ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-006,Select all that apply (exterior windows),6
 ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-007,What window coverings are provided on exterior windows?,6
 ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-011,Select one (temperature control),6
-ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-021,Select all that apply (acoustic features),6
+ES,Special Education,Life Skills Studio,Occupant Experience,Occupant Comfort,LS-021,Select all that apply (acoustic features),0
 ES,Special Education,Life Skills Studio,Occupant Experience,Safety & Supervision,LS-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Special Education,Life Skills Studio,Occupant Experience,Safety & Supervision,LS-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Special Education,Life Skills Studio,Occupant Experience,Safety & Supervision,LS-014,Select all that apply (safety),6
@@ -405,7 +405,7 @@ ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-0
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-006,Select all that apply (exterior windows),6
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-007,What window coverings are provided on exterior windows?,6
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-011,Select one (temperature control),6
-ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),6
+ES,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),0
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-014,Select all that apply (safety),6
@@ -436,14 +436,14 @@ ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-00
 ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-008,Select all that apply (exterior windows),6
 ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-009,What window coverings are provided on exterior windows?,6
 ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-013,Select one (temperature control),6
-ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),6
+ES,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),0
 ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-014,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-015,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-016,Select all that apply (safety),6
 ES,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-026,Does the restroom appear to be ADA-compliant?,6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,EN-005,Where is a learner restroom located relative to the neighborhood?,6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,EN-006,Where is an adult restroom located relative to the neighborhood?,6
-ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,EN-007,Select all that apply (neighborhood adjacency),6
+ES,Neighborhoods,Early Childhood Neighborhood,Function,Adjacency & Access,EN-007,Select all that apply (neighborhood adjacency),0
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Availability,EN-001,Is this space type present at the school?,0
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Availability,EN-004,Select all that are present (spaces checklist),6
 ES,Neighborhoods,Early Childhood Neighborhood,Function,Layout & Flexibility,EN-003,Does main circulation avoid traveling through the neighborhood to limit opportunities for disruption?,6
@@ -463,10 +463,10 @@ ES,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,GR-006,How 
 ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-009,Are the small group rooms distributed throughout the neighborhood so that all studios have similarly convenient access?,6
 ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-012,Where is a learner restroom located relative to the neighborhood?,6
 ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-013,Where is an adult restroom located relative to the neighborhood?,6
-ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),6
+ES,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),0
 ES,Neighborhoods,Neighborhood,Function,Availability,NH-001,Is this space type present at the school?,0
 ES,Neighborhoods,Neighborhood,Function,Availability,NH-004,Select all that are present (spaces checklist),6
-ES,Neighborhoods,Neighborhood,Function,Availability,NH-007,How many small group rooms (fits 3-5 students) are in the neighborhood?,6
+ES,Neighborhoods,Neighborhood,Function,Availability,NH-007,How many small group rooms (fits 3-5 students) are in the neighborhood?,0
 ES,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-003,Does main circulation avoid traveling through the neighborhood to limit opportunities for disruption?,6
 ES,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-015,How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?,6
 ES,Neighborhoods,Neighborhood,Observational,Observational,NH-016,Can the neighborhood function as a space for student social emotional regulation? (Check all that apply),0
@@ -486,9 +486,9 @@ ES,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,OC-004
 ES,Neighborhoods,Open Collaboration,Infrastructure,Utilities & Technology,OC-012,Select all that are present (water access),6
 ES,Neighborhoods,Open Collaboration,Observational,Observational,OC-013,Select all that apply (Education Efficiency),0
 ES,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,OC-005,What type of visibility do neighboring studios have into the space?,6
-ES,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
+ES,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
 ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
+ES,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-016,How many storage closets are provided for the Dining Commons?,6
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-019,Select all that apply (storage),6
 ES,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
@@ -512,7 +512,7 @@ ES,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,DC-011,
 ES,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,DC-022,Is the stage accessed from the audience area by a ramp with an unobstructed sightline?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-006,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-007,Is the writable surface and tackboard distributed to create two separate teaching areas within the gymnasium?,6
-ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-008,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,6
+ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-008,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,0
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-009,Is additional tackboard provided outside the gymnasium?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-013,Are a motorized projection screen and ceiling/wall-mounted projector provided?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Furniture & Equipment,EG-003,How many basketball goals are provided?,6
@@ -540,7 +540,7 @@ ES,Shared Spaces,Library Media Center,Function,Adjacency & Access,MC-002,Select 
 ES,Shared Spaces,Library Media Center,Function,Adjacency & Access,MC-035,Select all that apply (restroom access),6
 ES,Shared Spaces,Library Media Center,Function,Availability,MC-001,Is this space type present at the school?,0
 ES,Shared Spaces,Library Media Center,Function,Availability,MC-003,Select all that apply (spaces checklist),6
-ES,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,0
+ES,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,6
 ES,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-009,Select all that apply (lighting),6
 ES,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-022,How many floor box locations are provided in the space?,6
 ES,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-023,Are there any visible workarounds accommodating a lack of power outlets?,6
@@ -558,11 +558,11 @@ ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-027,Select all that apply (sightlines),6
 ES,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-002,Select all that are present (essential early childhood playground features),15
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-003,Select all that are present (additional early childhood playground features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-003,Select all that are present (additional early childhood playground features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-004,Is the early childhood playground in proximity to an appropriate learning neighborhood?,12
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-007,Select all that are present (early childhood playground equipment features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-011,Select all that are present (essential elementary playground features),15
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-012,Select all that are present (additional elementary playground features),6
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-012,Select all that are present (additional elementary playground features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-013,Is the elementary playground in proximity to an appropriate learning neighborhood?,12
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-016,Select all that are present (elementary playground equipment features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),3
@@ -571,18 +571,18 @@ ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
-ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),0
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),0
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),0
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),0
+ES,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),0
 ES,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-039,Select all that apply (outdoor studio adjacencies),3
-ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",0
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,1
 ES,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,1
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-001,Is there an early childhood playground (PreK-K)?,15
@@ -592,12 +592,12 @@ ES,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
-ES,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,0
+ES,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,0
 ES,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
 ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
 ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
-ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
+ES,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),0
 ES,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 ES,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-017,Does the elementary playground have shade structures or shaded areas on or near it?,15
@@ -617,8 +617,8 @@ ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does t
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-035,Are there clear sightlines from routinely occupied or supervised areas to the outdoor studio?,6
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-042,Are there clear sightlines from routinely occupied or supervised areas to the produce garden?,3
 ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-046,Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?,3
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,3
-ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,3
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,0
+ES,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,0
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-001,What modes of transportation are supported by the site?,6
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-002,Are school bus and personal vehicle drop-off/pick-up zones separated from each other?,6
 MS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-003,Is there a direct pathway from drop-off/pick-up zones to the main entry?,6
@@ -656,9 +656,9 @@ MS,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Tech
 MS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-013,Select all that are present (furniture),0
 MS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-014,What is the condition of the furniture?,6
 MS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-018,Select all that apply (general inventory),0
-MS,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),6
+MS,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),0
 MS,Administration,Admin Offices,Function,Layout & Flexibility,AD-001,"Does the office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-MS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,0
+MS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,6
 MS,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-002,Select all that apply (lighting),6
 MS,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-008,Are there any visible workarounds accommodating a lack of power outlets?,0
 MS,Administration,Admin Offices,Occupant Experience,Aesthetics,AD-003,Which of the following describes the condition of the wall finishes?,6
@@ -670,8 +670,8 @@ MS,Administration,Admin Offices,Occupant Experience,Occupant Comfort,AD-009,Sele
 MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-010,"Is visibility provided into the space from adjacent interior spaces or circulation (i.e., glass exists, even if currently covered)?",6
 MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-011,What type of visibility is provided into the space from adjacent interior spaces?,0
 MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-012,Select all that apply (safety),6
-MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),6
-MS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
+MS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),0
+MS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",0
 MS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-013,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,6
 MS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-015,Select all that are present (furniture),0
 MS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-026,Select all that are present (workroom),6
@@ -686,8 +686,8 @@ MS,Administration,Main Admin Suite,Function,Adjacency & Access,MA-023,How close 
 MS,Administration,Main Admin Suite,Function,Availability,MA-017,Select all that are provided within or directly adjacent to the admin suite (spaces checklist),6
 MS,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-016,How many staff workstations are provided in the reception area?,6
 MS,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-027,"Does the principal's office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-MS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,0
-MS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,0
+MS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,6
+MS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,6
 MS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-018,Select all that apply (lighting),6
 MS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-029,Select all that apply (lighting),6
 MS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-035,Are there any visible workarounds accommodating a lack of power outlets?,0
@@ -723,12 +723,12 @@ MS,Administration,Professional Learning Center,Amenities,Storage,PL-013,How much
 MS,Administration,Professional Learning Center,Amenities,Storage,PL-014,What lockable personal storage is provided for staff using the space?,6
 MS,Administration,Professional Learning Center,Amenities,Storage,PL-015,How sufficient does the storage appear for the space's program needs?,6
 MS,Administration,Professional Learning Center,Amenities,Storage,PL-016,"How much writable surface (e.g., markerboard) is provided in the PLC meeting room, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
-MS,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,6
+MS,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,0
 MS,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-001,Does the room shape allow for flexible configuration for group work?,6
-MS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
+MS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,6
 MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
+MS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
 MS,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 MS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 MS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -770,13 +770,13 @@ MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Adjacency 
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-001,Is this space type present at the school?,0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-010,Is there a Professional School Counselor Office?,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-012,How many Professional School Counselor offices are provided?,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-027,Is there a Reception area in the Mental Wellness and Counseling Suite?,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-030,Is there a Conference Room in the Mental Wellness and Counseling Suite?,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,MW-008,"Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",0
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,0
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,MW-008,"Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",0
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,MW-044,What type of flooring is in the space?,0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-005,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-007,Select one (temperature control),6
@@ -786,10 +786,10 @@ MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-015,Does the Counselor Office have a dimmable light fixture?,6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-019,"Does Core Counseling have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-020,Does Core Counseling have a dimmable light fixture?,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-034,"Does the Wellness Room have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-035,Does the Wellness Room have a dimmable light fixture?,6
-MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),6
+MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),0
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-041,"Does the LMHP Office have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,MW-028,Select all that apply (passive supervision from Reception),6
 MS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,MW-033,Is passive supervision into the Wellness Room provided via sightline from either the Counselor Offices or Reception?,6
@@ -834,10 +834,10 @@ MS,Studios,Science,Amenities,Furniture & Equipment,SC-023,What is the condition 
 MS,Studios,Science,Amenities,Furniture & Equipment,SC-029,Is there a teacher demonstration station?,6
 MS,Studios,Science,Amenities,Storage,SC-010,Select all that apply (storage),0
 MS,Studios,Science,Amenities,Storage,SC-011,How sufficient does the storage appear for the space's program needs?,6
-MS,Studios,Science,Function,Adjacency & Access,SC-025,What access does the space have to a collaboration space?,6
-MS,Studios,Science,Function,Adjacency & Access,SC-026,What access does the space have to a small group room?,6
+MS,Studios,Science,Function,Adjacency & Access,SC-025,What access does the space have to a collaboration space?,0
+MS,Studios,Science,Function,Adjacency & Access,SC-026,What access does the space have to a small group room?,0
 MS,Studios,Science,Function,Adjacency & Access,SC-027,Select all that are present (visibility into adjacent spaces),6
-MS,Studios,Science,Function,Adjacency & Access,SC-028,What access does the space have to the exterior?,6
+MS,Studios,Science,Function,Adjacency & Access,SC-028,What access does the space have to the exterior?,0
 MS,Studios,Science,Function,Availability,SC-001,Is this space type present at the school?,0
 MS,Studios,Science,Occupant Experience,Circulation & Egress,SC-003,Does the science lab have a secondary door to the corridor?,6
 MS,Studios,Science,Function,Layout & Flexibility,SC-002,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
@@ -876,10 +876,10 @@ MS,Studios,Traditional Studio,Amenities,Furniture & Equipment,ST-026,What is the
 MS,Studios,Traditional Studio,Amenities,Furniture & Equipment,ST-032,Select all that are present (general inventory),0
 MS,Studios,Traditional Studio,Amenities,Storage,ST-016,Select all that apply (storage),0
 MS,Studios,Traditional Studio,Amenities,Storage,ST-017,How sufficient does the storage appear for the space's program needs?,6
-MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,6
-MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,6
+MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,0
+MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,0
 MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-030,Select all that are present (visibility into adjacent spaces),6
-MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,6
+MS,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,0
 MS,Studios,Traditional Studio,Function,Availability,ST-001,Is this space type present at the school?,0
 MS,Studios,Traditional Studio,Function,Layout & Flexibility,ST-002,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
 MS,Studios,Traditional Studio,Function,Layout & Flexibility,ST-003,"Is there a dedicated Peace Center within the studio (i.e., a furniture-based or designed ~25 SF space)?",6
@@ -912,7 +912,7 @@ MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-0
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-006,Select all that apply (exterior windows),6
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-007,What window coverings are provided on exterior windows?,6
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-011,Select one (temperature control),6
-MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),6
+MS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),0
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 MS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-014,Select all that apply (safety),6
@@ -943,7 +943,7 @@ MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-00
 MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-008,Select all that apply (exterior windows),6
 MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-009,What window coverings are provided on exterior windows?,6
 MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-013,Select one (temperature control),6
-MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),6
+MS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),0
 MS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-014,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 MS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-015,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 MS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-016,Select all that apply (safety),6
@@ -969,7 +969,7 @@ MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-005,
 MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-006,Select all that apply (exterior windows),6
 MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-007,What window coverings are provided on exterior windows?,6
 MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-011,Select one (temperature control),6
-MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-021,Select all that apply (acoustic features),6
+MS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-021,Select all that apply (acoustic features),0
 MS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 MS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 MS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-014,Select all that apply (safety),6
@@ -978,12 +978,12 @@ MS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-014,Which built
 MS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces.,6
 MS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-016,How much display case is provided? Include both fixed and mobile surfaces.,6
 MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-022,How easily can the furniture be rearranged?,6
-MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-023,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-023,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-024,Select all that are present (furniture),0
 MS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-025,What is the condition of the furniture?,6
 MS,Visual Arts,2D Art Studio,Amenities,Storage,TW-009,Select all that apply (storage),0
 MS,Visual Arts,2D Art Studio,Amenities,Storage,TW-010,How sufficient does the storage appear for the space's program needs?,6
-MS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-027,What access does the space have to the exterior?,6
+MS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-027,What access does the space have to the exterior?,0
 MS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-028,Does the exterior door provide access to an art patio or outdoor work area?,6
 MS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-031,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 MS,Visual Arts,2D Art Studio,Function,Availability,TW-001,Is this space type present at the school?,0
@@ -1010,13 +1010,13 @@ MS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-015,Which built
 MS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-016,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces.,6
 MS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-017,How much display case is provided? Include both fixed and mobile surfaces.,6
 MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-023,How easily can the furniture be rearranged?,6
-MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-025,Select all that are present (furniture),0
 MS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-026,What is the condition of the furniture?,6
 MS,Visual Arts,3D Art Studio,Amenities,Storage,TH-010,Select all that apply (storage),0
 MS,Visual Arts,3D Art Studio,Amenities,Storage,TH-011,How sufficient does the storage appear for the space's program needs?,6
 MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-004,Select all that are present (spaces checklist),6
-MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-028,What access does the space have to the exterior?,6
+MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-028,What access does the space have to the exterior?,0
 MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-029,Does the exterior door provide access to an art patio or outdoor work area?,6
 MS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-031,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 MS,Visual Arts,3D Art Studio,Function,Availability,TH-001,Is this space type present at the school?,0
@@ -1040,12 +1040,12 @@ MS,Visual Arts,3D Art Studio,Occupant Experience,Safety & Supervision,TH-022,Sel
 MS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,DA-011,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 MS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,DA-012,Which built-in systems for displaying student work are provided?,0
 MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-018,How easily can the furniture be rearranged?,6
-MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-019,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-019,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-020,Select all that are present (furniture),0
 MS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-021,What is the condition of the furniture?,6
 MS,Visual Arts,Digital Art Studio,Amenities,Storage,DA-009,Select all that apply (storage),0
 MS,Visual Arts,Digital Art Studio,Amenities,Storage,DA-010,How sufficient does the storage appear for the space's program needs?,6
-MS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-023,What access does the space have to the exterior?,6
+MS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-023,What access does the space have to the exterior?,0
 MS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-024,Does the exterior door provide access to an art patio or outdoor work area?,6
 MS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-026,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 MS,Visual Arts,Digital Art Studio,Function,Availability,DA-001,Is this space type present at the school?,0
@@ -1095,7 +1095,7 @@ MS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-024,Select all that 
 MS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-025,How easily can the furniture be rearranged?,6
 MS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-026,What is the condition of the furniture?,6
 MS,CTE,Low Intensity Lab,Amenities,Storage,LI-013,How sufficient does the storage appear for the space's program needs?,6
-MS,CTE,Low Intensity Lab,Function,Adjacency & Access,LI-002,Does the space have close proximity to a CTE Studio to support concurrent use?,6
+MS,CTE,Low Intensity Lab,Function,Adjacency & Access,LI-002,Does the space have close proximity to a CTE Studio to support concurrent use?,0
 MS,CTE,Low Intensity Lab,Function,Availability,LI-001,Is this space type present at the school?,0
 MS,CTE,Low Intensity Lab,Function,Layout & Flexibility,LI-003,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
 MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-019,Is a utility sink provided?,6
@@ -1103,7 +1103,7 @@ MS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-014,How m
 MS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-015,How much countertop is provided?,6
 MS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-027,What type of flooring is in the space?,6
 MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-004,Select all that apply (lighting),6
-MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-020,How many floor outlets are provided?,6
+MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-020,How many floor outlets are provided?,0
 MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-021,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-028,Select all that apply (general inventory),0
 MS,CTE,Low Intensity Lab,Observational,Observational,LI-030,Can the environment support authentic and applied learning experiences? (check all that apply),0
@@ -1126,7 +1126,7 @@ MS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,MI-023,How easily ca
 MS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,MI-024,What is the condition of the furniture?,6
 MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-003,Is the space located on the ground floor?,0
 MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-004,Does the space have close proximity to a CTE Studio to support concurrent use?,6
-MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-026,What access does the space have to the exterior?,6
+MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-026,What access does the space have to the exterior?,0
 MS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-027,"Is the lab located near an outdoor work space, if needed for the specific program?",6
 MS,CTE,Medium Intensity Lab,Function,Availability,MI-001,Is this space type present at the school?,0
 MS,CTE,Medium Intensity Lab,Infrastructure,Flooring & Surface Finishes,MI-002,Is the lab located in a double-height space?,0
@@ -1135,7 +1135,7 @@ MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-005,Select 
 MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-017,How many ceiling-hung outlets are provided?,6
 MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-020,Select all that apply (plumbing),6
-MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-021,"Are there exhaust fans present, and if so, have they been retrofitted?",6
+MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-021,"Are there exhaust fans present, and if so, have they been retrofitted?",0
 MS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-028,Select all that apply (general inventory),0
 MS,CTE,Medium Intensity Lab,Observational,Observational,HI-038,Can the environment support authentic and applied learning experiences? (check all that apply),0
 MS,CTE,Medium Intensity Lab,Observational,Observational,MI-030,Can the environment support authentic and applied learning experiences? (check all that apply),0
@@ -1156,15 +1156,15 @@ MS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-017,How many walls h
 MS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-018,Do the mirrors extend the full length of the wall(s) they're on?,6
 MS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-019,How tall are the mirrors?,6
 MS,Performing Arts,Dance,Amenities,Storage,DN-009,How sufficient does the storage appear for the space's program needs?,6
-MS,Performing Arts,Dance,Function,Adjacency & Access,DN-003,Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?,6
-MS,Performing Arts,Dance,Function,Adjacency & Access,DN-004,Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?,6
+MS,Performing Arts,Dance,Function,Adjacency & Access,DN-003,Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?,0
+MS,Performing Arts,Dance,Function,Adjacency & Access,DN-004,Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?,0
 MS,Performing Arts,Dance,Function,Adjacency & Access,DN-008,How many storage rooms are directly accessible from the dance rehearsal hall?,6
 MS,Performing Arts,Dance,Function,Adjacency & Access,DN-020,What type of ballet barres are provided?,6
 MS,Performing Arts,Dance,Function,Adjacency & Access,DN-027,What access does the space have to Dance Girls Locker Room?,6
 MS,Performing Arts,Dance,Function,Adjacency & Access,DN-028,What access does the space have to Dance Boys Locker Room?,6
 MS,Performing Arts,Dance,Function,Adjacency & Access,DN-029,What access does the space have to Dance All-Learner Locker Room?,6
 MS,Performing Arts,Dance,Function,Availability,DN-001,Is this space type present at the school?,0
-MS,Performing Arts,Dance,Function,Availability,DN-002,Select all that are present (spaces checklist),6
+MS,Performing Arts,Dance,Function,Availability,DN-002,Select all that are present (spaces checklist),0
 MS,Performing Arts,Dance,Function,Layout & Flexibility,DN-005,Select all that are present,6
 MS,Performing Arts,Dance,Function,Layout & Flexibility,DN-006,The space has a minimum clear floor space (floor to underside of ceiling/structure) of 16'?,6
 MS,Performing Arts,Dance,Infrastructure,Flooring & Surface Finishes,DN-015,Is the flooring wood athletic flooring?,6
@@ -1201,7 +1201,7 @@ MS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,MT-015,What 
 MS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,MT-016,How many walls have acoustic treatment in the practice rooms?,6
 MS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-011,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 MS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-012,How much display case is provided?,6
-MS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-013,Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?,6
+MS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-013,Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?,0
 MS,Performing Arts,Rehearsal Hall,Amenities,Furniture & Equipment,RH-009,Select all that are present (equipment),0
 MS,Performing Arts,Rehearsal Hall,Amenities,Storage,RH-008,Select all that apply (storage),0
 MS,Performing Arts,Rehearsal Hall,Amenities,Storage,RH-010,How much casework is provided in the space?,6
@@ -1261,10 +1261,10 @@ MS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,GR-006,How 
 MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-009,Are the small group rooms distributed throughout the neighborhood so that all studios have similarly convenient access?,6
 MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-012,Where is a learner restroom located relative to the neighborhood?,6
 MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-013,Where is an adult restroom located relative to the neighborhood?,6
-MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),6
+MS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),0
 MS,Neighborhoods,Neighborhood,Function,Availability,NH-001,Is this space type present at the school?,0
 MS,Neighborhoods,Neighborhood,Function,Availability,NH-005,Select all that are present (spaces checklist),6
-MS,Neighborhoods,Neighborhood,Function,Availability,NH-008,How many small group rooms (fits 3-5 students) are in the neighborhood?,6
+MS,Neighborhoods,Neighborhood,Function,Availability,NH-008,How many small group rooms (fits 3-5 students) are in the neighborhood?,0
 MS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-003,Does main circulation avoid traveling through the neighborhood to limit opportunities for disruption?,6
 MS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-015,How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?,6
 MS,Neighborhoods,Neighborhood,Observational,Observational,NH-016,Can the neighborhood function as a space for student social emotional regulation? (Check all that apply),0
@@ -1286,8 +1286,8 @@ MS,Neighborhoods,Open Collaboration,Observational,Observational,OC-013,Select al
 MS,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,OC-005,What type of visibility do neighboring studios have into the space?,6
 MS,Athletics and Wellness,Athletics Wing,Amenities,Storage,AT-005,How many storage rooms are provided?,6
 MS,Athletics and Wellness,Athletics Wing,Function,Adjacency & Access,AT-002,Does the athletics wing provide direct access to the outdoor athletics area?,6
-MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all that are present (spaces checklist),6
-MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,6
+MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all that are present (spaces checklist),0
+MS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,0
 MS,Athletics and Wellness,Athletics Wing,Function,Availability,LR-002,Select all that are present:,6
 MS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,AT-001,Select all that apply (after-hours access),6
 MS,Athletics and Wellness,Locker Room,Function,Adjacency & Access,LR-004,Select all that apply (access),6
@@ -1325,14 +1325,14 @@ MS,Athletics and Wellness,Outdoor Athletics,Function,Adjacency & Access,OA-020,I
 MS,Athletics and Wellness,Outdoor Athletics,Function,Adjacency & Access,OA-025,Is there direct pedestrian access from the parking lot to the tennis courts?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Adjacency & Access,OA-026,Is there restroom access within 500 feet of the tennis courts?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-001,Is there a football/soccer field?,6
-MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-003,Is there a flat grass playfield (separate from the football/soccer field)?,6
+MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-003,Is there a flat grass playfield (separate from the football/soccer field)?,0
 MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-012,Is there a track and field event area?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-015,Is there a clear line of sight from the track to most field event areas?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-022,Are there tennis courts?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Availability,OA-023,How many tennis courts are provided?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,OA-016,How many lanes does the track have?,6
 MS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,OA-018,Is the track a standard 400-meter distance?,6
-MS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-009,Is field lighting provided at the football/soccer field?,6
+MS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-009,Is field lighting provided at the football/soccer field?,0
 MS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-027,Is field lighting provided at the tennis courts?,6
 MS,Athletics and Wellness,Practice Gym,Amenities,Display & Presentation,PG-008,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
 MS,Athletics and Wellness,Practice Gym,Amenities,Storage,PG-010,Is there an ensuite equipment storage room?,6
@@ -1350,15 +1350,15 @@ MS,Athletics and Wellness,Practice Gym,Occupant Experience,Circulation & Egress,
 MS,Athletics and Wellness,Weight Room,Amenities,Furniture & Equipment,WE-004,Select all that are present:,6
 MS,Athletics and Wellness,Weight Room,Function,Adjacency & Access,WE-003,Is the space in close proximity to locker rooms and/or multipurpose/practice gyms?,6
 MS,Athletics and Wellness,Weight Room,Function,Availability,WE-001,Is this space type present at the school?,0
-MS,Athletics and Wellness,Weight Room,Function,Availability,WE-002,Select all that are present:,6
+MS,Athletics and Wellness,Weight Room,Function,Availability,WE-002,Select all that are present:,0
 MS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,WE-005,Is there ample space for safe circulation around the equipment?,6
 MS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,WE-006,Do overhead doors provide access to an exterior weight training yard?,6
 MS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,WE-008,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,WE-009,Select all that apply (water),6
 MS,Athletics and Wellness,Weight Room,Occupant Experience,Circulation & Egress,WE-007,"Is at least one interior door a minimum of 72"" wide?",6
-MS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
+MS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
 MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
+MS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-017,How many storage closets are provided for the Dining Commons?,6
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-020,Select all that apply (storage),6
 MS,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
@@ -1391,12 +1391,12 @@ MS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,EM-032,Is there 
 MS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,EM-033,Select all that apply (presentation technology),6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-002,Is the space located on the ground floor?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-003,"Is the space accessible from a primary circulation path, rather than embedded within a single department?",6
-MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,6
+MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,0
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-005,Is there close proximity to a custodial space that has the capacity for housing specialized equipment?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-007,Do the Staging Areas have a 12' wide opening connecting to their adjacent Core Space?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select what best describes the space (staging area connections),6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-010,What sightlines does the Control Room have into the Core Space(s)?,6
-MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,6
+MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,0
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-030,How is the Empower Center's loading area configured?,6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-034,"Is there an auxiliary entry near the Empower Center that can be used independently from the rest of campus, allowing after-hours use while restricting the rest of campus?",6
 MS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-035,Select all that apply (restroom proximity),6
@@ -1410,7 +1410,7 @@ MS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,EM-02
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-012,Select all that apply (lighting),6
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-019,How many ceiling-hung outlets are provided?,6
-MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),0
+MS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),6
 MS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,EM-013,Which of the following describes the condition of the wall finishes?,6
 MS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,EM-031,Select all that apply (doors from primary circulation),6
 MS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,EM-014,Are there exterior windows?,6
@@ -1435,7 +1435,7 @@ MS,Shared Spaces,Library Media Center,Function,Adjacency & Access,MC-002,Select 
 MS,Shared Spaces,Library Media Center,Function,Adjacency & Access,MC-035,Select all that apply (restroom access),6
 MS,Shared Spaces,Library Media Center,Function,Availability,MC-001,Is this space type present at the school?,0
 MS,Shared Spaces,Library Media Center,Function,Availability,MC-004,Select all that apply (spaces checklist),6
-MS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,0
+MS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,6
 MS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-009,Select all that apply (lighting),6
 MS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-022,How many floor box locations are provided in the space?,6
 MS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-023,Are there any visible workarounds accommodating a lack of power outlets?,6
@@ -1453,25 +1453,25 @@ MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-027,Select all that apply (sightlines),6
 MS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-020,Select all that apply (essential soft play features),15
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-021,Select all that are present (additional soft play features),6
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-021,Select all that are present (additional soft play features),0
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-023,Select all that are present (nature-based play features),3
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-024,What is the condition of the nature-based play features?,3
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-025,Select all that are present (essential hard play features),15
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-026,Select all that are present (additional hard play features),0
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),0
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),0
 MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
-MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),0
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),0
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),0
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),0
+MS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),0
 MS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-040,Select all that apply (outdoor studio adjacencies),3
-MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",0
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,1
 MS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-062,How close are the play areas to the gym?,1
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-022,Is there a nature-based play area?,3
@@ -1479,12 +1479,12 @@ MS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
-MS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,0
+MS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,0
 MS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
 MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
 MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
-MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
+MS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),0
 MS,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 MS,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Occupant Comfort,OD-027,Does the hard play area have shade structures or shaded areas on or near it?,15
@@ -1495,8 +1495,8 @@ MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does t
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-035,Are there clear sightlines from routinely occupied or supervised areas to the outdoor studio?,6
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-042,Are there clear sightlines from routinely occupied or supervised areas to the produce garden?,3
 MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-046,Are there clear sightlines from routinely occupied or supervised areas to the habitat garden?,3
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,3
-MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,3
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-050,Are there clear sightlines from routinely occupied or supervised areas to the domestic animal habitat?,0
+MS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-055,Are there clear sightlines from routinely occupied or supervised areas to the nature trail?,0
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-001,What modes of transportation are supported by the site?,6
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-002,Are school bus and personal vehicle drop-off/pick-up zones separated from each other?,6
 HS,Arrival Experience and Campus Support,Entry Experience,Function,Adjacency & Access,EE-003,Is there a direct pathway from drop-off/pick-up zones to the main entry?,6
@@ -1534,9 +1534,9 @@ HS,Arrival Experience and Campus Support,Kitchen,Infrastructure,Utilities & Tech
 HS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-013,Select all that are present (furniture),0
 HS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-014,What is the condition of the furniture?,6
 HS,Administration,Admin Offices,Amenities,Furniture & Equipment,AD-018,Select all that apply (general inventory),0
-HS,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),6
+HS,Administration,Admin Offices,Function,Adjacency & Access,AD-016,Select all that apply (proximity to collaboration space or group room),0
 HS,Administration,Admin Offices,Function,Layout & Flexibility,AD-001,"Does the office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-HS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,0
+HS,Administration,Admin Offices,Infrastructure,Flooring & Surface Finishes,AD-015,What type of flooring is in the space?,6
 HS,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-002,Select all that apply (lighting),6
 HS,Administration,Admin Offices,Infrastructure,Utilities & Technology,AD-008,Are there any visible workarounds accommodating a lack of power outlets?,0
 HS,Administration,Admin Offices,Occupant Experience,Aesthetics,AD-003,Which of the following describes the condition of the wall finishes?,6
@@ -1548,8 +1548,8 @@ HS,Administration,Admin Offices,Occupant Experience,Occupant Comfort,AD-009,Sele
 HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-010,"Is visibility provided into the space from adjacent interior spaces or circulation (i.e., glass exists, even if currently covered)?",6
 HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-011,What type of visibility is provided into the space from adjacent interior spaces?,0
 HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-012,Select all that apply (safety),6
-HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),6
-HS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
+HS,Administration,Admin Offices,Occupant Experience,Safety & Supervision,AD-017,Select all that apply (visibility into collaboration space or group room),0
+HS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",0
 HS,Administration,Main Admin Suite,Amenities,Display & Presentation,MA-013,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,6
 HS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-015,Select all that are present (furniture),0
 HS,Administration,Main Admin Suite,Amenities,Furniture & Equipment,MA-026,Select all that are present (workroom),6
@@ -1564,8 +1564,8 @@ HS,Administration,Main Admin Suite,Function,Adjacency & Access,MA-023,How close 
 HS,Administration,Main Admin Suite,Function,Availability,MA-017,Select all that are provided within or directly adjacent to the admin suite (spaces checklist),6
 HS,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-016,How many staff workstations are provided in the reception area?,6
 HS,Administration,Main Admin Suite,Function,Layout & Flexibility,MA-027,"Does the principal's office layout support individual work and one-on-one meetings (i.e., space for a desk plus at least one guest seat)?",6
-HS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,0
-HS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,0
+HS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-022,What type of flooring is in the space?,6
+HS,Administration,Main Admin Suite,Infrastructure,Flooring & Surface Finishes,MA-042,What type of flooring is in the space?,6
 HS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-018,Select all that apply (lighting),6
 HS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-029,Select all that apply (lighting),6
 HS,Administration,Main Admin Suite,Infrastructure,Utilities & Technology,MA-035,Are there any visible workarounds accommodating a lack of power outlets?,0
@@ -1601,12 +1601,12 @@ HS,Administration,Professional Learning Center,Amenities,Storage,PL-013,How much
 HS,Administration,Professional Learning Center,Amenities,Storage,PL-014,What lockable personal storage is provided for staff using the space?,6
 HS,Administration,Professional Learning Center,Amenities,Storage,PL-015,How sufficient does the storage appear for the space's program needs?,6
 HS,Administration,Professional Learning Center,Amenities,Storage,PL-016,"How much writable surface (e.g., markerboard) is provided in the PLC meeting room, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
-HS,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,6
+HS,Administration,Professional Learning Center,Function,Adjacency & Access,PL-004,Where is the small meeting room for phone calls and one-on-one meetings located relative to the PLC?,0
 HS,Administration,Professional Learning Center,Function,Layout & Flexibility,PL-001,Does the room shape allow for flexible configuration for group work?,6
-HS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,0
+HS,Administration,Professional Learning Center,Infrastructure,Flooring & Surface Finishes,PL-026,What type of flooring is in the space?,6
 HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-002,Select all that apply (lighting),6
 HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-018,Are there any visible workarounds accommodating a lack of power outlets?,6
-HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),0
+HS,Administration,Professional Learning Center,Infrastructure,Utilities & Technology,PL-027,Select all that apply (general inventory),6
 HS,Administration,Professional Learning Center,Observational,Observational,PL-028,To what extent does the space support collaborative professional learning? (check all that apply),0
 HS,Administration,Professional Learning Center,Occupant Experience,Aesthetics,PL-003,Which of the following describes the condition of the wall finishes?,6
 HS,Administration,Professional Learning Center,Occupant Experience,Occupant Comfort,PL-005,Are there exterior windows?,6
@@ -1648,13 +1648,13 @@ HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Adjacency 
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-001,Is this space type present at the school?,0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-010,Is there a Professional School Counselor Office?,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-013,How many Professional School Counselor offices are provided?,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-018,Is there a Core Counseling space?,0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-027,Is there a Reception area in the Mental Wellness and Counseling Suite?,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-030,Is there a Conference Room in the Mental Wellness and Counseling Suite?,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,MW-008,"Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-032,"Is there a Wellness Room (i.e., brain lab)?",0
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Availability,MW-040,Is there a Licensed Mental Health Professional (LMHP) Office?,0
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Circulation & Egress,MW-008,"Does the suite have a secondary door to a separate egress path (i.e., a second door to a corridor or exterior)?",0
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Function,Layout & Flexibility,MW-002,How are the mental wellness and counseling spaces laid out?,0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Flooring & Surface Finishes,MW-044,What type of flooring is in the space?,0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-005,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Infrastructure,Utilities & Technology,MW-007,Select one (temperature control),6
@@ -1664,10 +1664,10 @@ HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-015,Does the Counselor Office have a dimmable light fixture?,6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-019,"Does Core Counseling have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-020,Does Core Counseling have a dimmable light fixture?,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-021,Select all that apply (acoustic features - Core Counseling),0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-034,"Does the Wellness Room have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-035,Does the Wellness Room have a dimmable light fixture?,6
-HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),6
+HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-036,Select all that apply (wellness room acoustic features),0
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Occupant Comfort,MW-041,"Does the LMHP Office have user-controlled visual privacy on interior glass (e.g., roller shades or curtains)?",6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,MW-028,Select all that apply (passive supervision from Reception),6
 HS,Wrap Around Services,Mental Wellness and Counseling Suite,Occupant Experience,Safety & Supervision,MW-033,Is passive supervision into the Wellness Room provided via sightline from either the Counselor Offices or Reception?,6
@@ -1712,10 +1712,10 @@ HS,Studios,Science,Amenities,Furniture & Equipment,SC-023,What is the condition 
 HS,Studios,Science,Amenities,Furniture & Equipment,SC-029,Is there a teacher demonstration station?,6
 HS,Studios,Science,Amenities,Storage,SC-010,Select all that apply (storage),0
 HS,Studios,Science,Amenities,Storage,SC-011,How sufficient does the storage appear for the space's program needs?,6
-HS,Studios,Science,Function,Adjacency & Access,SC-025,What access does the space have to a collaboration space?,6
-HS,Studios,Science,Function,Adjacency & Access,SC-026,What access does the space have to a small group room?,6
+HS,Studios,Science,Function,Adjacency & Access,SC-025,What access does the space have to a collaboration space?,0
+HS,Studios,Science,Function,Adjacency & Access,SC-026,What access does the space have to a small group room?,0
 HS,Studios,Science,Function,Adjacency & Access,SC-027,Select all that are present (visibility into adjacent spaces),6
-HS,Studios,Science,Function,Adjacency & Access,SC-028,What access does the space have to the exterior?,6
+HS,Studios,Science,Function,Adjacency & Access,SC-028,What access does the space have to the exterior?,0
 HS,Studios,Science,Function,Availability,SC-001,Is this space type present at the school?,0
 HS,Studios,Science,Occupant Experience,Circulation & Egress,SC-003,Does the science lab have a secondary door to the corridor?,6
 HS,Studios,Science,Function,Layout & Flexibility,SC-002,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
@@ -1754,10 +1754,10 @@ HS,Studios,Traditional Studio,Amenities,Furniture & Equipment,ST-026,What is the
 HS,Studios,Traditional Studio,Amenities,Furniture & Equipment,ST-032,Select all that are present (general inventory),0
 HS,Studios,Traditional Studio,Amenities,Storage,ST-016,Select all that apply (storage),0
 HS,Studios,Traditional Studio,Amenities,Storage,ST-017,How sufficient does the storage appear for the space's program needs?,6
-HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,6
-HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,6
+HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-028,What access does the space have to a collaboration space?,0
+HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-029,What access does the space have to a small group room?,0
 HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-030,Select all that are present (visibility into adjacent spaces),6
-HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,6
+HS,Studios,Traditional Studio,Function,Adjacency & Access,ST-031,What access does the space have to the exterior?,0
 HS,Studios,Traditional Studio,Function,Availability,ST-001,Is this space type present at the school?,0
 HS,Studios,Traditional Studio,Function,Layout & Flexibility,ST-002,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
 HS,Studios,Traditional Studio,Function,Layout & Flexibility,ST-003,"Is there a dedicated Peace Center within the studio (i.e., a furniture-based or designed ~25 SF space)?",6
@@ -1790,7 +1790,7 @@ HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-0
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-006,Select all that apply (exterior windows),6
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-007,What window coverings are provided on exterior windows?,6
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-011,Select one (temperature control),6
-HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),6
+HS,Special Education,Sensory Motor Lab,Occupant Experience,Occupant Comfort,SN-016,Select all that apply (acoustic features),0
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 HS,Special Education,Sensory Motor Lab,Occupant Experience,Safety & Supervision,SN-014,Select all that apply (safety),6
@@ -1821,7 +1821,7 @@ HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-00
 HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-008,Select all that apply (exterior windows),6
 HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-009,What window coverings are provided on exterior windows?,6
 HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-013,Select one (temperature control),6
-HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),6
+HS,Special Education,SPED Flex Studio,Occupant Experience,Occupant Comfort,SP-023,Select all that apply (acoustic features),0
 HS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-014,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 HS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-015,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 HS,Special Education,SPED Flex Studio,Occupant Experience,Safety & Supervision,SP-016,Select all that apply (safety),6
@@ -1847,7 +1847,7 @@ HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-005,
 HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-006,Select all that apply (exterior windows),6
 HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-007,What window coverings are provided on exterior windows?,6
 HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-011,Select one (temperature control),6
-HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-021,Select all that apply (acoustic features),6
+HS,Special Education,Vocational Lab,Occupant Experience,Occupant Comfort,VO-021,Select all that apply (acoustic features),0
 HS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-012,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 HS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-013,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 HS,Special Education,Vocational Lab,Occupant Experience,Safety & Supervision,VO-014,Select all that apply (safety),6
@@ -1856,12 +1856,12 @@ HS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-014,Which built
 HS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces.,6
 HS,Visual Arts,2D Art Studio,Amenities,Display & Presentation,TW-016,How much display case is provided? Include both fixed and mobile surfaces.,6
 HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-022,How easily can the furniture be rearranged?,6
-HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-023,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-023,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-024,Select all that are present (furniture),0
 HS,Visual Arts,2D Art Studio,Amenities,Furniture & Equipment,TW-025,What is the condition of the furniture?,6
 HS,Visual Arts,2D Art Studio,Amenities,Storage,TW-009,Select all that apply (storage),0
 HS,Visual Arts,2D Art Studio,Amenities,Storage,TW-010,How sufficient does the storage appear for the space's program needs?,6
-HS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-027,What access does the space have to the exterior?,6
+HS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-027,What access does the space have to the exterior?,0
 HS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-028,Does the exterior door provide access to an art patio or outdoor work area?,6
 HS,Visual Arts,2D Art Studio,Function,Adjacency & Access,TW-031,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 HS,Visual Arts,2D Art Studio,Function,Availability,TW-001,Is this space type present at the school?,0
@@ -1888,13 +1888,13 @@ HS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-015,Which built
 HS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-016,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces.,6
 HS,Visual Arts,3D Art Studio,Amenities,Display & Presentation,TH-017,How much display case is provided? Include both fixed and mobile surfaces.,6
 HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-023,How easily can the furniture be rearranged?,6
-HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-024,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-025,Select all that are present (furniture),0
 HS,Visual Arts,3D Art Studio,Amenities,Furniture & Equipment,TH-026,What is the condition of the furniture?,6
 HS,Visual Arts,3D Art Studio,Amenities,Storage,TH-010,Select all that apply (storage),0
 HS,Visual Arts,3D Art Studio,Amenities,Storage,TH-011,How sufficient does the storage appear for the space's program needs?,6
 HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-004,Select all that are present (spaces checklist),6
-HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-028,What access does the space have to the exterior?,6
+HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-028,What access does the space have to the exterior?,0
 HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-029,Does the exterior door provide access to an art patio or outdoor work area?,6
 HS,Visual Arts,3D Art Studio,Function,Adjacency & Access,TH-031,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 HS,Visual Arts,3D Art Studio,Function,Availability,TH-001,Is this space type present at the school?,0
@@ -1918,12 +1918,12 @@ HS,Visual Arts,3D Art Studio,Occupant Experience,Safety & Supervision,TH-022,Sel
 HS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,DA-011,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 HS,Visual Arts,Digital Art Studio,Amenities,Display & Presentation,DA-012,Which built-in systems for displaying student work are provided?,0
 HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-018,How easily can the furniture be rearranged?,6
-HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-019,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",6
+HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-019,"How varied are the seating options for students (i.e., seating beyond standard hard chairs, such as soft or active seating)?",0
 HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-020,Select all that are present (furniture),0
 HS,Visual Arts,Digital Art Studio,Amenities,Furniture & Equipment,DA-021,What is the condition of the furniture?,6
 HS,Visual Arts,Digital Art Studio,Amenities,Storage,DA-009,Select all that apply (storage),0
 HS,Visual Arts,Digital Art Studio,Amenities,Storage,DA-010,How sufficient does the storage appear for the space's program needs?,6
-HS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-023,What access does the space have to the exterior?,6
+HS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-023,What access does the space have to the exterior?,0
 HS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-024,Does the exterior door provide access to an art patio or outdoor work area?,6
 HS,Visual Arts,Digital Art Studio,Function,Adjacency & Access,DA-026,Does the space have direct access or close proximity to the Visual Arts Professional Learning Center?,6
 HS,Visual Arts,Digital Art Studio,Function,Availability,DA-001,Is this space type present at the school?,0
@@ -1975,7 +1975,7 @@ HS,CTE,High Intensity Lab,Amenities,Furniture & Equipment,HI-030,What is the con
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-003,Is the space located on the ground floor?,6
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-005,How is the lab's loading area configured?,6
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-006,Is the lab close to a CTE Studio or equipped to support concurrent studio use?,6
-HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-009,What access does the space have to the exterior?,6
+HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-009,What access does the space have to the exterior?,0
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-010,Does the lab have direct access to outdoor work spaces?,6
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-011,Does the lab have direct access to support spaces?,6
 HS,CTE,High Intensity Lab,Function,Adjacency & Access,HI-032,Select all that apply (entrance and access),6
@@ -2011,7 +2011,7 @@ HS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-024,Select all that 
 HS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-025,How easily can the furniture be rearranged?,6
 HS,CTE,Low Intensity Lab,Amenities,Furniture & Equipment,LI-026,What is the condition of the furniture?,6
 HS,CTE,Low Intensity Lab,Amenities,Storage,LI-013,How sufficient does the storage appear for the space's program needs?,6
-HS,CTE,Low Intensity Lab,Function,Adjacency & Access,LI-002,Does the space have close proximity to a CTE Studio to support concurrent use?,6
+HS,CTE,Low Intensity Lab,Function,Adjacency & Access,LI-002,Does the space have close proximity to a CTE Studio to support concurrent use?,0
 HS,CTE,Low Intensity Lab,Function,Availability,LI-001,Is this space type present at the school?,0
 HS,CTE,Low Intensity Lab,Function,Layout & Flexibility,LI-003,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
 HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-019,Is a utility sink provided?,6
@@ -2019,7 +2019,7 @@ HS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-014,How m
 HS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-015,How much countertop is provided?,6
 HS,CTE,Low Intensity Lab,Infrastructure,Flooring & Surface Finishes,LI-027,What type of flooring is in the space?,6
 HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-004,Select all that apply (lighting),6
-HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-020,How many floor outlets are provided?,6
+HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-020,How many floor outlets are provided?,0
 HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-021,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,CTE,Low Intensity Lab,Infrastructure,Utilities & Technology,LI-028,Select all that apply (general inventory),0
 HS,CTE,Low Intensity Lab,Observational,Observational,LI-029,Can the environment support authentic and applied learning experiences? (check all that apply),0
@@ -2042,7 +2042,7 @@ HS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,MI-023,How easily ca
 HS,CTE,Medium Intensity Lab,Amenities,Furniture & Equipment,MI-024,What is the condition of the furniture?,6
 HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-003,Is the space located on the ground floor?,0
 HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-004,Does the space have close proximity to a CTE Studio to support concurrent use?,6
-HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-026,What access does the space have to the exterior?,6
+HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-026,What access does the space have to the exterior?,0
 HS,CTE,Medium Intensity Lab,Function,Adjacency & Access,MI-027,"Is the lab located near an outdoor work space, if needed for the specific program?",6
 HS,CTE,Medium Intensity Lab,Function,Availability,MI-001,Is this space type present at the school?,0
 HS,CTE,Medium Intensity Lab,Infrastructure,Flooring & Surface Finishes,MI-002,Is the lab located in a double-height space?,0
@@ -2051,7 +2051,7 @@ HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-005,Select 
 HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-017,How many ceiling-hung outlets are provided?,6
 HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-020,Select all that apply (plumbing),6
-HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-021,"Are there exhaust fans present, and if so, have they been retrofitted?",6
+HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-021,"Are there exhaust fans present, and if so, have they been retrofitted?",0
 HS,CTE,Medium Intensity Lab,Infrastructure,Utilities & Technology,MI-028,Select all that apply (general inventory),0
 HS,CTE,Medium Intensity Lab,Observational,Observational,MI-029,Can the environment support authentic and applied learning experiences? (check all that apply),0
 HS,CTE,Medium Intensity Lab,Observational,Observational,MI-031,"Can the medium intensity lab function as a flexible environment for multiple CTE programs (e.g., A/V Technology, Computer Repair, Robotics, Drones, Culinary Arts Simulation, Veterinary Simulation)? (check all that apply)",0
@@ -2097,15 +2097,15 @@ HS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-017,How many walls h
 HS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-018,Do the mirrors extend the full length of the wall(s) they're on?,6
 HS,Performing Arts,Dance,Amenities,Furniture & Equipment,DN-019,How tall are the mirrors?,6
 HS,Performing Arts,Dance,Amenities,Storage,DN-009,How sufficient does the storage appear for the space's program needs?,6
-HS,Performing Arts,Dance,Function,Adjacency & Access,DN-003,Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?,6
-HS,Performing Arts,Dance,Function,Adjacency & Access,DN-004,Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?,6
+HS,Performing Arts,Dance,Function,Adjacency & Access,DN-003,Is the dance suite in close proximity to the Theater Arts spaces to support shared or combined locker/dressing spaces?,0
+HS,Performing Arts,Dance,Function,Adjacency & Access,DN-004,Does the space have direct access to an outdoor area to support practice for outdoor performances like football games or Drill and Cheer practice?,0
 HS,Performing Arts,Dance,Function,Adjacency & Access,DN-008,How many storage rooms are directly accessible from the dance rehearsal hall?,6
 HS,Performing Arts,Dance,Function,Adjacency & Access,DN-020,What type of ballet barres are provided?,6
 HS,Performing Arts,Dance,Function,Adjacency & Access,DN-027,What access does the space have to Dance Girls Locker Room?,6
 HS,Performing Arts,Dance,Function,Adjacency & Access,DN-028,What access does the space have to Dance Boys Locker Room?,6
 HS,Performing Arts,Dance,Function,Adjacency & Access,DN-029,What access does the space have to Dance All-Learner Locker Room?,6
 HS,Performing Arts,Dance,Function,Availability,DN-001,Is this space type present at the school?,0
-HS,Performing Arts,Dance,Function,Availability,DN-002,Select all that are present (spaces checklist),6
+HS,Performing Arts,Dance,Function,Availability,DN-002,Select all that are present (spaces checklist),0
 HS,Performing Arts,Dance,Function,Layout & Flexibility,DN-005,Select all that are present,6
 HS,Performing Arts,Dance,Function,Layout & Flexibility,DN-006,The space has a minimum clear floor space (floor to underside of ceiling/structure) of 16'?,6
 HS,Performing Arts,Dance,Infrastructure,Flooring & Surface Finishes,DN-015,Is the flooring wood athletic flooring?,6
@@ -2144,7 +2144,7 @@ HS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,MT-015,What 
 HS,Performing Arts,Music Suite,Occupant Experience,Occupant Comfort,MT-016,How many walls have acoustic treatment in the practice rooms?,6
 HS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-011,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 HS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-012,How much display case is provided?,6
-HS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-013,Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?,6
+HS,Performing Arts,Rehearsal Hall,Amenities,Display & Presentation,RH-013,Are a motorized projection screen and ceiling/wall-mounted projector provided in the rehearsal hall?,0
 HS,Performing Arts,Rehearsal Hall,Amenities,Furniture & Equipment,RH-009,Select all that are present (equipment),0
 HS,Performing Arts,Rehearsal Hall,Amenities,Storage,RH-008,Select all that apply (storage),0
 HS,Performing Arts,Rehearsal Hall,Amenities,Storage,RH-010,How much casework is provided in the space?,6
@@ -2210,11 +2210,11 @@ HS,Neighborhoods,Group Room,Occupant Experience,Safety & Supervision,GR-006,How 
 HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-009,Are the small group rooms distributed throughout the neighborhood so that all studios have similarly convenient access?,6
 HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-012,Where is a learner restroom located relative to the neighborhood?,6
 HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-013,Where is an adult restroom located relative to the neighborhood?,6
-HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),6
+HS,Neighborhoods,Neighborhood,Function,Adjacency & Access,NH-014,Select all that apply (neighborhood adjacency),0
 HS,Neighborhoods,Neighborhood,Function,Availability,NH-001,Is this space type present at the school?,0
 HS,Neighborhoods,Neighborhood,Function,Availability,NH-006,Select all that are present (spaces checklist),6
-HS,Neighborhoods,Neighborhood,Function,Availability,NH-008,How many small group rooms (fits 3-5 students) are in the neighborhood?,6
-HS,Neighborhoods,Neighborhood,Function,Availability,NH-010,Is there a large group room (fits 8-14 students) in the neighborhood?,6
+HS,Neighborhoods,Neighborhood,Function,Availability,NH-008,How many small group rooms (fits 3-5 students) are in the neighborhood?,0
+HS,Neighborhoods,Neighborhood,Function,Availability,NH-010,Is there a large group room (fits 8-14 students) in the neighborhood?,0
 HS,Neighborhoods,Neighborhood,Function,Availability,NH-011,How many Science Labs are in the neighborhood?,6
 HS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-003,Does main circulation avoid traveling through the neighborhood to limit opportunities for disruption?,6
 HS,Neighborhoods,Neighborhood,Function,Layout & Flexibility,NH-015,How many operable partitions (between studios and/or open collaboration spaces) does the neighborhood have?,6
@@ -2237,10 +2237,10 @@ HS,Neighborhoods,Open Collaboration,Observational,Observational,OC-013,Select al
 HS,Neighborhoods,Open Collaboration,Occupant Experience,Safety & Supervision,OC-005,What type of visibility do neighboring studios have into the space?,6
 HS,Athletics and Wellness,Athletics Wing,Amenities,Storage,AT-005,How many storage rooms are provided?,6
 HS,Athletics and Wellness,Athletics Wing,Function,Adjacency & Access,AT-002,Does the athletics wing provide direct access to the outdoor athletics area?,6
-HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all that are present (spaces checklist),6
-HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-004,Select all that are present (spaces checklist),6
+HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-003,Select all that are present (spaces checklist),0
+HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-004,Select all that are present (spaces checklist),0
 HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-006,How many small group rooms are provided?,6
-HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,6
+HS,Athletics and Wellness,Athletics Wing,Function,Availability,AT-007,How many Athletics and Wellness PLCs are provided?,0
 HS,Athletics and Wellness,Athletics Wing,Function,Availability,LR-002,Select all that are present:,6
 HS,Athletics and Wellness,Athletics Wing,Function,Layout & Flexibility,AT-001,Select all that apply (after-hours access),6
 HS,Athletics and Wellness,Competition Gym,Amenities,Display & Presentation,CG-013,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
@@ -2322,7 +2322,7 @@ HS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,OA-017
 HS,Athletics and Wellness,Outdoor Athletics,Function,Layout & Flexibility,OA-018,Is the track a standard 400-meter distance?,6
 HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Flooring & Surface Finishes,OA-002,What is the surface of the football/soccer field?,6
 HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Flooring & Surface Finishes,OA-005,What is the surface of the football/soccer practice field?,0
-HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-009,Is field lighting provided at the football/soccer field?,6
+HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-009,Is field lighting provided at the football/soccer field?,0
 HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-027,Is field lighting provided at the tennis courts?,6
 HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-033,Is field lighting provided at the baseball field?,6
 HS,Athletics and Wellness,Outdoor Athletics,Infrastructure,Utilities & Technology,OA-039,Is field lighting provided at the softball field?,6
@@ -2337,7 +2337,7 @@ HS,Athletics and Wellness,PE Fitness Room,Infrastructure,Utilities & Technology,
 HS,Athletics and Wellness,Weight Room,Amenities,Furniture & Equipment,WE-004,Select all that are present:,6
 HS,Athletics and Wellness,Weight Room,Function,Adjacency & Access,WE-003,Is the space in close proximity to locker rooms and/or multipurpose/practice gyms?,6
 HS,Athletics and Wellness,Weight Room,Function,Availability,WE-001,Is this space type present at the school?,0
-HS,Athletics and Wellness,Weight Room,Function,Availability,WE-002,Select all that are present:,6
+HS,Athletics and Wellness,Weight Room,Function,Availability,WE-002,Select all that are present:,0
 HS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,WE-005,Is there ample space for safe circulation around the equipment?,6
 HS,Athletics and Wellness,Weight Room,Function,Layout & Flexibility,WE-006,Do overhead doors provide access to an exterior weight training yard?,6
 HS,Athletics and Wellness,Weight Room,Infrastructure,Utilities & Technology,WE-008,Are there any visible workarounds accommodating a lack of power outlets?,6
@@ -2352,9 +2352,9 @@ HS,Athletics and Wellness,Wrestling,Function,Layout & Flexibility,WR-005,Does th
 HS,Athletics and Wellness,Wrestling,Infrastructure,Utilities & Technology,WR-008,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,Athletics and Wellness,Wrestling,Infrastructure,Utilities & Technology,WR-009,Select all that apply (water),6
 HS,Athletics and Wellness,Wrestling,Occupant Experience,Circulation & Egress,WR-006,"Is at least one interior door a minimum of 72"" wide?",6
-HS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,6
+HS,Shared Spaces,Dining Commons,Amenities,Display & Presentation,DC-015,How much tackboard/tackwall/tackstrip is provided? Include both fixed and mobile surfaces in your count.,0
 HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-008,Is a variety of furniture and/or modular furniture provided to support both small and large group collaboration when used as a learning space?,6
-HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),0
+HS,Shared Spaces,Dining Commons,Amenities,Furniture & Equipment,DC-029,Select all that apply (general inventory),6
 HS,Shared Spaces,Dining Commons,Amenities,Storage,DC-018,"Is a storage closet provided for chairs, tables, and portable stage?",6
 HS,Shared Spaces,Dining Commons,Amenities,Storage,DC-030,Is the custodial storage sufficient for all custodial equipment to be kept out of sight when not in use?,6
 HS,Shared Spaces,Dining Commons,Function,Adjacency & Access,DC-005,Which best describes the Dining Commons configuration?,6
@@ -2384,12 +2384,12 @@ HS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,EM-032,Is there 
 HS,Shared Spaces,Empower Center,Amenities,Furniture & Equipment,EM-033,Select all that apply (presentation technology),6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-002,Is the space located on the ground floor?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-003,"Is the space accessible from a primary circulation path, rather than embedded within a single department?",6
-HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,6
+HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-004,What is the Empower Center's proximity to the Dining Commons?,0
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-005,Is there close proximity to a custodial space that has the capacity for housing specialized equipment?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-007,Do the Staging Areas have a 12' wide opening connecting to their adjacent Core Space?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-008,Select what best describes the space (staging area connections),6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-010,What sightlines does the Control Room have into the Core Space(s)?,6
-HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,6
+HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-029,What access does the space have to the exterior?,0
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-030,How is the Empower Center's loading area configured?,6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-034,"Is there an auxiliary entry near the Empower Center that can be used independently from the rest of campus, allowing after-hours use while restricting the rest of campus?",6
 HS,Shared Spaces,Empower Center,Function,Adjacency & Access,EM-035,Select all that apply (restroom proximity),6
@@ -2403,7 +2403,7 @@ HS,Shared Spaces,Empower Center,Infrastructure,Flooring & Surface Finishes,EM-02
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-012,Select all that apply (lighting),6
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-018,Are there any visible workarounds accommodating a lack of power outlets?,6
 HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-019,How many ceiling-hung outlets are provided?,6
-HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),0
+HS,Shared Spaces,Empower Center,Infrastructure,Utilities & Technology,EM-037,Select all that apply (general inventory),6
 HS,Shared Spaces,Empower Center,Occupant Experience,Aesthetics,EM-013,Which of the following describes the condition of the wall finishes?,6
 HS,Shared Spaces,Empower Center,Occupant Experience,Circulation & Egress,EM-031,Select all that apply (doors from primary circulation),6
 HS,Shared Spaces,Empower Center,Occupant Experience,Occupant Comfort,EM-014,Are there exterior windows?,6
@@ -2430,7 +2430,7 @@ HS,Shared Spaces,Library Media Center,Function,Availability,MC-001,Is this space
 HS,Shared Spaces,Library Media Center,Function,Availability,MC-005,Select all that apply (spaces checklist),6
 HS,Shared Spaces,Library Media Center,Function,Availability,MC-006,How many offices are provided?,6
 HS,Shared Spaces,Library Media Center,Function,Availability,MC-007,How many group rooms are provided?,6
-HS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,0
+HS,Shared Spaces,Library Media Center,Infrastructure,Flooring & Surface Finishes,MC-034,What type of flooring is in the space?,6
 HS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-009,Select all that apply (lighting),6
 HS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-022,How many floor box locations are provided in the space?,6
 HS,Shared Spaces,Library Media Center,Infrastructure,Utilities & Technology,MC-023,Are there any visible workarounds accommodating a lack of power outlets?,6
@@ -2449,28 +2449,28 @@ HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,M
 HS,Shared Spaces,Library Media Center,Occupant Experience,Safety & Supervision,MC-028,Select all that apply (safety),6
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-031,Select all that are present (play field features),9
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-036,Select all that are present (essential outdoor studio features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-037,Select all that apply (additional outdoor studio features),0
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-043,Select all that are present (essential produce garden features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),1
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-044,Select all that are present (additional produce garden features),0
 HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-047,Select all that are present (essential habitat garden features),6
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),1
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),3
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),1
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),9
-HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),3
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-048,Select all that are present (additional habitat garden features),0
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-051,Select all that are present (essential domestic animal habitat features),0
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-052,Select all that are present (additional domestic animal habitat features),0
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-056,Select all that are present (essential nature trail features),0
+HS,Outdoor,Outdoor Spaces,Amenities,Furniture & Equipment,OD-057,Select all that are present (additional nature trail features),0
 HS,Outdoor,Outdoor Spaces,Amenities,Storage,OD-063,How sufficient is the outdoor storage for play equipment and materials?,12
-HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",1
+HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-053,"Is the habitat located in a relatively low-traffic area of the campus (i.e., adequate separation from student egress points, playground areas, produce gardens, etc.)?",0
 HS,Outdoor,Outdoor Spaces,Function,Adjacency & Access,OD-061,Are the play areas easily accessible for after-hours community use?,1
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-030,Is there a play field?,9
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-034,Is there an outdoor studio?,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-041,Is there a produce garden?,6
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-045,Is there a habitat garden?,6
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,3
-HS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,9
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-049,Is there a domestic animal habitat?,0
+HS,Outdoor,Outdoor Spaces,Function,Availability,OD-054,Is there a nature trail?,0
 HS,Outdoor,Outdoor Spaces,Function,Availability,OD-058,Is there green stormwater infrastructure?,3
 HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-038,Select all that are present (outdoor studio technology),1
 HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-059,Select all that are present (essential green stormwater features),3
-HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),1
+HS,Outdoor,Outdoor Spaces,Infrastructure,Utilities & Technology,OD-060,Select all that are present (additional green stormwater features),0
 HS,Outdoor,Outdoor Spaces,Observational,Observational,OD-064,Can outdoor environments function as extensions of the educational environment? (check all that apply),0
 HS,Outdoor,Outdoor Spaces,Observational,Observational,OD-065,"Students are observed utilizing the outdoor learning spaces (gardens, outdoor studios, etc.).",0
 HS,Outdoor,Outdoor Spaces,Occupant Experience,Safety & Supervision,OD-033,Does the play field have site lighting to allow for safe evening use?,6
