@@ -25,9 +25,13 @@ import {
   formatPreparedDate,
   isHiddenReportLabel,
   levelAverageLabel,
+  campusVsAverageCaption,
   orderedFocusAreas,
+  reportBarAlt,
   reportDisplayLabel,
+  reportScoreListAlt,
   scoringCategories,
+  spaceTypeTableCaption,
   shortFocus,
   spaceCategoryTree,
   spaceTypeCategoryScore,
@@ -35,6 +39,7 @@ import {
 import type { SchoolIndexEntry, SchoolLevel, SchoolScorecard, ScoreNode } from "@/lib/types"
 
 const OBS_STORAGE_PREFIX = "esa-report-observations:v2:"
+const SR_ONLY = "sr-only print:hidden"
 
 type ObservationEdits = {
   lines: [string, string, string]
@@ -93,7 +98,11 @@ function ScoreCell({
   blank?: boolean
 }) {
   if (blank) {
-    return <td className="border border-slate-200 bg-white px-2 py-2" />
+    return (
+      <td className="border border-slate-200 bg-white px-2 py-2">
+        <span className={SR_ONLY}>Not scored</span>
+      </td>
+    )
   }
   const palette = useReportPalette()
   const colors = scoreBandColors(score, palette)
@@ -192,8 +201,12 @@ function ReportBar({
 }) {
   const palette = useReportPalette()
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_2.5rem] items-center gap-3">
-      <div>
+    <div
+      role="img"
+      aria-label={reportBarAlt(label, score, average)}
+      className="grid grid-cols-[minmax(0,1fr)_2.5rem] items-center gap-3"
+    >
+      <div aria-hidden>
         <p className="mb-1 text-[13px] font-medium text-slate-800">{label}</p>
         <div className="relative h-3 overflow-visible rounded-full bg-slate-200">
           {score != null ? (
@@ -210,12 +223,13 @@ function ReportBar({
               className="absolute top-1/2 h-4 w-[3px] -translate-y-1/2 rounded-full"
               style={{ left: `${Math.max(0, Math.min(100, average))}%`, backgroundColor: palette.navy }}
               title="Grade-type average"
-              aria-label="Grade-type average"
             />
           ) : null}
         </div>
       </div>
-      <p className="text-right text-sm font-semibold tabular-nums text-slate-900">{scoreNumber(score)}</p>
+      <p aria-hidden className="text-right text-sm font-semibold tabular-nums text-slate-900">
+        {scoreNumber(score)}
+      </p>
     </div>
   )
 }
@@ -431,8 +445,25 @@ function ReportPage({ children }: { children: ReactNode }) {
 function SpaceScoreCard({ space, categories }: { space: ScoreNode; categories: string[] }) {
   const palette = useReportPalette()
   const tree = spaceCategoryTree(space)
+  const categoryAlts = categories.flatMap((category) => {
+    const node = tree.find((item) => item.label === category)
+    const score = node?.score ?? spaceTypeCategoryScore(space, category)
+    const subs = (node?.children ?? []).filter((sub) => !isHiddenReportLabel(sub.label))
+    if (score == null && !subs.length) return []
+    return [
+      {
+        label: category,
+        score,
+      },
+      ...subs.map((sub) => ({ label: reportDisplayLabel(sub.label), score: sub.score })),
+    ]
+  })
+  const spaceAlt = reportScoreListAlt(`${space.label} category scores`, [
+    { label: "Total", score: space.score },
+    ...categoryAlts,
+  ])
   return (
-    <article className="rounded-xl border border-slate-200 bg-white p-3">
+    <article role="img" aria-label={spaceAlt} className="rounded-xl border border-slate-200 bg-white p-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <h5 className="min-w-0 truncate text-sm font-semibold text-slate-900">{space.label}</h5>
         <ScoreChip
@@ -610,14 +641,15 @@ export function CampusReport({
             <h4 className="text-sm font-semibold text-slate-900">ESA focus areas at a glance</h4>
             <AverageTickLegend />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2" role="list" aria-label="ESA focus areas at a glance">
             {focuses.map((area) => (
-              <ReportBar
-                key={area.id}
-                label={shortFocus(area.label)}
-                score={area.score}
-                average={average.focusAreas.find((item) => item.label === area.label)?.score}
-              />
+              <div key={area.id} role="listitem">
+                <ReportBar
+                  label={shortFocus(area.label)}
+                  score={area.score}
+                  average={average.focusAreas.find((item) => item.label === area.label)?.score}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -641,17 +673,26 @@ export function CampusReport({
           <div className="flex min-h-0 flex-col">
             <h4 className="text-sm font-semibold text-slate-900">Campus vs grade-type average</h4>
             <table className="mt-2 w-full table-fixed border-collapse text-[13px]">
+              <caption className={SR_ONLY}>
+                {campusVsAverageCaption(
+                  focuses.map((area) => ({
+                    label: area.label,
+                    campus: area.score,
+                    average: average.focusAreas.find((item) => item.label === area.label)?.score,
+                  })),
+                )}
+              </caption>
               <thead>
                 <tr className="bg-slate-50 text-[10px] uppercase tracking-wide text-slate-500">
-                  <th className="w-[58%] border border-slate-200 px-2 py-1.5 text-left font-semibold">Focus area</th>
-                  <th className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Campus</th>
-                  <th className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Avg</th>
+                  <th scope="col" className="w-[58%] border border-slate-200 px-2 py-1.5 text-left font-semibold">Focus area</th>
+                  <th scope="col" className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Campus</th>
+                  <th scope="col" className="border border-slate-200 px-2 py-1.5 text-center font-semibold">Avg</th>
                 </tr>
               </thead>
               <tbody>
                 {focuses.map((area) => (
                   <tr key={area.id}>
-                    <td className="border border-slate-200 px-2 py-1.5 leading-snug text-slate-800">{area.label}</td>
+                    <th scope="row" className="border border-slate-200 px-2 py-1.5 text-left font-normal leading-snug text-slate-800">{area.label}</th>
                     <ScoreCell score={area.score} strong />
                     <td className="border border-slate-200 px-2 py-1.5 text-center tabular-nums text-slate-500">
                       {scoreNumber(average.focusAreas.find((item) => item.label === area.label)?.score)}
@@ -669,16 +710,21 @@ export function CampusReport({
               <h4 className="text-sm font-semibold text-slate-900">Campus-wide categories</h4>
               <AverageTickLegend />
             </div>
-            <div className="grid grid-cols-2 gap-2.5">
+            <div
+              className="grid grid-cols-2 gap-2.5"
+              role="list"
+              aria-label="Campus-wide category charts"
+            >
               {card.categories
                 .filter((node) => !isHiddenReportLabel(node.label))
                 .sort((a, b) => categories.indexOf(a.label) - categories.indexOf(b.label))
                 .map((node) => (
-                  <CategoryBreakdownCard
-                    key={node.id}
-                    category={node}
-                    average={average.categories.find((item) => item.label === node.label)?.score}
-                  />
+                  <div key={node.id} role="listitem">
+                    <CategoryBreakdownCard
+                      category={node}
+                      average={average.categories.find((item) => item.label === node.label)?.score}
+                    />
+                  </div>
                 ))}
             </div>
           </div>
@@ -721,32 +767,49 @@ export function CampusReport({
                 <ScoreLegend />
               </div>
               <table className="w-full table-fixed border-collapse text-[12px]">
+                <caption className={SR_ONLY}>
+                  {spaceTypeTableCaption(
+                    focus.label,
+                    spaceRows.map((row) => ({
+                      label: row.label,
+                      missing: row.missing,
+                      total: row.space?.score,
+                    })),
+                  )}
+                </caption>
                 <thead>
                   <tr className="bg-slate-50 text-[10px] text-slate-500">
-                    <th className="w-[22%] border border-slate-200 px-2 py-1.5 text-left font-semibold uppercase tracking-wide">
+                    <th
+                      scope="col"
+                      className="w-[22%] border border-slate-200 px-2 py-1.5 text-left font-semibold uppercase tracking-wide"
+                    >
                       Space type
                     </th>
                     {categories.map((category) => (
                       <th
                         key={category}
+                        scope="col"
                         className="border border-slate-200 px-1.5 py-1.5 text-center font-semibold leading-tight"
                       >
                         {category}
                       </th>
                     ))}
-                    <th className="border border-slate-200 px-1.5 py-1.5 text-center font-semibold">Total</th>
+                    <th scope="col" className="border border-slate-200 px-1.5 py-1.5 text-center font-semibold">
+                      Total
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {spaceRows.map((row) => (
                     <tr key={row.space?.id ?? `missing:${row.label}`}>
-                      <td
-                        className={`border border-slate-200 px-2 py-1.5 ${
+                      <th
+                        scope="row"
+                        className={`border border-slate-200 px-2 py-1.5 text-left font-normal ${
                           row.missing ? "italic text-slate-400" : "text-slate-800"
                         }`}
                       >
                         {row.label}
-                      </td>
+                      </th>
                       {categories.map((category) => (
                         <ScoreCell
                           key={category}
@@ -766,9 +829,15 @@ export function CampusReport({
               ) : null}
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-3">
+            <div
+              className="mt-4 grid grid-cols-2 gap-3"
+              role="list"
+              aria-label={`${focus.label} space type charts`}
+            >
               {scoredSpaces.map((row) => (
-                <SpaceScoreCard key={`${row.space!.id}-detail`} space={row.space!} categories={categories} />
+                <div key={`${row.space!.id}-detail`} role="listitem">
+                  <SpaceScoreCard space={row.space!} categories={categories} />
+                </div>
               ))}
             </div>
             <ReportFooter page={3 + index} total={totalPages} schoolName={name} />

@@ -86,6 +86,56 @@ export function reportDisplayLabel(label: string): string {
   return REPORT_DISPLAY_LABELS[label] ?? label
 }
 
+export function reportScoreText(score: number | null | undefined): string {
+  if (score == null || Number.isNaN(score)) return "not scored"
+  return String(Math.round(score))
+}
+
+export function reportBarAlt(
+  label: string,
+  score: number | null | undefined,
+  average?: number | null,
+): string {
+  const campus = reportScoreText(score)
+  if (average == null || Number.isNaN(average)) return `${label}, score ${campus}`
+  return `${label}, score ${campus}, grade-type average ${reportScoreText(average)}`
+}
+
+export function reportScoreListAlt(
+  title: string,
+  items: Array<{ label: string; score: number | null | undefined }>,
+): string {
+  const parts = items.map((item) => `${item.label} ${reportScoreText(item.score)}`)
+  return parts.length ? `${title}. ${parts.join(". ")}.` : `${title}. No scores yet.`
+}
+
+export function campusVsAverageCaption(
+  rows: Array<{ label: string; campus: number | null | undefined; average: number | null | undefined }>,
+): string {
+  const parts = rows.map(
+    (row) => `${row.label} campus ${reportScoreText(row.campus)}, average ${reportScoreText(row.average)}`,
+  )
+  return parts.length
+    ? `Campus versus grade-type average by focus area. ${parts.join(". ")}.`
+    : "Campus versus grade-type average by focus area. No scores yet."
+}
+
+export function spaceTypeTableCaption(
+  focusLabel: string,
+  rows: Array<{ label: string; missing: boolean; total: number | null | undefined }>,
+): string {
+  const scored = rows.filter((row) => !row.missing)
+  const missing = rows.filter((row) => row.missing)
+  const parts = [
+    ...scored.map((row) => `${row.label} total ${reportScoreText(row.total)}`),
+    missing.length
+      ? `Missing space types: ${missing.map((row) => row.label).join(", ")}. These are accounted for in Space Sufficiency`
+      : "",
+  ].filter(Boolean)
+  if (!parts.length) return `${focusLabel} space type scores by category. No scores yet.`
+  return `${focusLabel} space type scores by category. ${parts.join(". ")}.`
+}
+
 export function categoryScore(node: ScoreNode | null | undefined, category: string): number | null {
   const match = node?.children?.find((child) => child.label === category)
   return match?.score ?? null
