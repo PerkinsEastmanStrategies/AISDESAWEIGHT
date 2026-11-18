@@ -611,7 +611,7 @@ export function CampusReport({
                   [Address]
                 </p>
                 <p className="mt-1 text-xs" style={{ color: hexToRgba("#ffffff", 0.62) }}>
-                  Scores as of {scoresAsOf || prepared} · Prepared {prepared} · Perkins Eastman · AISD ESA
+                  Scores include QA edits · Snapshot {scoresAsOf || prepared} · Prepared {prepared} · Perkins Eastman · AISD ESA
                 </p>
               </div>
               <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-white shadow-inner">

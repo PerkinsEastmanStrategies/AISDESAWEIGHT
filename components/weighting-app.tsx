@@ -33,7 +33,8 @@ import {
   withHandoffSchoolName,
   type QaHandoff,
 } from "@/lib/qa-handoff"
-import { fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
+import { applyEditsToSnapshot, fetchQaEditsForSchools, fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
+import type { QaEditRecord } from "@/lib/qa-edits"
 import { fetchSchoolCatalog, fetchSchoolSnapshot, isQaTestSchool, refreshWalkedSchools } from "@/lib/school-catalog"
 import { scoreSchool } from "@/lib/scoring"
 import {
@@ -133,9 +134,45 @@ function useSchoolSnapshots(requestKey: string, epoch: number) {
   return { snapshots, loadError, setLoadError }
 }
 
+function useQaEdits(requestKey: string, epoch: number) {
+  const [edits, setEdits] = useState<QaEditRecord[]>([])
+  const [ready, setReady] = useState(!requestKey)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const ids = requestKey ? requestKey.split("|").filter(Boolean) : []
+    if (!ids.length) {
+      setEdits([])
+      setReady(true)
+      setError(null)
+      return
+    }
+    let cancelled = false
+    setReady(false)
+    setError(null)
+    fetchQaEditsForSchools(ids)
+      .then((rows) => {
+        if (cancelled) return
+        setEdits(rows)
+        setReady(true)
+      })
+      .catch((caught) => {
+        if (cancelled) return
+        setEdits([])
+        setReady(false)
+        setError(caught instanceof Error ? caught.message : "Could not load QA edits")
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [requestKey, epoch])
+
+  return { qaEdits: edits, qaEditsReady: ready, qaEditsError: error }
+}
+
 function workstreamCopy(view: Workstream, qaPane: QaPane): string {
   if (view === "report") {
-    return "Campus assessment report with overall scores, observations, and focus-area space type detail"
+    return "Campus assessment report using QA-edited answers, overall scores, observations, and focus-area space type detail"
   }
   if (view === "explorer") {
     return "Weighting Explorer: compare walked schools and watch scores move as weights change"
@@ -277,6 +314,8 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
           ? levelOptions.map((school) => school.schoolId).join("|")
           : ""
   const { snapshots, loadError, setLoadError } = useSchoolSnapshots(snapshotKey, snapshotEpoch)
+  const reportEditKey = view === "report" ? snapshotKey : ""
+  const { qaEdits, qaEditsReady, qaEditsError } = useQaEdits(reportEditKey, snapshotEpoch)
 
   async function refreshSchools() {
     setRefreshing(true)
@@ -304,6 +343,10 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   function prepareSnapshot(snapshot: SchoolSnapshot) {
     const kept = omitDiscardedRooms(snapshot, discardedRooms)
     return levelWeights ? alignSnapshotToWeights(kept, levelWeights) : kept
+  }
+
+  function prepareReportSnapshot(snapshot: SchoolSnapshot) {
+    return prepareSnapshot(applyEditsToSnapshot(snapshot, qaEdits))
   }
 
   useEffect(() => {
@@ -351,18 +394,20 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     view === "aisd" ? aisdOptions : view === "finalized" ? finalizedOptions : view === "internal" ? internalOptions : levelOptions
   const fleetCards = useMemo(() => {
     if (!showingFleet || !resolver || !levelWeights) return []
+    if (view === "report" && !qaEditsReady) return []
     const scored = fleetSource
       .map((option) => {
         const snapshot = snapshots[option.schoolId]
         if (!snapshot) return null
+        const named = { ...snapshot, schoolId: option.schoolId, schoolName: option.schoolName }
         return scoreSchool(
-          prepareSnapshot({ ...snapshot, schoolId: option.schoolId, schoolName: option.schoolName }),
+          view === "report" ? prepareReportSnapshot(named) : prepareSnapshot(named),
           resolver,
         )
       })
       .filter((card): card is NonNullable<typeof card> => Boolean(card))
     return view === "aisd" || view === "finalized" ? withHandoffSchoolName(scored, handoffs) : scored
-  }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms, view, handoffs])
+  }, [showingFleet, resolver, levelWeights, fleetSource, snapshots, discardedRooms, view, handoffs, qaEdits, qaEditsReady])
   const qaAligned = useMemo(() => {
     if (!showingQaCampus || !levelWeights) return null
     const snapshot = snapshots[activeQaSchoolId]
@@ -377,11 +422,11 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     return { ...scored, schoolId: option.schoolId, schoolName: option.schoolName }
   }, [qaAligned, resolver, baseline, qaOptions, activeQaSchoolId])
   const reportCard = useMemo(() => {
-    if (view !== "report" || !resolver || !levelWeights) return null
+    if (view !== "report" || !resolver || !levelWeights || !qaEditsReady) return null
     const snapshot = snapshots[reportSchoolId]
     if (!snapshot) return null
-    return scoreSchool(prepareSnapshot(snapshot), resolver)
-  }, [view, resolver, levelWeights, snapshots, reportSchoolId, discardedRooms])
+    return scoreSchool(prepareReportSnapshot(snapshot), resolver)
+  }, [view, resolver, levelWeights, snapshots, reportSchoolId, discardedRooms, qaEdits, qaEditsReady])
   const reportSchool = levelOptions.find((school) => school.schoolId === reportSchoolId) ?? null
   const fleetPending = showingFleet && fleetSource.some((school) => !snapshots[school.schoolId])
   const activeHandoff = handoffForSchool(handoffs, activeQaSchoolId)
@@ -919,11 +964,14 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
                   onChange={setReportSchoolId}
                 />
                 <p className="mt-2 text-xs text-slate-500">
-                  Uses Original Categories for now (Infrastructure, Amenities, Occupant Experience, Function).
+                  Uses saved QA answer edits and revised category weights. Grade-type averages use the same edited scores.
                 </p>
               </div>
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
-              {reportSchoolId && !reportCard ? <p className="text-sm text-slate-500">Loading campus report…</p> : null}
+              {qaEditsError ? <p className="text-sm text-red-600">{qaEditsError}</p> : null}
+              {reportSchoolId && !reportCard && !qaEditsError ? (
+                <p className="text-sm text-slate-500">Loading campus report…</p>
+              ) : null}
               {reportCard && reportSchool ? (
                 <CampusReport
                   card={reportCard}

@@ -8,7 +8,7 @@ import {
 import type { QaEditRecord } from "@/lib/qa-edits"
 import { visibleQaHandoffs, type QaHandoff } from "@/lib/qa-handoff"
 import { collapseSelectAllQuestionScores } from "@/lib/esa-question-dependencies"
-import type { ScoredRoom, ScoredUnit } from "@/lib/types"
+import type { SchoolSnapshot, ScoredRoom, ScoredUnit } from "@/lib/types"
 
 async function readJson<T>(response: Response): Promise<T> {
   const text = await response.text()
@@ -23,6 +23,18 @@ export async function fetchQaEdits(schoolId: string): Promise<QaEditRecord[]> {
   const response = await fetch(`/api/qa/edits?schoolId=${encodeURIComponent(schoolId)}`, {
     cache: "no-store",
   })
+  const data = await readJson<{ edits: QaEditRecord[] }>(response)
+  return data.edits ?? []
+}
+
+export async function fetchQaEditsForSchools(schoolIds: string[]): Promise<QaEditRecord[]> {
+  const ids = [...new Set(schoolIds.map((id) => id.trim()).filter(Boolean))]
+  if (!ids.length) return []
+  const query =
+    ids.length === 1
+      ? `schoolId=${encodeURIComponent(ids[0]!)}`
+      : `schoolIds=${ids.map((id) => encodeURIComponent(id)).join(",")}`
+  const response = await fetch(`/api/qa/edits?${query}`, { cache: "no-store" })
   const data = await readJson<{ edits: QaEditRecord[] }>(response)
   return data.edits ?? []
 }
@@ -51,6 +63,14 @@ export async function saveQaHandoffLive(handoff: QaHandoff): Promise<QaHandoff> 
   })
   const data = await readJson<{ handoff: QaHandoff }>(response)
   return data.handoff
+}
+
+export function applyEditsToSnapshot(snapshot: SchoolSnapshot, edits: QaEditRecord[]): SchoolSnapshot {
+  const schoolEdits = edits.filter((edit) => edit.schoolId === snapshot.schoolId)
+  return {
+    ...snapshot,
+    rooms: applyEditsToRooms(snapshot.rooms, schoolEdits, snapshot.schoolClass),
+  }
 }
 
 export function applyEditsToRooms(

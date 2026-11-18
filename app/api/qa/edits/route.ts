@@ -175,15 +175,28 @@ async function writeLiveEsaAnswer(input: {
   ])
 }
 
+function requestedSchoolIds(url: URL): string[] {
+  const single = url.searchParams.get("schoolId")?.trim() ?? ""
+  const many = (url.searchParams.get("schoolIds") ?? "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean)
+  return [...new Set([single, ...many].filter(Boolean))]
+}
+
 export async function GET(request: Request) {
   try {
-    const schoolId = new URL(request.url).searchParams.get("schoolId")?.trim() ?? ""
-    if (!schoolId) {
+    const schoolIds = requestedSchoolIds(new URL(request.url))
+    if (!schoolIds.length) {
       return NextResponse.json({ error: "schoolId is required" }, { status: 400 })
     }
+    const filter =
+      schoolIds.length === 1
+        ? `school_id=eq.${encodeURIComponent(schoolIds[0]!)}`
+        : inFilter("school_id", schoolIds)
     const rows = await supabaseRestSelect<QaEditRow>(
       "esa_qa_edits",
-      `school_id=eq.${encodeURIComponent(schoolId)}&select=school_id,room_id,question_id,selected,previous,editor,reason,edited_at`,
+      `${filter}&select=school_id,room_id,question_id,selected,previous,editor,reason,edited_at`,
     )
     return NextResponse.json({ edits: rows.map(toRecord) })
   } catch (error) {
