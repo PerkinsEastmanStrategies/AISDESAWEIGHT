@@ -72,8 +72,8 @@ export function QaDiscardDialog({
         </div>
         <p className="mt-4 text-sm leading-relaxed text-slate-700">
           This <span className="font-semibold text-rose-800">fully removes</span> this room from {schoolName}.
-          It will disappear from Internal QA, AISD QA, All schools, reports, and Weighting Explorer. The rest
-          of the campus survey stays.
+          It will disappear from Internal QA, AISD QA, All schools, reports, and Weighting Explorer, and it
+          stays removed after a snapshot refresh. The rest of the campus survey stays.
         </p>
         <p className="mt-2 text-sm font-medium text-slate-900">
           Be sure. There is no restore from this screen.

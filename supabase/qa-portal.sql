@@ -67,4 +67,22 @@ create table if not exists esa_qa_school_snapshots (
 
 alter table esa_qa_school_snapshots enable row level security;
 
+-- Rooms discarded in Internal QA. Snapshot refresh must not bring these back.
+create table if not exists esa_qa_discarded_rooms (
+  school_id     text not null,
+  room_id       text not null,
+  room_name     text not null default '',
+  space_type    text not null default '',
+  neighborhood  text not null default '',
+  discarded_by  text not null default '',
+  discarded_at  timestamptz not null default now(),
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now(),
+  primary key (school_id, room_id)
+);
+
+create index if not exists esa_qa_discarded_rooms_school_idx on esa_qa_discarded_rooms (school_id);
+
+alter table esa_qa_discarded_rooms enable row level security;
+
 -- Service role (used by this app's API) bypasses RLS. No anon policies on purpose.

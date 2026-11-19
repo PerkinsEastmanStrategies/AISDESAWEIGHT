@@ -18,9 +18,12 @@ import { WeightEditor } from "@/components/weight-editor"
 import {
   discardQaRoom,
   loadDiscardedRooms,
+  mergeDiscardedRooms,
   omitDiscardedRooms,
+  saveDiscardedRooms,
   type DiscardedRoom,
 } from "@/lib/qa-discard"
+import { loadSavedEditorName, type QaEditRecord } from "@/lib/qa-edits"
 import {
   aisdQueueEntries,
   baseSchoolIdFromHandoff,
@@ -33,8 +36,14 @@ import {
   withHandoffSchoolName,
   type QaHandoff,
 } from "@/lib/qa-handoff"
-import { applyEditsToSnapshot, fetchQaEditsForSchools, fetchQaHandoffs, saveQaHandoffLive } from "@/lib/qa-live"
-import type { QaEditRecord } from "@/lib/qa-edits"
+import {
+  applyEditsToSnapshot,
+  fetchQaDiscards,
+  fetchQaEditsForSchools,
+  fetchQaHandoffs,
+  saveQaDiscardLive,
+  saveQaHandoffLive,
+} from "@/lib/qa-live"
 import { fetchSchoolCatalog, fetchSchoolSnapshot, isQaTestSchool, refreshWalkedSchools } from "@/lib/school-catalog"
 import { scoreSchool } from "@/lib/scoring"
 import {
@@ -221,6 +230,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
   const [refreshing, setRefreshing] = useState(false)
   const [refreshNote, setRefreshNote] = useState<string | null>(null)
   const [discardedRooms, setDiscardedRooms] = useState<DiscardedRoom[]>([])
+  const [discardError, setDiscardError] = useState<string | null>(null)
   const [weightFiles, setWeightFiles] = useState<Partial<Record<CategorySchemeId, WeightFile>>>({})
   const [overridesByScheme, setOverridesByScheme] = useState(emptyOverrideMap)
   const overrides = overridesByScheme[schemeId][schoolLevel]
@@ -233,6 +243,23 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
 
   useEffect(() => {
     setDiscardedRooms(loadDiscardedRooms())
+    fetchQaDiscards()
+      .then(async (remote) => {
+        const local = loadDiscardedRooms()
+        const merged = mergeDiscardedRooms([local, remote])
+        setDiscardedRooms(merged)
+        saveDiscardedRooms(merged)
+        const remoteKeys = new Set(remote.map((item) => `${item.schoolId}::${item.roomId}`))
+        const unsynced = local.filter((item) => !remoteKeys.has(`${item.schoolId}::${item.roomId}`))
+        if (!unsynced.length) return
+        const saved = await Promise.all(unsynced.map((item) => saveQaDiscardLive(item)))
+        const next = mergeDiscardedRooms([merged, saved])
+        setDiscardedRooms(next)
+        saveDiscardedRooms(next)
+      })
+      .catch((error) => {
+        setDiscardError(error instanceof Error ? error.message : "Could not load discarded rooms")
+      })
     fetchQaHandoffs()
       .then((rows) => {
         setHandoffs(visibleQaHandoffs(rows))
@@ -550,10 +577,29 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
     setQaPane("campus")
   }
 
-  function discardActiveRoom(roomId: string) {
-    if (!qaSchoolId) return
-    setDiscardedRooms(discardQaRoom(qaSchoolId, roomId))
-    if (qaRoomId === roomId) setQaRoomId(null)
+  function discardActiveRoom(room: {
+    roomId: string
+    roomName: string
+    spaceType: string
+    neighborhood?: string
+  }) {
+    const schoolId = activeQaSchoolId
+    if (!schoolId) return
+    const entry: DiscardedRoom = {
+      schoolId,
+      roomId: room.roomId,
+      roomName: room.roomName,
+      spaceType: room.spaceType,
+      neighborhood: room.neighborhood,
+      discardedBy: loadSavedEditorName(),
+      discardedAt: new Date().toISOString(),
+    }
+    setDiscardedRooms(discardQaRoom(entry))
+    if (qaRoomId === room.roomId) setQaRoomId(null)
+    setDiscardError(null)
+    void saveQaDiscardLive(entry).catch((error) => {
+      setDiscardError(error instanceof Error ? error.message : "Could not save discarded room")
+    })
   }
 
   useEffect(() => {
@@ -765,6 +811,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
             <>
               {refreshNote ? <p className="text-sm text-slate-600">{refreshNote}</p> : null}
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
+              {discardError ? <p className="text-sm text-red-600">{discardError}</p> : null}
               {view === "aisd" && aisdOptions.length === 0 ? (
                 <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-200">
                   <p className="text-sm font-medium text-slate-900">No campuses in AISD QA yet</p>
@@ -860,6 +907,7 @@ export function WeightingApp({ schoolOptions }: { schoolOptions: SchoolIndexEntr
               </div>
               {refreshNote ? <p className="text-sm text-slate-600">{refreshNote}</p> : null}
               {loadError ? <p className="text-sm text-red-600">{loadError}</p> : null}
+              {discardError ? <p className="text-sm text-red-600">{discardError}</p> : null}
               {handoffError ? <p className="text-sm text-red-600">{handoffError}</p> : null}
               {activeQaSchoolId && !qaCard ? <p className="text-sm text-slate-500">Loading campus…</p> : null}
               {view === "aisd" && qaCard && activeHandoff ? <AisdHandoffBanner handoff={activeHandoff} /> : null}

@@ -5,6 +5,7 @@ import {
   scoreForScoreId,
   type SurveyType,
 } from "@aisd/shared"
+import type { DiscardedRoom } from "@/lib/qa-discard"
 import type { QaEditRecord } from "@/lib/qa-edits"
 import { visibleQaHandoffs, type QaHandoff } from "@/lib/qa-handoff"
 import { collapseSelectAllQuestionScores } from "@/lib/esa-question-dependencies"
@@ -63,6 +64,22 @@ export async function saveQaHandoffLive(handoff: QaHandoff): Promise<QaHandoff> 
   })
   const data = await readJson<{ handoff: QaHandoff }>(response)
   return data.handoff
+}
+
+export async function fetchQaDiscards(): Promise<DiscardedRoom[]> {
+  const response = await fetch("/api/qa/discards", { cache: "no-store" })
+  const data = await readJson<{ discards: DiscardedRoom[] }>(response)
+  return data.discards ?? []
+}
+
+export async function saveQaDiscardLive(discard: DiscardedRoom): Promise<DiscardedRoom> {
+  const response = await fetch("/api/qa/discards", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(discard),
+  })
+  const data = await readJson<{ discard: DiscardedRoom }>(response)
+  return data.discard
 }
 
 export function applyEditsToSnapshot(snapshot: SchoolSnapshot, edits: QaEditRecord[]): SchoolSnapshot {

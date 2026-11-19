@@ -66,7 +66,12 @@ export function SchoolQaPanel({
   selectedRoomId: string | null
   onSelectRoom: (roomId: string | null) => void
   allowDiscard?: boolean
-  onDiscardRoom?: (roomId: string) => void
+  onDiscardRoom?: (room: {
+    roomId: string
+    roomName: string
+    spaceType: string
+    neighborhood?: string
+  }) => void
   allowScoringNotes?: boolean
   resolver?: WeightResolver
   baseline?: WeightResolver
@@ -477,7 +482,7 @@ export function SchoolQaPanel({
                     onCancel={() => setDiscardOpen(false)}
                     onConfirm={() => {
                       setDiscardOpen(false)
-                      onDiscardRoom?.(selectedSnapshotRoom.roomId)
+                      onDiscardRoom?.(selectedSnapshotRoom)
                     }}
                   />
                 ) : null}
