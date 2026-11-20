@@ -3,6 +3,7 @@ import {
   isAbsentSpaceTypeRoomId,
   isInventoryOption,
   isNotAbleToAssessOption,
+  isUnscoredAtSchoolClass,
   lookupTableEntry,
   lookupTableEntryBySpaceType,
   mergeTraditionalStudioSizeScore,
@@ -65,7 +66,7 @@ interface ResponseRow {
   photos?: string[] | null
 }
 
-export const SNAPSHOT_UNITS_FORMAT = 6
+export const SNAPSHOT_UNITS_FORMAT = 7
 
 function asResponseValue(value: unknown): string | string[] {
   if (Array.isArray(value)) return value.map((item) => String(item))
@@ -272,7 +273,11 @@ function scoreRoomSnapshot(room: RoomRow, responses: ResponseRow[], schoolClass:
   }
 
   const skipped = rubric.questions
-    .filter((question) => isSkippedDependentQuestion(question.questionId, roomSession.responses, rubric.questions))
+    .filter(
+      (question) =>
+        isSkippedDependentQuestion(question.questionId, roomSession.responses, rubric.questions) ||
+        isUnscoredAtSchoolClass(question.questionId, schoolClass),
+    )
     .map((question) => question.questionId)
 
   let result = scoreRoom(

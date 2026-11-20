@@ -1,4 +1,4 @@
-import { SCORE_FAIR, SCORE_GOOD } from "@/lib/format"
+import { scoreBandId, type ScoreBandId } from "@aisd/shared"
 
 export const AISD_NAVY = "#243A76"
 export const AISD_BLUE = "#557DBF"
@@ -81,17 +81,28 @@ export function tintHex(hex: string, amount = 0.82): string {
   return mixHex(hex, "#ffffff", amount)
 }
 
+const GOOD_PALETTE_BAND: Record<ScoreBandId, (palette: ReportPalette) => string> = {
+  excellent: (palette) => palette.accent,
+  good: (palette) => mixHex(palette.accent, palette.blue, 0.28),
+  fair: (palette) => palette.blue,
+  poor: (palette) => mixHex(palette.blue, palette.navy, 0.42),
+  critical: (palette) => palette.navy,
+}
+
+const WORST_PALETTE_BAND: Record<ScoreBandId, (palette: ReportPalette) => string> = {
+  excellent: (palette) => palette.navy,
+  good: (palette) => mixHex(palette.navy, palette.blue, 0.38),
+  fair: (palette) => palette.blue,
+  poor: (palette) => mixHex(palette.blue, palette.accent, 0.5),
+  critical: (palette) => palette.accent,
+}
+
 /** Solid color for the score band in the selected palette. */
 export function scoreBandHex(score: number | null | undefined, palette: ReportPalette): string {
-  if (score == null || Number.isNaN(score)) return "#94a3b8"
-  if (palette.id === "worst") {
-    if (score >= SCORE_GOOD) return palette.navy
-    if (score >= SCORE_FAIR) return palette.blue
-    return palette.accent
-  }
-  if (score >= SCORE_GOOD) return palette.accent
-  if (score >= SCORE_FAIR) return palette.blue
-  return palette.navy
+  const band = scoreBandId(score)
+  if (!band) return "#94a3b8"
+  const map = palette.id === "worst" ? WORST_PALETTE_BAND : GOOD_PALETTE_BAND
+  return map[band](palette)
 }
 
 export function scoreBandColors(

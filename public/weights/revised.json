@@ -877,13 +877,6 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -900,13 +893,6 @@
       "spaceType": "Campus",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1010,13 +996,6 @@
       "schoolLevel": "ES",
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1032,13 +1011,6 @@
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
       "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
       "weight": 6
     },
     {
@@ -1073,13 +1045,6 @@
       "schoolLevel": "ES",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1108,13 +1073,6 @@
       "schoolLevel": "ES",
       "focusArea": "Studios",
       "spaceType": "Early childhood studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Early childhood studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1138,13 +1096,6 @@
       "spaceType": "Traditional Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1173,13 +1124,6 @@
       "spaceType": "Art Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Art Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1208,13 +1152,6 @@
       "spaceType": "Maker Space",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Maker Space",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1243,13 +1180,6 @@
       "spaceType": "Music Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Music Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1278,13 +1208,6 @@
       "spaceType": "Early childhood special education studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Early childhood special education studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1341,13 +1264,6 @@
       "spaceType": "Sensory Motor Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1397,13 +1313,6 @@
       "spaceType": "SPED Flex Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1437,22 +1346,8 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1472,13 +1367,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1507,13 +1395,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1537,13 +1418,6 @@
       "spaceType": "Dining Commons",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1600,13 +1474,6 @@
       "spaceType": "Library Media Center",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -1640,13 +1507,6 @@
       "schoolLevel": "ES",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "weight": 12
     },
@@ -1661,13 +1521,6 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1684,13 +1537,6 @@
       "spaceType": "Campus",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -1794,13 +1640,6 @@
       "schoolLevel": "MS",
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1816,13 +1655,6 @@
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
       "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
       "weight": 6
     },
     {
@@ -1857,13 +1689,6 @@
       "schoolLevel": "MS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1892,13 +1717,6 @@
       "schoolLevel": "MS",
       "focusArea": "Studios",
       "spaceType": "Maker Space",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -1922,13 +1740,6 @@
       "spaceType": "Science",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -1990,13 +1801,6 @@
       "schoolLevel": "MS",
       "focusArea": "Studios",
       "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2020,13 +1824,6 @@
       "spaceType": "Sensory Motor Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2081,13 +1878,6 @@
       "schoolLevel": "MS",
       "focusArea": "Special Education",
       "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2111,13 +1901,6 @@
       "spaceType": "Vocational Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2151,13 +1934,6 @@
       "schoolLevel": "MS",
       "focusArea": "Visual Arts",
       "spaceType": "2D Art Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Visual Arts",
-      "spaceType": "2D Art Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2181,13 +1957,6 @@
       "spaceType": "3D Art Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2284,13 +2053,6 @@
       "schoolLevel": "MS",
       "focusArea": "CTE",
       "spaceType": "Low Intensity Lab",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2319,22 +2081,8 @@
       "schoolLevel": "MS",
       "focusArea": "CTE",
       "spaceType": "Medium Intensity Lab",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
       "category": "Occupant Experience",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2356,13 +2104,6 @@
       "spaceType": "Dance",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2389,13 +2130,6 @@
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
       "spaceType": "Music Suite",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Music Suite",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2419,13 +2153,6 @@
       "spaceType": "Rehearsal Hall",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2459,13 +2186,6 @@
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
       "spaceType": "Theater Arts Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2480,22 +2200,8 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2515,13 +2221,6 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2545,13 +2244,6 @@
       "spaceType": "Open Collaboration",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2620,13 +2312,6 @@
       "schoolLevel": "MS",
       "focusArea": "Athletics and Wellness",
       "spaceType": "Multi-Purpose Gym",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2732,13 +2417,6 @@
       "schoolLevel": "MS",
       "focusArea": "Shared Spaces",
       "spaceType": "Dining Commons",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2790,13 +2468,6 @@
       "spaceType": "Library Media Center",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -2830,13 +2501,6 @@
       "schoolLevel": "MS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "weight": 12
     },
@@ -2851,13 +2515,6 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -2874,13 +2531,6 @@
       "spaceType": "Campus",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -2984,13 +2634,6 @@
       "schoolLevel": "HS",
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3006,13 +2649,6 @@
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
       "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
       "weight": 6
     },
     {
@@ -3047,13 +2683,6 @@
       "schoolLevel": "HS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3082,13 +2711,6 @@
       "schoolLevel": "HS",
       "focusArea": "Studios",
       "spaceType": "Maker Space",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3112,13 +2734,6 @@
       "spaceType": "Science",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3180,13 +2795,6 @@
       "schoolLevel": "HS",
       "focusArea": "Studios",
       "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3210,13 +2818,6 @@
       "spaceType": "Sensory Motor Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3271,13 +2872,6 @@
       "schoolLevel": "HS",
       "focusArea": "Special Education",
       "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3301,13 +2895,6 @@
       "spaceType": "Vocational Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3341,13 +2928,6 @@
       "schoolLevel": "HS",
       "focusArea": "Visual Arts",
       "spaceType": "2D Art Studio",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Visual Arts",
-      "spaceType": "2D Art Studio",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3371,13 +2951,6 @@
       "spaceType": "3D Art Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3474,13 +3047,6 @@
       "schoolLevel": "HS",
       "focusArea": "CTE",
       "spaceType": "High Intensity Lab",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "High Intensity Lab",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3504,13 +3070,6 @@
       "spaceType": "Low Intensity Lab",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3544,13 +3103,6 @@
       "schoolLevel": "HS",
       "focusArea": "CTE",
       "spaceType": "Medium Intensity Lab",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3567,13 +3119,6 @@
       "spaceType": "Auditorium",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3607,13 +3152,6 @@
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
       "spaceType": "Black Box",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Black Box",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3637,13 +3175,6 @@
       "spaceType": "Dance",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3665,13 +3196,6 @@
       "spaceType": "Music Suite",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Music Suite",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3700,13 +3224,6 @@
       "spaceType": "Rehearsal Hall",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3735,13 +3252,6 @@
       "spaceType": "Theater Arts Studio",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3768,22 +3278,8 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3798,13 +3294,6 @@
       "spaceType": "Neighborhood",
       "category": "Function",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3833,13 +3322,6 @@
       "spaceType": "Open Collaboration",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -3887,13 +3369,6 @@
       "schoolLevel": "HS",
       "focusArea": "Athletics and Wellness",
       "spaceType": "Competition Gym",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Competition Gym",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -3938,13 +3413,6 @@
       "spaceType": "Multi-Purpose Gym",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -4076,13 +3544,6 @@
       "schoolLevel": "HS",
       "focusArea": "Shared Spaces",
       "spaceType": "Dining Commons",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
       "category": "Occupant Experience",
       "weight": 6
     },
@@ -4134,13 +3595,6 @@
       "spaceType": "Library Media Center",
       "category": "Infrastructure",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -4174,13 +3628,6 @@
       "schoolLevel": "HS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "weight": 12
     },
@@ -4204,6 +3651,559 @@
       "spaceType": "Kitchen",
       "category": "Occupant Experience",
       "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Early childhood studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Art Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Music Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Early childhood special education studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Visual Arts",
+      "spaceType": "2D Art Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Music Suite",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Visual Arts",
+      "spaceType": "2D Art Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "High Intensity Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Black Box",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Music Suite",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Competition Gym",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "weight": 0
     }
   ],
   "subcategories": [
@@ -4219,14 +4219,6 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -4275,14 +4267,6 @@
       "schoolLevel": "ES",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Campus",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -4340,14 +4324,6 @@
       "focusArea": "Administration",
       "spaceType": "Admin Offices",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Administration",
-      "spaceType": "Admin Offices",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -4516,14 +4492,6 @@
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -4542,14 +4510,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -4595,30 +4555,6 @@
       "schoolLevel": "ES",
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
       "category": "Occupant Experience",
       "subcategory": "Occupant Comfort",
       "weight": 9
@@ -4675,25 +4611,9 @@
       "schoolLevel": "ES",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -4748,14 +4668,6 @@
       "focusArea": "Studios",
       "spaceType": "Early childhood studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Early childhood studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -4774,14 +4686,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Early childhood studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -4844,14 +4748,6 @@
       "focusArea": "Studios",
       "spaceType": "Traditional Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -4870,14 +4766,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -4940,14 +4828,6 @@
       "focusArea": "Shared Studios",
       "spaceType": "Art Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Art Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -4966,14 +4846,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Art Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5036,14 +4908,6 @@
       "focusArea": "Shared Studios",
       "spaceType": "Maker Space",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Maker Space",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -5062,14 +4926,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Maker Space",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5155,14 +5011,6 @@
       "schoolLevel": "ES",
       "focusArea": "Shared Studios",
       "spaceType": "Music Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Studios",
-      "spaceType": "Music Studio",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -5220,14 +5068,6 @@
       "focusArea": "Special Education",
       "spaceType": "Early childhood special education studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Early childhood special education studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -5246,14 +5086,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Early childhood special education studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5324,14 +5156,6 @@
       "focusArea": "Special Education",
       "spaceType": "Life Skills Studio",
       "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Life Skills Studio",
-      "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
     },
@@ -5364,14 +5188,6 @@
       "focusArea": "Special Education",
       "spaceType": "Sensory Motor Lab",
       "category": "Amenities",
-      "subcategory": "Furniture & Equipment",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Amenities",
       "subcategory": "Storage",
       "weight": 6
     },
@@ -5398,14 +5214,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5508,23 +5316,7 @@
       "focusArea": "Special Education",
       "spaceType": "SPED Flex Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
       "weight": 6
     },
     {
@@ -5534,14 +5326,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5619,25 +5403,9 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5675,14 +5443,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
@@ -5715,14 +5475,6 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Open Collaboration",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -5739,25 +5491,9 @@
       "schoolLevel": "ES",
       "focusArea": "Neighborhoods",
       "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Amenities",
-      "subcategory": "Display & Presentation",
-      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -5806,14 +5542,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -5869,14 +5597,6 @@
       "spaceType": "ES Gymnasium",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "ES Gymnasium",
-      "category": "Function",
-      "subcategory": "Availability",
       "weight": 6
     },
     {
@@ -5950,14 +5670,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -6027,14 +5739,6 @@
       "schoolLevel": "ES",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "ES",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "subcategory": "Occupant Comfort",
       "weight": 9
@@ -6059,14 +5763,6 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -6115,14 +5811,6 @@
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Campus",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -6180,14 +5868,6 @@
       "focusArea": "Administration",
       "spaceType": "Admin Offices",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Administration",
-      "spaceType": "Admin Offices",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6356,14 +6036,6 @@
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6382,14 +6054,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -6435,30 +6099,6 @@
       "schoolLevel": "MS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
       "category": "Occupant Experience",
       "subcategory": "Occupant Comfort",
       "weight": 9
@@ -6515,33 +6155,9 @@
       "schoolLevel": "MS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -6596,14 +6212,6 @@
       "focusArea": "Studios",
       "spaceType": "Maker Space",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6622,14 +6230,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -6692,14 +6292,6 @@
       "focusArea": "Studios",
       "spaceType": "Science",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6718,14 +6310,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -6820,14 +6404,6 @@
       "focusArea": "Studios",
       "spaceType": "Traditional Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -6846,14 +6422,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -6878,14 +6446,6 @@
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Amenities",
-      "subcategory": "Furniture & Equipment",
-      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -6918,14 +6478,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7028,23 +6580,7 @@
       "focusArea": "Special Education",
       "spaceType": "SPED Flex Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
       "weight": 6
     },
     {
@@ -7054,14 +6590,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7124,24 +6652,8 @@
       "focusArea": "Special Education",
       "spaceType": "Vocational Lab",
       "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7235,14 +6747,6 @@
       "schoolLevel": "MS",
       "focusArea": "Visual Arts",
       "spaceType": "2D Art Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Visual Arts",
-      "spaceType": "2D Art Studio",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -7300,14 +6804,6 @@
       "focusArea": "Visual Arts",
       "spaceType": "3D Art Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -7326,14 +6822,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7484,14 +6972,6 @@
       "focusArea": "CTE",
       "spaceType": "CTE Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "CTE Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -7572,22 +7052,6 @@
       "focusArea": "CTE",
       "spaceType": "Low Intensity Lab",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -7606,14 +7070,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7675,14 +7131,6 @@
       "schoolLevel": "MS",
       "focusArea": "CTE",
       "spaceType": "Medium Intensity Lab",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -7694,14 +7142,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7738,14 +7178,6 @@
     {
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
       "spaceType": "Dance",
       "category": "Amenities",
       "subcategory": "Display & Presentation",
@@ -7780,14 +7212,6 @@
       "focusArea": "Performing Arts",
       "spaceType": "Dance",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -7806,14 +7230,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -7875,14 +7291,6 @@
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
       "spaceType": "Music Suite",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Music Suite",
       "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "weight": 6
@@ -7901,14 +7309,6 @@
       "spaceType": "Rehearsal Hall",
       "category": "Amenities",
       "subcategory": "Display & Presentation",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Amenities",
-      "subcategory": "Furniture & Equipment",
       "weight": 6
     },
     {
@@ -7942,14 +7342,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8003,14 +7395,6 @@
       "schoolLevel": "MS",
       "focusArea": "Performing Arts",
       "spaceType": "Theater Arts Studio",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -8022,14 +7406,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8075,25 +7451,9 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8131,14 +7491,6 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Neighborhood",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
@@ -8171,14 +7523,6 @@
       "schoolLevel": "MS",
       "focusArea": "Neighborhoods",
       "spaceType": "Open Collaboration",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -8190,14 +7534,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8245,14 +7581,6 @@
       "spaceType": "Locker Room",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Locker Room",
-      "category": "Function",
-      "subcategory": "Availability",
       "weight": 6
     },
     {
@@ -8308,14 +7636,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Multi-Purpose Gym",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -8334,14 +7654,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8428,14 +7740,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Practice Gym",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Practice Gym",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -8484,14 +7788,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Weight Room",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Weight Room",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -8509,14 +7805,6 @@
       "spaceType": "Weight Room",
       "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Amenities",
-      "subcategory": "Display & Presentation",
       "weight": 6
     },
     {
@@ -8566,14 +7854,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8742,14 +8022,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -8819,14 +8091,6 @@
       "schoolLevel": "MS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "MS",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "subcategory": "Occupant Comfort",
       "weight": 9
@@ -8851,14 +8115,6 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Entry Experience",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Entry Experience",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -8907,14 +8163,6 @@
       "schoolLevel": "HS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Campus",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Arrival Experience and Campus Support",
-      "spaceType": "Campus",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -8972,14 +8220,6 @@
       "focusArea": "Administration",
       "spaceType": "Admin Offices",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Administration",
-      "spaceType": "Admin Offices",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9148,14 +8388,6 @@
       "focusArea": "Administration",
       "spaceType": "Professional Learning Center",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9174,14 +8406,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Administration",
-      "spaceType": "Professional Learning Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9227,30 +8451,6 @@
       "schoolLevel": "HS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Community Partners Suite",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
-      "category": "Infrastructure",
-      "subcategory": "Utilities & Technology",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Community Partners Suite",
       "category": "Occupant Experience",
       "subcategory": "Occupant Comfort",
       "weight": 9
@@ -9307,33 +8507,9 @@
       "schoolLevel": "HS",
       "focusArea": "Wrap Around Services",
       "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Function",
-      "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9388,14 +8564,6 @@
       "focusArea": "Studios",
       "spaceType": "Maker Space",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9414,14 +8582,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Maker Space",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9484,14 +8644,6 @@
       "focusArea": "Studios",
       "spaceType": "Science",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9510,14 +8662,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Science",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9612,14 +8756,6 @@
       "focusArea": "Studios",
       "spaceType": "Traditional Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -9638,14 +8774,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Studios",
-      "spaceType": "Traditional Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9670,14 +8798,6 @@
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Amenities",
-      "subcategory": "Furniture & Equipment",
-      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -9710,14 +8830,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Sensory Motor Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9820,23 +8932,7 @@
       "focusArea": "Special Education",
       "spaceType": "SPED Flex Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
       "weight": 6
     },
     {
@@ -9846,14 +8942,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "SPED Flex Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -9916,24 +9004,8 @@
       "focusArea": "Special Education",
       "spaceType": "Vocational Lab",
       "category": "Infrastructure",
-      "subcategory": "Flooring & Surface Finishes",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Special Education",
-      "spaceType": "Vocational Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10027,14 +9099,6 @@
       "schoolLevel": "HS",
       "focusArea": "Visual Arts",
       "spaceType": "2D Art Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Visual Arts",
-      "spaceType": "2D Art Studio",
       "category": "Occupant Experience",
       "subcategory": "Aesthetics",
       "weight": 6
@@ -10092,14 +9156,6 @@
       "focusArea": "Visual Arts",
       "spaceType": "3D Art Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -10118,14 +9174,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Visual Arts",
-      "spaceType": "3D Art Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10276,14 +9324,6 @@
       "focusArea": "CTE",
       "spaceType": "CTE Studio",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "CTE Studio",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -10363,14 +9403,6 @@
       "schoolLevel": "HS",
       "focusArea": "CTE",
       "spaceType": "High Intensity Lab",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "High Intensity Lab",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -10382,14 +9414,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "High Intensity Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10452,22 +9476,6 @@
       "focusArea": "CTE",
       "spaceType": "Low Intensity Lab",
       "category": "Function",
-      "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -10486,14 +9494,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Low Intensity Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10555,14 +9555,6 @@
       "schoolLevel": "HS",
       "focusArea": "CTE",
       "spaceType": "Medium Intensity Lab",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -10574,14 +9566,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "CTE",
-      "spaceType": "Medium Intensity Lab",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10635,14 +9619,6 @@
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
       "spaceType": "Auditorium",
-      "category": "Amenities",
-      "subcategory": "Storage",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
       "category": "Function",
       "subcategory": "Adjacency & Access",
       "weight": 6
@@ -10652,24 +9628,8 @@
       "focusArea": "Performing Arts",
       "spaceType": "Auditorium",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Auditorium",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10715,14 +9675,6 @@
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
       "spaceType": "Black Box",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Black Box",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -10734,14 +9686,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Black Box",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10788,14 +9732,6 @@
       "focusArea": "Performing Arts",
       "spaceType": "Dance",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -10814,14 +9750,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Dance",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -10883,14 +9811,6 @@
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
       "spaceType": "Music Suite",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Music Suite",
       "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "weight": 6
@@ -10909,14 +9829,6 @@
       "spaceType": "Rehearsal Hall",
       "category": "Amenities",
       "subcategory": "Display & Presentation",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Amenities",
-      "subcategory": "Furniture & Equipment",
       "weight": 6
     },
     {
@@ -10950,14 +9862,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Rehearsal Hall",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11011,14 +9915,6 @@
       "schoolLevel": "HS",
       "focusArea": "Performing Arts",
       "spaceType": "Theater Arts Studio",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -11030,14 +9926,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Performing Arts",
-      "spaceType": "Theater Arts Studio",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11107,14 +9995,6 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
@@ -11123,14 +10003,6 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Group Room",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Group Room",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
@@ -11158,14 +10030,6 @@
       "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Neighborhood",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11203,14 +10067,6 @@
       "schoolLevel": "HS",
       "focusArea": "Neighborhoods",
       "spaceType": "Open Collaboration",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
       "category": "Infrastructure",
       "subcategory": "Flooring & Surface Finishes",
       "weight": 6
@@ -11222,14 +10078,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Neighborhoods",
-      "spaceType": "Open Collaboration",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11308,14 +10156,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Competition Gym",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Competition Gym",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -11334,14 +10174,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Competition Gym",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11363,14 +10195,6 @@
       "schoolLevel": "HS",
       "focusArea": "Athletics and Wellness",
       "spaceType": "Locker Room",
-      "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Locker Room",
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
@@ -11420,14 +10244,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Multi-Purpose Gym",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -11446,14 +10262,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Multi-Purpose Gym",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11540,14 +10348,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "PE Fitness Room",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "PE Fitness Room",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -11573,14 +10373,6 @@
       "spaceType": "Weight Room",
       "category": "Function",
       "subcategory": "Adjacency & Access",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Weight Room",
-      "category": "Function",
-      "subcategory": "Availability",
       "weight": 6
     },
     {
@@ -11636,14 +10428,6 @@
       "focusArea": "Athletics and Wellness",
       "spaceType": "Wrestling",
       "category": "Function",
-      "subcategory": "Availability",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Athletics and Wellness",
-      "spaceType": "Wrestling",
-      "category": "Function",
       "subcategory": "Layout & Flexibility",
       "weight": 6
     },
@@ -11661,14 +10445,6 @@
       "spaceType": "Wrestling",
       "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Amenities",
-      "subcategory": "Display & Presentation",
       "weight": 6
     },
     {
@@ -11718,14 +10494,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Dining Commons",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11894,14 +10662,6 @@
       "category": "Infrastructure",
       "subcategory": "Utilities & Technology",
       "weight": 6
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Shared Spaces",
-      "spaceType": "Library Media Center",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
     },
     {
       "schoolLevel": "HS",
@@ -11971,14 +10731,6 @@
       "schoolLevel": "HS",
       "focusArea": "Outdoor",
       "spaceType": "Outdoor Spaces",
-      "category": "Observational",
-      "subcategory": "Observational",
-      "weight": 0
-    },
-    {
-      "schoolLevel": "HS",
-      "focusArea": "Outdoor",
-      "spaceType": "Outdoor Spaces",
       "category": "Occupant Experience",
       "subcategory": "Safety & Supervision",
       "weight": 12
@@ -12016,14 +10768,6 @@
       "weight": 6
     },
     {
-      "schoolLevel": "HS",
-      "focusArea": "Wrap Around Services",
-      "spaceType": "Mental Wellness and Counseling Suite",
-      "category": "Occupant Experience",
-      "subcategory": "Circulation & Egress",
-      "weight": 6
-    },
-    {
       "schoolLevel": "MS",
       "focusArea": "Arrival Experience and Campus Support",
       "spaceType": "Kitchen",
@@ -12043,6 +10787,1262 @@
       "schoolLevel": "MS",
       "focusArea": "Studios",
       "spaceType": "Science",
+      "category": "Occupant Experience",
+      "subcategory": "Circulation & Egress",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Administration",
+      "spaceType": "Admin Offices",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Function",
+      "subcategory": "Layout & Flexibility",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Early childhood studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Early childhood studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Art Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Art Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Maker Space",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Studios",
+      "spaceType": "Music Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Early childhood special education studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Early childhood special education studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Life Skills Studio",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Amenities",
+      "subcategory": "Furniture & Equipment",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Amenities",
+      "subcategory": "Display & Presentation",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "ES Gymnasium",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "ES",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Administration",
+      "spaceType": "Admin Offices",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Function",
+      "subcategory": "Layout & Flexibility",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Amenities",
+      "subcategory": "Furniture & Equipment",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Visual Arts",
+      "spaceType": "2D Art Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "CTE Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Music Suite",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Amenities",
+      "subcategory": "Furniture & Equipment",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Locker Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Practice Gym",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Weight Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Amenities",
+      "subcategory": "Display & Presentation",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "MS",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Entry Experience",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Arrival Experience and Campus Support",
+      "spaceType": "Campus",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Administration",
+      "spaceType": "Admin Offices",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Administration",
+      "spaceType": "Professional Learning Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Community Partners Suite",
+      "category": "Infrastructure",
+      "subcategory": "Utilities & Technology",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Function",
+      "subcategory": "Layout & Flexibility",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Maker Space",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Science",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Studios",
+      "spaceType": "Traditional Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Amenities",
+      "subcategory": "Furniture & Equipment",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Sensory Motor Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "SPED Flex Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Infrastructure",
+      "subcategory": "Flooring & Surface Finishes",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Special Education",
+      "spaceType": "Vocational Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Visual Arts",
+      "spaceType": "2D Art Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Visual Arts",
+      "spaceType": "3D Art Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "CTE Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "High Intensity Lab",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "High Intensity Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Function",
+      "subcategory": "Adjacency & Access",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Low Intensity Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "CTE",
+      "spaceType": "Medium Intensity Lab",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Amenities",
+      "subcategory": "Storage",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Auditorium",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Black Box",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Black Box",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Dance",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Music Suite",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Amenities",
+      "subcategory": "Furniture & Equipment",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Rehearsal Hall",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Performing Arts",
+      "spaceType": "Theater Arts Studio",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Group Room",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Neighborhood",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Neighborhoods",
+      "spaceType": "Open Collaboration",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Competition Gym",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Competition Gym",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Locker Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Multi-Purpose Gym",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "PE Fitness Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Weight Room",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Athletics and Wellness",
+      "spaceType": "Wrestling",
+      "category": "Function",
+      "subcategory": "Availability",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Amenities",
+      "subcategory": "Display & Presentation",
+      "weight": 6
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Dining Commons",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Shared Spaces",
+      "spaceType": "Library Media Center",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Outdoor",
+      "spaceType": "Outdoor Spaces",
+      "category": "Observational",
+      "subcategory": "Observational",
+      "weight": 0
+    },
+    {
+      "schoolLevel": "HS",
+      "focusArea": "Wrap Around Services",
+      "spaceType": "Mental Wellness and Counseling Suite",
       "category": "Occupant Experience",
       "subcategory": "Circulation & Egress",
       "weight": 6
@@ -13775,7 +13775,7 @@
       "subcategory": "Furniture & Equipment",
       "questionId": "PK-034",
       "question": "Select all that apply (general inventory)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "ES",
@@ -14025,7 +14025,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "PK-020",
       "question": "What type of visibility is provided into the space from adjacent interior spaces or circulation?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -14985,7 +14985,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "MS-021",
       "question": "What type of visibility is provided into the space from adjacent interior spaces or circulation?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -15655,7 +15655,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "EC-020",
       "question": "What type of visibility is provided into the space from adjacent interior spaces or circulation?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -17195,7 +17195,7 @@
       "subcategory": "Display & Presentation",
       "questionId": "EG-008",
       "question": "How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "ES",
@@ -20285,7 +20285,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "MS-021",
       "question": "What type of visibility is provided into the space from adjacent interior spaces or circulation?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "MS",
@@ -21655,7 +21655,7 @@
       "subcategory": "Layout & Flexibility",
       "questionId": "VO-024",
       "question": "Select all that apply (proximities)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "MS",
@@ -29065,7 +29065,7 @@
       "subcategory": "Safety & Supervision",
       "questionId": "MS-021",
       "question": "What type of visibility is provided into the space from adjacent interior spaces or circulation?",
-      "weight": 0
+      "weight": 6
     },
     {
       "schoolLevel": "HS",
@@ -30435,7 +30435,7 @@
       "subcategory": "Layout & Flexibility",
       "questionId": "VO-024",
       "question": "Select all that apply (proximities)",
-      "weight": 6
+      "weight": 0
     },
     {
       "schoolLevel": "HS",

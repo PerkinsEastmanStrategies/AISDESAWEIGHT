@@ -6,7 +6,7 @@ import { Layers, Maximize2, Minimize2, RotateCcw, ZoomIn, ZoomOut } from "lucide
 import { ScoreBadge } from "@/components/score-badge"
 import { loadFloorPlanForCampus } from "@/lib/floor-plan-loader"
 import { overlayPointsForRoom, viewBoxString, type ParsedPlanRoom } from "@/lib/floor-plan-parse"
-import { scoreBandLabel, scoreFillRgba, scoreStrokeRgba } from "@/lib/format"
+import { SCORE_BANDS, scoreBandLabel, scoreFillRgba, scoreStrokeRgba } from "@/lib/format"
 import {
   colorWithAlpha,
   fetchCampusNeighborhoods,
@@ -603,18 +603,16 @@ export function FloorPlanPanel({
         </div>
       ) : (
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-slate-200 bg-white px-3 py-2 text-[10px] text-slate-600">
-          <span className="inline-flex items-center gap-1">
-            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-emerald-600/70" aria-hidden />
-            Good (80%+)
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-amber-500/70" aria-hidden />
-            Fair (55–80%)
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-rose-600/70" aria-hidden />
-            Needs attention (&lt;55%)
-          </span>
+          {SCORE_BANDS.map((band) => (
+            <span key={band.id} className="inline-flex items-center gap-1">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-sm"
+                style={{ backgroundColor: band.hex, opacity: 0.8 }}
+                aria-hidden
+              />
+              {band.legend}
+            </span>
+          ))}
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-2.5 w-2.5 rounded-sm bg-slate-300/50" aria-hidden />
             No score

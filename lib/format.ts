@@ -1,5 +1,36 @@
-export const SCORE_GOOD = 80
-export const SCORE_FAIR = 55
+import {
+  scoreBandDef,
+  scoreBandId,
+  scoreBandLabel as sharedScoreBandLabel,
+  type ScoreBandId,
+} from "@aisd/shared"
+
+export { SCORE_BANDS, SCORE_FAIR, SCORE_GOOD, SCORE_EXCELLENT, SCORE_POOR, SCORE_BAND_TICKS } from "@aisd/shared"
+export { scoreBandId, scoreBandDef }
+
+const TONE: Record<ScoreBandId, string> = {
+  excellent: "text-teal-700",
+  good: "text-emerald-700",
+  fair: "text-amber-700",
+  poor: "text-orange-700",
+  critical: "text-red-700",
+}
+
+const BAR: Record<ScoreBandId, string> = {
+  excellent: "bg-teal-600",
+  good: "bg-emerald-500",
+  fair: "bg-amber-500",
+  poor: "bg-orange-500",
+  critical: "bg-red-500",
+}
+
+const BADGE: Record<ScoreBandId, string> = {
+  excellent: "bg-teal-50 text-teal-800 ring-teal-200/80",
+  good: "bg-emerald-50 text-emerald-700 ring-emerald-200/80",
+  fair: "bg-amber-50 text-amber-800 ring-amber-200/80",
+  poor: "bg-orange-50 text-orange-800 ring-orange-200/80",
+  critical: "bg-red-50 text-red-700 ring-red-200/80",
+}
 
 export function formatScore(score: number | null | undefined): string {
   if (score == null || Number.isNaN(score)) return "—"
@@ -12,24 +43,18 @@ export function formatScoreExact(score: number | null | undefined): string {
 }
 
 export function scoreTone(score: number | null | undefined): string {
-  if (score == null || Number.isNaN(score)) return "text-slate-400"
-  if (score >= SCORE_GOOD) return "text-emerald-700"
-  if (score >= SCORE_FAIR) return "text-amber-700"
-  return "text-red-700"
+  const band = scoreBandId(score)
+  return band ? TONE[band] : "text-slate-400"
 }
 
 export function barTone(score: number | null | undefined): string {
-  if (score == null) return "bg-slate-200"
-  if (score >= SCORE_GOOD) return "bg-emerald-500"
-  if (score >= SCORE_FAIR) return "bg-amber-500"
-  return "bg-red-500"
+  const band = scoreBandId(score)
+  return band ? BAR[band] : "bg-slate-200"
 }
 
 export function badgeTone(score: number | null | undefined): string {
-  if (score == null) return "bg-slate-100 text-slate-400 ring-slate-200"
-  if (score >= SCORE_GOOD) return "bg-emerald-50 text-emerald-700 ring-emerald-200/80"
-  if (score >= SCORE_FAIR) return "bg-amber-50 text-amber-800 ring-amber-200/80"
-  return "bg-red-50 text-red-700 ring-red-200/80"
+  const band = scoreBandId(score)
+  return band ? BADGE[band] : "bg-slate-100 text-slate-400 ring-slate-200"
 }
 
 export function formatDelta(current: number | null, baseline: number | null): string | null {
@@ -54,22 +79,19 @@ export function formatWeightShare(weight: number, total: number): string | null 
 }
 
 export function scoreFillRgba(score: number | null | undefined, alpha = 0.45): string {
-  if (score == null) return `rgba(148, 163, 184, ${alpha * 0.35})`
-  if (score >= SCORE_GOOD) return `rgba(5, 150, 105, ${alpha})`
-  if (score >= SCORE_FAIR) return `rgba(217, 119, 6, ${alpha})`
-  return `rgba(225, 29, 72, ${alpha})`
+  const band = scoreBandDef(score)
+  if (!band) return `rgba(148, 163, 184, ${alpha * 0.35})`
+  const [r, g, b] = band.rgb
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
 export function scoreStrokeRgba(score: number | null | undefined): string {
-  if (score == null) return "rgba(148, 163, 184, 0.55)"
-  if (score >= SCORE_GOOD) return "rgba(4, 120, 87, 0.9)"
-  if (score >= SCORE_FAIR) return "rgba(180, 83, 9, 0.9)"
-  return "rgba(190, 18, 60, 0.9)"
+  const band = scoreBandDef(score)
+  if (!band) return "rgba(148, 163, 184, 0.55)"
+  const [r, g, b] = band.rgb
+  return `rgba(${r}, ${g}, ${b}, 0.9)`
 }
 
 export function scoreBandLabel(score: number | null | undefined): string | null {
-  if (score == null) return null
-  if (score >= SCORE_GOOD) return "Good (80%+)"
-  if (score >= SCORE_FAIR) return "Fair (55–80%)"
-  return "Needs attention (below 55%)"
+  return sharedScoreBandLabel(score)
 }

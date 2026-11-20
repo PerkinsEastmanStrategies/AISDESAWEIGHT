@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react"
-import { formatScore, formatScoreExact, SCORE_FAIR, SCORE_GOOD } from "@/lib/format"
+import { formatScore, formatScoreExact, SCORE_BANDS, SCORE_BAND_TICKS, scoreBandDef } from "@/lib/format"
 import type { SchoolScorecard, ScoreNode } from "@/lib/types"
 
 export const OVERALL_SLICE = "existing"
@@ -40,10 +40,9 @@ export function schoolSlice(card: SchoolScorecard, sliceId: string): { score: nu
 }
 
 function bubbleFill(score: number | null) {
-  if (score == null) return { fill: "#cbd5e1", stroke: "#94a3b8" }
-  if (score >= SCORE_GOOD) return { fill: "#059669", stroke: "#047857" }
-  if (score >= SCORE_FAIR) return { fill: "#d97706", stroke: "#b45309" }
-  return { fill: "#e11d48", stroke: "#be123c" }
+  const band = scoreBandDef(score)
+  if (!band) return { fill: "#cbd5e1", stroke: "#94a3b8" }
+  return { fill: band.hex, stroke: band.strokeHex }
 }
 
 function initials(name: string) {
@@ -223,15 +222,12 @@ export function SchoolScoreBubbles({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-500">
-          <span className="inline-flex items-center gap-1">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-600" /> 80%+
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="h-2.5 w-2.5 rounded-full bg-amber-600" /> 55–80%
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="h-2.5 w-2.5 rounded-full bg-rose-600" /> below 55%
-          </span>
+          {SCORE_BANDS.map((band) => (
+            <span key={band.id} className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: band.hex }} />
+              {band.rangeLabel}
+            </span>
+          ))}
           <span>Size = assessed spaces</span>
         </div>
       </div>
@@ -272,21 +268,21 @@ export function SchoolScoreBubbles({
                 preserveAspectRatio="none"
                 aria-hidden
               >
-                <rect x="0" y="0" width={scoreToX(SCORE_FAIR, width)} height={height} fill="rgba(244, 63, 94, 0.06)" />
-                <rect
-                  x={scoreToX(SCORE_FAIR, width)}
-                  y="0"
-                  width={scoreToX(SCORE_GOOD, width) - scoreToX(SCORE_FAIR, width)}
-                  height={height}
-                  fill="rgba(245, 158, 11, 0.08)"
-                />
-                <rect
-                  x={scoreToX(SCORE_GOOD, width)}
-                  y="0"
-                  width={width - scoreToX(SCORE_GOOD, width)}
-                  height={height}
-                  fill="rgba(16, 185, 129, 0.08)"
-                />
+                {SCORE_BAND_TICKS.slice(0, -1).map((from, index) => {
+                  const to = SCORE_BAND_TICKS[index + 1] ?? 100
+                  const band = scoreBandDef((from + to) / 2)
+                  const [r, g, b] = band?.rgb ?? [148, 163, 184]
+                  return (
+                    <rect
+                      key={band?.id ?? from}
+                      x={scoreToX(from, width)}
+                      y="0"
+                      width={scoreToX(to, width) - scoreToX(from, width)}
+                      height={height}
+                      fill={`rgba(${r}, ${g}, ${b}, 0.08)`}
+                    />
+                  )
+                })}
                 <line
                   x1={scoreToX(0, width)}
                   y1={height / 2}
@@ -295,7 +291,7 @@ export function SchoolScoreBubbles({
                   stroke="#94a3b8"
                   strokeWidth="1"
                 />
-                {[0, 25, 55, 80, 100].map((tick) => {
+                {SCORE_BAND_TICKS.map((tick) => {
                   const x = scoreToX(tick, width)
                   return (
                     <g key={tick}>

@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react"
 import { Printer } from "lucide-react"
 import { AisdLogo } from "@/components/aisd-logo"
-import { SCORE_FAIR, SCORE_GOOD } from "@/lib/format"
+import { SCORE_BANDS } from "@/lib/format"
 import {
   REPORT_PALETTES,
   hexToRgba,
@@ -149,29 +149,20 @@ function ScoreText({
 
 function ScoreLegend() {
   const palette = useReportPalette()
-  const good = scoreBandColors(SCORE_GOOD, palette)
-  const fair = scoreBandColors(SCORE_FAIR, palette)
-  const poor = scoreBandColors(SCORE_FAIR - 1, palette)
   return (
     <div className="flex flex-wrap gap-2 text-[11px] text-slate-500">
-      <span
-        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
-        style={{ backgroundColor: good.bg, color: good.fg }}
-      >
-        Good {SCORE_GOOD}+
-      </span>
-      <span
-        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
-        style={{ backgroundColor: fair.bg, color: fair.fg }}
-      >
-        Fair {SCORE_FAIR}–{SCORE_GOOD}
-      </span>
-      <span
-        className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
-        style={{ backgroundColor: poor.bg, color: poor.fg }}
-      >
-        Poor below {SCORE_FAIR}
-      </span>
+      {SCORE_BANDS.map((band) => {
+        const colors = scoreBandColors(band.sampleScore, palette)
+        return (
+          <span
+            key={band.id}
+            className="whitespace-nowrap rounded px-1.5 py-0.5 font-medium"
+            style={{ backgroundColor: colors.bg, color: colors.fg }}
+          >
+            {band.label} {band.rangeLabel}
+          </span>
+        )
+      })}
     </div>
   )
 }

@@ -170,7 +170,7 @@ ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-023,Select 
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-024,How easily can the furniture be rearranged?,6
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-025,"How varied are the seating options for students (i.e., are multiple seating types available)?",6
 ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-026,What is the condition of the furniture?,6
-ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-034,Select all that apply (general inventory),6
+ES,Studios,Early childhood studio,Amenities,Furniture & Equipment,PK-034,Select all that apply (general inventory),0
 ES,Studios,Early childhood studio,Amenities,Storage,PK-013,How much casework is provided in the space?,6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-014,How much countertop is provided in the space?,6
 ES,Studios,Early childhood studio,Amenities,Storage,PK-015,Select all that apply (storage),0
@@ -195,7 +195,7 @@ ES,Studios,Early childhood studio,Occupant Experience,Occupant Comfort,PK-007,"I
 ES,Studios,Early childhood studio,Occupant Experience,Occupant Comfort,PK-008,Select all that apply (exterior windows),6
 ES,Studios,Early childhood studio,Occupant Experience,Occupant Comfort,PK-009,What window coverings are provided on exterior windows?,6
 ES,Studios,Early childhood studio,Occupant Experience,Occupant Comfort,PK-019,Select one (temperature control),6
-ES,Studios,Early childhood studio,Occupant Experience,Safety & Supervision,PK-020,What type of visibility is provided into the space from adjacent interior spaces or circulation?,0
+ES,Studios,Early childhood studio,Occupant Experience,Safety & Supervision,PK-020,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Studios,Early childhood studio,Occupant Experience,Safety & Supervision,PK-021,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Studios,Early childhood studio,Occupant Experience,Safety & Supervision,PK-022,Select all that apply (safety),6
 ES,Studios,Traditional Studio,Amenities,Display & Presentation,ST-010,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
@@ -291,7 +291,7 @@ ES,Shared Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-007,"Is da
 ES,Shared Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-008,Select all that apply (exterior windows),6
 ES,Shared Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-009,What window coverings are provided on exterior windows?,6
 ES,Shared Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-020,Select one (temperature control),6
-ES,Shared Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,0
+ES,Shared Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Shared Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-022,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Shared Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-023,Select all that apply (safety),6
 ES,Shared Studios,Music Studio,Amenities,Display & Presentation,MU-014,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
@@ -358,7 +358,7 @@ ES,Special Education,Early childhood special education studio,Occupant Experienc
 ES,Special Education,Early childhood special education studio,Occupant Experience,Occupant Comfort,EC-008,Select all that apply (exterior windows),6
 ES,Special Education,Early childhood special education studio,Occupant Experience,Occupant Comfort,EC-009,What window coverings are provided on exterior windows?,6
 ES,Special Education,Early childhood special education studio,Occupant Experience,Occupant Comfort,EC-019,Select one (temperature control),6
-ES,Special Education,Early childhood special education studio,Occupant Experience,Safety & Supervision,EC-020,What type of visibility is provided into the space from adjacent interior spaces or circulation?,0
+ES,Special Education,Early childhood special education studio,Occupant Experience,Safety & Supervision,EC-020,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 ES,Special Education,Early childhood special education studio,Occupant Experience,Safety & Supervision,EC-021,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 ES,Special Education,Early childhood special education studio,Occupant Experience,Safety & Supervision,EC-022,Select all that apply (safety),6
 ES,Special Education,Life Skills Studio,Amenities,Display & Presentation,LS-022,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile surfaces.",6
@@ -512,7 +512,7 @@ ES,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,DC-011,
 ES,Shared Spaces,Dining Commons,Occupant Experience,Safety & Supervision,DC-022,Is the stage accessed from the audience area by a ramp with an unobstructed sightline?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-006,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces in your count.",6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-007,Is the writable surface and tackboard distributed to create two separate teaching areas within the gymnasium?,6
-ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-008,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,0
+ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-008,How much tackboard/tackwall is provided? Include both fixed and mobile surfaces.,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-009,Is additional tackboard provided outside the gymnasium?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Display & Presentation,EG-013,Are a motorized projection screen and ceiling/wall-mounted projector provided?,6
 ES,Shared Spaces,ES Gymnasium,Amenities,Furniture & Equipment,EG-003,How many basketball goals are provided?,6
@@ -821,7 +821,7 @@ MS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-007,"Is daylight 
 MS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-008,Select all that apply (exterior windows),6
 MS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-009,What window coverings are provided on exterior windows?,6
 MS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-020,Select one (temperature control),6
-MS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,0
+MS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 MS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-022,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 MS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-023,Select all that apply (safety),6
 MS,Studios,Science,Amenities,Display & Presentation,SC-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces.",6
@@ -958,7 +958,7 @@ MS,Special Education,Vocational Lab,Amenities,Furniture & Equipment,VO-019,What 
 MS,Special Education,Vocational Lab,Amenities,Storage,VO-008,Select all that apply (storage),0
 MS,Special Education,Vocational Lab,Amenities,Storage,VO-009,How sufficient does the storage appear for the space's program needs?,6
 MS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-001,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
-MS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-024,Select all that apply (proximities),6
+MS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-024,Select all that apply (proximities),0
 MS,Special Education,Vocational Lab,Infrastructure,Flooring & Surface Finishes,VO-020,What type of flooring is in the space?,0
 MS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,VO-002,Select all that apply (lighting),6
 MS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,VO-010,Are there any visible workarounds accommodating a lack of power outlets?,6
@@ -1699,7 +1699,7 @@ HS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-007,"Is daylight 
 HS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-008,Select all that apply (exterior windows),6
 HS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-009,What window coverings are provided on exterior windows?,6
 HS,Studios,Maker Space,Occupant Experience,Occupant Comfort,MS-020,Select one (temperature control),6
-HS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,0
+HS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-021,What type of visibility is provided into the space from adjacent interior spaces or circulation?,6
 HS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-022,How much of the wall facing the adjacent interior space or circulation is made up of interior window?,0
 HS,Studios,Maker Space,Occupant Experience,Safety & Supervision,MS-023,Select all that apply (safety),6
 HS,Studios,Science,Amenities,Display & Presentation,SC-012,"How much writable surface (e.g., markerboard) is provided, excluding glass? Include both fixed and mobile writable surfaces.",6
@@ -1836,7 +1836,7 @@ HS,Special Education,Vocational Lab,Amenities,Furniture & Equipment,VO-019,What 
 HS,Special Education,Vocational Lab,Amenities,Storage,VO-008,Select all that apply (storage),0
 HS,Special Education,Vocational Lab,Amenities,Storage,VO-009,How sufficient does the storage appear for the space's program needs?,6
 HS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-001,Does the room shape allow for clear sightlines within the room and flexible room configuration options?,6
-HS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-024,Select all that apply (proximities),6
+HS,Special Education,Vocational Lab,Function,Layout & Flexibility,VO-024,Select all that apply (proximities),0
 HS,Special Education,Vocational Lab,Infrastructure,Flooring & Surface Finishes,VO-020,What type of flooring is in the space?,0
 HS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,VO-002,Select all that apply (lighting),6
 HS,Special Education,Vocational Lab,Infrastructure,Utilities & Technology,VO-010,Are there any visible workarounds accommodating a lack of power outlets?,6
